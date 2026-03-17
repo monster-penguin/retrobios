@@ -1,0 +1,972 @@
+Full Pack BIOS RETROBAT V7.5.3
+By THE MINI CAKE TV
+https://www.youtube.com/c/TheMiniCakeTV
+
+
+place the BIOS & EMULATORS folders in the RETROBAT folder and overwrite the files.
+
+NEW UPDATE V7.5.3 
+
+Dragon 32/64
+
+d32.rom 3420b96031078a4ef408cad7bf21a33f
+d64_1.rom 5f0bee59710e55f5880e74890912ed78
+d64_2.rom\ fd91edce7be5e7c2d88e46b76956a8aa
+ddos10.rom 1c965da49b6c5459b8353630aa1482e7
+deltados.rom 024eac3db20f1b5cf98c30a0e4743201
+
+3DO:
+
+BIOS	                		md5
+panafz1.bin						f47264dd47fe30f73ab3c010015c155b
+panafz10.bin					51f2f43ae2f3508a14d9f56597e2d3ce
+goldstar.bin 					8639fd5e549bd6238cfee79e3e749114
+
+adam.zip
+- alf @1 rev 57 e3d5.u8 "01bba3bcd46d8a586dd6ec555accc133"
+- alf @2 rev 57 ae6a.u20 "feabe33e8f2dab88da1458b4d27f3faa"
+- alf @3 rev 57 8534.u21 "a720bc872a772ed471fac14e36ec8bcb"
+- eos 6 rev 57 08dd.u22 "cf10b154f2e006a9740d7653cfc47cab"
+- master rev a 174b.u6 "7916bb9635d502366326ec39aea5fc89"
+- os7.u2 "2c66f5911e5b42b8ebe113403548eee7"
+- wp_r80.rom "4fe4f6800076ea3d897d4285653447bd"
+
+adam_ddp.zip
+- tape rev a 8865.u24 "0423e9e9bf5036aa1e9d656b6a1f842c"
+
+adam_fdc.zip
+- 1440k micro innovations hd-dd.u10 "ae12d0b83832b059cb6cb43029bbfdb3"
+- 320ta.u10 "4c38a7df1e645c8d9f417bf7165c46d0"
+- a720dipi 7607 mmsg =c= 1988.u10 "afea14c826f3cfbc89b76725a4a41951"
+- adam disk u10 ad 31 rev a 09-27-84.u10 "976d2a7d85319d9104bc9ec176fbfa9c"
+- dbl2-4.u10 "29569dc029e95e48907b3c81d636987f"
+- doug.u10 "a121855c20a638429bbfcf0448349515"
+- fastpack 720a,t.u10 "e05ababa16e2d5cb92b678cb6e6e2004"
+- pmhdfdc.u10 "a1a2a353dea4b8769a2da733822abfdc"
+
+adam_kb.zip
+- keyboard.u2 "d81e0b2bb6b98999541c5f40b489e88f"
+
+adam_prn.zip
+- printer.u2 "3cdf2fe48ac4224b56f26c03f6c68982"
+
+advision.xml bios\mame\hash
+
+advision.zip
+- b225__ins8048-11kdp_n.u5 "5729638bd856c475678467a353bd921c"
+- b8223__cop411l-kcn_n.u8 "fc5e71445e4947a9d00eedbc66b13a8f"
+
+4688a93aa298b9431c1788c9b90378c8	bios/electron.zip	
+2cc67be4624df4dc66617742571a8e3d	bios/electron64.zip	
+df01cfe5894276de96bbd1c45b7e834c	bios/electron64.zip	
+f3a39227b401a2ce8cdc7e4b7a860aaf	bios/electron_plus1.zip	
+9aa334b4e8f6d7565e6323e0f77110de	bios/electron_plus3.zip	
+83e15ca501899b0d5b2ce3f5ef696069	bios/electron_plus3.zip	
+b60ee811f4b805638478acd5297b16e0	bios/electron_plus3.zip	
+62f5e1d3dae3a68d8fe4406a6f603dc3	bios/electron_plus3.zip	
+5c39baa89fe8a40a5167a53cc5ae7791	bios/electron_plus3.zip
+
+AMIGA 500+
+
+Kickstart v2.04 r37.175 (1991-05)(Commodore)(A500+)[!].rom
+kick37175.A500
+
+AMIGA 500
+kick33180.A500					85ad74194e87c08904327de1a9443b7a
+
+kick34005.A500					82a21c1890cae844b3df741f2762d48d
+
+kick37175.A500					dc10d7bdd1b6f450773dfb558477c230
+
+Kickstart v3.1 r40.063 (1993-07)(Commodore)(A500-A600-A2000)[!].rom
+Kickstart v1.3 r34.5 (1987)(Commodore)(A500-A1000-A2000-CDTV)[!].rom
+Kickstart v1.3 r34.5 (1987)(Commodore)(A500-A1000-A2000-CDTV)[o].rom
+kick34005.A500
+kick37175.A500
+kick33180.A500
+
+Kickstart v3.1 r40.068 (1993-12)(Commodore)(A1200)[!].rom 646773759326fbac3b2311fd8c8793ee
+Kickstart - 391774-01 (USA, Europe) (v3.1 Rev 40.068) (A1200).rom
+kick40068.A1200
+
+Kickstart v3.1 r40.068 (1993-12)(Commodore)(A4000)[!].rom 9bdedde6a4f33555b4a270c8ca53297d
+kick40068.A4000
+
+kick40060.CD32.ext				bb72565701b1b6faece07d68ea5da639
+
+kick40060.CD32					5f8924d013dd57a89cf349f4cdedc6b1
+Kickstart v3.1 r40.060 (1993-05)(Commodore)(CD32)[!].rom
+Kickstart v3.1 r40.60 (1993)(Commodore)(CD32).rom
+kick40060.CD32
+
+CD32 Extended-ROM r40.60 (1993)(Commodore)(CD32).rom
+kick40060.CD32.ext
+
+kick34005.CDTV					89da1838a24460e4b93f4f0c5d92d48d
+
+Kickstart v1.3 r34.5 (1987)(Commodore)(A500-A1000-A2000-CDTV)[!].rom
+Kickstart v1.3 r34.005 (1987-12)(Commodore)(A500-A1000-A2000-CDTV)[!].rom
+Kickstart v1.3 r34.005 (1987-12)(Commodore)(A500-A1000-A2000-CDTV)[o].rom
+kick34005.CDTV
+CDTV Extended-ROM v1.0 (1991)(Commodore)(CDTV)[!].rom
+CDTV Extended-ROM v2.7 (1992)(Commodore)(CDTV).rom
+kick40060.CD32.ext
+
+apfm1000.xml
+
+\bios\mame\hash
+
+apfm1000.zip
+- apf_4000.rom "1f4a976350202ee1e32c2b0477c3fc1b"
+- mod_bios.bin "b325543b36d37edf3fc20761f00c7a37"
+- trash-ii.bin "89a7cfa5469ce24773721d65b28f8544"
+
+"apple2.zip"
+- "341-0001-00.e0" size="2048" crc="c0a4ad3b" sha1="bf32195efcb34b694c893c2d342321ec3a24b98f"
+- "341-0002-00.e8" size="2048" crc="a99c2cf6" sha1="9767d92d04fc65c626223f25564cca31f5248980"
+- "341-0003-00.f0" size="2048" crc="62230d38" sha1="f268022da555e4c809ca1ae9e5d2f00b388ff61c"
+- "341-0004-00.f8" size="2048" crc="020a86d0" sha1="52a18bd578a4694420009cad7a7a5779a8c00226"
+- "341-0016-00.d0" size="2048" crc="4234e88a" sha1="c9a81d704dc2f0c3416c20f9c4ab71fedda937ed"
+- "341-0020-00.f8" size="2048" crc="079589c4" sha1="a28852ff997b4790e53d8d0352112c4b1a395098"
+- "341-0027-a.p5" size="256" crc="ce7144f6" sha1="d4181c9f046aafc3fb326b381baac809d9e38d16"
+- "341-0028-a.rom" size="256" crc="b72a2c70" sha1="bc39fbd5b9a8d2287ac5d0a42e639fc4d3c2f9d4"
+- "a2.chr" size="2048" crc="64f415c6" sha1="f9d312f128c9557d9d6ac03bfad6c3ddf83e5659"
+- "sc01a.bin" size="512" crc="fc416227" sha1="1d6da90b1807a01b5e186ef08476119a862b5e6d"
+
+"apple2e.zip"
+- "341-0027-a.p5" size="256" crc="ce7144f6" sha1="d4181c9f046aafc3fb326b381baac809d9e38d16"
+- "341-0028-a.rom" size="256" crc="b72a2c70" sha1="bc39fbd5b9a8d2287ac5d0a42e639fc4d3c2f9d4"
+- "342-0132-c.e12" size="2048" crc="e47045f4" sha1="12a2e718f5f4acd69b6c33a45a4a940b1440a481"
+- "342-0133-a.chr" size="4096" crc="b081df66" sha1="7060de104046736529c1e8a687a0dd7b84f8c51b"
+- "342-0134-a.64" size="8192" crc="fc3d59d8" sha1="8895a4b703f2184b673078f411f4089889b61c54"
+- "342-0135-b.64" size="8192" crc="e248835e" sha1="523838c19c79f481fa02df56856da1ec3816d16e"
+- "sc01a.bin" size="512" crc="fc416227" sha1="1d6da90b1807a01b5e186ef08476119a862b5e6d"
+
+"apple2ee.zip"
+- "341-0027-a.p5" size="256" crc="ce7144f6" sha1="d4181c9f046aafc3fb326b381baac809d9e38d16"
+- "341-0028-a.rom" size="256" crc="b72a2c70" sha1="bc39fbd5b9a8d2287ac5d0a42e639fc4d3c2f9d4"
+- "341-0132-d.e12" size="2048" crc="c506efb9" sha1="8e14e85c645187504ec9d162b3ea614a0c421d32"
+- "342-0265-a.chr" size="4096" crc="2651014d" sha1="b2b5d87f52693817fc747df087a4aa1ddcdb1f10"
+- "342-0303-a.e8" size="8192" crc="95e10034" sha1="afb09bb96038232dc757d40c0605623cae38088e"
+- "342-0304-a.e10" size="8192" crc="443aa7c4" sha1="3aecc56a26134df51e65e17f33ae80c1f1ac93e6"
+- "sc01a.bin" size="512" crc="fc416227" sha1="1d6da90b1807a01b5e186ef08476119a862b5e6d"
+
+"apple2p.zip"
+<rom name="341-0011.d0" size="2048" crc="6f05f949" sha1="0287ebcef2c1ce11dc71be15a99d2d7e0e128b1e"
+- "341-0012.d8" size="2048" crc="1f08087c" sha1="a75ce5aab6401355bf1ab01b04e4946a424879b5"
+- "341-0013.e0" size="2048" crc="2b8d9a89" sha1="8d82a1da63224859bd619005fab62c4714b25dd7"
+- "341-0014.e8" size="2048" crc="5719871a" sha1="37501be96d36d041667c15d63e0c1eff2f7dd4e9"
+- "341-0015.f0" size="2048" crc="9a04eecf" sha1="e6bf91ed28464f42b807f798fc6422e5948bf581"
+- "341-0020-00.f8" size="2048" crc="079589c4" sha1="a28852ff997b4790e53d8d0352112c4b1a395098"
+- "341-0027-a.p5" size="256" crc="ce7144f6" sha1="d4181c9f046aafc3fb326b381baac809d9e38d16"
+- "341-0028-a.rom" size="256" crc="b72a2c70" sha1="bc39fbd5b9a8d2287ac5d0a42e639fc4d3c2f9d4"
+- "341-0036.chr" size="2048" crc="64f415c6" sha1="f9d312f128c9557d9d6ac03bfad6c3ddf83e5659"
+- "sc01a.bin" size="512" crc="fc416227" sha1="1d6da90b1807a01b5e186ef08476119a862b5e6d"
+
+aquarius.zip
+- aq.u2
+- aq2.u5
+- aq_s2.u2
+
+aquariusp.zip
+- aq.u2
+- aq2.u5
+- aq_s2.u2
+
+aquarius2.zip
+- aq2.u5
+- aq2_1.rom
+- aq2_2.rom
+
+aquarius_ar.zip
+- aq_s2.u2
+- xz-2120-1_v1.2.u5
+
+"a2diskiing.zip"
+- "341-0027-a.p5" size="256" crc="ce7144f6" sha1="d4181c9f046aafc3fb326b381baac809d9e38d16"
+- "341-0028-a.rom" size="256" crc="b72a2c70" sha1="bc39fbd5b9a8d2287ac5d0a42e639fc4d3c2f9d4"
+
+"votrsc01a.zip"
+- "sc01a.bin" size="512" crc="fc416227" sha1="1d6da90b1807a01b5e186ef08476119a862b5e6d"
+
+"votrsc01.zip"
+- "sc01.bin" size="512" crc="528d1c57" sha1="268b5884dce04e49e2376df3e2dc82e852b708c1"
+
+"d2fdc.zip"
+- "341-0028-a.rom" size="256" crc="b72a2c70" sha1="bc39fbd5b9a8d2287ac5d0a42e639fc4d3c2f9d4"
+
+apple2-int-auto.rom
+apple2-asoft-auto.rom
+disk2-13boot.rom
+disk2-13seq.rom
+disk2-16boot.rom
+disk2-16seq.rom
+apple2.zip
+apple2e.zip
+apple2ee.zip
+apple2p.zip
+a2diskiing.zip
+votrsc01a.zip
+votrsc01.zip
+d2fdc.zip
+AppleIIe_DiskII.rom
+AppleIIe.rom
+apple2_cass.xml
+apple2_flop_clcracked.xml
+apple2_flop_misc.xml
+apple2_flop_orig.xml
+
+"apple2gs.zip"
+- "341-0728" size="131072" crc="8d410067" sha1="c0f4704233ead14cb8e1e8a68fbd7063c56afd27"
+- "341-0748" size="131072" crc="18190283" sha1="c70576869deec92ca82c78438b1d5c686eac7480"
+- "341s0632-2.bin" size="4096" crc="e1c11fb0" sha1="141d18c36a617ab9dce668445440d34354be0672"
+- "apple2gs.chr" size="4096" crc="91e53cd8" sha1="34e2443e2ef960a36c047a09ed5a93f471797f89"
+
+APPLE2GS.ROM					20a0334c447cb069a040ae5be1d938df
+
+arcadia.xml
+ar_bios.zip					37e9746f4491aa2df9a83729d1a93620
+
+aa310.zip
+- 0270,251-01.rom "374e4bcaa04cb98aad3b64a1555c3930"
+- 0270,252-01.rom "b0b6a83029b6f85bb044bfc46bf3f0f6"
+- 0270,253-01.rom "bf35bb799aa0278b7ee7719dd32f26bc"
+- 0270,254-01.rom "e41af081535aae930d68ee4cbd672513"
+- 0270,601-01.rom "7ecdccd760557ab0711edb37773faeb6"
+- 0270,602-01.rom "c43bad04862ea03146ff5bf7441a1a24"
+- 0270,603-01.rom "454c1977ad70a206f4f3a0bdca294d85"
+- 0270,604-01.rom "6850da7a70b198eaf6fde5be503fa5cd"
+- 0276,146-01.rom "84d305e248dab48a3a110af161dfb005"
+- 0276,147-01.rom "64d7f085e6afb149ebc2e7f919429a19"
+- 0276,148-01.rom "f7d0a9a4d1dae8eee057aa626b87715f"
+- 0276,149-01.rom "763b015d85c7d9d17e06d5babc0a9d32"
+- 0276,322-01.rom "b8fcd63c6a28d0c7034af2e6c5aff9a8"
+- 0276,323-01.rom "6265551c5d6336f7ddd9f3fc78ceba93"
+- 0276,324-01.rom "ca4379aeab4f7c7640c8ad34b27a9db6"
+- 0276,325-01.rom "358d3c9d2685c076f6a141c26d45520c"
+- 0277,022-02.rom "4ae429fbf23f8aa64ce2002cfb14c527"
+- 0277,023-02.rom "83d0f0738468fdf9f23c13eef22dbeea"
+- 0277,024-02.rom "636e4072c392916d2bf00865fee40984"
+- 0277,025-02.rom "252b1993fdb66cac522a0edbeffc3407"
+- 0283,022-01.rom "591f3bdd0f20a0a3d03c8748f2f75754"
+- 0283,023-01.rom "f77f4a409c78c8495fc3876cd4e7d97c"
+- 0283,024-01.rom "57d3a349407916f55129d6c8c0f56395"
+- 0283,025-01.rom "ee4aa1ea0eebf88c5f6cae6315ed11a1"
+- 0296,041-01.rom "a057124502e533ccd8865dc970cf7017"
+- 0296,041-02.rom "3c40d2821595a7334a46ea3b46a5421d"
+- 0296,042-01.rom "d1d51b8f603bba476d1f63bc5980040e"
+- 0296,042-02.rom "7b096a93cc5ada80bcfb5249bca33768"
+- 0296,043-01.rom "744e80abe4c6a845412f63a0f0b14e48"
+- 0296,043-02.rom "9dac78cba6034c427d00f78fa94ab63d"
+- 0296,044-01.rom "4c0b2e1fb29c8acd84e94d25c953173c"
+- 0296,044-02.rom "f6bf5f8908a19a9aacf733633b1cd5cf"
+- 0296,241-01.rom "eec46f5bd4cdb456b760b3cddf16a33c"
+- 0296,242-01.rom "980e3be0c851a59d0f4602f4a94b2eef"
+- 0296,243-01.rom "971a49d5c2dbb3fc01c17d1d5615781a"
+- 0296,244-01.rom "9ce06a4d2a8331bc5b7fadb967d74f4f"
+- cmos_arthur.bin "c74763f720c98e16dc3c6c421db21485"
+- cmos_riscos2.bin "6f564c8917f04594bda7385f6de61061"
+- cmos_riscos3.bin "232a302efe19278d9df6ecbc8ea3dc6c"
+
+archimedes_keyboard.zip
+- acorn_0280,022-01_philips_8051ah-2.bin "1a8617c1abe3e0729d20ce844e1e12a8"
+archimedes.xml
+
+astrocde.zip
+- astro.bin "7d25a26e5c4841b364cfe6b1735eaf03"
+astrocde.xml
+
+ATARIXL.ROM					06daac977823773a3eea3422fd26a703
+ATARIBAS.ROM				0bac0c6a50104045d902df4503a4c30b
+ATARIOSA.ROM				eb1f32f5d9f382db1bbfb8d7f9cb343a
+ATARIOSB.ROM				a3e8d617c95d08031fe1b20d541434b2
+
+7800 BIOS (E).rom			397bb566584be7b9764e7a68974c4263
+7800 BIOS (U).rom			0763f1ffb006ddbe32e52d497ee848ae
+ProSystem.dat				ce6a86574d0c9de9075705f14e99d090
+A78_highscore.bin
+
+tos.img						b2a8570de2e850c5acf81cb80512d9f6
+emutos.img
+tos102.img
+tos106.img
+tos104.img
+tos206.img
+
+atom.zip
+- abasic.ic20 "b7b7f8a608339fa39d44a3bcfa2cc3f0"
+- afloat.ic21 "baa26f458acf5745388177ffc7368124"
+- dosrom.u15 "9627dfb5f8302db8dd5702dbf7c09f72"
+atom_cass.xml
+atom_flop.xml
+atom_rom.xml
+
+awbios.zip 0ec5ae5b5a5c4959fa8b43fcf8687f7c
+
+bbcb.zip
+- basic1.rom "521a197d3623682825f1042c1350feb4"
+- basic2.rom "2cc67be4624df4dc66617742571a8e3d"
+- os01.rom "0cad3d0cf0d111aca2b158b9b605913f"
+- os092.rom "46f920a170e88bab7faa96cf80b84324"
+- os10.rom "0199bac73f1dbca291582834a3e61122"
+- os12.rom "0a59a5ba15fe8557b5f7fee32bbd393a"
+- phroma.bin "35e9ab10bcf016bd24b4c716add009b9"
+
+bbc_acorn8271.zip
+- dfs090.rom "803530149c274994fabc6d28cbe03679"
+- dfs098.rom "5a3ddfae96178e025f27bf1f69bfa629"
+- dnfs100.rom "d636ffb7a80fc29b133d32e4250fbab6"
+- dnfs120.rom "5daed103918277e2065dd7e8d23e57a5"
+- wedfs130.rom "79b31feacab0b1ccddf358be5dfb6241"
+- wedfs141.rom "24458ace9566a01d255bca16b46a960d"
+- wedfs142.rom "6e9356d0a5e7fbabb386824ec370d6f3"
+- wedfs143.rom "990b8a9755af25452c85f23ceb344be4"
+- wedfs144.rom "1d250b0242e447e9106e8bfd1f27ea84"
+
+saa5050.zip
+- saa5050 "8b3c10a2317808ed94d6c6073b5b3327"
+
+bbc_tube_80186.zip
+- m512_hi_ic32.rom "33d097349f12526584fcac21eccf3012"
+- m512_lo_ic31.rom "e6e84221c29b5d31d07055039583c8e7"
+
+bbcm.zip
+- mos320.cmos "b159012f9f301bab33316fd3bf55db79"
+- mos320.ic24 "fed079c5e2c595b354529a8ea703b5fb"
+- mos329.ic24 "ca0527f13f83bc95ef4b6833ee440afa"
+- mos350.cmos "ee9fc46252b7d7fe341b9c7f92575099"
+- mos350.ic24 "3f3dd4614db30f6e383794731272076a"
+
+bbcmc.zip
+- mos500.ic49 "55586a88477505d8fd28edfae646e2e3"
+- mos510.ic49 "956bf71da840943050836ade2474ef7b"
+
+bbc_bitstik1.zip
+- bitstik1.rom "baf5cb5564ff6e6b4400243e7612f323"
+
+bbc_bitstik2.zip
+- bitstik2.rom "c196c145b3de630f85f625ca762e5504"
+
+bbc.zip
+- motoroff.wav
+- motoron.wav
+
+lynx48k.zip
+- lynx48-1.ic46 "b0ad5bf3070aea27b637e1998c81fa8c"
+- lynx48-2.ic45 "b665e10211bbdbfaf2defb32d5580892"
+- lynx4811.ic46 "bc0760d8bf61c9683270266d259cd2ae"
+- lynx4812.ic45 "dde90a794e5324002a9fd7f79cec3172"
+
+lynx96k.zip
+- danish96k3.ic44
+- dosrom.rom
+- lynx9644.ic44
+- lynx9645.ic45
+- lynx9646.ic46
+- skorprom.ic44
+
+lynx128k.zip
+- dosrom.rom
+- lynx128-1.ic1
+- lynx128-2.ic2
+- lynx128-3.ic3
+
+casloopy.zip 0e1d8dc0110ecf8201c0cef11ef4a858
+
+cdimono1.zip
+- cdi200.rom "2969341396aa61e0143dc2351aaa6ef6"
+- cdi220.rom "ac80a92c988ce07fbd6a8f21ded34cf1"
+- cdi220b.rom "ac0d468be366779c9df633be98da250a"
+- zx405037p__cdi_servo_2.1__b43t__llek9215.mc68hc705c8a_withtestrom.7201 "3e59b8a9a423d3ecd612a32fe4e2d748"
+- zx405042p__cdi_slave_2.0__b43t__zzmk9213.mc68hc705c8a_withtestrom.7206 "3d20cf7550f1b723158b42a1fd5bac62"
+
+cdimono2.zip
+- philips__cdi-220_ph3_r1.2__mb834200b-15__02f_aa__9402_z04.tc574200-le._1.7211
+- zc405351p__servo_cdi_4.1__0d67p__lluk9404.mc68hc705c8a.7490
+- zc405352p__slave_cdi_4.1__0d67p__lltr9403.mc68hc705c8a.7206
+
+cdibios.zip
+- cdi200.rom
+- cdi220b.rom
+- zx405042p__cdi_slave_2.0__b43t__zzmk9213.mc68hc705c8a_withtestrom.7206
+
+sl31253.bin			ac9804d4c0e9d07e33472e3726ed15c3
+sl31254.bin			da98f4bb3242ab80d76629021bb27585
+sl90025.bin			95d339631d867c8f1d15a5f2ec26069d
+
+coco.zip
+- bas10.rom "a74f3d95b395dad7cdca19d560eeea74"
+
+coco2.zip
+- bas12.rom "c933316c7d939532a13648850c1c2aa6"
+- extbas11.rom "21070aa0496142b886c562bf76d7c113"
+
+coco2b.zip
+- bas13.rom "c2fc43556eb6b7b25bdf5955bd9df825"
+- extbas11.rom "21070aa0496142b886c562bf76d7c113"
+
+coco3.zip
+- coco3.rom "7233c6c429f3ce1c7392f28a933e0b6f"
+- disk11.rom "8cab28f4b7311b8df63c07bb3b59bfd5"
+
+coco3p.zip
+- coco3p.rom "4ae57e5a8e7494e5485446fefedb580b"
+- disk11.rom "8cab28f4b7311b8df63c07bb3b59bfd5"
+
+colecovision.rom		2c66f5911e5b42b8ebe113403548eee7
+coleco.rom 				2c66f5911e5b42b8ebe113403548eee7
+
+crvision.zip
+- crvision.u20 "3b1ef759d8e3fb4071582efd33dd05f9"
+
+dc.zip
+- 1_01d_01.bin "E10C53C2F8B90BAB96EAD2D368858623"
+- 1_01d_02.bin "A5C6A00818F97C5E3E91569EE22416DC"
+- 1_004_01.bin "37C921EB47532CAE8FB70E5D987CE91C"
+- 1_011_01.bin "EAFCA1EED2D7F76C487E940597C2A786"
+
+dc_boot.bin			e10c53c2f8b90bab96ead2d368858623
+dc_flash.bin		0a93f7940c455905bea6e392dfde92a4
+
+ecwolf.pk3			F1C29D2DC0A1A48A0C007DBB38801950
+
+neogeo.zip
+pgm.zip
+skns.zip
+neocdz.zip
+decocass.zip
+isgsm.zip
+midssio.zip
+nmk004.zip
+ym2608.zip
+cchip.zip
+bubsys.zip
+namcoc69.zip
+namcoc70.zip
+namcoc75.zip
+coleco.zip
+fdsbios.zip
+msx.zip
+ngp.zip
+spectrum.zip
+spec128.zip
+spec1282a.zip
+channelf.zip
+
+NstDatabase.xml			7bfe8c0540ed4bd6a0f1e2a0f0118ced
+disksys.rom				ca30b50f880eb660a320674ed365ef7a
+
+fm7.zip
+- boot_bas.rom "9f9b7d5615ecdbde2cd26e9306ffef13"
+- boot_dos_a.rom "18a461ccaf7ef4e8ecad58cecd3a24b3"
+- fbasic300.rom "6a5da0404b7ee338df9002cdcabc3068"
+- kanji.rom "a330817f8f7ced752a7bcc8dfba8fd2e"
+- subsys_c.rom "d19ed5923aaae2ec43dffe7a0daa80cb"
+
+fm77av.zip
+- fbasic30.rom "71c96a45b78e88a39cb94c1aabd23d8a"
+- initiate.rom "e0f4c0ebee60aee83e863826e59ae1de"
+- subsys_a.rom "ae945a6dfb642b0a5d0529737e8ee5cd"
+- subsys_b.rom "fb83a1a9725c8432acef0c3ce89492e3"
+- subsyscg.rom "7db27dede3e358017d518101850bccfa"
+
+fmtowns.zip
+- fmt_dic.rom "34847786d7de94b5d1133c956ab1d75d"
+- fmt_dos.rom "0585b19930d4a7f4c71bcc8a33746588"
+- fmt_fnt.rom "eb44f2093f51eb7159f03e170b13af76"
+- fmt_sys.rom "feaf8c5675151e00cfe3ad27673bff29"
+
+fmtownsux.zip
+- fmt_dic.rom "8fa4e553f28cfc0c30a0a1e589799942"
+- fmt_dos_a.rom "03c8fac9a5f5f5f35fb5de5a5d0d018f"
+- fmt_fnt.rom "b91300e55b70227ce98b59c5f02fa8dd"
+- fmt_sys_a.rom "90b5e01d42aaa93e8f4503a5e94e120b"
+- mytownsux.rom "1a15f6c1b58ec7e5f850118610a787a7"
+
+fmtowns.zip
+fmtownsux.zip
+FMT_DIC.ROM		8fa4e553f28cfc0c30a0a1e589799942
+FMT_DOS.ROM		0585b19930d4a7f4c71bcc8a33746588
+FMT_F20.ROM		ac0c7021e9bf48ca84b51ab651169a88
+FMT_FNT.ROM		b91300e55b70227ce98b59c5f02fa8dd
+FMT_SYS.ROM		86fb6f7280689259f0ca839dd3dd6cde
+
+fmtowns_cd.xml
+fmtowns_flop_cracked.xml
+fmtowns_flop_misc.xml
+fmtowns_flop_orig.xml
+
+gamate.zip
+- gamate_bios_bit.bin "b411167df6dd563111729296f4c547f6"
+- gamate_bios_umc.bin "ef67993a94503c4b7798b5901c7dda52"
+
+gamecom.zip
+- external.bin "813364d4863b1d7b7b8fd6a97a416bcf"
+- internal.bin "f7bcefb6daf923c8e5ea2eb69f619efe"
+
+
+IPL.bin
+Europe 0cdda509e2da83c85bfe423dd87346cc
+
+IPL.bin
+Japan fc924a7c879b661abc37cec4f018fdf3
+
+IPL.bin
+USA 019e39822a9ca3029124f74dd4d55ac4
+
+gamepock.zip
+- egpcboot.bin "a0dd595eafb407a6a4b4ed800005a394"
+
+gb_bios.bin			32fbbd84168d3482956eb3c5051637f5
+sgb_boot.bin		d574d4f9c12f305074798f54c091a8b4
+sgb2_boot.bin		e0430bca9925fb9882148fd2dc2418c1
+SGB1.sfc			b15ddb15721c657d82c5bab6db982ee9
+SGB2.sfc			8ecd73eb4edf7ed7e81aef1be80031d5
+
+gba_bios.bin		a860e8c0b6d573d191e4ec7db1b1e4f6
+
+gmaster.zip
+- d78c11agf_e19.u1 "6bff08b5e5f96de405cd56d5f04a08f8"
+
+gp32.zip
+- gp32mfv2.bin "d4af2bc352bdaf4972ea40902feda114"
+- gp32100k.bin "cac4b56c0db80922cae75403faef40af"
+- gp32156k.bin "1e4d3216719acea231b81dfcf6069aef"
+- gp32157e.bin "19021cc891119c0872d46e87fc0ffe35"
+- gp32166m.bin "f78092f15f6ffe15975901ee4e92c680"
+- x2c32.jed "e64ad881b5e1d86547f2edc3034946d9"
+
+hikaru.zip		aac601811a25d7b31a3d5f3f1f82f338
+mie.zip			e95415b161121bef35ade12367138c63
+
+exec.bin		62e761035cb657903761800f4437b8af
+grom.bin		0cd5946c6473e42e8e4c2137785e427f
+
+[BIOS] Atari Jaguar (World).j64		cb492f093cd9e22a913d158741e8f00a
+lynxboot.img				fcd403db69f54290b51035d82f835e7b
+
+[BIOS] Sega Master System (USA, Europe) (v1.3).sms
+[BIOS] Sega Master System (Japan) (v2.1).sms
+
+National CF-3300 machine
+cf-3300_basic-bios1.rom "f873f1260b14f1468fa118778ae1c3d2"
+cf-3300_disk.rom "318b6aa76da71c54ccad7734356e1902"
+
+National FS-5500 F2 machine
+fs-5500_basic-bios2.rom "5bf4fdfd3c3ffea3e573b386550cb3fa"
+fs-5500_disk.rom "86269da485e852d9f581ac27f4ba32ff"
+fs-5500_kanjibasic.rom "afbe6ba903453902540ae988cc89dc7b"
+fs-5500_kanjifont.rom "090539674630c1338a90a1df943a93e2"
+fs-5500_msx2sub.rom "dcd5e2388115172f2fb48875b2089dbf"
+fs-5500_superimp.rom "7eb6ae0fbe9736b20dda8dcbd5064f67"
+
+Panasonic FS-A1GT machine
+fs-a1gt_firmware.rom "af17a344bcc177b97a4888c4c559f3ae"
+fs-a1gt_kanjifont.rom "acf53887c2d2783dc059a9b442c86b90"
+
+Panasonic FS-A1WSX machine
+fs-a1wsx_basic-bios2p.rom "c5c26c3e8bc6c485424818057f0507b9"
+fs-a1wsx_disk.rom "00aa02b6077de40a0b51d71a3c3e1d5f"
+fs-a1wsx_firmware.rom "fa8e7d4b999af058fe2864a5f2e014ec"
+fs-a1wsx_fmbasic.rom "0c40e7db1c1fcc2405e4d0cdd215adb4"
+fs-a1wsx_kanjibasic.rom "9dfdebfaa6b547222a40aab8bb2e29f8"
+fs-a1wsx_kanjifont.rom "acf53887c2d2783dc059a9b442c86b90"
+fs-a1wsx_msx2psub.rom "7c8243c71d8f143b2531f01afa6a05dc"
+
+Philips NMS 8245 machine
+nms8245_basic-bios2.rom "ec3a01c91f24fbddcbcab0ad301bc9ef"
+nms8245_disk.rom "3525ea046ddedc66991790eeae32acfd"
+nms8245_disk_1.06.rom "57509815f93e2817d3eb57e20286c7fb"
+nms8245_msx2sub.rom "248514aba82a0ec7fe2a9106862b05cd"
+
+Philips VG 8020 machine
+vg8020_basic-bios1.rom "a0452dbf5ace7d2e49d0a8029efed09a"
+
+Pioneer PX-7 machine
+px-7_basic-bios1.rom "9218f6dd89f7ba01e3090d44721b4260"
+px-7_pbasic.rom "281809cafe63437fc4bffb3033fbd0db"
+
+pegasus.zip fee37d8140e40e4fab48aac4fdab2847f7d
+
+Extensions
+fmpac.rom "6f69cc8b5ed761b03afd78000dfb0e19" (Panasoft SW-M004 FMPAC)
+yrw801.rom "42af93619160ef2116416f74a6cb12f2" (Sunrise MoonSound)
+
+MSX.ROM		364a1a579fe5cb8dba54519bcfcdac0d
+MSX2.ROM	ec3a01c91f24fbddcbcab0ad301bc9ef
+MSX2EXT.ROM	2183c2aff17cf4297bdb496de78c2e8a
+MSX2P.ROM	847cc025ffae665487940ff2639540e5
+MSX2PEXT.ROM	7c8243c71d8f143b2531f01afa6a05dc
+DISK.ROM	80dcd1ad1a4cf65d64b7ba10504e8190
+FMPAC.ROM	6f69cc8b5ed761b03afd78000dfb0e19
+MSXDOS2.ROM	6418d091cd6907bbcf940324339e43bb
+PAINTER.ROM	403cdea1cbd2bb24fae506941f8f655e
+KANJI.ROM	febe8782b466d7c3b16de6d104826b34
+
+
+IPL_JAP.n64
+Japan 8d3d9f294b6e174bc7b1d2fd1c727530
+
+IPL_USA.n64
+USA 37c36e4286d36892a9fc70eafe4104be
+
+IPL_DEV.n64
+
+naomi.zip	eb4099aeb42ef089cfe94f8fe95e51f6
+
+naomi2.zip
+- 315-6146.bin "728bfe038ce280872057e365ebfc0fee"
+- 315-6215.bin "baf83367044924067e09856ba164aa6f"
+- epr-23605.ic27 "6f8ad6e3ab04c8ae1cbcaa652b91cf4e"
+- epr-23605a.ic27 "f3f39513484df216d9979f6ae7577942"
+- epr-23605b.ic27 "ab046e62c51d67fb89eade2b8d5f6a8d"
+- epr-23605c.ic27 "096a5217ff6e6c6cafe65a03336760ab"
+- epr-23605c_multi.ic27 "659d579ba9aef5b025d87323044e83f4"
+- epr-23607.ic27 "cbe0984d03d73869c23da5a3dd2ce207"
+- epr-23607b.ic27 "b624ec7b3b90fdf3be103cdfb1679d1d"
+- epr-23607c.ic27 "a9d82db14b823a5a57885bea1a998eb7"
+- epr-23608.ic27 "3b1315be24dc8d17f4fa18f3bfc5fe5c"
+- epr-23608a.ic27 "0143cf852cb2a8a41f217bc688f62105"
+- epr-23608b.ic27 "8b88c1f5a06e9b560e887c3b9f879237"
+- epr-23608c.ic27 "b49702e4fadb3b5f9143a3d20afd04b5"
+- epr-23609b.ic27 "ecadb008179ca1e6f4fe3fa091ab5df2"
+- main_eeprom.bin "edeed38a9795e062a9af28c3eba22040"
+- sp5001.bin "14e6bffff0d4dff6a5a547e7c43680ff"
+- sp5001-a.bin "689d2228b00fb59781f82af6e8ecdb78"
+- sp5001-b.bin "8373a11106c1c2fc21ac839f75ea488f"
+- sp5002-a.bin "7eecfb8e8f82b47ffab92a0c5528100e"
+- x76f100_eeprom.bin "960ece0dc22a7c5ff81c812a2993e7cc"
+
+firmware.bin	145eaef5bd3037cbc247c213bb3da1b3
+bios7.bin		df692a80a5b1bc90728bc3dfc76cd948
+bios9.bin		a392174eb3e572fed6447e956bde4b25
+dsi_bios9.bin
+dsi_bios7.bin
+dsi_firmware.bin
+dsi_nand.bin
+
+neogeo.zip	dffb72f116d36d025068b23970a4f6df
+aes.zip
+
+neocd_f.rom	a5f4a7a627b3083c979f6ebe1fabc5d2df6d083b
+neocd_sf.rom	4a94719ee5d0e3f2b981498f70efc1b8f1cef325
+neocd_t.rom	cc92b54a18a8bff6e595aabe8e5c360ba9e62eb5
+neocd_st.rom	19729b51bdab60c42aafef6e20ea9234c7eb8410
+neocd_z.rom	b0f1c4fa8d4492a04431805f6537138b842b549f
+neocd_sz.rom	6a947457031dd3a702a296862446d7485aa89dbb
+front-sp1.bin	53bc1f283cdf00fa2efbb79f2e36d4c8038d743a
+top-sp1.bin	235f4d1d74364415910f73c10ae5482d90b4274f
+neocd.bin	7bb26d1e5d1e930515219cb18bcde5b7b23e2eda
+uni-bioscd.rom	5142f205912869b673a71480c5828b1eaed782a8
+
+SYM.ROM bios\eka2l1\data\roms\NEM-4
+
+[BIOS] SNK Neo Geo Pocket (Japan, Europe) (En,Ja).ngp
+o2rom.bin	562d5ebf9e030a40d6fabfc2f33139fd
+c52.bin	f1071cdb0b6b10dde94d3bc8a6146387
+g7400.bin	c500ff71236068e0dc0d0603d265ae76
+jopac.bin	279008e4a0db2dc5f1c048853b033828
+tmctv.bin   30032007
+N88.ROM	4f984e04a99d56c4cfe36115415d6eb8
+N88SUB.ROM	793f86784e5608352a5d7f03f03e0858
+N88N.ROM	2ff07b8769367321128e03924af668a0
+N88EXT0.ROM	d675a2ca186c6efcd6277b835de4c7e5
+N88EXT1.ROM	e844534dfe5744b381444dbe61ef1b66
+N88EXT2.ROM	6548fa45061274dee1ea8ae1e9e93910
+N88EXT3.ROM	fc4b76a402ba501e6ba6de4b3e8b4273
+
+BIOS.ROM	e246140dec5124c5e404869a84caefce
+FONT.ROM	2af6179d7de4893ea0b705c00e9a98d6
+SOUND.ROM	caf90f22197aed6f14c471c21e64658d
+ITF.ROM		e9fc3890963b12cf15d0a2eea5815b72
+font.bmp	7da1e5b7c482d4108d22a5b09631d967
+
+syscard3.pce	38179df8f4ac870017db21ebcbf53114
+
+pcfx.rom	08e36edbea28a017f79f8d4f7ff9b6d7
+fx-scsi.rom
+
+bios.min	1e4fb124a3a886865acb574f388c803d
+
+ps2-0230a-20080220.bin	21038400dc633070a78ad53090c53017
+ps2-0230e-20080220.bin	dc69f0643a3030aaa4797501b483d6c4
+ps2-0250e-20100415.bin	93ea3bcee4252627919175ff1b16a1d9
+ps2-0230j-20080220.bin	80ac46fa7e77b8ab4366e86948e54f83
+ps3_ps2_emu_bios.bin
+SCPH30004R.bin	28922c703cc7d2cf856f177f2985b3a9
+scph39001.bin	d5ce2c7d119f563ce04bc04dbc3a323e
+
+SCPH-39004_BIOS_V7_EUR_160.BIN
+SCPH-39001_BIOS_V7_USA_160.BIN
+SCPH-70000_BIOS_V12_JAP_200.BIN
+
+PS3UPDAT.PUP	95307e1b51d3bcc33a274db91488d29f
+PSP2UPDAT.PUP	8B5F60B56C3DA8365B973DBA570C53A5
+PSVUPDAT.PUP	F2C7B12FE85496EC88A0391B514D6E3B
+
+psxonpsp660.bin	c53ca5908936d412331790f4426c6c33
+scph5500.bin	8dd7d5296a650fac7319bce665a6a53c
+scph5501.bin	490f666e1afb15b7362b406ed1cea246
+scph5502.bin	32736f17079d0b2b7024407c39bd3050
+scph7001.bin	1e68c231d0896b7eadcad1d7d8e76129
+
+BS-X.bin	fed4d8242cfbed61343d53d48432aced
+
+saturn_bios.bin	af5828fdff51384f99b3c4926be27762
+mpr-17933.bin	3240872c70984b6cbfda1586cab68dbe
+sega_101.bin	85ec9ca47d8f6807718151cbcca8b964
+mpr-18811-mx.ic1
+mpr-19367-mx.ic1
+saturn_bios.bin	af5828fdff51384f99b3c4926be27762
+
+MT32_CONTROL.ROM	5626206284b22c2734f3e9efefcd2675
+MT32_PCM.ROM	89e42e386e82e0cacb4a2704a03706ca
+
+upd7801g.s01	635a978fd40db9a18ee44eff449fc126
+scv.zip			33df021613fb12abe2ad14b9eb17c7fe
+
+32X_G_BIOS.BIN
+32X_M_BIOS.BIN
+32X_S_BIOS.BIN
+
+stvbios.zip	\bios\kronos
+
+epr-17740.ic8
+epr-17740a.ic8
+epr-17741a.ic8
+epr-17742a.ic8
+epr-17951a.ic8
+epr-17952a.ic8
+epr-17953a.ic8
+epr-17954a.ic8
+epr-19730.ic8
+epr-19854.ic8
+epr-20091.ic8
+stv110.bin
+stv1061.bin
+stvbios.nv
+
+sgb_boot.bin	d574d4f9c12f305074798f54c091a8b4
+sgb2_boot.bin	e0430bca9925fb9882148fd2dc2418c1
+SGB1.sfc	b15ddb15721c657d82c5bab6db982ee9
+SGB2.sfc	8ecd73eb4edf7ed7e81aef1be80031d5
+
+STBIOS.bin	d3a44ba7d42a74d3ac58cb9c14c6a5ca
+
+syscard3.pce	38179df8f4ac870017db21ebcbf53114
+emulators\magicengine\cards
+CD-ROM System V1.00 (J).pce
+CD-ROM System V2.01 (U).pce
+CD-ROM System V2.10 (J).pce
+Games Express CD Card 1993 (J).pce
+Super CD-ROM2 System V3.00 (J).pce
+Super CD-ROM2 System V3.01 (U).pce
+
+supracan.zip	f6f0b2ccbbeb2e1d6e843acb145490f8
+
+ti99_4a.zip
+- 994a_grom0.u500 "9bb51dfab49b9a7cf832cc1fb6f203e6"
+- 994a_grom1.u501 "7f1864c3dac31c86e2ae6ce43ccead07"
+- 994a_grom2.u502 "a1f77a07243a334e13509a89bff944f2"
+- 994a_rom_hb.u610 "6f495eef767b3f2821a2ec32d0047891"
+- 994a_rom_lb.u611 "0dcb961cf84c69b2171a565427c7c6c7"
+
+ti99_speech.zip
+- cd2325a.u2a "491c1195f6345cb6b725096b69d81ec9"
+- cd2326a.u2b "206daf498ac5d0141de1d47d38afd899"
+
+Vectrex_Bios.bin
+
+vg5k.xml\bios\mame\hash
+
+vg5k.zip\bios
+
+vg5k.zip
+- charset.rom
+- vg5k10.bin
+- vg5k11.bin
+
+IPLROM.X1	eeeea1cd29c6e0e8b094790ae969bfa7
+iplrom.x1t	56c28adcf1f3a2f87cf3d57c378013f5
+
+iplrom.dat	7fd4caabac1d9169e289f0f7bbf71d8e
+cgrom.dat	cb0a5cfcf7247a7eab74bb2716260269
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Full Pack BIOS RETROBAT V7.5.3
+By THE MINI CAKE TV
+https://www.youtube.com/c/TheMiniCakeTV

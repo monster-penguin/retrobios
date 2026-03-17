@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root avatar="206190" subsize="2048" subcount="1">
+    <file name="AppStartup" avatar="203028" subsize="4" subcount="90" size="357" flags="2" />
+    <file name="Disc label" avatar="0" subsize="4" subcount="33" size="132" flags="3221225478" />
+    <dir name="System" avatar="203118" subsize="2048" subcount="1" size="2048" flags="7">
+        <dir name="Audio" avatar="63988" subsize="2048" subcount="1" size="2048" flags="7">
+            <dir name="aiff" avatar="14674" subsize="2048" subcount="1" size="2048" flags="7">
+                <file name="sinewave.aiff" avatar="33" subsize="4" subcount="2342" size="9368" flags="3221225474" />
+            </dir>
+            <dir name="dsp" avatar="15186" subsize="2048" subcount="2" size="4096" flags="3221225479">
+                <file name="adpcmmono.dsp" avatar="2375" subsize="4" subcount="201" size="804" flags="2" />
+                <file name="dcsqxdhalfmono.dsp" avatar="2576" subsize="4" subcount="218" size="872" flags="2" />
+                <file name="dcsqxdhalfstereo.dsp" avatar="2794" subsize="4" subcount="305" size="1220" flags="2" />
+                <file name="dcsqxdmono.dsp" avatar="3099" subsize="4" subcount="189" size="756" flags="2" />
+                <file name="dcsqxdstereo.dsp" avatar="3288" subsize="4" subcount="229" size="916" flags="2" />
+                <file name="decodeadpcm.dsp" avatar="3517" subsize="4" subcount="217" size="868" flags="2" />
+                <file name="deemphcd.dsp" avatar="3734" subsize="4" subcount="196" size="784" flags="2" />
+                <file name="delaymono.dsp" avatar="3930" subsize="4" subcount="71" size="284" flags="2" />
+                <file name="directout.dsp" avatar="4001" subsize="4" subcount="65" size="260" flags="2" />
+                <file name="envelope.dsp" avatar="4066" subsize="4" subcount="171" size="682" flags="2" />
+                <file name="envfollower.dsp" avatar="4237" subsize="4" subcount="114" size="454" flags="2" />
+                <file name="filterednoise.dsp" avatar="4351" subsize="4" subcount="177" size="706" flags="2" />
+                <file name="fixedmono8.dsp" avatar="4528" subsize="4" subcount="136" size="542" flags="2" />
+                <file name="fixedmonosample.dsp" avatar="4664" subsize="4" subcount="103" size="412" flags="2" />
+                <file name="fixedstereo16swap.dsp" avatar="4767" subsize="4" subcount="153" size="610" flags="2" />
+                <file name="fixedstereo8.dsp" avatar="4920" subsize="4" subcount="130" size="518" flags="2" />
+                <file name="fixedstereosample.dsp" avatar="5050" subsize="4" subcount="119" size="474" flags="2" />
+                <file name="halfmono8.dsp" avatar="5169" subsize="4" subcount="177" size="706" flags="2" />
+                <file name="halfmonosample.dsp" avatar="5346" subsize="4" subcount="151" size="602" flags="2" />
+                <file name="halfstereo8.dsp" avatar="5497" subsize="4" subcount="181" size="724" flags="2" />
+                <file name="halfstereosample.dsp" avatar="5678" subsize="4" subcount="197" size="788" flags="2" />
+                <file name="head.dsp" avatar="5875" subsize="4" subcount="108" size="432" flags="2" />
+                <file name="impulse.dsp" avatar="5983" subsize="4" subcount="130" size="518" flags="2" />
+                <file name="mixer12x2.dsp" avatar="6113" subsize="4" subcount="863" size="3452" flags="2" />
+                <file name="mixer2x2.dsp" avatar="6976" subsize="4" subcount="181" size="724" flags="2" />
+                <file name="mixer4x2.dsp" avatar="7157" subsize="4" subcount="317" size="1268" flags="2" />
+                <file name="mixer8x2.dsp" avatar="7474" subsize="4" subcount="589" size="2356" flags="2" />
+                <file name="mixer8x2amp.dsp" avatar="8063" subsize="4" subcount="619" size="2476" flags="1073741826" />
+                <file name="monitor.dsp" avatar="8682" subsize="4" subcount="61" size="242" flags="2" />
+                <file name="multiply.dsp" avatar="8743" subsize="4" subcount="108" size="430" flags="2" />
+                <file name="noise.dsp" avatar="8851" subsize="4" subcount="81" size="324" flags="2" />
+                <file name="oscupdownfp.dsp" avatar="8932" subsize="4" subcount="70" size="280" flags="2" />
+                <file name="probe.dsp" avatar="9002" subsize="4" subcount="90" size="358" flags="2" />
+                <file name="pulser.dsp" avatar="9092" subsize="4" subcount="241" size="964" flags="2" />
+                <file name="rednoise.dsp" avatar="9333" subsize="4" subcount="162" size="648" flags="2" />
+                <file name="romhead.dsp" avatar="9495" subsize="4" subcount="109" size="436" flags="2" />
+                <file name="romtail.dsp" avatar="9604" subsize="4" subcount="119" size="474" flags="2" />
+                <file name="sampler.dsp" avatar="9723" subsize="4" subcount="142" size="566" flags="2" />
+                <file name="sampler3d.dsp" avatar="9865" subsize="4" subcount="576" size="2304" flags="2" />
+                <file name="samplerenv.dsp" avatar="10441" subsize="4" subcount="265" size="1060" flags="2" />
+                <file name="samplermod.dsp" avatar="10706" subsize="4" subcount="200" size="800" flags="2" />
+                <file name="sawenv.dsp" avatar="10906" subsize="4" subcount="271" size="1082" flags="2" />
+                <file name="sawenvsvfenv.dsp" avatar="11177" subsize="4" subcount="604" size="2416" flags="2" />
+                <file name="sawfilterednoise.dsp" avatar="11781" subsize="4" subcount="255" size="1020" flags="2" />
+                <file name="sawfilteredsaw.dsp" avatar="12036" subsize="4" subcount="333" size="1330" flags="2" />
+                <file name="sawtooth.dsp" avatar="12369" subsize="4" subcount="120" size="480" flags="2" />
+                <file name="submixer2x2.dsp" avatar="12489" subsize="4" subcount="204" size="816" flags="2" />
+                <file name="submixer4x2.dsp" avatar="12693" subsize="4" subcount="340" size="1360" flags="2" />
+                <file name="submixer8x2.dsp" avatar="13033" subsize="4" subcount="612" size="2448" flags="2" />
+                <file name="svfilter.dsp" avatar="13645" subsize="4" subcount="185" size="738" flags="2" />
+                <file name="tail.dsp" avatar="13830" subsize="4" subcount="109" size="436" flags="2" />
+                <file name="thru.dsp" avatar="13939" subsize="4" subcount="80" size="318" flags="2" />
+                <file name="timesplus.dsp" avatar="14019" subsize="4" subcount="135" size="540" flags="2" />
+                <file name="triangle.dsp" avatar="14154" subsize="4" subcount="132" size="526" flags="2" />
+                <file name="varmono16.dsp" avatar="14286" subsize="4" subcount="170" size="680" flags="2" />
+                <file name="varmono8.dsp" avatar="14456" subsize="4" subcount="218" size="872" flags="3221225474" />
+            </dir>
+        </dir>
+        <dir name="Daemons" avatar="64500" subsize="2048" subcount="1" size="2048" flags="7">
+            <file name="junk" avatar="16210" subsize="4" subcount="1" size="0" flags="3221225474" />
+        </dir>
+        <dir name="Devices" avatar="65012" subsize="2048" subcount="1" size="2048" flags="7">
+            <file name="junk" avatar="16210" subsize="4" subcount="1" size="0" flags="3221225474" />
+        </dir>
+        <dir name="Drivers" avatar="65524" subsize="2048" subcount="1" size="2048" flags="7">
+            <file name="installInterlaceDriver" avatar="16210" subsize="4" subcount="13740" size="54960" flags="3221225474" />
+        </dir>
+        <dir name="Folios" avatar="66036" subsize="2048" subcount="1" size="2048" flags="7">
+            <file name="audiofolio" avatar="29950" subsize="4" subcount="9540" size="38160" flags="2" />
+            <file name="graphix" avatar="39490" subsize="4" subcount="6038" size="24152" flags="2" />
+            <file name="operamath" avatar="45528" subsize="4" subcount="3114" size="12456" flags="3221225474" />
+        </dir>
+        <dir name="Graphics" avatar="66548" subsize="2048" subcount="1" size="2048" flags="7">
+            <dir name="Fonts" avatar="48642" subsize="2048" subcount="1" size="2048" flags="3221225479">
+                <file name="junk" avatar="48642" subsize="4" subcount="1" size="0" flags="3221225474" />
+            </dir>
+        </dir>
+        <dir name="Kernel" avatar="67060" subsize="2048" subcount="1" size="2048" flags="7">
+            <file name="junk" avatar="49154" subsize="4" subcount="1" size="0" flags="3221225474" />
+        </dir>
+        <dir name="Programs" avatar="67572" subsize="2048" subcount="1" size="2048" flags="7">
+            <file name="format" avatar="49154" subsize="4" subcount="1427" size="5708" flags="2" />
+            <file name="lmadm" avatar="50581" subsize="4" subcount="3987" size="15948" flags="3221225474" />
+        </dir>
+        <dir name="Scripts" avatar="68084" subsize="2048" subcount="1" size="2048" flags="7">
+            <file name="startopera" avatar="54568" subsize="4" subcount="221" size="882" flags="3221225474" />
+        </dir>
+        <dir name="Tasks" avatar="68596" subsize="2048" subcount="1" size="2048" flags="3221225479">
+            <file name="eventbroker" avatar="54789" subsize="4" subcount="4063" size="16252" flags="2" />
+            <file name="shell" avatar="58852" subsize="4" subcount="5136" size="20544" flags="3221225474" />
+        </dir>
+    </dir>
+    <dir name="attract" avatar="203630" subsize="2048" subcount="1" size="2048" flags="7">
+        <file name="3DO.Coded6" avatar="69108" subsize="4" subcount="323" size="1292" flags="2" />
+        <file name="3DO.cel" avatar="69431" subsize="4" subcount="359" size="1436" flags="2" />
+        <file name="Attract" avatar="69790" subsize="4" subcount="8680" size="34720" flags="2" />
+        <file name="CD.Uncoded16" avatar="78470" subsize="4" subcount="1977" size="7908" flags="2" />
+        <file name="CDDA.Coded6" avatar="80447" subsize="4" subcount="467" size="1868" flags="2" />
+        <file name="CDGRAPHICS.Coded6" avatar="80914" subsize="4" subcount="438" size="1752" flags="2" />
+        <file name="Cube.anim" avatar="81352" subsize="4" subcount="939" size="3755" flags="2" />
+        <file name="IMP.cel" avatar="82291" subsize="4" subcount="492" size="1968" flags="2" />
+        <file name="PHOTOCD.Coded6" avatar="82783" subsize="4" subcount="336" size="1344" flags="2" />
+        <file name="Panasonic.cel" avatar="83119" subsize="4" subcount="533" size="2132" flags="2" />
+        <file name="Q.PLATE.E.cel.Coded6" avatar="83652" subsize="4" subcount="745" size="2980" flags="2" />
+        <file name="Q.PLATE.J.cel.Coded6" avatar="84397" subsize="4" subcount="836" size="3344" flags="2" />
+        <file name="STM.MSG.E.cel.Coded6" avatar="85233" subsize="4" subcount="559" size="2236" flags="2" />
+        <file name="STM.MSG.J.cel.Coded6" avatar="85792" subsize="4" subcount="741" size="2964" flags="2" />
+        <file name="Tile Background" avatar="86533" subsize="4" subcount="2532" size="10128" flags="2" />
+        <file name="TradeMark.cel" avatar="89065" subsize="4" subcount="69" size="276" flags="2" />
+        <file name="WRealA.cel" avatar="89134" subsize="4" subcount="190" size="760" flags="2" />
+        <file name="WRealE.cel" avatar="89324" subsize="4" subcount="161" size="644" flags="2" />
+        <file name="WRealL.cel" avatar="89485" subsize="4" subcount="143" size="572" flags="2" />
+        <file name="WRealR.cel" avatar="89628" subsize="4" subcount="234" size="936" flags="3221225474" />
+    </dir>
+    <dir name="audiocd" avatar="204142" subsize="2048" subcount="2" size="4096" flags="7">
+        <file name="AudioCD" avatar="89862" subsize="4" subcount="14569" size="58276" flags="2" />
+        <file name="audio_CHelp.en" avatar="104431" subsize="4" subcount="983" size="3930" flags="2" />
+        <file name="audio_CHelp.jp" avatar="105414" subsize="4" subcount="907" size="3626" flags="2" />
+        <file name="ball.cel.p" avatar="106321" subsize="4" subcount="1151" size="4603" flags="2" />
+        <file name="bkgd" avatar="107472" subsize="4" subcount="2532" size="10128" flags="2" />
+        <file name="cr.arw" avatar="110004" subsize="4" subcount="43" size="170" flags="2" />
+        <file name="cube.cel.p" avatar="110047" subsize="4" subcount="500" size="1997" flags="2" />
+        <file name="digits.p1" avatar="110547" subsize="4" subcount="130" size="520" flags="2" />
+        <file name="dn.arw" avatar="110677" subsize="4" subcount="56" size="224" flags="2" />
+        <file name="help_audio.en" avatar="110733" subsize="4" subcount="6285" size="25138" flags="2" />
+        <file name="help_audio.jp" avatar="117018" subsize="4" subcount="6315" size="25257" flags="2" />
+        <file name="lft.arw" avatar="123333" subsize="4" subcount="72" size="288" flags="2" />
+        <file name="lst.bx" avatar="123405" subsize="4" subcount="242" size="966" flags="2" />
+        <file name="main.anims.p1" avatar="123647" subsize="4" subcount="4020" size="16079" flags="2" />
+        <file name="olmn.tx" avatar="127667" subsize="4" subcount="109" size="433" flags="2" />
+        <file name="omon.tx" avatar="127776" subsize="4" subcount="94" size="375" flags="2" />
+        <file name="ormn.tx" avatar="127870" subsize="4" subcount="114" size="453" flags="2" />
+        <file name="prg.tx" avatar="127984" subsize="4" subcount="98" size="391" flags="2" />
+        <file name="retn.tx" avatar="128082" subsize="4" subcount="80" size="319" flags="2" />
+        <file name="rpf.tx" avatar="128162" subsize="4" subcount="141" size="564" flags="2" />
+        <file name="rpn.tx" avatar="128303" subsize="4" subcount="110" size="439" flags="2" />
+        <file name="rt.arw" avatar="128413" subsize="4" subcount="70" size="279" flags="2" />
+        <file name="sel.bx" avatar="128483" subsize="4" subcount="698" size="2791" flags="2" />
+        <file name="seq.bx" avatar="129181" subsize="4" subcount="198" size="792" flags="2" />
+        <file name="seq.tx" avatar="129379" subsize="4" subcount="114" size="455" flags="2" />
+        <file name="shuf.tx" avatar="129493" subsize="4" subcount="115" size="458" flags="2" />
+        <file name="sin.p1" avatar="129608" subsize="4" subcount="200" size="797" flags="2" />
+        <file name="ster.tx" avatar="129808" subsize="4" subcount="103" size="410" flags="1073741826" />
+        <file name="ttim.tx" avatar="129911" subsize="4" subcount="126" size="501" flags="2" />
+        <file name="tv.cel.p" avatar="130037" subsize="4" subcount="428" size="1710" flags="2" />
+        <file name="up.arw" avatar="130465" subsize="4" subcount="58" size="231" flags="3221225474" />
+    </dir>
+    <dir name="photocd" avatar="205166" subsize="2048" subcount="1" size="2048" flags="7">
+        <file name="PhotoCD" avatar="130523" subsize="4" subcount="18663" size="74652" flags="2" />
+        <file name="PhotoCDHelp.cel.USA" avatar="149186" subsize="4" subcount="11168" size="44672" flags="2" />
+        <file name="PhotoCDHelp.cel.jp" avatar="160354" subsize="4" subcount="7718" size="30871" flags="2" />
+        <file name="PhotoCDPause.cel" avatar="168072" subsize="4" subcount="113" size="450" flags="2" />
+        <file name="PhotoCDPlay.cel" avatar="168185" subsize="4" subcount="90" size="360" flags="2" />
+        <file name="PhotoCDStop.cel" avatar="168275" subsize="4" subcount="119" size="476" flags="2" />
+        <file name="PhotoCDThermo.cel" avatar="168394" subsize="4" subcount="491" size="1962" flags="3221225474" />
+    </dir>
+    <dir name="storage" avatar="205678" subsize="2048" subcount="1" size="2048" flags="7">
+        <file name="Alert Comp" avatar="168885" subsize="4" subcount="2346" size="9383" flags="2" />
+        <file name="Alert K Comp" avatar="171231" subsize="4" subcount="1838" size="7351" flags="2" />
+        <file name="Builtin K Cel" avatar="173069" subsize="4" subcount="335" size="1340" flags="2" />
+        <file name="Clear Comp" avatar="173404" subsize="4" subcount="2169" size="8673" flags="2" />
+        <file name="Clear K Comp" avatar="175573" subsize="4" subcount="1984" size="7935" flags="2" />
+        <file name="Free K Cel" avatar="177557" subsize="4" subcount="281" size="1124" flags="2" />
+        <file name="Help Comp" avatar="177838" subsize="4" subcount="5223" size="20891" flags="2" />
+        <file name="Help K Comp" avatar="183061" subsize="4" subcount="4254" size="17016" flags="2" />
+        <file name="Highlight Cel" avatar="187315" subsize="4" subcount="42" size="168" flags="2" />
+        <file name="List Comp" avatar="187357" subsize="4" subcount="351" size="1402" flags="2" />
+        <file name="NVRAM" avatar="187708" subsize="4" subcount="7833" size="31332" flags="2" />
+        <file name="Sans Serif 14" avatar="195541" subsize="4" subcount="1132" size="4528" flags="2" />
+        <file name="Space Free Cel" avatar="196673" subsize="4" subcount="42" size="168" flags="2" />
+        <file name="Tile Background" avatar="196715" subsize="4" subcount="2532" size="10128" flags="2" />
+        <file name="Used K Cel" avatar="199247" subsize="4" subcount="217" size="868" flags="2" />
+        <file name="options Comp" avatar="199464" subsize="4" subcount="1936" size="7743" flags="2" />
+        <file name="options k comp" avatar="201400" subsize="4" subcount="1628" size="6512" flags="3221225474" />
+    </dir>
+</root>
