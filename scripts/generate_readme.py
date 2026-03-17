@@ -15,18 +15,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import load_platform_config
+from common import load_database, load_platform_config
 
 try:
     import yaml
 except ImportError:
     print("Error: PyYAML required (pip install pyyaml)", file=sys.stderr)
     sys.exit(1)
-
-
-def load_database(db_path: str) -> dict:
-    with open(db_path) as f:
-        return json.load(f)
 
 
 def load_platform_configs(platforms_dir: str) -> dict:

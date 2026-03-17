@@ -239,7 +239,7 @@ class Scraper(BaseScraper):
                         _versions.append(int(_num))
             if _versions:
                 batocera_version = str(max(_versions))
-        except Exception:
+        except (ConnectionError, ValueError, OSError):
             pass
 
         return {

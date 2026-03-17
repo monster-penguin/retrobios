@@ -18,16 +18,14 @@ Outputs a structured report suitable for PR comments.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import subprocess
 import sys
-import zlib
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import compute_hashes
+from common import compute_hashes, load_database as _load_database
 
 try:
     import yaml
@@ -93,11 +91,10 @@ class ValidationResult:
 
 
 def load_database(db_path: str) -> dict | None:
-    """Load database.json if available."""
-    if os.path.exists(db_path):
-        with open(db_path) as f:
-            return json.load(f)
-    return None
+    try:
+        return _load_database(db_path)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return None
 
 
 def load_platform_hashes(platforms_dir: str) -> dict:

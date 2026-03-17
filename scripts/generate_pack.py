@@ -24,7 +24,7 @@ import zipfile
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import load_platform_config
+from common import load_database, load_platform_config
 
 try:
     import yaml
@@ -38,11 +38,6 @@ DEFAULT_OUTPUT_DIR = "dist"
 DEFAULT_BIOS_DIR = "bios"
 LARGE_FILES_RELEASE = "large-files"
 LARGE_FILES_REPO = "Abdess/retrobios"
-
-
-def load_database(db_path: str) -> dict:
-    with open(db_path) as f:
-        return json.load(f)
 
 
 def fetch_large_file(name: str, dest_dir: str = ".cache/large") -> str | None:
@@ -380,9 +375,7 @@ def main():
                 if new_path != zip_path:
                     os.rename(zip_path, new_path)
                     print(f"  Renamed -> {os.path.basename(new_path)}")
-        except FileNotFoundError as e:
-            print(f"  ERROR: {e}")
-        except Exception as e:
+        except (FileNotFoundError, OSError, yaml.YAMLError) as e:
             print(f"  ERROR: {e}")
 
 
@@ -392,8 +385,6 @@ def _group_identical_platforms(platforms: list[str], platforms_dir: str) -> list
     Returns [(group_of_platform_names, representative_platform), ...].
     Platforms with the same resolved systems+files+base_destination are grouped.
     """
-    import hashlib as _hl
-
     fingerprints = {}
     representatives = {}
 
@@ -413,7 +404,7 @@ def _group_identical_platforms(platforms: list[str], platforms_dir: str) -> list
                 full_dest = f"{base_dest}/{dest}" if base_dest else dest
                 entries.append(full_dest)
 
-        fingerprint = _hl.sha1("|".join(sorted(entries)).encode()).hexdigest()
+        fingerprint = hashlib.sha1("|".join(sorted(entries)).encode()).hexdigest()
         fingerprints.setdefault(fingerprint, []).append(platform)
         representatives.setdefault(fingerprint, platform)
 

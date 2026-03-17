@@ -111,7 +111,7 @@ class BaseScraper(ABC):
         try:
             self.fetch_requirements()
             return True
-        except Exception:
+        except (ConnectionError, ValueError, OSError):
             return False
 
     @abstractmethod

@@ -1,4 +1,4 @@
-name: Validate PR
+name: PR Validation
 
 on:
   pull_request:
@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
   pull-requests: write
+
+concurrency:
+  group: validate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   validate-bios:

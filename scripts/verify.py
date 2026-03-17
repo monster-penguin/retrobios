@@ -67,7 +67,7 @@ def check_inside_zip(container: str, file_name: str, expected_md5: str) -> str:
                         return Status.UNTESTED
 
             return "not_in_zip"
-    except Exception:
+    except (zipfile.BadZipFile, OSError, KeyError):
         return "error"
 
 

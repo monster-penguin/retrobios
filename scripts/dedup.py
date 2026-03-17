@@ -87,7 +87,7 @@ def deduplicate(bios_dir: str, dry_run: bool = False) -> dict:
         if len(paths) <= 1:
             continue
 
-            paths.sort(key=path_priority)
+        paths.sort(key=path_priority)
         canonical = paths[0]
         duplicates = paths[1:]
 

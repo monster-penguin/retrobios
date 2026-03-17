@@ -208,7 +208,7 @@ class Scraper(BaseScraper):
                         }
                 except (urllib.error.URLError, urllib.error.HTTPError):
                     continue
-        except Exception:
+        except (ConnectionError, ValueError, OSError):
             pass
 
         return metadata

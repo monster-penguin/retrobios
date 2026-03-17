@@ -15,3 +15,8 @@ bios/Other/Batocera42/dsi_nand.bin
 bios/Sony/PlayStation 3/PS3UPDAT.PUP
 bios/Sony/PlayStation Vita/PSVUPDAT.PUP
 bios/Sony/PlayStation Vita/PSP2UPDAT.PUP
+
+# Large files stored as GitHub Release assets (additional)
+bios/Arcade/MAME/artwork/snspell.zip
+bios/Arcade/MAME/MAME 0.174 Arcade XML.dat
+bios/Sony/PlayStation Vita/.variants/PSP2UPDAT.PUP

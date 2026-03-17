@@ -1,0 +1,136 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+    paths: ["bios/**", "platforms/**"]
+  workflow_dispatch:
+    inputs:
+      force_release:
+        description: "Force release even if rate limited"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml
+
+      - name: Regenerate database and docs
+        run: |
+          python scripts/generate_db.py --bios-dir bios --output database.json
+          python scripts/generate_readme.py --db database.json --platforms-dir platforms
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          git diff --quiet database.json README.md CONTRIBUTING.md && echo "changed=false" >> "$GITHUB_OUTPUT" && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add database.json README.md CONTRIBUTING.md
+          git commit -m "regenerate database and docs"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: regenerate
+    if: needs.regenerate.result == 'success' || github.event.inputs.force_release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rate limit
+        if: github.event.inputs.force_release != 'true'
+        id: rate
+        run: |
+          LAST=$(gh release list --repo "${{ github.repository }}" --json createdAt -q '.[0].createdAt' 2>/dev/null || echo "")
+          if [ -n "$LAST" ] && [ "$LAST" != "null" ]; then
+            LAST_TS=$(date -d "$LAST" +%s 2>/dev/null || echo 0)
+            DIFF=$(( ($(date +%s) - LAST_TS) / 86400 ))
+            if [ "$DIFF" -lt 7 ]; then
+              echo "Skipping: last release ${DIFF} days ago"
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v6
+        if: steps.rate.outputs.skip != 'true'
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v6
+        if: steps.rate.outputs.skip != 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Build packs
+        if: steps.rate.outputs.skip != 'true'
+        run: |
+          pip install pyyaml
+          python scripts/generate_db.py --bios-dir bios --output database.json
+          python scripts/generate_pack.py --all --output-dir dist/
+
+      - name: Release
+        if: steps.rate.outputs.skip != 'true'
+        run: |
+          DATE=$(date +%Y.%m.%d)
+          EXISTING=$(gh release list --repo "${{ github.repository }}" --json tagName -q ".[].tagName" | grep -c "^v${DATE}" || true)
+          TAG="v${DATE}"
+          [ "$EXISTING" -gt 0 ] && TAG="v${DATE}.$((EXISTING+1))"
+
+          CHANGES=$(git log --oneline -15 --no-merges -- bios/ platforms/ | sed 's/^/- /')
+          TOTAL=$(python3 -c "import json; print(json.load(open('database.json'))['total_files'])")
+          SIZE=$(python3 -c "import json; print(f'{json.load(open(\"database.json\"))[\"total_size\"]/1024/1024:.0f}')")
+          PACKS=$(ls dist/*.zip 2>/dev/null | while read f; do echo "- **$(basename $f)** ($(du -m "$f" | cut -f1) MB)"; done)
+
+          gh release create "$TAG" dist/*.zip \
+            --repo "${{ github.repository }}" \
+            --title "BIOS Pack $TAG" \
+            --notes "${TOTAL} files, ${SIZE} MB, verified checksums.
+
+          ### Packs
+          ${PACKS}
+
+          ### Install
+          Download, extract to your emulator's BIOS directory.
+
+          | Platform | Path |
+          |----------|------|
+          | RetroArch / Lakka | system/ |
+          | Batocera | /userdata/bios/ |
+          | Recalbox | /recalbox/share/bios/ |
+          | RetroBat | bios/ |
+
+          ### Changes
+          ${CHANGES}
+          " \
+            --latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cleanup old releases
+        if: steps.rate.outputs.skip != 'true'
+        run: |
+          gh release list --repo "${{ github.repository }}" --json tagName,createdAt \
+            --jq 'sort_by(.createdAt) | reverse | .[].tagName' | \
+          grep -v "^large-files$" | tail -n +4 | while read tag; do
+            gh release delete "$tag" --repo "${{ github.repository }}" --yes --cleanup-tag
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -7,6 +7,7 @@ and file resolution - eliminates DRY violations across scripts.
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import zipfile
 import zlib
@@ -36,6 +37,12 @@ def compute_hashes(filepath: str | Path) -> dict[str, str]:
         "sha256": sha256.hexdigest(),
         "crc32": format(crc & 0xFFFFFFFF, "08x"),
     }
+
+
+def load_database(db_path: str) -> dict:
+    """Load database.json and return parsed dict."""
+    with open(db_path) as f:
+        return json.load(f)
 
 
 def md5sum(filepath: str | Path) -> str:

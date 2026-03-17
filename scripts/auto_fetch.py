@@ -26,7 +26,7 @@ import urllib.error
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import load_platform_config
+from common import load_database, load_platform_config
 
 try:
     import yaml
@@ -60,11 +60,6 @@ ARCHIVE_ORG_COLLECTIONS = [
     "system_20240621",
     "full-pack-bios-batocera-39",
 ]
-
-
-def load_database(db_path: str) -> dict:
-    with open(db_path) as f:
-        return json.load(f)
 
 
 def find_missing(config: dict, db: dict) -> list[dict]:
