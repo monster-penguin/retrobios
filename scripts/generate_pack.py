@@ -263,7 +263,7 @@ def generate_pack(
     missing_files = []
     untested_files = []
     user_provided = []
-    seen_destinations = set()
+    seen_destinations = {}
 
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         for sys_id, system in sorted(config.get("systems", {}).items()):
@@ -279,7 +279,7 @@ def generate_pack(
                 dedup_key = full_dest
                 if dedup_key in seen_destinations:
                     continue
-                seen_destinations.add(dedup_key)
+                seen_destinations[dedup_key] = file_entry.get("sha1") or file_entry.get("md5") or ""
 
                 storage = file_entry.get("storage", "embedded")
 

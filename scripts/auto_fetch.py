@@ -345,8 +345,8 @@ def generate_issue_body(missing: list[dict], platform: str) -> str:
     ]
 
     for entry in missing:
-        sha1 = entry.get("sha1", "N/A")
-        md5 = entry.get("md5", "N/A")
+        sha1 = entry.get("sha1") or "N/A"
+        md5 = entry.get("md5") or "N/A"
         lines.append(f"| `{entry['name']}` | {entry['system']} | `{sha1[:12]}...` | `{md5[:12]}...` |")
 
     lines.extend([

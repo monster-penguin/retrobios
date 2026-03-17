@@ -150,7 +150,9 @@ class Scraper(BaseScraper):
 
         clean_dict_str = "\n".join(lines)
 
-        clean_dict_str = clean_dict_str.replace("OrderedDict(", "dict(")
+        # OrderedDict({...}) -> just the inner dict literal
+        clean_dict_str = re.sub(r'OrderedDict\(\s*\{', '{', clean_dict_str)
+        clean_dict_str = re.sub(r'\}\s*\)', '}', clean_dict_str)
 
         try:
             return ast.literal_eval(clean_dict_str)

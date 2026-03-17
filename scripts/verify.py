@@ -120,13 +120,16 @@ def resolve_to_local_path(file_entry: dict, db: dict) -> str | None:
                 if os.path.exists(path):
                     candidates.append((path, entry.get("md5", "")))
         if candidates:
+            if has_zipped_file:
+                candidates = [(p, m) for p, m in candidates if p.endswith(".zip")]
             if md5 and not has_zipped_file:
                 md5_lower = md5.lower()
                 for path, db_md5 in candidates:
                     if db_md5.lower() == md5_lower:
                         return path
-            primary = [p for p, _ in candidates if "/.variants/" not in p]
-            return primary[0] if primary else candidates[0][0]
+            if candidates:
+                primary = [p for p, _ in candidates if "/.variants/" not in p]
+                return primary[0] if primary else candidates[0][0]
 
     return None
 
@@ -156,17 +159,21 @@ def verify_entry_md5(file_entry: dict, local_path: str | None) -> dict:
 
     if zipped_file:
         found_in_zip = False
+        had_error = False
         for md5_candidate in md5_list or [""]:
             result = check_inside_zip(local_path, zipped_file, md5_candidate)
             if result == Status.OK:
                 return {"name": name, "status": Status.OK, "path": local_path}
-            if result != "not_in_zip":
+            if result == "error":
+                had_error = True
+            elif result != "not_in_zip":
                 found_in_zip = True
-        reason = (
-            f"{zipped_file} not found inside ZIP"
-            if not found_in_zip
-            else f"{zipped_file} MD5 mismatch inside ZIP"
-        )
+        if had_error and not found_in_zip:
+            reason = f"{local_path} is not a valid ZIP or read error"
+        elif not found_in_zip:
+            reason = f"{zipped_file} not found inside ZIP"
+        else:
+            reason = f"{zipped_file} MD5 mismatch inside ZIP"
         return {
             "name": name, "status": Status.UNTESTED, "path": local_path,
             "reason": reason,
