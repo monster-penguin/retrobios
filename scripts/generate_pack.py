@@ -37,7 +37,7 @@ DEFAULT_DB_FILE = "database.json"
 DEFAULT_OUTPUT_DIR = "dist"
 DEFAULT_BIOS_DIR = "bios"
 LARGE_FILES_RELEASE = "large-files"
-LARGE_FILES_REPO = "Abdess/retroarch_system"
+LARGE_FILES_REPO = "Abdess/retrobios"
 
 
 def load_database(db_path: str) -> dict:

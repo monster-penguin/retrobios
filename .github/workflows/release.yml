@@ -185,8 +185,8 @@ jobs:
           python scripts/download.py retroarch ~/RetroArch/system/
 
           # Archived platforms (RetroPie, etc.)
-          git clone https://github.com/Abdess/retroarch_system.git
-          cd retroarch_system && pip install pyyaml
+          git clone https://github.com/Abdess/retrobios.git
+          cd retrobios && pip install pyyaml
           python scripts/generate_pack.py --platform retropie -o ~/Downloads/
           ```
           </details>

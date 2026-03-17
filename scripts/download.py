@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import safe_extract_zip
 
 GITHUB_API = "https://api.github.com"
-REPO = "Abdess/retroarch_system"
+REPO = "Abdess/retrobios"
 
 
 def get_latest_release() -> dict:
