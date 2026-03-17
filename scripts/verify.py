@@ -75,10 +75,14 @@ def resolve_to_local_path(file_entry: dict, db: dict) -> str | None:
     """Find the local file path for a BIOS entry using database.json.
 
     Tries: SHA1 -> MD5 -> name index. Returns the first existing path found.
+    For zipped_file entries, the md5 refers to the inner ROM, not the ZIP
+    container, so MD5-based lookup is skipped to avoid resolving to a
+    standalone ROM file instead of the ZIP.
     """
     sha1 = file_entry.get("sha1")
     md5 = file_entry.get("md5")
     name = file_entry.get("name", "")
+    has_zipped_file = bool(file_entry.get("zipped_file"))
     files_db = db.get("files", {})
     by_md5 = db.get("indexes", {}).get("by_md5", {})
     by_name = db.get("indexes", {}).get("by_name", {})
@@ -88,27 +92,41 @@ def resolve_to_local_path(file_entry: dict, db: dict) -> str | None:
         if os.path.exists(path):
             return path
 
-    if md5 and md5 in by_md5:
-        sha1_match = by_md5[md5]
-        if sha1_match in files_db:
-            path = files_db[sha1_match]["path"]
-            if os.path.exists(path):
-                return path
-
-    # Truncated MD5 (batocera-systems bug: 29 chars instead of 32)
-    if md5 and len(md5) < 32:
-        for db_md5, db_sha1 in by_md5.items():
-            if db_md5.startswith(md5) and db_sha1 in files_db:
-                path = files_db[db_sha1]["path"]
+    # Skip MD5 lookup for zipped_file entries: the md5 is for the inner ROM,
+    # not the container ZIP, so matching it would resolve to the wrong file.
+    if not has_zipped_file:
+        if md5 and md5 in by_md5:
+            sha1_match = by_md5[md5]
+            if sha1_match in files_db:
+                path = files_db[sha1_match]["path"]
                 if os.path.exists(path):
                     return path
+
+        # Truncated MD5 (batocera-systems bug: 29 chars instead of 32)
+        if md5 and len(md5) < 32:
+            for db_md5, db_sha1 in by_md5.items():
+                if db_md5.startswith(md5) and db_sha1 in files_db:
+                    path = files_db[db_sha1]["path"]
+                    if os.path.exists(path):
+                        return path
 
     if name in by_name:
+        # Prefer the candidate whose MD5 matches the expected hash
+        candidates = []
         for match_sha1 in by_name[name]:
             if match_sha1 in files_db:
-                path = files_db[match_sha1]["path"]
+                entry = files_db[match_sha1]
+                path = entry["path"]
                 if os.path.exists(path):
-                    return path
+                    candidates.append((path, entry.get("md5", "")))
+        if candidates:
+            if md5 and not has_zipped_file:
+                md5_lower = md5.lower()
+                for path, db_md5 in candidates:
+                    if db_md5.lower() == md5_lower:
+                        return path
+            primary = [p for p, _ in candidates if "/.variants/" not in p]
+            return primary[0] if primary else candidates[0][0]
 
     return None
 
