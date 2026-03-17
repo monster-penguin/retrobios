@@ -1,0 +1,318 @@
+# RPCS3 emulator firmware profile
+# Generated from source analysis of https://github.com/RPCS3/rpcs3
+# Commit analyzed: HEAD as of 2026-03-17
+
+emulator: RPCS3
+type: standalone
+source: "https://github.com/RPCS3/rpcs3"
+systems: [sony-playstation-3]
+
+firmware_file: "PS3UPDAT.PUP"
+firmware_source: "https://www.playstation.com/en-us/support/hardware/ps3/system-software/"
+firmware_detection: "pup_header"  # validates PUP magic bytes, HMAC-SHA1 hash per entry
+firmware_install: "extracts dev_flash_* TAR packages from PUP into dev_flash/"
+
+validation:
+  method: "pup_object"
+  magic: "SCEUF"
+  hash_algo: "HMAC-SHA1"
+  source_ref: "rpcs3/Loader/PUP.cpp:8-114"
+  note: "PUP file is validated by magic header, file count, HMAC-SHA1 per entry against PUP_KEY"
+
+firmware_version:
+  path: "dev_flash/vsh/etc/version.txt"
+  source_ref: "rpcs3/util/sysinfo.cpp:686"
+  note: "Read at startup, displayed as 'Firmware version: X.XX'. Missing = 'Missing Firmware'"
+
+# dev_flash filesystem layout extracted from PUP
+dev_flash:
+  # -- sys/external/ : LLE firmware SPRX modules --
+  sys_external:
+    path: "dev_flash/sys/external/"
+    source_ref: "rpcs3/Emu/Cell/PPUModule.cpp:2579"
+    note: >
+      Primary firmware module directory. Contains decrypted .sprx modules loaded by
+      liblv2.sprx at boot. RPCS3 can run these via LLE (low-level emulation) or fall
+      back to HLE (high-level emulation) per module. liblv2.sprx is the kernel loader.
+    critical_file: "liblv2.sprx"
+    modules:
+      # Core system
+      - "liblv2.sprx"           # LV2 kernel, loads all other modules
+      - "libsysmodule.sprx"     # Module loader
+      - "libfs_utility_init.sprx"  # FS init (sys/internal)
+
+      # Audio/Video codecs
+      - "libadec.sprx"          # Audio decoder
+      - "libatrac3plus.sprx"    # ATRAC3+ codec
+      - "libcelp8dec.sprx"      # CELP-8 decoder
+      - "libcelpdec.sprx"       # CELP decoder
+      - "libcelpenc.sprx"       # CELP encoder
+      - "libddpdec.sprx"        # Dolby Digital Plus
+      - "libdtslbrdec.sprx"     # DTS-LBR decoder
+      - "libdtsdec.sprx"        # DTS decoder
+      - "libdtshdcoredec.sprx"  # DTS-HD Core decoder
+      - "libdtshddec.sprx"      # DTS-HD decoder
+      - "libm2aac.sprx"         # MPEG-2 AAC
+      - "libm2bc.sprx"          # MPEG-2 BC
+      - "libm4aac.sprx"         # MPEG-4 AAC
+      - "libm4aac2ch.sprx"      # MPEG-4 AAC 2ch
+      - "libm4aac2chmod.sprx"   # MPEG-4 AAC 2ch mod
+      - "libmp3dec.sprx"        # MP3 decoder
+      - "libmp3sdec.sprx"       # MP3 streaming decoder
+      - "libmpl1dec.sprx"       # MPEG Layer 1
+      - "libtrhddec.sprx"       # TRHD decoder
+      - "libwmadec.sprx"        # WMA decoder
+      - "libwmaprodec.sprx"     # WMA Pro decoder
+      - "libwmalslbrdec.sprx"   # WMA Lossless LBR
+      - "libac3dec.sprx"        # AC3 decoder
+      - "libvdec.sprx"          # Video decoder
+      - "libdmux.sprx"          # Demuxer
+      - "libdmuxpamf.sprx"      # PAMF demuxer
+      - "libpamf.sprx"          # PAMF container
+      - "libvpost.sprx"         # Video post-processing
+      - "libsail.sprx"          # Media framework
+      - "libsailrec.sprx"       # Media recording
+
+      # Graphics
+      - "libgcm_sys.sprx"       # GCM (RSX graphics)
+      - "libresc.sprx"          # Resolution scaler
+
+      # Input/Peripherals
+      - "libio.sprx"            # I/O system
+      - "libcamera.sprx"        # Camera
+      - "libgem.sprx"           # PS Move
+      - "libmic.sprx"           # Microphone
+      - "libusbpspcm.sprx"      # USB PSP communication
+      - "libusbd.sprx"          # USB driver
+
+      # Networking
+      - "libnetctl.sprx"        # Network control
+      - "librudp.sprx"          # Reliable UDP
+      - "libssl.sprx"           # SSL/TLS
+      - "libhttp.sprx"          # HTTP
+      - "libhttps.sprx"         # HTTPS
+      - "libhttputil.sprx"      # HTTP utilities
+      - "libsysnet.sprx"        # System networking
+
+      # System utilities
+      - "libsysutil.sprx"       # System utilities
+      - "libsysutil_ap.sprx"    # Access point
+      - "libsysutil_avc2.sprx"  # AV chat
+      - "libsysutil_avc_ext.sprx"
+      - "libsysutil_np_eula.sprx"  # NP EULA
+      - "libaudio.sprx"         # Audio system
+      - "libvoice.sprx"         # Voice chat
+      - "libavconfext.sprx"     # AV config
+      - "libsavedata.sprx"      # Save data
+      - "libgame.sprx"          # Game utilities
+      - "libgameexec.sprx"      # Game exec
+      - "libuserinfo.sprx"      # User info
+      - "libosklialog.sprx"     # On-screen keyboard
+      - "libsysconf.sprx"       # System configuration
+
+      # Image codecs
+      - "libgifdec.sprx"        # GIF decoder
+      - "libjpgdec.sprx"        # JPEG decoder
+      - "libjpgenc.sprx"        # JPEG encoder
+      - "libpngdec.sprx"        # PNG decoder
+      - "libpngenc.sprx"        # PNG encoder
+
+      # NP (PlayStation Network)
+      - "libsceNp.sprx"         # NP base
+      - "libsceNp2.sprx"        # NP v2
+      - "libsceNpBasicLimited.sprx"
+      - "libsceNpClans.sprx"
+      - "libsceNpCommerce2.sprx"
+      - "libsceNpMatchingInt.sprx"
+      - "libsceNpPlus.sprx"
+      - "libsceNpSns.sprx"
+      - "libsceNpTrophy.sprx"
+      - "libsceNpTus.sprx"
+      - "libsceNpUtil.sprx"
+
+      # Misc
+      - "libfont.sprx"          # Font engine
+      - "libfontFT.sprx"        # FreeType fonts
+      - "libfreetype2.sprx"     # FreeType2 library
+      - "librtc.sprx"           # Real-time clock
+      - "librtcalarm.sprx"      # RTC alarm
+      - "libl10n.sprx"          # Localization
+      - "libkey2char.sprx"      # Key-to-char mapping
+      - "libimejp.sprx"         # Japanese IME
+      - "libcrosscontroller.sprx"  # Cross controller
+      - "libfiber.sprx"         # Fiber (coroutines)
+      - "libspurs_jq.sprx"      # SPURS job queue
+      - "libspudll.sprx"        # SPU DLL
+      - "libmixer.sprx"         # Audio mixer
+      - "libsnd3.sprx"          # Sound 3
+      - "libsynth2.sprx"        # Synthesizer
+      - "libovis.sprx"          # OVis
+      - "libprint.sprx"         # Print
+      - "librec.sprx"           # Recording
+      - "libremoteplay.sprx"    # Remote play
+      - "libscreenshot.sprx"    # Screenshot
+      - "libsearch.sprx"        # Content search
+      - "libmusic.sprx"         # Music player
+      - "libmusicdecode.sprx"   # Music decode
+      - "libmusicexport.sprx"   # Music export
+      - "libphoto.sprx"         # Photo decode
+      - "libphotoexport.sprx"   # Photo export
+      - "libphotoimportutil.sprx"
+      - "libvideo.sprx"         # Video export
+      - "libvideoplayer.sprx"   # Video player
+      - "libvideoupload.sprx"   # Video upload
+      - "libnetaoi.sprx"        # NetAoI
+      - "libpesmutility.sprx"   # PESM utility
+      - "libbgdl.sprx"          # Background download
+      - "libsubdisplay.sprx"    # Sub display
+      - "libdtcpiputility.sprx" # DTCP-IP utility
+      - "libsheap.sprx"         # Simple heap
+      - "libsync2.sprx"         # Sync 2
+      - "libminisSavedata.sprx" # Minis save data
+      - "libauthdialogutility.sprx"  # Auth dialog
+      - "libcrashdump.sprx"     # Crash dump
+      - "liblv2dbg.sprx"        # LV2 debug
+
+  # -- sys/internal/ : Internal system modules --
+  sys_internal:
+    path: "dev_flash/sys/internal/"
+    source_ref: "rpcs3/Emu/Cell/lv2/sys_prx.cpp:33"
+    note: "Internal system modules, e.g. libfs_utility_init.sprx"
+
+  # -- vsh/ : Visual Shell (XMB) --
+  vsh:
+    path: "dev_flash/vsh/"
+    source_ref: "rpcs3/rpcs3qt/main_window.cpp:272,734"
+    note: "PS3 XMB interface. vsh.self is the main executable, booted via 'Boot VSH' menu."
+    files:
+      - path: "vsh/module/vsh.self"
+        purpose: "XMB main executable"
+        required_for: "Boot VSH / XrossMediaBar"
+      - path: "vsh/etc/version.txt"
+        purpose: "Firmware version string"
+      - path: "vsh/module/eseibrd.sprx"
+        purpose: "System module (precompiled at boot)"
+      - path: "vsh/module/msmw2.sprx"
+        purpose: "Media streaming"
+      - path: "vsh/resource/explore/user/*.png"
+        purpose: "User avatar icons (000.png - 025.png)"
+      - path: "vsh/resource/explore/icon/icon_home.png"
+        purpose: "Home icon for game list"
+
+  # -- data/font/ : System fonts --
+  fonts:
+    path: "dev_flash/data/font/"
+    source_ref: "rpcs3/Emu/Cell/Modules/cellFont.cpp:226-281"
+    note: >
+      PS3 system fonts used by cellFont API. Loaded from dev_flash/data/font/
+      and dev_flash/data/font/SONY-CC/ subdirectory. Games using cellFont will
+      fail to render text without these.
+    files:
+      # Rodin Sans Serif
+      - {name: "SCE-PS3-RD-R-LATIN.TTF",  type: "Rodin Sans Serif Regular Latin",     required: true}
+      - {name: "SCE-PS3-RD-L-LATIN.TTF",  type: "Rodin Sans Serif Light Latin"}
+      - {name: "SCE-PS3-RD-B-LATIN.TTF",  type: "Rodin Sans Serif Bold Latin"}
+      - {name: "SCE-PS3-RD-R-LATIN2.TTF", type: "Rodin Sans Serif Regular Latin2"}
+      - {name: "SCE-PS3-RD-L-LATIN2.TTF", type: "Rodin Sans Serif Light Latin2"}
+      - {name: "SCE-PS3-RD-B-LATIN2.TTF", type: "Rodin Sans Serif Bold Latin2"}
+      # Matisse Serif
+      - {name: "SCE-PS3-MT-R-LATIN.TTF",  type: "Matisse Serif Regular Latin"}
+      # NewRodin Gothic (Japanese)
+      - {name: "SCE-PS3-NR-R-JPN.TTF",    type: "NewRodin Gothic Regular Japanese"}
+      - {name: "SCE-PS3-NR-L-JPN.TTF",    type: "NewRodin Gothic Light Japanese"}
+      - {name: "SCE-PS3-NR-B-JPN.TTF",    type: "NewRodin Gothic Bold Japanese"}
+      # YD Gothic (Korean)
+      - {name: "SCE-PS3-YG-R-KOR.TTF",    type: "YD Gothic Regular Korean"}
+      # Seurat Maru Gothic
+      - {name: "SCE-PS3-SR-R-LATIN.TTF",  type: "Seurat Maru Gothic Regular Latin"}
+      - {name: "SCE-PS3-SR-R-LATIN2.TTF", type: "Seurat Maru Gothic Regular Latin2"}
+      - {name: "SCE-PS3-SR-R-JPN.TTF",    type: "Seurat Maru Gothic Regular Japanese"}
+      # VAGR Sans Serif Round
+      - {name: "SCE-PS3-VR-R-LATIN.TTF",  type: "VAGR Sans Serif Round Latin"}
+      - {name: "SCE-PS3-VR-R-LATIN2.TTF", type: "VAGR Sans Serif Round Latin2"}
+      # Chinese (in SONY-CC subdirectory)
+      - {name: "SCE-PS3-DH-R-CGB.TTF",   type: "Chinese GB font", subdir: "SONY-CC/"}
+
+  # -- data/cert/ : SSL certificates --
+  certs:
+    path: "dev_flash/data/cert/"
+    source_ref: "rpcs3/Emu/Cell/Modules/cellSsl.cpp:110"
+    note: "SSL root certificates for PSN and HTTPS connections"
+
+  # -- ps1emu/ : PS1 backward compatibility --
+  ps1emu:
+    path: "dev_flash/ps1emu/"
+    source_ref: "rpcs3/Emu/System.cpp:1954"
+    note: "PS1 Classics emulator. Booted when running PS1 game via ps1_newemu.self"
+    files:
+      - {name: "ps1_newemu.self", purpose: "PS1 emulator binary"}
+
+  # -- ps2emu/ : PS2 backward compatibility --
+  ps2emu:
+    path: "dev_flash/ps2emu/"
+    source_ref: "rpcs3/Crypto/key_vault.h:219"
+    note: >
+      PS2 emulator components. Only present on fat PS3 models (CECHA/B/C/E).
+      Includes me_iso_for_ps2emu.self and sv_iso_for_ps2emu.self (since FW 3.70).
+
+  # -- pspemu/ : PSP backward compatibility --
+  pspemu:
+    path: "dev_flash/pspemu/"
+    source_ref: "rpcs3/Emu/System.cpp:1982, rpcs3/Crypto/key_vault.h:285-290"
+    note: "PSP emulator for PS3. Contains psp_emulator.self, psp_translator.self, and release/*.sprx"
+    files:
+      - {name: "psp_emulator.self",  purpose: "PSP emulator main binary"}
+      - {name: "psp_translator.self", purpose: "PSP translator"}
+      - {name: "release/emulator_api.sprx", purpose: "Emulator API"}
+      - {name: "release/emulator_drm.sprx", purpose: "DRM handling"}
+
+  # -- bdplayer/ : Blu-ray player --
+  bdplayer:
+    path: "dev_flash/bdplayer/"
+    source_ref: "rpcs3/Crypto/key_vault.h:257-258"
+    note: "Blu-ray disc player modules"
+    files:
+      - {name: "bdp_bdmv.self", purpose: "BD-MV player"}
+      - {name: "bdj.self",      purpose: "BD-J (Java) player"}
+
+# Additional flash partitions
+dev_flash2:
+  path: "dev_flash2/"
+  filesystem: "CELL_FS_FAT"
+  device: "CELL_FS_IOS:BUILTIN_FLSH2"
+  source_ref: "rpcs3/Emu/Cell/lv2/sys_fs.cpp:29"
+  note: "Second flash partition, used for additional system data"
+
+dev_flash3:
+  path: "dev_flash3/"
+  filesystem: "CELL_FS_FAT"
+  device: "CELL_FS_IOS:BUILTIN_FLSH3"
+  source_ref: "rpcs3/Emu/Cell/lv2/sys_fs.cpp:28"
+  note: "Third flash partition"
+
+notes: |
+  RPCS3 requires the official PS3 firmware (PS3UPDAT.PUP) from Sony. The PUP file is
+  a signed update package containing multiple TAR archives prefixed with "dev_flash_".
+  During installation, RPCS3 extracts these TARs into the dev_flash/ directory structure.
+
+  The most critical component is dev_flash/sys/external/liblv2.sprx - without it, no
+  PS3 game can boot. RPCS3 checks for its presence and shows a firmware install prompt
+  if missing.
+
+  Most sys/external modules can run in either LLE (real firmware code) or HLE (RPCS3
+  reimplementation) mode. By default, liblv2.sprx loads libsysmodule.sprx which chains
+  all other modules. Users can toggle individual modules between LLE/HLE.
+
+  The dev_flash/ structure mirrors the real PS3 NAND layout:
+  - sys/external/  : Loadable firmware PRX modules
+  - sys/internal/  : Internal system modules
+  - vsh/           : Visual Shell (XMB interface)
+  - data/font/     : System TTF fonts (16+ files)
+  - data/cert/     : SSL certificates
+  - ps1emu/        : PS1 backward compat emulator
+  - ps2emu/        : PS2 backward compat emulator (fat models only)
+  - pspemu/        : PSP emulator
+  - bdplayer/      : Blu-ray disc player
+
+  Firmware versions follow the X.XX format (e.g. 4.90). RPCS3 reads the version from
+  dev_flash/vsh/etc/version.txt at startup.

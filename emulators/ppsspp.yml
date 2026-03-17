@@ -1,0 +1,137 @@
+# PPSSPP emulator firmware profile
+# Generated from source analysis of https://github.com/hrydgard/ppsspp
+# Commit analyzed: HEAD as of 2026-03-17
+
+emulator: PPSSPP
+type: standalone
+source: "https://github.com/hrydgard/ppsspp"
+systems: [sony-psp]
+
+firmware_required: false
+firmware_detection: "none"
+bios_directory: "N/A"
+bios_selection: "N/A"
+note: >
+  PPSSPP is a full HLE emulator - it does not require PSP firmware or BIOS files.
+  All PSP kernel modules (flash0:/kd/*.prx) are reimplemented in C++.
+  The emulator ships its own flash0/ directory with replacement fonts and assets.
+
+default_firmware_version: 660  # PSP_DEFAULT_FIRMWARE in ConfigValues.h
+source_ref_firmware: "Core/ConfigValues.h:40"
+
+# Bundled assets (shipped with PPSSPP, not from Sony)
+bundled_assets:
+  ppge_atlas:
+    files:
+      - {name: "ppge_atlas.zim", purpose: "UI texture atlas for dialogs, buttons, icons"}
+      - {name: "ppge_atlas.meta", purpose: "Atlas metadata (glyph positions, UV coords)"}
+    source_ref: "Core/Util/PPGeDraw.cpp:256-266"
+    note: >
+      PPGE (PlayStation Portable Graphics Engine) is PPSSPP's reimplementation of the
+      PSP system dialog renderer. The atlas contains button icons, dialog backgrounds,
+      and a basic font for system dialogs (save/load, network, etc).
+      Without ppge_atlas.zim, system dialogs render without graphics.
+
+  flash0_fonts:
+    path: "assets/flash0/font/"
+    source_ref: "Core/HLE/sceFont.cpp:88-106"
+    note: >
+      Replacement PGF font files shipped with PPSSPP. These are not the original Sony
+      fonts but open-source replacements that satisfy the sceFont API. Located in the
+      assets/flash0/font/ directory, mounted as flash0:/font/ at runtime.
+    files:
+      # Japanese
+      - {name: "jpn0.pgf", type: "FTT-NewRodin Pro DB", language: "Japanese", size: "standard"}
+      # Chinese
+      - {name: "zh_gb.pgf", type: "FTT-NewRodin Pro DB", language: "Chinese GB", note: "Also loaded from disc0: if present"}
+      # Korean
+      - {name: "kr0.pgf", type: "AsiaNHH(512Johab)", language: "Korean", size: "standard"}
+      # Latin - Standard size (0x288 height)
+      - {name: "ltn0.pgf",  type: "FTT-NewRodin Pro Latin",  style: "regular"}
+      - {name: "ltn1.pgf",  type: "FTT-Matisse Pro Latin",   style: "regular"}
+      - {name: "ltn2.pgf",  type: "FTT-NewRodin Pro Latin",  style: "italic"}
+      - {name: "ltn3.pgf",  type: "FTT-Matisse Pro Latin",   style: "italic"}
+      - {name: "ltn4.pgf",  type: "FTT-NewRodin Pro Latin",  style: "bold"}
+      - {name: "ltn5.pgf",  type: "FTT-Matisse Pro Latin",   style: "bold"}
+      - {name: "ltn6.pgf",  type: "FTT-NewRodin Pro Latin",  style: "bold_italic"}
+      - {name: "ltn7.pgf",  type: "FTT-Matisse Pro Latin",   style: "bold_italic"}
+      # Latin - Small size (0x1c0 height)
+      - {name: "ltn8.pgf",  type: "FTT-NewRodin Pro Latin",  style: "regular",     size: "small"}
+      - {name: "ltn9.pgf",  type: "FTT-Matisse Pro Latin",   style: "regular",     size: "small"}
+      - {name: "ltn10.pgf", type: "FTT-NewRodin Pro Latin",  style: "italic",      size: "small"}
+      - {name: "ltn11.pgf", type: "FTT-Matisse Pro Latin",   style: "italic",      size: "small"}
+      - {name: "ltn12.pgf", type: "FTT-NewRodin Pro Latin",  style: "bold",        size: "small"}
+      - {name: "ltn13.pgf", type: "FTT-Matisse Pro Latin",   style: "bold",        size: "small"}
+      - {name: "ltn14.pgf", type: "FTT-NewRodin Pro Latin",  style: "bold_italic", size: "small"}
+      - {name: "ltn15.pgf", type: "FTT-Matisse Pro Latin",   style: "bold_italic", size: "small"}
+
+# HLE kernel modules (reimplemented, not loaded from firmware)
+hle_modules:
+  source_ref: "Core/HLE/sceKernelModule.cpp:100-113"
+  note: >
+    When a PSP game tries to load these flash0:/kd/*.prx modules, PPSSPP intercepts
+    the load call and activates its built-in HLE implementation instead. No actual
+    PRX files are loaded from disk.
+  flash0_kd:
+    - {prx: "audiocodec.prx",              hle: "sceAudiocodec_Driver"}
+    - {prx: "audiocodec_260.prx",          hle: "sceAudiocodec_Driver"}
+    - {prx: "libatrac3plus.prx",           hle: "sceATRAC3plus_Library"}
+    - {prx: "ifhandle.prx",                hle: "sceNet_Service"}
+    - {prx: "pspnet.prx",                  hle: "sceNet_Library"}
+    - {prx: "pspnet_inet.prx",             hle: "sceNetInet_Library"}
+    - {prx: "pspnet_apctl.prx",            hle: "sceNetApctl_Library"}
+    - {prx: "pspnet_resolver.prx",         hle: "sceNetResolver_Library"}
+    - {prx: "pspnet_adhoc.prx",            hle: "sceNetAdhoc_Library"}
+    - {prx: "pspnet_adhocctl.prx",         hle: "sceNetAdhocctl_Library"}
+    - {prx: "pspnet_adhoc_matching.prx",   hle: "sceNetAdhocMatching_Library"}
+    - {prx: "pspnet_adhoc_download.prx",   hle: "sceNetAdhocDownload_Library"}
+    - {prx: "pspnet_adhoc_discover.prx",   hle: "sceNetAdhocDiscover_Library"}
+
+# Flash0 filesystem layout
+flash0_layout:
+  source_ref: "Core/HLE/sceIo.cpp:87,654"
+  note: >
+    flash0: is the PSP system partition. PPSSPP maps it to g_Config.flash0Directory
+    which is typically assets/flash0/ bundled with the emulator. The filesystem is
+    mounted read-only with FLASH flag.
+  directories:
+    font: "PGF/BWFON font files (mounted as flash0:/font/)"
+    kd: "Kernel drivers/modules (intercepted by HLE, not actually loaded)"
+    vsh: "Visual Shell resources"
+    dic: "Dictionary files"
+    data: "System data files"
+
+# Font override path
+font_override:
+  path: "ms0:/PSP/flash0/font/"
+  source_ref: "Core/HLE/sceFont.cpp:881"
+  note: >
+    Users can override bundled fonts by placing real PSP PGF files at
+    ms0:/PSP/flash0/font/ (inside the memory stick directory). PPSSPP
+    checks this path before falling back to the bundled flash0:/font/.
+
+# Registry defaults relevant to fonts
+registry_defaults:
+  font_path: "flash0:/font"
+  default_jpn_font: "jpn0.pgf"
+  default_latin_font: "ltn0.pgf"
+  source_ref: "Core/HLE/sceReg.cpp:81-281"
+
+notes: |
+  PPSSPP does NOT require any firmware files, BIOS, or system software from Sony.
+  It is a complete HLE (High Level Emulation) implementation of the PSP operating system.
+
+  All PSP kernel modules (flash0:/kd/*.prx) are reimplemented in C++ within PPSSPP.
+  When games attempt to load these modules via sceKernelLoadModule, PPSSPP intercepts
+  the call and activates its built-in HLE implementation.
+
+  The bundled flash0/font/*.pgf files are open-source replacements for the original
+  Sony PSP fonts. They satisfy the sceFont API but are not identical to real PSP fonts.
+  For pixel-perfect font rendering, users can place original PGF files in the
+  ms0:/PSP/flash0/font/ override directory.
+
+  The ppge_atlas.zim/meta files provide PPSSPP's system dialog rendering (save/load
+  dialogs, on-screen keyboard, etc). These are PPSSPP-specific assets, not Sony firmware.
+
+  PPSSPP also exists as a libretro core (ppsspp_libretro), which uses the same HLE
+  approach and bundled assets.

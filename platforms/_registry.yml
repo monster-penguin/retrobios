@@ -15,6 +15,7 @@ platforms:
     source_format: clrmamepro_dat
     hash_type: sha1
     schedule: weekly
+    emulators: [pcsx_rearmed, beetle_psx, genesis_plus_gx, flycast, melonds, mgba, snes9x, mupen64plus, beetle_saturn, dolphin]
 
   batocera:
     config: batocera.yml
@@ -52,6 +53,7 @@ platforms:
     source_format: bash_script+csv
     hash_type: md5
     schedule: weekly
+    emulators: [duckstation, pcsx2, dolphin, rpcs3, ppsspp, cemu, xemu, vita3k, citra, melonds]
     # dragoonDorise/EmuDeck = official repo (creator's account, 3.4k stars)
     # EmuDeck/emudeck.github.io = official wiki (org account)
 

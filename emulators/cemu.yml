@@ -1,0 +1,399 @@
+emulator: Cemu
+type: standalone
+source: "https://github.com/cemu-project/Cemu"
+systems: [nintendo-wiiu]
+analysis_date: "2026-03-17"
+analysis_commit: "HEAD (depth=1)"
+
+# keys.txt - disc decryption keys (AES-128, one per line, hex format)
+# Located in Cemu user data root directory
+# otp.bin and seeprom.bin - console-specific dumps for online features
+# MLC path contains firmware titles under sys/title/
+
+files:
+  # --- Disc decryption keys ---
+  - name: "keys.txt"
+    required: true
+    path: ""  # Cemu root / user data directory
+    size: null
+    note: "AES-128 disc keys for WUD/WUX decryption, one 32-char hex key per line"
+    source_ref: "src/Cafe/Filesystem/FST/KeyCache.cpp:63"
+
+  # --- Console-specific dumps (online play) ---
+  - name: "otp.bin"
+    required: false
+    path: ""  # Cemu root / user data directory
+    size: 1024
+    note: "Wii U OTP dump, required for online mode and SSL certificate generation"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:556"
+
+  - name: "seeprom.bin"
+    required: false
+    path: ""  # Cemu root / user data directory
+    size: 512
+    note: "Wii U SEEPROM dump, required for online mode and console region detection"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:579"
+
+  # --- Shared system fonts (title 0005001b-10042400) ---
+  # Fallback: Cemu also checks resources/sharedFonts/ in its data directory
+  - name: "CafeCn.ttf"
+    required: true
+    path: "mlc01/sys/title/0005001b/10042400/content/"
+    note: "Shared font - Chinese"
+    source_ref: "src/Cafe/CafeSystem.cpp:289"
+
+  - name: "CafeKr.ttf"
+    required: true
+    path: "mlc01/sys/title/0005001b/10042400/content/"
+    note: "Shared font - Korean"
+    source_ref: "src/Cafe/CafeSystem.cpp:290"
+
+  - name: "CafeStd.ttf"
+    required: true
+    path: "mlc01/sys/title/0005001b/10042400/content/"
+    note: "Shared font - Standard (Latin/Japanese)"
+    source_ref: "src/Cafe/CafeSystem.cpp:291"
+
+  - name: "CafeTw.ttf"
+    required: true
+    path: "mlc01/sys/title/0005001b/10042400/content/"
+    note: "Shared font - Traditional Chinese (Taiwan)"
+    source_ref: "src/Cafe/CafeSystem.cpp:292"
+
+  # --- SSL client certificates (title 0005001b-10054000) ---
+  # Required for online features, loaded only when otp.bin is present
+  - name: "WIIU_COMMON_1_CERT.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client certificate - common"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:471"
+
+  - name: "WIIU_COMMON_1_RSA_KEY.aes"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client key - common (AES-encrypted)"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:471"
+
+  - name: "WIIU_ACCOUNT_1_CERT.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client certificate - account"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:472"
+
+  - name: "WIIU_ACCOUNT_1_RSA_KEY.aes"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client key - account (AES-encrypted)"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:472"
+
+  - name: "WIIU_OLIVE_1_CERT.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client certificate - olive (Miiverse)"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:473"
+
+  - name: "WIIU_OLIVE_1_RSA_KEY.aes"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client key - olive (AES-encrypted)"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:473"
+
+  - name: "WIIU_VINO_1_CERT.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client certificate - vino"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:474"
+
+  - name: "WIIU_VINO_1_RSA_KEY.aes"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client key - vino (AES-encrypted)"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:474"
+
+  - name: "WIIU_WOOD_1_CERT.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client certificate - wood"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:475"
+
+  - name: "WIIU_WOOD_1_RSA_KEY.aes"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/ccerts/"
+    note: "Nintendo client key - wood (AES-encrypted)"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:475"
+
+  # --- SSL CA certificates (title 0005001b-10054000) ---
+  # Nintendo CA certs
+  - name: "CACERT_NINTENDO_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:480"
+
+  - name: "CACERT_NINTENDO_CA_G2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:481"
+
+  - name: "CACERT_NINTENDO_CA_G3.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:482"
+
+  - name: "CACERT_NINTENDO_CLASS2_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:483"
+
+  - name: "CACERT_NINTENDO_CLASS2_CA_G2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:484"
+
+  - name: "CACERT_NINTENDO_CLASS2_CA_G3.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:485"
+
+  # Commercial CA certs
+  - name: "BALTIMORE_CYBERTRUST_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:488"
+
+  - name: "CYBERTRUST_GLOBAL_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:489"
+
+  - name: "VERIZON_GLOBAL_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:490"
+
+  - name: "GLOBALSIGN_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:491"
+
+  - name: "GLOBALSIGN_ROOT_CA_R2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:492"
+
+  - name: "GLOBALSIGN_ROOT_CA_R3.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:493"
+
+  - name: "VERISIGN_CLASS3_PUBLIC_PRIMARY_CA_G3.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:494"
+
+  - name: "VERISIGN_UNIVERSAL_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:495"
+
+  - name: "VERISIGN_CLASS3_PUBLIC_PRIMARY_CA_G5.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:496"
+
+  - name: "THAWTE_PRIMARY_ROOT_CA_G3.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:497"
+
+  - name: "THAWTE_PRIMARY_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:498"
+
+  - name: "GEOTRUST_GLOBAL_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:499"
+
+  - name: "GEOTRUST_GLOBAL_CA2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:500"
+
+  - name: "GEOTRUST_PRIMARY_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:501"
+
+  - name: "GEOTRUST_PRIMARY_CA_G3.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:502"
+
+  - name: "ADDTRUST_EXT_CA_ROOT.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:503"
+
+  - name: "COMODO_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:504"
+
+  - name: "UTN_DATACORP_SGC_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:505"
+
+  - name: "UTN_USERFIRST_HARDWARE_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:506"
+
+  - name: "DIGICERT_HIGH_ASSURANCE_EV_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:507"
+
+  - name: "DIGICERT_ASSURED_ID_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:508"
+
+  - name: "DIGICERT_GLOBAL_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:509"
+
+  - name: "GTE_CYBERTRUST_GLOBAL_ROOT.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:510"
+
+  - name: "VERISIGN_CLASS3_PUBLIC_PRIMARY_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:511"
+
+  - name: "THAWTE_PREMIUM_SERVER_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:512"
+
+  - name: "EQUIFAX_SECURE_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:513"
+
+  - name: "ENTRUST_SECURE_SERVER_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:514"
+
+  - name: "VERISIGN_CLASS3_PUBLIC_PRIMARY_CA_G2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:515"
+
+  - name: "ENTRUST_CA_2048.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:516"
+
+  - name: "ENTRUST_ROOT_CA.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:517"
+
+  - name: "ENTRUST_ROOT_CA_G2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:518"
+
+  - name: "DIGICERT_ASSURED_ID_ROOT_CA_G2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:519"
+
+  - name: "DIGICERT_GLOBAL_ROOT_CA_G2.der"
+    required: false
+    path: "mlc01/sys/title/0005001b/10054000/content/scerts/"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:520"
+
+  # --- Optional firmware libraries (cafeLibs/) ---
+  - name: "snd_user.rpl"
+    required: false
+    path: "cafeLibs/"
+    note: "Wii U firmware sound library, improves audio accuracy for some games"
+    source_ref: "src/Cafe/OS/libs/snd_user/snd_user.cpp:1071"
+
+  - name: "snduser2.rpl"
+    required: false
+    path: "cafeLibs/"
+    note: "Wii U firmware sound library v2, improves audio accuracy for some games"
+    source_ref: "src/Cafe/OS/libs/snd_user/snd_user.cpp:1071"
+
+# Firmware title IDs referenced in the source
+firmware_titles:
+  - id: "0005001b-10042400"
+    name: "Shared fonts"
+    content: ["CafeCn.ttf", "CafeKr.ttf", "CafeStd.ttf", "CafeTw.ttf"]
+    required: true
+    source_ref: "src/Cafe/CafeSystem.cpp:289-292"
+
+  - id: "0005001b-10054000"
+    name: "SSL certificates"
+    content: ["ccerts/", "scerts/"]
+    required: false
+    note: "Only needed for online features, requires otp.bin"
+    source_ref: "src/Cafe/IOSU/legacy/iosu_crypto.cpp:535"
+
+  - id: "0005001b-1005c000"
+    name: "System language/country data"
+    content: ["language.txt", "country.txt"]
+    required: false
+    note: "Auto-generated by Cemu if missing"
+    source_ref: "src/gui/wxgui/CemuApp.cpp:535-561"
+
+  - id: "00050010-10041200"
+    name: "System version"
+    content: ["version.bin"]
+    required: false
+    note: "Referenced but not strictly loaded (TODO in source)"
+    source_ref: "src/Cafe/OS/libs/coreinit/coreinit_MCP.cpp:203"
+
+  - id: "00050010-10040000"
+    name: "Wii U Menu (JPN)"
+    required: false
+    source_ref: "src/Cafe/OS/libs/sysapp/sysapp.cpp:382"
+
+  - id: "00050010-10040100"
+    name: "Wii U Menu (USA)"
+    required: false
+    source_ref: "src/Cafe/OS/libs/sysapp/sysapp.cpp:382"
+
+  - id: "00050010-10040200"
+    name: "Wii U Menu (EUR)"
+    required: false
+    source_ref: "src/Cafe/OS/libs/sysapp/sysapp.cpp:382"
+
+# MLC directory structure expected by Cemu
+mlc_structure:
+  - "mlc01/sys/title/0005001b/10042400/content/"  # shared fonts
+  - "mlc01/sys/title/0005001b/10054000/content/ccerts/"  # client certs
+  - "mlc01/sys/title/0005001b/10054000/content/scerts/"  # server CA certs
+  - "mlc01/sys/title/0005001b/1005c000/content/"  # language files
+  - "mlc01/sys/title/00050010/"  # system applets
+  - "mlc01/usr/title/00050000/"  # base games
+  - "mlc01/usr/title/0005000c/"  # DLC
+  - "mlc01/usr/title/0005000e/"  # updates
+  - "mlc01/usr/save/"  # save data
+  - "mlc01/usr/boss/"  # SpotPass data
+
+notes: |
+  Cemu is a standalone Wii U emulator (not a libretro core).
+  Minimum to run games: keys.txt with disc decryption keys.
+  Shared fonts are required but Cemu ships fallback fonts in resources/sharedFonts/.
+  Online play requires otp.bin (1024 bytes) + seeprom.bin (512 bytes) + SSL certificates.
+  The cafeLibs/ directory can hold original Wii U firmware .rpl libraries for accuracy.
+  Any .rpl from the Wii U firmware placed in cafeLibs/ will override Cemu's HLE implementation.

@@ -385,6 +385,9 @@ def main():
     parser.add_argument("--db", default=DEFAULT_DB_FILE, help="Path to database.json")
     parser.add_argument("--bios-dir", default=DEFAULT_BIOS_DIR)
     parser.add_argument("--output-dir", "-o", default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--include-extras", action="store_true",
+                        help="Include emulator-recommended files not declared by platform")
+    parser.add_argument("--emulators-dir", default="emulators")
     parser.add_argument("--list", action="store_true", help="List available platforms")
     args = parser.parse_args()
 

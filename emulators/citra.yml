@@ -1,0 +1,86 @@
+emulator: Citra / Lime3DS / Azahar
+type: standalone + libretro
+source: "https://github.com/azahar-emu/azahar"
+systems: [nintendo-3ds]
+
+notes: |
+  Citra (now Azahar, formerly Lime3DS) uses HLE for most system services,
+  so many files are optional. AES keys are the most important for decrypting
+  games and system data. Shared font has a built-in fallback.
+  File locations relative to user dir: sysdata/ for keys/boot/font/otp/seeddb,
+  nand/ for NAND filesystem, nand/private/ for movable.sed.
+  Legacy data dirs: citra-emu, lime3ds-emu -> azahar-emu.
+
+files:
+  # --- sysdata/ directory ---
+  - name: "keys.txt"
+    path: "sysdata/keys.txt"
+    description: "AES encryption keys"
+    required: false
+    source_ref: "src/common/common_paths.h:83, src/core/hw/aes/key.cpp:291"
+    notes: "Contains AES key slots (X/Y/N types) for game decryption; has built-in encrypted fallback keys (key.cpp:300-306)"
+
+  - name: "boot9.bin"
+    path: "sysdata/boot9.bin"
+    description: "ARM9 bootrom"
+    required: false
+    source_ref: "src/common/common_paths.h:84"
+    notes: "3DS ARM9 boot ROM; used for hardware key derivation"
+
+  - name: "sector0x96.bin"
+    path: "sysdata/sector0x96.bin"
+    description: "Secret sector from NAND"
+    required: false
+    source_ref: "src/common/common_paths.h:85"
+    notes: "OTP-encrypted sector 0x96 from 3DS NAND; used for key derivation"
+
+  - name: "shared_font.bin"
+    path: "sysdata/shared_font.bin"
+    description: "System shared font"
+    required: false
+    source_ref: "src/common/common_paths.h:82, src/core/hle/service/apt/apt.cpp:284"
+    notes: "Fallback if NAND system archive not available; built-in font data also exists (archive_ncch.cpp:28,189)"
+
+  - name: "seeddb.bin"
+    path: "sysdata/seeddb.bin"
+    description: "Game seed database"
+    required: false
+    source_ref: "src/core/file_sys/seed_db.cpp:15"
+    notes: "Required for some seed-encrypted games (9.6+ titles)"
+
+  - name: "otp.bin"
+    path: "sysdata/otp.bin"
+    description: "One-time programmable memory dump"
+    required: false
+    source_ref: "src/core/hw/unique_data.cpp:214"
+    notes: "Console-unique OTP data; used for hardware key derivation"
+
+  # --- nand/ directory ---
+  - name: "movable.sed"
+    path: "nand/private/movable.sed"
+    description: "Movable unique key"
+    required: false
+    source_ref: "src/core/hw/unique_data.cpp:218"
+    notes: "Console-unique key seed for SD/NAND encryption; signature verified at load (unique_data.cpp:197)"
+
+  - name: "SecureInfo_A"
+    path: "nand/rw/sys/SecureInfo_A"
+    description: "Console serial and region info"
+    required: false
+    source_ref: "src/core/hw/unique_data.cpp:206"
+    notes: "Contains console serial number and region data"
+
+  - name: "LocalFriendCodeSeed_B"
+    path: "nand/rw/sys/LocalFriendCodeSeed_B"
+    description: "Friend code seed"
+    required: false
+    source_ref: "src/core/hw/unique_data.cpp:210"
+    notes: "Used for friend code generation"
+
+  # --- NAND system archives (installed titles) ---
+  - name: "shared font (system archive)"
+    path: "nand/ (installed as NCCH title 0004009B00014002)"
+    description: "Shared font system archive (JPN/USA/EUR)"
+    required: false
+    source_ref: "src/core/file_sys/archive_ncch.cpp:161"
+    notes: "Region variants: CHN=00014102, KOR=00014202, TWN=00014302"

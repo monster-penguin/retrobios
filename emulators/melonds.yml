@@ -1,0 +1,75 @@
+emulator: MelonDS
+type: standalone + libretro
+source: "https://github.com/melonDS-emu/melonDS"
+systems: [nintendo-ds, nintendo-dsi]
+
+notes: |
+  MelonDS includes a built-in FreeBIOS replacement for basic DS mode (NTR).
+  Native BIOS/firmware files are required for DSi mode and recommended for
+  full DS compatibility (Key1 crypto for cartridge auth).
+  ARM9 BIOS size: 0x1000 (4 KB), ARM7 BIOS size: 0x4000 (16 KB).
+  DSi BIOS size: 0x10000 (64 KB) each.
+  Config keys: DS.BIOS9Path, DS.BIOS7Path, DS.FirmwarePath,
+  DSi.BIOS9Path, DSi.BIOS7Path, DSi.FirmwarePath, DSi.NANDPath.
+
+files:
+  # --- Nintendo DS (NTR) ---
+  - name: "bios9.bin"
+    system: nintendo-ds
+    description: "ARM9 BIOS (NDS mode)"
+    required: false
+    size: 4096
+    crc32: "0x2ab23573"
+    source_ref: "src/MemConstants.h:30,37"
+    notes: "FreeBIOS fallback available; native needed for Key1 cartridge crypto (src/NDSCart.cpp:147-153)"
+
+  - name: "bios7.bin"
+    system: nintendo-ds
+    description: "ARM7 BIOS (NDS mode)"
+    required: false
+    size: 16384
+    crc32: "0x1280f0d5"
+    source_ref: "src/MemConstants.h:31,36"
+    notes: "FreeBIOS fallback available; native needed for Key1 init at offset 0x0030 (src/NDSCart.cpp:149-153)"
+
+  - name: "firmware.bin"
+    system: nintendo-ds
+    description: "NDS firmware image"
+    required: false
+    source_ref: "src/frontend/qt_sdl/EmuInstance.cpp:561"
+    notes: "Generated firmware used as default; native firmware needed for boot animation and wifi settings"
+
+  # --- Nintendo DSi (TWL) ---
+  - name: "dsi_bios9.bin"
+    system: nintendo-dsi
+    description: "ARM9i BIOS (DSi mode)"
+    required: true
+    size: 65536
+    crc32_full: "0xBAE84F6C"
+    crc32_low32k: "0x11E7C1EA"
+    source_ref: "src/MemConstants.h:32,41,45"
+    notes: "No FreeBIOS fallback for DSi; full dump needed for native boot (src/DSi.cpp:150-152)"
+
+  - name: "dsi_bios7.bin"
+    system: nintendo-dsi
+    description: "ARM7i BIOS (DSi mode)"
+    required: true
+    size: 65536
+    crc32_full: "0x4316CC42"
+    crc32_low32k: "0x5434691D"
+    source_ref: "src/MemConstants.h:32,40,44"
+    notes: "Contains eMMC key-Y at offset 0x8308 used for NAND init (src/frontend/qt_sdl/EmuInstance.cpp:1044)"
+
+  - name: "dsi_firmware.bin"
+    system: nintendo-dsi
+    description: "DSi firmware image"
+    required: true
+    source_ref: "src/frontend/qt_sdl/EmuInstance.cpp:593"
+    notes: "Separate from DS firmware; config key DSi.FirmwarePath"
+
+  - name: "dsi_nand.bin"
+    system: nintendo-dsi
+    description: "DSi NAND dump"
+    required: true
+    source_ref: "src/DSi_NAND.h:34, src/Args.h:132"
+    notes: "eMMC image; uses AES keys from ARM7i BIOS and ARM9i BIOS (src/DSi_AES.cpp:94)"
