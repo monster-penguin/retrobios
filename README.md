@@ -2,7 +2,7 @@
 
 Complete, verified collection of BIOS, firmware, and system files for retrogaming emulators - RetroArch, Batocera, Recalbox, Lakka, RetroPie, and more. Every file checked against official checksums from [libretro System.dat](https://github.com/libretro/libretro-database), [batocera-systems](https://github.com/batocera-linux/batocera.linux), and [Recalbox es_bios.xml](https://gitlab.com/recalbox/recalbox).
 
-> **5358** files | **4664.7 MB** | Last updated: 2026-03-17T15:08:21Z
+> **5357** files | **4659.6 MB** | Last updated: 2026-03-17T15:19:03Z
 >
 > PlayStation, PS2, Nintendo DS, Game Boy, GBA, Dreamcast, Saturn, Neo Geo, Mega CD, PC Engine, MSX, Amiga, Atari ST, ZX Spectrum, Arcade (MAME/FBNeo), and 50+ systems.
 
@@ -45,10 +45,10 @@ python scripts/generate_pack.py --all --include-archived --output-dir ~/Download
 
 | Platform | Coverage | Status | Verification | Details |
 |----------|----------|--------|--------------|---------|
-| Batocera | 680/680 (100.0%) | ![Batocera 100%](https://img.shields.io/badge/Batocera-100%25-brightgreen) 🟢 | md5 | 671 verified, 9 untested |
+| Batocera | 680/680 (100.0%) | ![Batocera 100%](https://img.shields.io/badge/Batocera-100%25-brightgreen) 🟢 | md5 | 678 verified, 2 untested |
 | EmuDeck | 164/164 (100.0%) | ![EmuDeck 100%](https://img.shields.io/badge/EmuDeck-100%25-brightgreen) 🟢 | md5 | 164 verified |
 | Lakka | 398/398 (100.0%) | ![Lakka 100%](https://img.shields.io/badge/Lakka-100%25-brightgreen) 🟢 | existence | 398 present |
-| Recalbox | 346/346 (100.0%) | ![Recalbox 100%](https://img.shields.io/badge/Recalbox-100%25-brightgreen) 🟢 | md5 | 346 verified |
+| Recalbox | 346/346 (100.0%) | ![Recalbox 100%](https://img.shields.io/badge/Recalbox-100%25-brightgreen) 🟢 | md5 | 345 verified, 1 untested |
 | RetroArch | 398/398 (100.0%) | ![RetroArch 100%](https://img.shields.io/badge/RetroArch-100%25-brightgreen) 🟢 | existence | 398 present |
 | RetroBat | 343/343 (100.0%) | ![RetroBat 100%](https://img.shields.io/badge/RetroBat-100%25-brightgreen) 🟢 | md5 | 343 verified |
 | RetroPie | 398/398 (100.0%) | ![RetroPie](https://img.shields.io/badge/RetroPie-archived-lightgrey) 📦 | existence | 398 present *(archived - generate manually)* |
@@ -935,14 +935,12 @@ These are large asset packs required by specific cores. They are included in the
     - [naomi.zip.11ad55ee](bios/Arcade/Arcade/.variants/naomi.zip.11ad55ee) (10,075,456 bytes) - SHA1: `11ad55ee6b11092e810365b8389c1f8b4081e5d0`, MD5: `4e1ca1ade518f53efcce30bdefb855a4`
     - [naomi.zip.2533cc33](bios/Arcade/Arcade/.variants/naomi.zip.2533cc33) (8,005,827 bytes) - SHA1: `2533cc33201da28b2086a0a2fd2b5e04271b6eeb`, MD5: `58033e4ba5793c09dffb87f96f3e9301`
     - [naomi.zip.43f0018c](bios/Sega/Dreamcast/.variants/naomi.zip.43f0018c) (6,134,707 bytes) - SHA1: `43f0018c32dd6d166c3b6d8ed2ffa672f398fa3a`, MD5: `8bab1ba136d0cb6ebcc05a27c4dfc185`
-- **[naomi2.zip](bios/Arcade/Arcade/naomi2.zip)** (7,022,501 bytes)
-  - SHA1: `2962e338ccc9f66f29b409f73ca27aeee79633ac`
-  - MD5: `c50072cbab75673e1b1a6b94355e6fa8`
-  - CRC32: `2143196c`
-  - Also known as: `naomi2.zip.2962e338`
-  - **Variants** (2 alternate versions):
-    - [naomi2.zip](bios/Arcade/Arcade/.variants/naomi2.zip) (5,384,060 bytes) - SHA1: `c63a74691ee7384080877268a70bb1f53bc66dee`, MD5: `dd6fb7894fb2398a55e83a51328a3ad6`
-    - [naomi2.zip.da79eca4](bios/Arcade/Arcade/.variants/naomi2.zip.da79eca4) (7,038,226 bytes) - SHA1: `da79eca49c59f7661737643b5e11e63a73b51fcc`, MD5: `843c0d51237dc945f57237c4b9872b1d`
+- **[naomi2.zip](bios/Arcade/Arcade/naomi2.zip)** (7,038,242 bytes)
+  - SHA1: `46278151f85b74951592d57155441485fe3e0274`
+  - MD5: `dfaae8d206ffb390ed1cf9529ccc123d`
+  - CRC32: `5ec5131d`
+  - **Variants** (1 alternate versions):
+    - [naomi2.zip.da79eca4](bios/Arcade/Arcade/.variants/naomi2.zip.da79eca4) (7,022,501 bytes) - SHA1: `2962e338ccc9f66f29b409f73ca27aeee79633ac`, MD5: `c50072cbab75673e1b1a6b94355e6fa8`
 - **[naomigd.zip](bios/Arcade/Arcade/naomigd.zip)** (4,972,898 bytes)
   - SHA1: `4b92936f396c8199f745d3ed0ff588a324b8dd70`
   - MD5: `a3c74748f4b1d08f2247b16099db372d`
@@ -2824,10 +2822,10 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `0b678e4723229d3f0cb90d32f9a9a06ffb5b706e`
   - MD5: `b25cb7de018d56bddc828018a5bb47df`
   - CRC32: `380b77a5`
-- **[hikaru.zip](bios/Arcade/MAME/hikaru.zip)** (1,049,242 bytes)
-  - SHA1: `041feccfae58fe052247119138098b51c26448ed`
-  - MD5: `53da8a47c5b877ac7cd90fabe9467d94`
-  - CRC32: `74f30fc6`
+- **[hikaru.zip](bios/Arcade/MAME/hikaru.zip)** (1,049,493 bytes)
+  - SHA1: `8ce366388c9e09c5d218d639f19d1d816b59395d`
+  - MD5: `040f9b37a1f802d450379aaec106ec69`
+  - CRC32: `45af0707`
   - **Variants** (1 alternate versions):
     - [hikaru.zip](bios/Sega/Hikaru/.variants/hikaru.zip) (785,989 bytes) - SHA1: `de2734b2110864ada20f85ca6ba7874ed1e6ecb1`, MD5: `aac601811a25d7b31a3d5f3f1f82f338`
 - **[hiscore.dat](bios/Arcade/MAME/hiscore.dat)** (332,919 bytes)
@@ -11139,4 +11137,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting BIOS files.
 
 This repository provides BIOS files for personal backup and archival purposes.
 
-*Auto-generated on 2026-03-17T15:08:21Z*
+*Auto-generated on 2026-03-17T15:19:03Z*

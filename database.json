@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-17T15:08:21Z",
-  "total_files": 5358,
-  "total_size": 4891303804,
+  "generated_at": "2026-03-17T15:19:03Z",
+  "total_files": 5357,
+  "total_size": 4885920011,
   "files": {
     "520d3d1b5897800af47f92efd2444a26b7a7dead": {
       "path": "bios/3DO Company/3DO/3do_arcade_saot.bin",
@@ -984,23 +984,14 @@
       "sha256": "9a7864168900c030ecbf25496576cad027e8da6335a91520824f2a18ae180ece",
       "crc32": "7eba26a4"
     },
-    "c63a74691ee7384080877268a70bb1f53bc66dee": {
-      "path": "bios/Arcade/Arcade/.variants/naomi2.zip",
-      "name": "naomi2.zip",
-      "size": 5384060,
-      "sha1": "c63a74691ee7384080877268a70bb1f53bc66dee",
-      "md5": "dd6fb7894fb2398a55e83a51328a3ad6",
-      "sha256": "80770c419903d66e7e073fd331b7eb22a7c6120a64f20717af22345ba81a0931",
-      "crc32": "4a2409fe"
-    },
-    "da79eca49c59f7661737643b5e11e63a73b51fcc": {
+    "2962e338ccc9f66f29b409f73ca27aeee79633ac": {
       "path": "bios/Arcade/Arcade/.variants/naomi2.zip.da79eca4",
       "name": "naomi2.zip.da79eca4",
-      "size": 7038226,
-      "sha1": "da79eca49c59f7661737643b5e11e63a73b51fcc",
-      "md5": "843c0d51237dc945f57237c4b9872b1d",
-      "sha256": "5efc11a37e0b8fe97e0007bb707d8a4f047dd0b8b7ba59293e81cca0443f7993",
-      "crc32": "b700583b"
+      "size": 7022501,
+      "sha1": "2962e338ccc9f66f29b409f73ca27aeee79633ac",
+      "md5": "c50072cbab75673e1b1a6b94355e6fa8",
+      "sha256": "a852233a97a2282e331dababb83d2dbf14bdef5253bf590adeaf02fbbfe3d64c",
+      "crc32": "2143196c"
     },
     "f9ad4a4c6b0bbbe39ba358690a48f763ecbd98f0": {
       "path": "bios/Arcade/Arcade/.variants/naomigd.zip",
@@ -1758,14 +1749,14 @@
       "sha256": "a062f1242e1dc08a2a9faf07a073cdd7e2d836823f9d01aff5cd0a36482032db",
       "crc32": "ab628024"
     },
-    "2962e338ccc9f66f29b409f73ca27aeee79633ac": {
+    "46278151f85b74951592d57155441485fe3e0274": {
       "path": "bios/Arcade/Arcade/naomi2.zip",
       "name": "naomi2.zip",
-      "size": 7022501,
-      "sha1": "2962e338ccc9f66f29b409f73ca27aeee79633ac",
-      "md5": "c50072cbab75673e1b1a6b94355e6fa8",
-      "sha256": "a852233a97a2282e331dababb83d2dbf14bdef5253bf590adeaf02fbbfe3d64c",
-      "crc32": "2143196c"
+      "size": 7038242,
+      "sha1": "46278151f85b74951592d57155441485fe3e0274",
+      "md5": "dfaae8d206ffb390ed1cf9529ccc123d",
+      "sha256": "928eff6bccb6c0a8f80c400e4b175ef294b45a68ab1c3c440f246cb4660fe37d",
+      "crc32": "5ec5131d"
     },
     "4b92936f396c8199f745d3ed0ff588a324b8dd70": {
       "path": "bios/Arcade/Arcade/naomigd.zip",
@@ -11073,14 +11064,14 @@
       "sha256": "9865504d9595b593f1f088841f09c265d1db8ff67397930b5ec598146e1703b4",
       "crc32": "d226288a"
     },
-    "041feccfae58fe052247119138098b51c26448ed": {
+    "8ce366388c9e09c5d218d639f19d1d816b59395d": {
       "path": "bios/Arcade/MAME/hikaru.zip",
       "name": "hikaru.zip",
-      "size": 1049242,
-      "sha1": "041feccfae58fe052247119138098b51c26448ed",
-      "md5": "53da8a47c5b877ac7cd90fabe9467d94",
-      "sha256": "f71329fce4e616df3473f1e115931e36afbe13a36769df652db6cdae28ccfccf",
-      "crc32": "74f30fc6"
+      "size": 1049493,
+      "sha1": "8ce366388c9e09c5d218d639f19d1d816b59395d",
+      "md5": "040f9b37a1f802d450379aaec106ec69",
+      "sha256": "806a236b5665bbcc4f204e8e877e8c9416d150353a34d469849244bbaa138dbf",
+      "crc32": "45af0707"
     },
     "d38572d22721eb5972f671cde54201d752dffe6b": {
       "path": "bios/Arcade/MAME/hiscore.dat",
@@ -48337,8 +48328,7 @@
       "526eda1e2a7920c92c88178789d71d84": "c96711c01c0158f161791d6fbe75d88329e8ac0a",
       "4e1ca1ade518f53efcce30bdefb855a4": "11ad55ee6b11092e810365b8389c1f8b4081e5d0",
       "58033e4ba5793c09dffb87f96f3e9301": "2533cc33201da28b2086a0a2fd2b5e04271b6eeb",
-      "dd6fb7894fb2398a55e83a51328a3ad6": "c63a74691ee7384080877268a70bb1f53bc66dee",
-      "843c0d51237dc945f57237c4b9872b1d": "da79eca49c59f7661737643b5e11e63a73b51fcc",
+      "c50072cbab75673e1b1a6b94355e6fa8": "2962e338ccc9f66f29b409f73ca27aeee79633ac",
       "e20b430bd7def78b45f61f238abab624": "f9ad4a4c6b0bbbe39ba358690a48f763ecbd98f0",
       "82f3a8bea688b4863947722d2fcb07f7": "a0f07de6070d98f86d55a4ecd61b4a5b05a4a0d5",
       "62d56b126e78f3d82faa4ee8a92c3e82": "4f28af31ca0defdd73d80edec2fa296908e624dc",
@@ -48423,7 +48413,7 @@
       "aa569a303793510b2b4173480148de4b": "ab8375fcb12791d35b11df801041f965a40b21d9",
       "17516c33298e52424ffb58afc2ad208c": "0649e27b7d605add7fc4215ee628b71e3c835328",
       "eb4099aeb42ef089cfe94f8fe95e51f6": "d7ef86bd03de7c1d0e2b0762e04b6f8f8d26dbdb",
-      "c50072cbab75673e1b1a6b94355e6fa8": "2962e338ccc9f66f29b409f73ca27aeee79633ac",
+      "dfaae8d206ffb390ed1cf9529ccc123d": "46278151f85b74951592d57155441485fe3e0274",
       "a3c74748f4b1d08f2247b16099db372d": "4b92936f396c8199f745d3ed0ff588a324b8dd70",
       "c85b8132799f1b2ad3754a97947809d2": "838934ee5b8fcc81883fb664526b3d281840b2e9",
       "00dad01abdbf8ea9e79ad2fe11bdb182": "deb62b0074b8cae4f162c257662136733cfc76ad",
@@ -49458,7 +49448,7 @@
       "c9839072f5c59396730d40cd52fa524d": "8039b66b89df9c4d7c34f94645550fb63effdb05",
       "1c35bd8c55d952e5c0861a31d2f76247": "cbeadfdca75bcad7e2a858234a82deba3c1cd52b",
       "8477d5025645838bba31defee0258135": "c2dc015e7a394162f30604e461e7b895ea115e29",
-      "53da8a47c5b877ac7cd90fabe9467d94": "041feccfae58fe052247119138098b51c26448ed",
+      "040f9b37a1f802d450379aaec106ec69": "8ce366388c9e09c5d218d639f19d1d816b59395d",
       "0ca8052de426b7eadcb64da341eadec6": "d38572d22721eb5972f671cde54201d752dffe6b",
       "343581020fb67c93e9655be579222ced": "42d6d9ac933a7819adfd686f629a8e43aea4e880",
       "9ec6cd05da7b4759e698682c3c5e4233": "6a19d46d3915f2bff823ac34327bb0976fb2fed7",
@@ -53913,12 +53903,8 @@
       "naomi.zip.2533cc33": [
         "2533cc33201da28b2086a0a2fd2b5e04271b6eeb"
       ],
-      "naomi2.zip": [
-        "c63a74691ee7384080877268a70bb1f53bc66dee",
-        "2962e338ccc9f66f29b409f73ca27aeee79633ac"
-      ],
       "naomi2.zip.da79eca4": [
-        "da79eca49c59f7661737643b5e11e63a73b51fcc"
+        "2962e338ccc9f66f29b409f73ca27aeee79633ac"
       ],
       "naomigd.zip": [
         "f9ad4a4c6b0bbbe39ba358690a48f763ecbd98f0",
@@ -54192,6 +54178,9 @@
       ],
       "namcoc75.zip": [
         "0649e27b7d605add7fc4215ee628b71e3c835328"
+      ],
+      "naomi2.zip": [
+        "46278151f85b74951592d57155441485fe3e0274"
       ],
       "neocdz.zip": [
         "838934ee5b8fcc81883fb664526b3d281840b2e9",
@@ -57211,7 +57200,7 @@
         "c2dc015e7a394162f30604e461e7b895ea115e29"
       ],
       "hikaru.zip": [
-        "041feccfae58fe052247119138098b51c26448ed",
+        "8ce366388c9e09c5d218d639f19d1d816b59395d",
         "de2734b2110864ada20f85ca6ba7874ed1e6ecb1"
       ],
       "konendev.zip": [
@@ -69462,8 +69451,7 @@
       "6ee50181": "c96711c01c0158f161791d6fbe75d88329e8ac0a",
       "fb0bca9c": "11ad55ee6b11092e810365b8389c1f8b4081e5d0",
       "7eba26a4": "2533cc33201da28b2086a0a2fd2b5e04271b6eeb",
-      "4a2409fe": "c63a74691ee7384080877268a70bb1f53bc66dee",
-      "b700583b": "da79eca49c59f7661737643b5e11e63a73b51fcc",
+      "2143196c": "2962e338ccc9f66f29b409f73ca27aeee79633ac",
       "ca501374": "f9ad4a4c6b0bbbe39ba358690a48f763ecbd98f0",
       "31828d82": "a0f07de6070d98f86d55a4ecd61b4a5b05a4a0d5",
       "6fc3e0de": "4f28af31ca0defdd73d80edec2fa296908e624dc",
@@ -69548,7 +69536,7 @@
       "2d71120c": "ab8375fcb12791d35b11df801041f965a40b21d9",
       "cf65b189": "0649e27b7d605add7fc4215ee628b71e3c835328",
       "ab628024": "d7ef86bd03de7c1d0e2b0762e04b6f8f8d26dbdb",
-      "2143196c": "2962e338ccc9f66f29b409f73ca27aeee79633ac",
+      "5ec5131d": "46278151f85b74951592d57155441485fe3e0274",
       "b7949ddb": "4b92936f396c8199f745d3ed0ff588a324b8dd70",
       "a313a0d6": "838934ee5b8fcc81883fb664526b3d281840b2e9",
       "81315163": "deb62b0074b8cae4f162c257662136733cfc76ad",
@@ -70583,7 +70571,7 @@
       "9590b2fc": "8039b66b89df9c4d7c34f94645550fb63effdb05",
       "3d1ad5b5": "cbeadfdca75bcad7e2a858234a82deba3c1cd52b",
       "d226288a": "c2dc015e7a394162f30604e461e7b895ea115e29",
-      "74f30fc6": "041feccfae58fe052247119138098b51c26448ed",
+      "45af0707": "8ce366388c9e09c5d218d639f19d1d816b59395d",
       "19a61bc4": "d38572d22721eb5972f671cde54201d752dffe6b",
       "6ffd0f61": "42d6d9ac933a7819adfd686f629a8e43aea4e880",
       "bd5d36d9": "6a19d46d3915f2bff823ac34327bb0976fb2fed7",
