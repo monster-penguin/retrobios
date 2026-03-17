@@ -127,6 +127,14 @@ def resolve_to_local_path(file_entry: dict, db: dict) -> str | None:
                 for path, db_md5 in candidates:
                     if db_md5.lower() == md5_lower:
                         return path
+                # Try composite MD5 for ZIP files (Recalbox uses Zip::Md5Composite)
+                for path, _ in candidates:
+                    if ".zip" in os.path.basename(path):
+                        try:
+                            if md5_composite(path).lower() == md5_lower:
+                                return path
+                        except (zipfile.BadZipFile, OSError):
+                            pass
             if candidates:
                 primary = [p for p, _ in candidates if "/.variants/" not in p]
                 return primary[0] if primary else candidates[0][0]
@@ -194,7 +202,7 @@ def verify_entry_md5(file_entry: dict, local_path: str | None) -> dict:
 
     # Recalbox uses Zip::Md5Composite() for ZIP files: sorts filenames,
     # hashes all contents sequentially. Independent of compression level.
-    if local_path.endswith(".zip"):
+    if ".zip" in os.path.basename(local_path):
         try:
             composite = md5_composite(local_path)
             composite_lower = composite.lower()

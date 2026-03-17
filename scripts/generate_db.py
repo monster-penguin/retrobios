@@ -38,6 +38,17 @@ def should_skip(path: Path) -> bool:
     return False
 
 
+def _canonical_name(filepath: Path) -> str:
+    """Get canonical filename, stripping .variants/ hash suffix."""
+    name = filepath.name
+    if "/.variants/" in str(filepath) or "\\.variants\\" in str(filepath):
+        # naomi2.zip.da79eca4 -> naomi2.zip
+        parts = name.rsplit(".", 1)
+        if len(parts) == 2 and len(parts[1]) == 8 and all(c in "0123456789abcdef" for c in parts[1]):
+            return parts[0]
+    return name
+
+
 def scan_bios_dir(bios_dir: Path, cache: dict, force: bool) -> dict:
     """Scan bios directory and compute hashes, using cache when possible."""
     files = {}
@@ -69,11 +80,11 @@ def scan_bios_dir(bios_dir: Path, cache: dict, force: bool) -> dict:
                 if sha1 in files:
                     if sha1 not in aliases:
                         aliases[sha1] = []
-                    aliases[sha1].append({"name": filepath.name, "path": rel_path})
+                    aliases[sha1].append({"name": _canonical_name(filepath), "path": rel_path})
                 else:
                     entry = {
                         "path": rel_path,
-                        "name": filepath.name,
+                        "name": _canonical_name(filepath),
                         "size": size,
                         **hashes,
                     }
@@ -86,11 +97,11 @@ def scan_bios_dir(bios_dir: Path, cache: dict, force: bool) -> dict:
         if sha1 in files:
             if sha1 not in aliases:
                 aliases[sha1] = []
-            aliases[sha1].append({"name": filepath.name, "path": rel_path})
+            aliases[sha1].append({"name": _canonical_name(filepath), "path": rel_path})
         else:
             entry = {
                 "path": rel_path,
-                "name": filepath.name,
+                "name": _canonical_name(filepath),
                 "size": size,
                 **hashes,
             }
