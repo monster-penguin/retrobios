@@ -1,0 +1,42 @@
+emulator: HBMAME (Homebrew MAME)
+type: libretro
+source: "https://github.com/libretro/hbmame-libretro"
+based_on: MAME 0.220
+author: Robbbert
+game_count: 8511
+
+notes: |
+  HBMAME (Home Brew MAME) is a fork of MAME focused on two things: preserving
+  homebrew games written for arcade hardware, and including worthwhile hacks of
+  existing arcade games. The libretro port builds as TARGET=hbmame.
+
+  Based on MAME 0.220 (src/version.cpp: BARE_BUILD_VERSION "0.220"). The core
+  carries 191 driver files under src/hbmame/drivers/ covering ~8500 game entries
+  (hbmame.lst). Most drivers are hack/homebrew variants of well-known arcade
+  boards: CPS1, CPS2, CPS3, Neo Geo, Pac-Man, Galaxian, etc.
+
+  BIOS handling is identical to MAME. HBMAME does not define any custom BIOS
+  ROMs beyond what standard MAME uses. The Neo Geo subsystem (which accounts for
+  the bulk of hbmame content) reuses the same neogeo.zip BIOS set as MAME:
+  sp-s2.sp1, sm1.sm1, sfix.sfix, 000-lo.lo, plus regional and Universe BIOS
+  variants. The NEO_BIOS macros in src/hbmame/includes/neogeo.h are copied
+  directly from MAME with no modifications to hashes or filenames.
+
+  The neogeo_noslot.cpp driver includes a reduced MV1C-only BIOS set for a few
+  specific PCB games (sp-45.sp1, sp1-j3.bin). The neogeohb.cpp driver handles
+  homebrew and unreleased Neo Geo titles (numbered 300-999) using the same
+  standard BIOS infrastructure.
+
+  No other hbmame-specific drivers (CPS1, CPS2, Pac-Man, Galaxian, etc.) define
+  ROM_SYSTEM_BIOS entries. Their games are ROM-only hacks that rely on parent
+  MAME sets for any BIOS needs.
+
+  BIOS files are expected as MAME-format ZIP archives in the ROM search path.
+  Users with a working MAME 0.220 BIOS collection need nothing extra for HBMAME.
+
+bios_impact: none
+bios_note: |
+  Uses the same BIOS ZIPs as MAME 0.220. No custom or modified BIOS entries.
+  The primary BIOS dependency is neogeo.zip for the large Neo Geo homebrew/hack
+  library. Other arcade boards (CPS, Pac-Man, Galaxian, etc.) are ROM-only hacks
+  with no additional BIOS requirements beyond standard MAME parent sets.

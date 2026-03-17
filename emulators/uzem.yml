@@ -1,0 +1,42 @@
+emulator: uzem
+type: libretro
+source: "https://github.com/libretro/libretro-uzem"
+cores:
+  - uzem
+systems:
+  - uzebox
+
+# Uzem emulates the Uzebox, an open-source 8-bit game console based on an
+# ATmega644 AVR microcontroller. The console was designed by Alec Bourque (Uze)
+# and all hardware/software is open-source.
+#
+# No BIOS or firmware files are required. The core loads .uze ROM files directly
+# into progmem (uzem_libretro.cpp:254-286). The .uze format includes a "UZEBOX"
+# magic header followed by a RomHeader struct (uzerom.h) and raw program data.
+#
+# The standalone uzem (oldsrcs/uzem.cpp:90) has a --boot flag that sets PC to
+# 0xF000 for bootloader mode, but this is NOT exposed in the libretro port.
+# The libretro core has no retro_environment calls for RETRO_ENVIRONMENT_SET_SYSTEM_DIR
+# or any firmware loading paths.
+#
+# SD card emulation uses RETRO_ENVIRONMENT_GET_CORE_ASSETS_DIRECTORY
+# (uzem_libretro.cpp:186-192) for virtual FAT16 filesystem access via SDEmulator.cpp,
+# but this is optional game data, not system firmware.
+#
+# The .info file declares no firmware entries.
+
+files: []
+
+notes:
+  open_source_console: >
+    The Uzebox is fully open-source hardware and software. There is no proprietary
+    BIOS or bootloader required. Games are self-contained .uze files that include
+    all code needed to run on the ATmega644 MCU emulation.
+  sd_card: >
+    Some games use SD card access for loading assets. The core reads from the
+    libretro core assets directory to emulate a FAT16 SD card, but this is game
+    data, not system firmware.
+  standalone_bootloader: >
+    The original standalone uzem supports a --boot flag for bootloader mode
+    (PC starts at 0xF000 instead of 0x0000). This feature is not available in
+    the libretro port.

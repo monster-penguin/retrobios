@@ -1,0 +1,24 @@
+emulator: TyrQuake
+type: libretro
+source: "https://github.com/libretro/tyrquake"
+cores: [tyrquake]
+systems: [quake]
+verification: existence
+notes: >
+  Quake engine source port. Plays Quake (id1), mission packs Scourge of Armagon
+  (hipnotic) and Dissolution of Eternity (rogue), Quoth mod, and custom mods via
+  -game parameter. The core accepts .pak extensions (retro_get_system_info sets
+  valid_extensions = "pak"). Content is loaded directly from the PAK file path -
+  the directory containing the PAK becomes basedir (libretro.c:988,1050).
+  The engine auto-detects game variant by checking the content path for id1,
+  hipnotic, rogue, or quoth substrings (libretro.c:1030-1070) and passes the
+  corresponding command-line flag. For non-standard paths it uses -game with the
+  directory basename. PAK files are game data (maps, textures, models, sounds)
+  shipped with the original retail game, not engine firmware. The engine checks
+  for gfx/pop.lmp inside pak0.pak to distinguish registered vs shareware
+  (common.c:974-991). COM_AddGameDirectory (common.c:1709) loads pak0.pak through
+  pak9.pak sequentially from the game directory, trying both lowercase and
+  uppercase filenames. No engine data files are required in the RetroArch system
+  directory. The core needs no BIOS or firmware.
+
+files: []

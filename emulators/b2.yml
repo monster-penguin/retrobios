@@ -1,0 +1,103 @@
+emulator: b2
+type: standalone
+source: "https://github.com/tom-seddon/b2"
+cores: []
+systems:
+  - bbc-micro-b
+  - bbc-micro-bplus
+  - bbc-master-128
+  - bbc-master-compact
+
+# b2 is a standalone BBC Micro emulator by Tom Seddon. It is NOT a libretro
+# core -- there is no libretro port. The emulator uses SDL2 and Dear ImGui.
+#
+# Emulated models (src/b2/BeebConfig.cpp:211-433):
+#   - BBC Model B (with various disc interfaces: Acorn 1770, Watford, Opus)
+#   - BBC Model B+ / B+128
+#   - BBC Master 128 (MOS 3.20 and 3.50)
+#   - BBC Master Turbo (MOS 3.20 and 3.50, with 65C102 parasite)
+#   - BBC Model B + 6502 second processor
+#   - BBC Master Compact (MOS 5.00, 5.10, I5.10C)
+#   - Olivetti PC 128 S (Master Compact variant)
+#
+# ROM handling:
+#   All ROMs ship in the repo under etc/roms/. The emulator loads them via
+#   GetAssetPath("roms", path) at runtime. No external BIOS files needed.
+#   ROM paths are defined in src/b2/roms.cpp as BeebROM structs with
+#   {filename, display_name, StandardROM_enum}.
+#
+# ROM inventory (etc/roms/):
+#
+#   BBC Model B:
+#     OS12.ROM          16384  md5:0a59a5ba15fe8557b5f7fee32bbd393a  OS 1.20
+#     BASIC2.ROM        16384  md5:2cc67be4624df4dc66617742571a8e3d  BASIC II
+#
+#   BBC Model B+:
+#     B+MOS.rom         16384  md5:47a1eff6c7fbb47be780c87dfd50ece1  B+ MOS
+#     BASIC2.ROM        16384  (shared with Model B)
+#
+#   Disc interfaces (sideways ROMs, slot 14):
+#     acorn/DFS-2.26.rom          16384  md5:f083f49d6fe66344c650d7e74249cb96  Acorn 1770 DFS
+#     watford/DDFS-1.53.rom       16384  md5:d2b71fa664f6cdf8c24b9b304777998c  Watford DDFS (DDB2)
+#     watford/DDFS-1.54T.rom      16384  md5:e73a0417278504a6dfac2ccd9a73e9a9  Watford DDFS (DDB3)
+#     opus/OPUS-DDOS-3.45.rom     16384  md5:d98316eaff56ceab4fe3bfe54d2f92b2  Opus DDOS
+#     opus/challenger-1.01.rom    16384  md5:67e086a11834f8cc69175b601c4e5a5f  Opus Challenger
+#
+#   BBC Master 128 MOS 3.20 (M128/3.20/):
+#     mos.rom           16384  md5:9087f772447038a00178488b3591347b  MOS 3.20 OS
+#     terminal.rom      16384  md5:7e053353b78b4631c274280931d96f02  Terminal (slot f)
+#     view.rom          16384  md5:178d09285727d596f8863f94a2fc8dad  View (slot e)
+#     adfs.rom          16384  md5:10f08b255d6a6e3e888631946b628f1a  ADFS (slot d)
+#     basic4.rom        16384  md5:63a6f43cbf491533cb03ceca2d2728d4  BASIC IV (slot c)
+#     edit.rom          16384  md5:cb3d762eaab6130d1360e1ac575589de  Edit (slot b)
+#     viewsht.rom       16384  md5:7d5a80a8ce929d0a0f6ca8626cb9f436  Viewsheet (slot a)
+#     dfs.rom           16384  md5:865a0f7a5d6f10f48798801bf514d761  DFS (slot 9)
+#
+#   BBC Master 128 MOS 3.50 (M128/3.50/):
+#     mos.rom           16384  md5:d7a046b1e6a9991748cee05332f1e258  MOS 3.50 OS
+#     terminal.rom      16384  md5:b1fa51fd49d31224ecb7e10e6908ec01  Terminal (slot f)
+#     view.rom          16384  md5:1566fab2f1827fb7ba61b283b828731d  View (slot e)
+#     adfs.rom          16384  md5:fb8ceb72c5fbd9dd80eedd10d076b1a2  ADFS (slot d)
+#     basic4.rom        16384  md5:e11eed95d1caba8aa9772e9001590585  BASIC IV (slot c)
+#     edit.rom          16384  md5:8c72c7f24567cb4a2fb15eb0b0aeb55b  Edit (slot b)
+#     viewsht.rom       16384  md5:1bc68b7c5eba6a2de2a43c9d1d9d983b  Viewsheet (slot a)
+#     dfs.rom           16384  md5:22c2b7f14f244da21d630a7828541c79  DFS (slot 9)
+#
+#   Parasite processors:
+#     MasterTurboParasite.rom  2048  md5:83d73e0e78693bb4b43e7cb18e58d556  65C102 TUBE 1.20
+#     TUBE110.rom              2048  md5:a77c7946128ca0b2c5e5a66b17c99dae  6502 TUBE 1.10
+#
+#   BBC Master Compact MOS 5.00 (MCompact/5.00/):
+#     mos.rom           16384  md5:5d1b635e39aa461f17db2344870dda36  MOS 5.00 OS
+#     utils.rom         16384  md5:4f9ded16f44278a4ca0ef4e66822e316  UTILS (slot f)
+#     basic4.rom        16384  md5:64b3cd52e36b5262ac6ca3a9823c6ee2  BASIC IV (slot e)
+#     adfs.rom          16384  md5:bfbd0a7dbbfb1f1f4ba5ac0343c1f8ce  ADFS (slot d)
+#
+#   BBC Master Compact MOS 5.10 (MCompact/5.10/):
+#     mos.rom           16384  md5:f65eb89c7044e328b79f2ef8e51b7fd8  MOS 5.10 OS
+#     utils.rom         16384  md5:48a197850113b00a1eb141fb6d3ea135  UTILS (slot f)
+#     basic4.rom        16384  md5:64b3cd52e36b5262ac6ca3a9823c6ee2  BASIC IV (slot e, same as 5.00)
+#     adfs.rom          16384  md5:c2afc1cabb135e6f2254bcf9300a9b83  ADFS (slot d)
+#
+#   Olivetti PC 128 S / MOS I5.10C (MCompact/I5.10C/):
+#     mos.rom           16384  md5:5e16a38bd7fd6f07f26b5a64826e4ec6  MOS I5.10C OS
+#     utils.rom         16384  md5:75364aa6fd5e134a40051d9ee772df37  UTILS (slot f)
+#     basic4.rom        16384  md5:717df34edae5b6bf5bbd8879c0d13022  BASIC IV (slot e)
+#     adfs.rom          16384  md5:10f23a239dde39b7fe09d72083709e93  ADFS (slot d)
+#
+# ROM type system (src/beeb/include/beeb/roms.inl):
+#   Sideways ROMs support banked mappers: 16KB (standard), CCIWORD (32KB),
+#   CCIBASE (64KB), CCISPELL (128KB), PALQST/PALWAP/PALTED, ABEP, ABE,
+#   Trilogy (64KB), MO2 (128KB). OS ROM types: 16KB, Compact (64KB),
+#   MegaROM (128KB), Multi-OS (512KB with 4 banks).
+#
+# Memory map (src/beeb/include/beeb/type.h):
+#   OS ROM mapped at $C000-$FFFF (MOS big pages). Sideways ROMs in 16 banks
+#   at $8000-$BFFF, selected via ROMSEL register at $FE30.
+
+notes: |
+  b2 is a standalone BBC Micro emulator (SDL2 + Dear ImGui). Not a libretro core.
+  All required ROMs are bundled in the repository under etc/roms/.
+  No external BIOS files need to be provided by the user.
+
+bios_files: []

@@ -1,0 +1,66 @@
+emulator: EmuSCV
+type: libretro
+source: "https://github.com/wzcwzc/emuscv"
+cores:
+  - emuscv
+systems:
+  - scv
+
+notes: |
+  EmuSCV is an Epoch/YENO Super Cassette Vision emulator for libretro,
+  based on eSCV by Takeda Toshiya.
+
+  BIOS loading in src/vm/scv/memory.cpp:initialize() (line 71-242). The core
+  tries multiple filenames in order: upd7801g.s01, upd7801g.bin, upd7801g.bios,
+  bios.rom, bios.bin. First successful open wins.
+
+  The BIOS is read as 0x1000 (4096) bytes into the bios[] array, mapped
+  read-only at CPU address 0x0000-0x0FFF (UPD7801 internal ROM area).
+
+  When CHECKBIOS core option is YES or AUTO, the core computes MD5 of the
+  loaded data and compares against 635a978fd40db9a18ee44eff449fc126. If the
+  hash does not match, the BIOS is rejected (zeroed out, bios_present=false).
+  When CHECKBIOS is NO, any file content is accepted.
+
+  The font/character data is embedded within the BIOS at offset 0x200
+  (memory.h:163 get_font() returns bios + 0x200). No separate font ROM file.
+
+  The core can start without BIOS (supports_no_game=true) but shows
+  "BIOS not found" or "Bad BIOS" on the OSD. Games will not run without it.
+
+  The .info file declares firmware_count = 1, firmware0_opt = false.
+
+files:
+  - name: "upd7801g.s01"
+    system: scv
+    required: true
+    size: 4096  # 4 KB, UPD7801G internal ROM
+    md5: 635a978fd40db9a18ee44eff449fc126
+    note: "UPD7801G internal ROM (BIOS). Mapped at 0x0000-0x0FFF. Contains character font at offset 0x200."
+    source_ref: "src/vm/scv/memory.cpp:74, libretro-core-info/emuscv_libretro.info"
+    aliases:
+      - "upd7801g.bin"
+      - "upd7801g.bios"
+      - "bios.rom"
+      - "bios.bin"
+
+platform_details:
+  cpu: "NEC UPD7801G"
+  bios_mapping:
+    upd7801g:
+      target: "0x0000-0x0FFF (CPU internal ROM, 4 KB)"
+      format: "raw binary"
+      source_ref: "src/vm/scv/memory.cpp:249"
+      notes: |
+        Memory map from memory.cpp:initialize():
+          0x0000-0x0FFF  BIOS ROM (read-only)
+          0x2000-0x3FFF  VRAM (8 KB)
+          0x8000-0xFF7F  Cartridge ROM (up to 4 banks of 32 KB)
+          0xFF80-0xFFFF  CPU internal RAM (128 bytes)
+        Font data lives inside the BIOS at offset 0x200, accessed via
+        get_font() for the VDP character rendering (src/vm/scv/vdp.cpp).
+
+  cartridge_loading:
+    formats: "cart, bin, rom, 0 (multi-file: .0/.1/.2/.3), zip"
+    banking: "4 banks of 32 KB via PC5/PC6 port lines"
+    source_ref: "src/vm/scv/memory.h, src/vm/scv/memory.cpp"
