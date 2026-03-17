@@ -263,7 +263,7 @@ def _collect_all_aliases(files: dict) -> dict:
                 matched = md5_to_sha1[r.md5]
             if matched:
                 _add_alias(basename, matched)
-    except (ImportError, ConnectionError) as e:
+    except (ImportError, ConnectionError, OSError):
         pass
 
     # Identical content named differently across platforms/cores

@@ -13,6 +13,7 @@ Usage:
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -58,9 +59,11 @@ def list_platforms(include_archived: bool = False) -> list[str]:
 
 
 def main():
-    include_all = "--all" in sys.argv
+    parser = argparse.ArgumentParser(description="List available platforms")
+    parser.add_argument("--all", action="store_true", help="Include archived platforms")
+    args = parser.parse_args()
 
-    platforms = list_platforms(include_archived=include_all)
+    platforms = list_platforms(include_archived=args.all)
 
     if not platforms:
         print("No platform configs found", file=sys.stderr)

@@ -155,13 +155,21 @@ def verify_entry_md5(file_entry: dict, local_path: str | None) -> dict:
         return {"name": name, "status": Status.MISSING, "expected_md5": expected_md5}
 
     if zipped_file:
+        found_in_zip = False
         for md5_candidate in md5_list or [""]:
             result = check_inside_zip(local_path, zipped_file, md5_candidate)
             if result == Status.OK:
                 return {"name": name, "status": Status.OK, "path": local_path}
+            if result != "not_in_zip":
+                found_in_zip = True
+        reason = (
+            f"{zipped_file} not found inside ZIP"
+            if not found_in_zip
+            else f"{zipped_file} MD5 mismatch inside ZIP"
+        )
         return {
             "name": name, "status": Status.UNTESTED, "path": local_path,
-            "reason": f"{zipped_file} MD5 mismatch inside ZIP",
+            "reason": reason,
         }
 
     if not md5_list:

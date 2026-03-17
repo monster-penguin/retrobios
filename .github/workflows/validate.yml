@@ -39,9 +39,8 @@ jobs:
       - name: Validate BIOS files
         id: validate
         run: |
-          files=$(cat /tmp/changed_files.txt)
-          if [ -n "$files" ]; then
-            python scripts/validate_pr.py --markdown $files > /tmp/report.md 2>&1 || true
+          if [ -s /tmp/changed_files.txt ]; then
+            xargs python scripts/validate_pr.py --markdown < /tmp/changed_files.txt > /tmp/report.md 2>&1 || true
           else
             echo "No BIOS files changed" > /tmp/report.md
           fi

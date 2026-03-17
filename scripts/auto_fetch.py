@@ -142,7 +142,7 @@ def step2_scan_branches(entry: dict) -> bytes | None:
         )
 
         for filepath in result.stdout.strip().split("\n"):
-            if filepath.endswith(f"/{name}") or filepath == name or filepath.endswith(name):
+            if os.path.basename(filepath) == name:
                 try:
                     blob = subprocess.run(
                         ["git", "show", f"{ref}:{filepath}"],

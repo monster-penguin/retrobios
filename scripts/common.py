@@ -93,7 +93,11 @@ def load_platform_config(platform_name: str, platforms_dir: str = "platforms") -
         for system in config.get("systems", {}).values():
             for group_name in system.get("includes", []):
                 if group_name in shared_groups:
-                    system.setdefault("files", []).extend(shared_groups[group_name])
+                    existing_names = {f.get("name") for f in system.get("files", [])}
+                    for gf in shared_groups[group_name]:
+                        if gf.get("name") not in existing_names:
+                            system.setdefault("files", []).append(gf)
+                            existing_names.add(gf.get("name"))
 
     return config
 

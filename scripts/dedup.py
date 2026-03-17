@@ -55,7 +55,8 @@ def path_priority(path: str) -> tuple:
 
 def _in_nodedup_dir(path: str) -> bool:
     """Check if a file is inside a no-dedup directory."""
-    return any(nodedup in path for nodedup in NODEDUP_DIRS)
+    parts = Path(path).parts
+    return any(nodedup in parts for nodedup in NODEDUP_DIRS)
 
 
 def scan_duplicates(bios_dir: str) -> dict[str, list[str]]:

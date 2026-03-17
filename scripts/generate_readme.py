@@ -34,7 +34,7 @@ def load_platform_configs(platforms_dir: str) -> dict:
             config = load_platform_config(f.stem, platforms_dir)
             if config:
                 configs[f.stem] = config
-        except Exception as e:
+        except (yaml.YAMLError, OSError) as e:
             print(f"Warning: {f.name}: {e}", file=sys.stderr)
     return configs
 

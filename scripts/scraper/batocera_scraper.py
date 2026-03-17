@@ -133,7 +133,9 @@ class Scraper(BaseScraper):
             string_char = None
             clean = []
             for j, ch in enumerate(line):
-                if ch in ('"', "'") and not in_string:
+                if ch in ('"', "'") and j > 0 and line[j - 1] == '\\':
+                    clean.append(ch)
+                elif ch in ('"', "'") and not in_string:
                     in_string = True
                     string_char = ch
                     clean.append(ch)

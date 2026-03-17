@@ -51,10 +51,13 @@ def fetch_large_file(name: str, dest_dir: str = ".cache/large") -> str | None:
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "retrobios-pack/1.0"})
         with urllib.request.urlopen(req, timeout=300) as resp:
-            data = resp.read()
-        os.makedirs(dest_dir, exist_ok=True)
-        with open(cached, "wb") as f:
-            f.write(data)
+            os.makedirs(dest_dir, exist_ok=True)
+            with open(cached, "wb") as f:
+                while True:
+                    chunk = resp.read(65536)
+                    if not chunk:
+                        break
+                    f.write(chunk)
         return cached
     except (urllib.error.URLError, urllib.error.HTTPError):
         return None
@@ -403,7 +406,9 @@ def _group_identical_platforms(platforms: list[str], platforms_dir: str) -> list
             for fe in system.get("files", []):
                 dest = fe.get("destination", fe.get("name", ""))
                 full_dest = f"{base_dest}/{dest}" if base_dest else dest
-                entries.append(full_dest)
+                sha1 = fe.get("sha1", "")
+                md5 = fe.get("md5", "")
+                entries.append(f"{full_dest}|{sha1}|{md5}")
 
         fingerprint = hashlib.sha1("|".join(sorted(entries)).encode()).hexdigest()
         fingerprints.setdefault(fingerprint, []).append(platform)

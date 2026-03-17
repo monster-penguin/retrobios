@@ -207,7 +207,7 @@ Examples:
                     print(f"  - {p}")
             else:
                 print("No platform packs found in latest release")
-        except Exception as e:
+        except (urllib.error.URLError, urllib.error.HTTPError, OSError, json.JSONDecodeError) as e:
             print(f"Error: {e}")
         return
 
@@ -216,7 +216,7 @@ Examples:
 
     try:
         release = get_latest_release()
-    except Exception as e:
+    except (urllib.error.URLError, urllib.error.HTTPError, OSError) as e:
         print(f"Error fetching release info: {e}")
         sys.exit(1)
 
