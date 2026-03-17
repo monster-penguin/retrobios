@@ -28,7 +28,7 @@ except ImportError:
     sys.exit(1)
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import load_platform_config, md5sum
+from common import load_platform_config, md5sum, md5_composite
 
 DEFAULT_DB = "database.json"
 DEFAULT_PLATFORMS_DIR = "platforms"
@@ -191,6 +191,18 @@ def verify_entry_md5(file_entry: dict, local_path: str | None) -> dict:
             return {"name": name, "status": Status.OK, "path": local_path}
         if len(expected) < 32 and actual_lower.startswith(expected.lower()):
             return {"name": name, "status": Status.OK, "path": local_path}
+
+    # Recalbox uses Zip::Md5Composite() for ZIP files: sorts filenames,
+    # hashes all contents sequentially. Independent of compression level.
+    if local_path.endswith(".zip"):
+        try:
+            composite = md5_composite(local_path)
+            composite_lower = composite.lower()
+            for expected in md5_list:
+                if composite_lower == expected.lower():
+                    return {"name": name, "status": Status.OK, "path": local_path}
+        except (zipfile.BadZipFile, OSError):
+            pass
 
     return {
         "name": name, "status": Status.UNTESTED, "path": local_path,

@@ -2,7 +2,7 @@
 
 Complete, verified collection of BIOS, firmware, and system files for retrogaming emulators - RetroArch, Batocera, Recalbox, Lakka, RetroPie, and more. Every file checked against official checksums from [libretro System.dat](https://github.com/libretro/libretro-database), [batocera-systems](https://github.com/batocera-linux/batocera.linux), and [Recalbox es_bios.xml](https://gitlab.com/recalbox/recalbox).
 
-> **5358** files | **4664.7 MB** | Last updated: 2026-03-17T14:43:50Z
+> **5358** files | **4664.7 MB** | Last updated: 2026-03-17T15:08:21Z
 >
 > PlayStation, PS2, Nintendo DS, Game Boy, GBA, Dreamcast, Saturn, Neo Geo, Mega CD, PC Engine, MSX, Amiga, Atari ST, ZX Spectrum, Arcade (MAME/FBNeo), and 50+ systems.
 
@@ -45,10 +45,10 @@ python scripts/generate_pack.py --all --include-archived --output-dir ~/Download
 
 | Platform | Coverage | Status | Verification | Details |
 |----------|----------|--------|--------------|---------|
-| Batocera | 680/680 (100.0%) | ![Batocera 100%](https://img.shields.io/badge/Batocera-100%25-brightgreen) 🟢 | md5 | 677 verified, 3 untested |
+| Batocera | 680/680 (100.0%) | ![Batocera 100%](https://img.shields.io/badge/Batocera-100%25-brightgreen) 🟢 | md5 | 671 verified, 9 untested |
 | EmuDeck | 164/164 (100.0%) | ![EmuDeck 100%](https://img.shields.io/badge/EmuDeck-100%25-brightgreen) 🟢 | md5 | 164 verified |
 | Lakka | 398/398 (100.0%) | ![Lakka 100%](https://img.shields.io/badge/Lakka-100%25-brightgreen) 🟢 | existence | 398 present |
-| Recalbox | 346/346 (100.0%) | ![Recalbox 100%](https://img.shields.io/badge/Recalbox-100%25-brightgreen) 🟢 | md5 | 337 verified, 9 untested |
+| Recalbox | 346/346 (100.0%) | ![Recalbox 100%](https://img.shields.io/badge/Recalbox-100%25-brightgreen) 🟢 | md5 | 346 verified |
 | RetroArch | 398/398 (100.0%) | ![RetroArch 100%](https://img.shields.io/badge/RetroArch-100%25-brightgreen) 🟢 | existence | 398 present |
 | RetroBat | 343/343 (100.0%) | ![RetroBat 100%](https://img.shields.io/badge/RetroBat-100%25-brightgreen) 🟢 | md5 | 343 verified |
 | RetroPie | 398/398 (100.0%) | ![RetroPie](https://img.shields.io/badge/RetroPie-archived-lightgrey) 📦 | existence | 398 present *(archived - generate manually)* |
@@ -140,7 +140,7 @@ python scripts/generate_pack.py --all --include-archived --output-dir ~/Download
 | Nokia/N-Gage | 1 | 17.8 MB |
 | Oric/Oric | 21 | 181.1 KB |
 | Palm/Palm | 5 | 38.3 MB |
-| Philips/CD-i | 4 | 2.0 MB |
+| Philips/CD-i | 3 | 1.3 MB |
 | Philips/Videopac+ | 3 | 3.0 KB |
 | Pioneer/LaserActive | 5 | 1.8 MB |
 | SNK/Neo Geo | 2 | 837.9 KB |
@@ -150,7 +150,7 @@ python scripts/generate_pack.py --all --include-archived --output-dir ~/Download
 | Sega/AI | 1 | 335.2 KB |
 | Sega/Arcade | 3 | 5.3 KB |
 | Sega/Beena | 1 | 83.2 KB |
-| Sega/Dreamcast | 19 | 18.8 MB |
+| Sega/Dreamcast | 18 | 10.0 MB |
 | Sega/Game Gear | 1 | 1024 B |
 | Sega/Hikaru | 1 | 14.7 KB |
 | Sega/Master System | 2 | 16.0 KB |
@@ -612,13 +612,13 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `5426d52e17e0ff9195fabbb42f704342e556d08e`
   - MD5: `fcb631bf18a56f2d5b077fa846bab4a6`
   - CRC32: `9c9601ca`
-- **[airlbios.zip](bios/Arcade/Arcade/airlbios.zip)** (718,362 bytes)
-  - SHA1: `03c9d1c3f59e8c6f320ea74abde1e4e7c5bfa623`
-  - MD5: `6a0ac75d702f8f7c1ca6c72aa2b0b7d8`
-  - CRC32: `1e5b53dc`
+- **[airlbios.zip](bios/Arcade/Arcade/airlbios.zip)** (702,637 bytes)
+  - SHA1: `e18c5e9ca21654dfd724aa54e625b386e6ffb2c5`
+  - MD5: `3f348c88af99a40fbd11fa435f28c69d`
+  - CRC32: `2c87c283`
   - **Variants** (3 alternate versions):
     - [airlbios.zip](bios/Arcade/Arcade/.variants/airlbios.zip) (715,730 bytes) - SHA1: `f2a730530f4989ca0e8860aa4e455b6a5fe69e1d`, MD5: `7a11bfe0cc72886d032e386db68f890c`
-    - [airlbios.zip](bios/Sega/Dreamcast/.variants/airlbios.zip) (702,637 bytes) - SHA1: `e18c5e9ca21654dfd724aa54e625b386e6ffb2c5`, MD5: `3f348c88af99a40fbd11fa435f28c69d`
+    - [airlbios.zip.03c9d1c3](bios/Arcade/Arcade/.variants/airlbios.zip.03c9d1c3) (718,362 bytes) - SHA1: `03c9d1c3f59e8c6f320ea74abde1e4e7c5bfa623`, MD5: `6a0ac75d702f8f7c1ca6c72aa2b0b7d8`
     - [airlbios.zip.ff161eaa](bios/Sega/Dreamcast/.variants/airlbios.zip.ff161eaa) (702,615 bytes) - SHA1: `ff161eaa16b36b519eeab26364b99f59b9e8128c`, MD5: `e80075c0dfcd39ab2bea972d150e0ba1`
 - **[aleck64.zip](bios/Arcade/Arcade/aleck64.zip)** (1,804 bytes)
   - SHA1: `beaf97c4a0e0792b8db65648f9dabb6a54ae0549`
@@ -669,10 +669,12 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `364f2302a145a0fd6de767d7f8484badde1d1a6e`
   - MD5: `df6f8a3d83c028a5cb9f2f2be60773f3`
   - CRC32: `23debecb`
-- **[cdibios.zip](bios/Arcade/Arcade/cdibios.zip)** (468,660 bytes)
-  - SHA1: `e7d2a0dad62d6f75bc10f48a376da0a99b764571`
-  - MD5: `849f709632ad9bdfb9af1b5a2acf8308`
-  - CRC32: `8dbcced4`
+- **[cdibios.zip](bios/Arcade/Arcade/cdibios.zip)** (472,798 bytes)
+  - SHA1: `16072afaa65d1b059346616ac5b5a600c63ff1d1`
+  - MD5: `709acce6e9c4043b851ea7429b8e7eff`
+  - CRC32: `1d5bb3da`
+  - **Variants** (1 alternate versions):
+    - [cdibios.zip.e7d2a0da](bios/Arcade/Arcade/.variants/cdibios.zip.e7d2a0da) (468,660 bytes) - SHA1: `e7d2a0dad62d6f75bc10f48a376da0a99b764571`, MD5: `849f709632ad9bdfb9af1b5a2acf8308`
 - **[cedmag.zip](bios/Arcade/Arcade/cedmag.zip)** (1,242 bytes)
   - SHA1: `ef96ef15207789cdc75ed1836934934ad8c02883`
   - MD5: `4fbf5780a3c949b52e5796897f9ec993`
@@ -832,17 +834,18 @@ These are large asset packs required by specific cores. They are included in the
   - CRC32: `e62f0ef7`
   - **Variants** (1 alternate versions):
     - [hng64.zip](bios/Arcade/Arcade/.variants/hng64.zip) (41,592 bytes) - SHA1: `fb0c36d69f66f4b10a895aa708ae37f826755257`, MD5: `219a818c4ffd9fab04b9be9c7e2107a8`
-- **[hod2bios.zip](bios/Arcade/Arcade/hod2bios.zip)** (1,889,870 bytes)
-  - SHA1: `07fd3fae7af650a37a3329ed09d039bd7360294f`
-  - MD5: `0ec01786c10707acfa480f1d96c935ef`
-  - CRC32: `45ecc8ae`
+- **[hod2bios.zip](bios/Arcade/Arcade/hod2bios.zip)** (1,057,881 bytes)
+  - SHA1: `9b9c9f0af3de914de677ba8e19f4190673142c1b`
+  - MD5: `6559697f76592be77a7a9ff3bfb6711a`
+  - CRC32: `651142d3`
+  - Also known as: `hod2bios.zip.9b9c9f0a`
   - **Variants** (6 alternate versions):
     - [hod2bios.zip](bios/Arcade/Arcade/.variants/hod2bios.zip) (1,479,106 bytes) - SHA1: `782c303cbdfab1027b04db74a63e27bdad5e0c53`, MD5: `f4011d3116500354edf7302a90402711`
     - [hod2bios.zip](bios/Arcade/MAME/.variants/hod2bios.zip) (1,874,145 bytes) - SHA1: `d652e72ad5d37032c05ca755dfe5508e03e6b45c`, MD5: `629bb0552463ba116ccf23d9a468a9f0`
     - [hod2bios.zip](bios/Sega/Dreamcast/.variants/hod2bios.zip) (1,469,423 bytes) - SHA1: `b3a86809857fe9ce575da73f6ed6c5441d558e3d`, MD5: `9c755171b222fb1f4e1439d5b709dbf1`
+    - [hod2bios.zip.07fd3fae](bios/Arcade/Arcade/.variants/hod2bios.zip.07fd3fae) (1,889,870 bytes) - SHA1: `07fd3fae7af650a37a3329ed09d039bd7360294f`, MD5: `0ec01786c10707acfa480f1d96c935ef`
     - [hod2bios.zip.0b5cc968](bios/Arcade/Arcade/.variants/hod2bios.zip.0b5cc968) (1,465,991 bytes) - SHA1: `0b5cc968644c936d4819c1eb5f623f5f3f83eda1`, MD5: `36ac7b58216de5eecfaebe527bf6d02e`
     - [hod2bios.zip.889d239a](bios/Sega/Dreamcast/.variants/hod2bios.zip.889d239a) (816,543 bytes) - SHA1: `889d239ac41f25622164609367b713dd33bd5bde`, MD5: `ee362dd63d7ff01f6d579ad53f3bfe69`
-    - [hod2bios.zip.9b9c9f0a](bios/Sega/Dreamcast/.variants/hod2bios.zip.9b9c9f0a) (1,057,881 bytes) - SHA1: `9b9c9f0af3de914de677ba8e19f4190673142c1b`, MD5: `6559697f76592be77a7a9ff3bfb6711a`
 - **[isgsm.zip](bios/Arcade/Arcade/isgsm.zip)** (10,207 bytes)
   - SHA1: `f590ccf688b4c05fa1da5c5dd92c224545170c3b`
   - MD5: `4a56d56e2219c5e2b006b66a4263c01c`
@@ -923,29 +926,31 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `0649e27b7d605add7fc4215ee628b71e3c835328`
   - MD5: `17516c33298e52424ffb58afc2ad208c`
   - CRC32: `cf65b189`
-- **[naomi.zip](bios/Arcade/Arcade/naomi.zip)** (10,075,456 bytes)
-  - SHA1: `11ad55ee6b11092e810365b8389c1f8b4081e5d0`
-  - MD5: `4e1ca1ade518f53efcce30bdefb855a4`
-  - CRC32: `fb0bca9c`
-  - **Variants** (3 alternate versions):
+- **[naomi.zip](bios/Arcade/Arcade/naomi.zip)** (9,308,440 bytes)
+  - SHA1: `d7ef86bd03de7c1d0e2b0762e04b6f8f8d26dbdb`
+  - MD5: `eb4099aeb42ef089cfe94f8fe95e51f6`
+  - CRC32: `ab628024`
+  - **Variants** (4 alternate versions):
     - [naomi.zip](bios/Arcade/Arcade/.variants/naomi.zip) (9,321,533 bytes) - SHA1: `c96711c01c0158f161791d6fbe75d88329e8ac0a`, MD5: `526eda1e2a7920c92c88178789d71d84`
+    - [naomi.zip.11ad55ee](bios/Arcade/Arcade/.variants/naomi.zip.11ad55ee) (10,075,456 bytes) - SHA1: `11ad55ee6b11092e810365b8389c1f8b4081e5d0`, MD5: `4e1ca1ade518f53efcce30bdefb855a4`
     - [naomi.zip.2533cc33](bios/Arcade/Arcade/.variants/naomi.zip.2533cc33) (8,005,827 bytes) - SHA1: `2533cc33201da28b2086a0a2fd2b5e04271b6eeb`, MD5: `58033e4ba5793c09dffb87f96f3e9301`
     - [naomi.zip.43f0018c](bios/Sega/Dreamcast/.variants/naomi.zip.43f0018c) (6,134,707 bytes) - SHA1: `43f0018c32dd6d166c3b6d8ed2ffa672f398fa3a`, MD5: `8bab1ba136d0cb6ebcc05a27c4dfc185`
-- **[naomi2.zip](bios/Arcade/Arcade/naomi2.zip)** (7,038,226 bytes)
-  - SHA1: `da79eca49c59f7661737643b5e11e63a73b51fcc`
-  - MD5: `843c0d51237dc945f57237c4b9872b1d`
-  - CRC32: `b700583b`
+- **[naomi2.zip](bios/Arcade/Arcade/naomi2.zip)** (7,022,501 bytes)
+  - SHA1: `2962e338ccc9f66f29b409f73ca27aeee79633ac`
+  - MD5: `c50072cbab75673e1b1a6b94355e6fa8`
+  - CRC32: `2143196c`
+  - Also known as: `naomi2.zip.2962e338`
   - **Variants** (2 alternate versions):
     - [naomi2.zip](bios/Arcade/Arcade/.variants/naomi2.zip) (5,384,060 bytes) - SHA1: `c63a74691ee7384080877268a70bb1f53bc66dee`, MD5: `dd6fb7894fb2398a55e83a51328a3ad6`
-    - [naomi2.zip.2962e338](bios/Sega/Dreamcast/.variants/naomi2.zip.2962e338) (7,022,501 bytes) - SHA1: `2962e338ccc9f66f29b409f73ca27aeee79633ac`, MD5: `c50072cbab75673e1b1a6b94355e6fa8`
-- **[naomigd.zip](bios/Arcade/Arcade/naomigd.zip)** (3,387,512 bytes)
-  - SHA1: `a0f07de6070d98f86d55a4ecd61b4a5b05a4a0d5`
-  - MD5: `82f3a8bea688b4863947722d2fcb07f7`
-  - CRC32: `31828d82`
+    - [naomi2.zip.da79eca4](bios/Arcade/Arcade/.variants/naomi2.zip.da79eca4) (7,038,226 bytes) - SHA1: `da79eca49c59f7661737643b5e11e63a73b51fcc`, MD5: `843c0d51237dc945f57237c4b9872b1d`
+- **[naomigd.zip](bios/Arcade/Arcade/naomigd.zip)** (4,972,898 bytes)
+  - SHA1: `4b92936f396c8199f745d3ed0ff588a324b8dd70`
+  - MD5: `a3c74748f4b1d08f2247b16099db372d`
+  - CRC32: `b7949ddb`
   - **Variants** (3 alternate versions):
     - [naomigd.zip](bios/Arcade/Arcade/.variants/naomigd.zip) (3,371,765 bytes) - SHA1: `f9ad4a4c6b0bbbe39ba358690a48f763ecbd98f0`, MD5: `e20b430bd7def78b45f61f238abab624`
     - [naomigd.zip](bios/Arcade/MAME/.variants/naomigd.zip) (3,371,787 bytes) - SHA1: `b0677e6b9e1274292fef56787931732072b0e693`, MD5: `8970b2ea1fa70f5f54f675275d2fc584`
-    - [naomigd.zip](bios/Sega/Dreamcast/.variants/naomigd.zip) (4,972,898 bytes) - SHA1: `4b92936f396c8199f745d3ed0ff588a324b8dd70`, MD5: `a3c74748f4b1d08f2247b16099db372d`
+    - [naomigd.zip.a0f07de6](bios/Arcade/Arcade/.variants/naomigd.zip.a0f07de6) (3,387,512 bytes) - SHA1: `a0f07de6070d98f86d55a4ecd61b4a5b05a4a0d5`, MD5: `82f3a8bea688b4863947722d2fcb07f7`
 - **[neocdz.zip](bios/Arcade/Arcade/neocdz.zip)** (214,659 bytes)
   - SHA1: `838934ee5b8fcc81883fb664526b3d281840b2e9`
   - MD5: `c85b8132799f1b2ad3754a97947809d2`
@@ -9013,22 +9018,20 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `55068f5253956601a2eddd9c68efb6659ea27ac7`
   - MD5: `80efc8294a76783c92e9f7b5a6b6c11b`
   - CRC32: `58926027`
-- **[cdibios.zip](bios/Philips/CD-i/cdibios.zip)** (472,798 bytes)
-  - SHA1: `16072afaa65d1b059346616ac5b5a600c63ff1d1`
-  - MD5: `709acce6e9c4043b851ea7429b8e7eff`
-  - CRC32: `1d5bb3da`
+  - **Variants** (1 alternate versions):
+    - [cdibios.zip.e7d2a0da](bios/Arcade/Arcade/.variants/cdibios.zip.e7d2a0da) (468,660 bytes) - SHA1: `e7d2a0dad62d6f75bc10f48a376da0a99b764571`, MD5: `849f709632ad9bdfb9af1b5a2acf8308`
 - **[cdimono1.zip](bios/Philips/CD-i/cdimono1.zip)** (660,996 bytes)
   - SHA1: `5d0b1b55b0d0958a5c9069c3219d4da5a87a6b93`
   - MD5: `c59f92647701428bc453976740eb75cf`
   - CRC32: `0a67ff2c`
   - **Variants** (1 alternate versions):
     - [cdimono1.zip.e6714b3d](bios/Philips/CD-i/.variants/cdimono1.zip.e6714b3d) (468,660 bytes) - SHA1: `e6714b3d5fdc7023348435a77a016b763e0992b1`, MD5: `4d8f5238df9a374ce3640262773ba885`
-- **[cdimono2.zip](bios/Philips/CD-i/cdimono2.zip)** (500,003 bytes)
-  - SHA1: `e1d30b1d6a23aaaa765102590dc3ffff19c0b09f`
-  - MD5: `56683e58930b2b554e6594fe04eda238`
-  - CRC32: `7bad9043`
+- **[cdimono2.zip](bios/Philips/CD-i/cdimono2.zip)** (244,291 bytes)
+  - SHA1: `9492247203b71c12d88fad0a5437376941c7870a`
+  - MD5: `97aa5f47030cd9fdb679d4fafbb0e332`
+  - CRC32: `4eab5eda`
   - **Variants** (1 alternate versions):
-    - [cdimono2.zip.94922472](bios/Philips/CD-i/.variants/cdimono2.zip.94922472) (244,291 bytes) - SHA1: `9492247203b71c12d88fad0a5437376941c7870a`, MD5: `97aa5f47030cd9fdb679d4fafbb0e332`
+    - [cdimono2.zip.e1d30b1d](bios/Philips/CD-i/.variants/cdimono2.zip.e1d30b1d) (500,003 bytes) - SHA1: `e1d30b1d6a23aaaa765102590dc3ffff19c0b09f`, MD5: `56683e58930b2b554e6594fe04eda238`
 
 ### Philips/Videopac+
 
@@ -9272,14 +9275,6 @@ These are large asset packs required by specific cores. They are included in the
   - CRC32: `d39556fc`
   - **Variants** (1 alternate versions):
     - [f355dlx.zip.3c1c6422](bios/Sega/Dreamcast/.variants/f355dlx.zip.3c1c6422) (2,315,343 bytes) - SHA1: `3c1c6422c332fc57c69c938db4dd3ac91eff4f02`, MD5: `5e83867c751f692a000afdf658dc181f`
-- **[naomi.zip](bios/Sega/Dreamcast/naomi.zip)** (9,308,440 bytes)
-  - SHA1: `d7ef86bd03de7c1d0e2b0762e04b6f8f8d26dbdb`
-  - MD5: `eb4099aeb42ef089cfe94f8fe95e51f6`
-  - CRC32: `ab628024`
-  - **Variants** (3 alternate versions):
-    - [naomi.zip](bios/Arcade/Arcade/.variants/naomi.zip) (9,321,533 bytes) - SHA1: `c96711c01c0158f161791d6fbe75d88329e8ac0a`, MD5: `526eda1e2a7920c92c88178789d71d84`
-    - [naomi.zip.2533cc33](bios/Arcade/Arcade/.variants/naomi.zip.2533cc33) (8,005,827 bytes) - SHA1: `2533cc33201da28b2086a0a2fd2b5e04271b6eeb`, MD5: `58033e4ba5793c09dffb87f96f3e9301`
-    - [naomi.zip.43f0018c](bios/Sega/Dreamcast/.variants/naomi.zip.43f0018c) (6,134,707 bytes) - SHA1: `43f0018c32dd6d166c3b6d8ed2ffa672f398fa3a`, MD5: `8bab1ba136d0cb6ebcc05a27c4dfc185`
 - **[naomi_boot.bin](bios/Sega/Dreamcast/naomi_boot.bin)** (2,097,152 bytes)
   - SHA1: `6d27d71aec4dfba98f66316ae74a1426d567698a`
   - MD5: `3bffafac42a7767d8dcecf771f5552ba`
@@ -11144,4 +11139,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting BIOS files.
 
 This repository provides BIOS files for personal backup and archival purposes.
 
-*Auto-generated on 2026-03-17T14:43:50Z*
+*Auto-generated on 2026-03-17T15:08:21Z*
