@@ -51,7 +51,8 @@ def fetch_large_file(name: str, dest_dir: str = ".cache/large") -> str | None:
     if os.path.exists(cached):
         return cached
 
-    url = f"https://github.com/{LARGE_FILES_REPO}/releases/download/{LARGE_FILES_RELEASE}/{name}"
+    encoded_name = urllib.request.quote(name)
+    url = f"https://github.com/{LARGE_FILES_REPO}/releases/download/{LARGE_FILES_RELEASE}/{encoded_name}"
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "retrobios-pack/1.0"})
         with urllib.request.urlopen(req, timeout=300) as resp:

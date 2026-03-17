@@ -34,6 +34,15 @@ platforms:
     hash_type: md5
     schedule: monthly
 
+  retrobat:
+    config: retrobat.yml
+    status: active
+    scraper: retrobat
+    source_url: "https://raw.githubusercontent.com/RetroBat-Official/emulatorlauncher/master/batocera-systems/Resources/batocera-systems.json"
+    source_format: json
+    hash_type: md5
+    schedule: weekly
+
   lakka:
     config: lakka.yml
     status: active

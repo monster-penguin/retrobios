@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-17T08:46:20Z",
+  "generated_at": "2026-03-17T10:36:15Z",
   "total_files": 6285,
   "total_size": 2847791495,
   "files": {
@@ -81027,6 +81027,9 @@
       "apple2gs1.rom": [
         "e4fc7560b69d062cb2da5b1ffbe11cd1ca03cc37"
       ],
+      "APPLE2GS.ROM": [
+        "e4fc7560b69d062cb2da5b1ffbe11cd1ca03cc37"
+      ],
       "apple2gs3.rom": [
         "bc32bc0e8902946663998f56aea52be597d9e361"
       ],
@@ -81042,11 +81045,17 @@
       "FMPAC.rom": [
         "9d789166e3caf28e4742fe933d962e99618c633d"
       ],
+      "fmpac.rom": [
+        "9d789166e3caf28e4742fe933d962e99618c633d"
+      ],
       "MSX.rom": [
         "e998f0c441f4f1800ef44e42cd1659150206cf79",
         "409e82adac40f6bdd18eb6c84e8b2fbdc7fb5498"
       ],
       "MSX2.rom": [
+        "6103b39f1e38d1aa2d84b1c3219c44f1abb5436e"
+      ],
+      "nms8245_basic-bios2.rom": [
         "6103b39f1e38d1aa2d84b1c3219c44f1abb5436e"
       ],
       "MSX2EXT.rom": [
@@ -81064,14 +81073,26 @@
       "IPL.n64": [
         "bf861922dcb78c316360e3e742f4f70ff63c9bc3"
       ],
+      "IPL_JAP.n64": [
+        "bf861922dcb78c316360e3e742f4f70ff63c9bc3"
+      ],
       "d64rom2.rom": [
         "e3c8986bb1d44269c4587b04f1ca27a70b0aaa2e"
       ],
       "d64tano2.rom": [
         "e3c8986bb1d44269c4587b04f1ca27a70b0aaa2e"
       ],
+      "d64_2.rom": [
+        "e3c8986bb1d44269c4587b04f1ca27a70b0aaa2e"
+      ],
       "d64tano.rom": [
         "1983b4fb398e3dd9668d424c666c5a0b3f1e2b69"
+      ],
+      "d64_1.rom": [
+        "f119506eaa3b4b70b9aa0dd83761e8cbe043d042"
+      ],
+      "fs-5500_disk.rom": [
+        "78cd7f847e77fd8cd51a647efb2725ba93f4c471"
       ],
       "pcfxbios.bin": [
         "1a77fd83e337f906aecab27a1604db064cf10074"

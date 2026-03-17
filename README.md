@@ -2,7 +2,7 @@
 
 Complete, verified collection of BIOS, firmware, and system files for retrogaming emulators - RetroArch, Batocera, Recalbox, Lakka, RetroPie, and more. Every file checked against official checksums from [libretro System.dat](https://github.com/libretro/libretro-database), [batocera-systems](https://github.com/batocera-linux/batocera.linux), and [Recalbox es_bios.xml](https://gitlab.com/recalbox/recalbox).
 
-> **6285** files | **2715.9 MB** | Last updated: 2026-03-17T08:46:20Z
+> **6285** files | **2715.9 MB** | Last updated: 2026-03-17T10:36:15Z
 >
 > PlayStation, PS2, Nintendo DS, Game Boy, GBA, Dreamcast, Saturn, Neo Geo, Mega CD, PC Engine, MSX, Amiga, Atari ST, ZX Spectrum, Arcade (MAME/FBNeo), and 50+ systems.
 
@@ -49,6 +49,7 @@ python scripts/generate_pack.py --all --include-archived --output-dir ~/Download
 | Lakka | 398/398 (100.0%) | ![Lakka 100%](https://img.shields.io/badge/Lakka-100%25-brightgreen) 🟢 | existence | 398 present |
 | Recalbox | 346/346 (100.0%) | ![Recalbox 100%](https://img.shields.io/badge/Recalbox-100%25-brightgreen) 🟢 | md5 | 337 verified, 9 untested |
 | RetroArch | 398/398 (100.0%) | ![RetroArch 100%](https://img.shields.io/badge/RetroArch-100%25-brightgreen) 🟢 | existence | 398 present |
+| RetroBat | 223/343 (65.0%) | ![RetroBat 65%](https://img.shields.io/badge/RetroBat-65%25-red) 🔴 | md5 | 218 verified, 5 untested, 120 missing |
 | RetroPie | 398/398 (100.0%) | ![RetroPie](https://img.shields.io/badge/RetroPie-archived-lightgrey) 📦 | existence | 398 present *(archived - generate manually)* |
 
 ## Systems
@@ -1435,7 +1436,7 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `2c66f5911e5b42b8ebe113403548eee7`
   - CRC32: `3aa93ef3`
   - Also known as: `boot.rom`, `coleco.rom`, `colecovision.rom`
-  - Platform names: Batocera: `adam.zip`, Batocera: `colecovision.rom`, Lakka: `colecovision.rom`, Recalbox: `coleco.rom`, Recalbox: `boot.rom`, RetroArch: `colecovision.rom`, RetroPie: `colecovision.rom`
+  - Platform names: Batocera: `adam.zip`, Batocera: `colecovision.rom`, Lakka: `colecovision.rom`, Recalbox: `coleco.rom`, Recalbox: `boot.rom`, RetroArch: `colecovision.rom`, RetroBat: `colecovision.rom`, RetroBat: `coleco.rom`, RetroPie: `colecovision.rom`
 
 ### Commodore/Amiga
 
@@ -1631,8 +1632,8 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `e3c8986bb1d44269c4587b04f1ca27a70b0aaa2e`
   - MD5: `fd91edce7be5e7c2d88e46b76956a8aa`
   - CRC32: `17893a42`
-  - Also known as: `d64rom2.rom`, `d64tano2.rom`
-  - Platform names: Recalbox: `d64rom2.rom`, Recalbox: `d64tano2.rom`
+  - Also known as: `d64_2.rom`, `d64rom2.rom`, `d64tano2.rom`
+  - Platform names: Recalbox: `d64rom2.rom`, Recalbox: `d64tano2.rom`, RetroBat: `d64_2.rom`
 - **[d32.rom](bios/Dragon/Dragon/d32.rom)** (16,384 bytes)
   - SHA1: `f2dab125673e653995a83bf6b793e3390ec7f65a`
   - MD5: `3420b96031078a4ef408cad7bf21a33f`
@@ -1647,6 +1648,8 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `f119506eaa3b4b70b9aa0dd83761e8cbe043d042`
   - MD5: `5f0bee59710e55f5880e74890912ed78`
   - CRC32: `60a4634c`
+  - Also known as: `d64_1.rom`
+  - Platform names: RetroBat: `d64_1.rom`
 - **[ddos10.rom](bios/Dragon/Dragon/ddos10.rom)** (8,192 bytes)
   - SHA1: `a8918c71d319237c1e3155bb38620acb114a80bc`
   - MD5: `1c965da49b6c5459b8353630aa1482e7`
@@ -2081,8 +2084,8 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `9d789166e3caf28e4742fe933d962e99618c633d`
   - MD5: `6f69cc8b5ed761b03afd78000dfb0e19`
   - CRC32: `0e84505d`
-  - Also known as: `FMPAC.rom`
-  - Platform names: Recalbox: `FMPAC.rom`
+  - Also known as: `FMPAC.rom`, `fmpac.rom`
+  - Platform names: Recalbox: `FMPAC.rom`, RetroBat: `fmpac.rom`
 - **[FMPAC16.ROM](bios/Microsoft/MSX/FMPAC16.ROM)** (16,384 bytes)
   - SHA1: `2dc4517ebd5a061f9b5aa6b449cc4d4a2073540c`
   - MD5: `af8537262df8df267072f359399a7635`
@@ -2116,7 +2119,7 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `acf53887c2d2783dc059a9b442c86b90`
   - CRC32: `1f6406fb`
   - Also known as: `fs-a1gt_kanjifont.rom`, `fs-a1wsx_kanjifont.rom`
-  - Platform names: Batocera: `fs-a1gt_kanjifont.rom`, Batocera: `fs-a1wsx_kanjifont.rom`
+  - Platform names: Batocera: `fs-a1gt_kanjifont.rom`, Batocera: `fs-a1wsx_kanjifont.rom`, RetroBat: `fs-a1wsx_kanjifont.rom`, RetroBat: `fs-a1gt_kanjifont.rom`
 - **[KOREAN.FNT](bios/Microsoft/MSX/KOREAN.FNT)** (2,048 bytes)
   - SHA1: `0ef27e3599370e179b6fceaa22431fb97f5e7e61`
   - MD5: `73291e76638a2f5aa2eceb843df468f4`
@@ -2130,7 +2133,7 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `42af93619160ef2116416f74a6cb12f2`
   - CRC32: `2a9d8d43`
   - Also known as: `yrw801.rom`
-  - Platform names: Batocera: `yrw801.rom`
+  - Platform names: Batocera: `yrw801.rom`, RetroBat: `yrw801.rom`
 - **[MSX.ROM](bios/Microsoft/MSX/MSX.ROM)** (32,768 bytes)
   - SHA1: `409e82adac40f6bdd18eb6c84e8b2fbdc7fb5498`
   - MD5: `aa95aea2563cd5ec0a0919b44cc17d47`
@@ -2143,13 +2146,13 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `364a1a579fe5cb8dba54519bcfcdac0d`
   - CRC32: `a317e6b4`
   - Also known as: `MSX.rom`
-  - Platform names: Batocera: `MSX.ROM`, Recalbox: `MSX.rom`
+  - Platform names: Batocera: `MSX.ROM`, Recalbox: `MSX.rom`, RetroBat: `MSX.ROM`
 - **[MSX2.ROM](bios/Microsoft/MSX/MSX2.ROM)** (32,768 bytes)
   - SHA1: `6103b39f1e38d1aa2d84b1c3219c44f1abb5436e`
   - MD5: `ec3a01c91f24fbddcbcab0ad301bc9ef`
   - CRC32: `6cdaf3a5`
-  - Also known as: `MSX2.rom`
-  - Platform names: Recalbox: `MSX2.rom`
+  - Also known as: `MSX2.rom`, `nms8245_basic-bios2.rom`
+  - Platform names: Recalbox: `MSX2.rom`, RetroBat: `nms8245_basic-bios2.rom`
 - **[MSX2AR.ROM](bios/Microsoft/MSX/MSX2AR.ROM)** (32,768 bytes)
   - SHA1: `35195ab67c289a0b470883464df66bc6ea5b00d3`
   - MD5: `91764e84f977671ac7caa50b36273fd2`
@@ -2219,13 +2222,13 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `847cc025ffae665487940ff2639540e5`
   - CRC32: `19771608`
   - Also known as: `MSX2P.rom`
-  - Platform names: Recalbox: `MSX2P.rom`
+  - Platform names: Recalbox: `MSX2P.rom`, RetroBat: `MSX2P.ROM`
 - **[MSX2PEXT.ROM](bios/Microsoft/MSX/MSX2PEXT.ROM)** (16,384 bytes)
   - SHA1: `fe0254cbfc11405b79e7c86c7769bd6322b04995`
   - MD5: `7c8243c71d8f143b2531f01afa6a05dc`
   - CRC32: `b8ba44d3`
   - Also known as: `MSX2PEXT.rom`, `fs-a1wsx_msx2psub.rom`
-  - Platform names: Batocera: `fs-a1wsx_msx2psub.rom`, Recalbox: `MSX2PEXT.rom`
+  - Platform names: Batocera: `fs-a1wsx_msx2psub.rom`, Recalbox: `MSX2PEXT.rom`, RetroBat: `fs-a1wsx_msx2psub.rom`
 - **[MSX2PMUS.rom](bios/Microsoft/MSX/MSX2PMUS.rom)** (16,384 bytes)
   - SHA1: `6354ccc5c100b1c558c9395fa8c00784d2e9b0a3`
   - MD5: `f877f32e6d8687474ac5ee83e40de23b`
@@ -2291,7 +2294,7 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `9dfdebfaa6b547222a40aab8bb2e29f8`
   - CRC32: `b4fc574d`
   - Also known as: `fs-a1wsx_kanjibasic.rom`
-  - Platform names: Batocera: `fs-a1wsx_kanjibasic.rom`
+  - Platform names: Batocera: `fs-a1wsx_kanjibasic.rom`, RetroBat: `fs-a1wsx_kanjibasic.rom`
 - **[MSXKR.rom](bios/Microsoft/MSX/MSXKR.rom)** (32,768 bytes)
   - SHA1: `171b587bd5a947a13f3114120b6e7baca3b57d78`
   - MD5: `c84f362c44192659273d45ae97462362`
@@ -2342,6 +2345,8 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `78cd7f847e77fd8cd51a647efb2725ba93f4c471`
   - MD5: `86269da485e852d9f581ac27f4ba32ff`
   - CRC32: `1e7d6512`
+  - Also known as: `fs-5500_disk.rom`
+  - Platform names: RetroBat: `fs-5500_disk.rom`
 - **[NOVAXIS.rom](bios/Microsoft/MSX/NOVAXIS.rom)** (16,384 bytes)
   - SHA1: `352ec8c99fe1397a88ecb3aee6dbb4d121c818e9`
   - MD5: `20989124671593ab04eeb01d52a1e25c`
@@ -2359,7 +2364,7 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `00aa02b6077de40a0b51d71a3c3e1d5f`
   - CRC32: `17fa392b`
   - Also known as: `fs-a1wsx_disk.rom`
-  - Platform names: Batocera: `fs-a1wsx_disk.rom`
+  - Platform names: Batocera: `fs-a1wsx_disk.rom`, RetroBat: `fs-a1wsx_disk.rom`
 - **[PHILIPSDISK.rom](bios/Microsoft/MSX/PHILIPSDISK.rom)** (16,384 bytes)
   - SHA1: `c3efedda7ab947a06d9345f7b8261076fa7ceeef`
   - MD5: `01dd1d72ed9bb6afe8a9b441c198a1cd`
@@ -3514,8 +3519,8 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `e4fc7560b69d062cb2da5b1ffbe11cd1ca03cc37`
   - MD5: `20a0334c447cb069a040ae5be1d938df`
   - CRC32: `42f124b0`
-  - Also known as: `apple2gs1.rom`
-  - Platform names: Recalbox: `apple2gs1.rom`
+  - Also known as: `APPLE2GS.ROM`, `apple2gs1.rom`
+  - Platform names: Recalbox: `apple2gs1.rom`, RetroBat: `APPLE2GS.ROM`
 - **[SOUND.ROM](bios/NEC/PC-98/SOUND.ROM)** (16,384 bytes)
   - SHA1: `34137c287c39c44300b04ee97c1e6459bb826b60`
   - MD5: `caf90f22197aed6f14c471c21e64658d`
@@ -3762,7 +3767,7 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `32fbbd84168d3482956eb3c5051637f5`
   - CRC32: `59c8598e`
   - Also known as: `gb_bios.bin`
-  - Platform names: Batocera: `gb_bios.bin`, Lakka: `dmg_boot.bin`, Lakka: `gb_bios.bin`, Recalbox: `gb_bios.bin`, RetroArch: `dmg_boot.bin`, RetroArch: `gb_bios.bin`, RetroPie: `dmg_boot.bin`, RetroPie: `gb_bios.bin`
+  - Platform names: Batocera: `gb_bios.bin`, Lakka: `dmg_boot.bin`, Lakka: `gb_bios.bin`, Recalbox: `gb_bios.bin`, RetroArch: `dmg_boot.bin`, RetroArch: `gb_bios.bin`, RetroBat: `gb_bios.bin`, RetroPie: `dmg_boot.bin`, RetroPie: `gb_bios.bin`
 - **[mgb_boot.bin](bios/Nintendo/Game%20Boy/mgb_boot.bin)** (256 bytes)
   - SHA1: `9817bdae9335a3accb584f77c165dc5726555d1f`
   - MD5: `df79723ee8093b0580496f3df436e4c4`
@@ -3880,8 +3885,8 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `bf861922dcb78c316360e3e742f4f70ff63c9bc3`
   - MD5: `8d3d9f294b6e174bc7b1d2fd1c727530`
   - CRC32: `7f933ce2`
-  - Also known as: `IPL.n64`
-  - Platform names: Recalbox: `IPL.n64`
+  - Also known as: `IPL.n64`, `IPL_JAP.n64`
+  - Platform names: Recalbox: `IPL.n64`, RetroBat: `IPL_JAP.n64`
 
 ### Nintendo/Nintendo DS
 
@@ -3890,13 +3895,13 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `559dae4ea78eb9d67702c56c1d791e81`
   - CRC32: `9f1840d9`
   - Also known as: `dsi_bios7.bin`
-  - Platform names: Batocera: `dsi_bios7.bin`
+  - Platform names: Batocera: `dsi_bios7.bin`, RetroBat: `dsi_bios7.bin`
 - **[biosdsi9.bin](bios/Nintendo/Nintendo%20DS/biosdsi9.bin)** (65,536 bytes)
   - SHA1: `7bf549b8be9e48ab0cdc9b0fdadd49a5131f97eb`
   - MD5: `87b665fce118f76251271c3732532777`
   - CRC32: `3d64d498`
   - Also known as: `dsi_bios9.bin`
-  - Platform names: Batocera: `dsi_bios9.bin`
+  - Platform names: Batocera: `dsi_bios9.bin`, RetroBat: `dsi_bios9.bin`
 - **[choose-your-dsi-sd-images-size.zip](bios/Nintendo/Nintendo%20DS/choose-your-dsi-sd-images-size.zip)** (3,518,551 bytes)
   - SHA1: `f1ad917e0affaeb8d2114c7ecd02b9f938c3cbd9`
   - MD5: `bfd8292fbf0a251647a23c5cb310a97a`
@@ -3938,13 +3943,13 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `df692a80a5b1bc90728bc3dfc76cd948`
   - CRC32: `1280f0d5`
   - Also known as: `bios7.bin`
-  - Platform names: Batocera: `bios7.bin`, Lakka: `bios7.bin`, Recalbox: `bios7.bin`, RetroArch: `bios7.bin`, RetroPie: `bios7.bin`
+  - Platform names: Batocera: `bios7.bin`, Lakka: `bios7.bin`, Recalbox: `bios7.bin`, RetroArch: `bios7.bin`, RetroBat: `bios7.bin`, RetroPie: `bios7.bin`
 - **[nds9.bin](bios/Nintendo/Nintendo%20DS/nds9.bin)** (4,096 bytes)
   - SHA1: `bfaac75f101c135e32e2aaf541de6b1be4c8c62d`
   - MD5: `a392174eb3e572fed6447e956bde4b25`
   - CRC32: `2ab23573`
   - Also known as: `bios9.bin`
-  - Platform names: Batocera: `bios9.bin`, Lakka: `bios9.bin`, Recalbox: `bios9.bin`, RetroArch: `bios9.bin`, RetroPie: `bios9.bin`
+  - Platform names: Batocera: `bios9.bin`, Lakka: `bios9.bin`, Recalbox: `bios9.bin`, RetroArch: `bios9.bin`, RetroBat: `bios9.bin`, RetroPie: `bios9.bin`
 
 ### Nintendo/Pokemon Mini
 
@@ -4065,25 +4070,25 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `d574d4f9c12f305074798f54c091a8b4`
   - CRC32: `ec8a83b9`
   - Also known as: `sgb1.boot.rom`, `sgb_bios.bin`
-  - Platform names: Batocera: `sgb_bios.bin`, Batocera: `sgb_boot.bin`, Lakka: `sgb1.boot.rom`, Lakka: `sgb_bios.bin`, Recalbox: `sgb_bios.bin`, RetroArch: `sgb1.boot.rom`, RetroArch: `sgb_bios.bin`, RetroPie: `sgb1.boot.rom`, RetroPie: `sgb_bios.bin`
+  - Platform names: Batocera: `sgb_bios.bin`, Batocera: `sgb_boot.bin`, Lakka: `sgb1.boot.rom`, Lakka: `sgb_bios.bin`, Recalbox: `sgb_bios.bin`, RetroArch: `sgb1.boot.rom`, RetroArch: `sgb_bios.bin`, RetroBat: `sgb_boot.bin`, RetroPie: `sgb1.boot.rom`, RetroPie: `sgb_bios.bin`
 - **[sgb1.program.rom](bios/Nintendo/Super%20Game%20Boy/sgb1.program.rom)** (262,144 bytes)
   - SHA1: `973e10840db683cf3faf61bd443090786b3a9f04`
   - MD5: `b15ddb15721c657d82c5bab6db982ee9`
   - CRC32: `8a4a174f`
   - Also known as: `SGB1.sfc`, `SGB1.sfc/program.rom`
-  - Platform names: Batocera: `SGB1.sfc`, Lakka: `SGB1.sfc`, Recalbox: `SGB1.sfc`, RetroArch: `SGB1.sfc`, RetroPie: `SGB1.sfc`
+  - Platform names: Batocera: `SGB1.sfc`, Lakka: `SGB1.sfc`, Recalbox: `SGB1.sfc`, RetroArch: `SGB1.sfc`, RetroBat: `SGB1.sfc`, RetroPie: `SGB1.sfc`
 - **[sgb2.boot.rom](bios/Nintendo/Super%20Game%20Boy/sgb2.boot.rom)** (256 bytes)
   - SHA1: `93407ea10d2f30ab96a314d8eca44fe160aea734`
   - MD5: `e0430bca9925fb9882148fd2dc2418c1`
   - CRC32: `53d0dd63`
   - Also known as: `sgb2_bios.bin`
-  - Platform names: Batocera: `sgb2_boot.bin`, Lakka: `sgb2_bios.bin`, RetroArch: `sgb2_bios.bin`, RetroPie: `sgb2_bios.bin`
+  - Platform names: Batocera: `sgb2_boot.bin`, Lakka: `sgb2_bios.bin`, RetroArch: `sgb2_bios.bin`, RetroBat: `sgb2_boot.bin`, RetroPie: `sgb2_bios.bin`
 - **[sgb2.program.rom](bios/Nintendo/Super%20Game%20Boy/sgb2.program.rom)** (524,288 bytes)
   - SHA1: `e5b2922ca137051059e4269b236d07a22c07bc84`
   - MD5: `8ecd73eb4edf7ed7e81aef1be80031d5`
   - CRC32: `cb176e45`
   - Also known as: `SGB2.sfc`, `SGB2.sfc/program.rom`
-  - Platform names: Batocera: `SGB2.sfc`, Lakka: `SGB2.sfc`, Recalbox: `SGB2.sfc`, RetroArch: `SGB2.sfc`, RetroPie: `SGB2.sfc`
+  - Platform names: Batocera: `SGB2.sfc`, Lakka: `SGB2.sfc`, Recalbox: `SGB2.sfc`, RetroArch: `SGB2.sfc`, RetroBat: `SGB2.sfc`, RetroPie: `SGB2.sfc`
 - **[sgb2_boot.bin](bios/Nintendo/Super%20Game%20Boy/sgb2_boot.bin)** (256 bytes)
   - SHA1: `f282b3aaf98f8423dab7d77f1aa0192be630f2fb`
   - MD5: `6d507dcf3b61ce45a5717421cdd0ae95`
@@ -14745,7 +14750,7 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `fc398ab4e13ca6bfef3366ed3391b1050e0eb5e8`
   - MD5: `dffb72f116d36d025068b23970a4f6df`
   - CRC32: `362e948d`
-  - Platform names: Batocera: `neogeo.zip`
+  - Platform names: Batocera: `neogeo.zip`, RetroBat: `neogeo.zip`
 
 ### SNK/Neo Geo CD
 
@@ -15025,7 +15030,7 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `5adb6c3af218c60868e6b723ec47e36bbdf5e6f0`
   - MD5: `854b9150240a198070150e4566ae1290`
   - CRC32: `9f6f6276`
-  - Platform names: Batocera: `bios_CD_U.bin`
+  - Platform names: Batocera: `bios_CD_U.bin`, RetroBat: `bios_CD_U.bin`
 - **[jp_mcd1_9112.bin](bios/Sega/Mega%20CD/jp_mcd1_9112.bin)** (131,072 bytes)
   - SHA1: `e4193c6ae44c3cea002707d2a88f1fbcced664de`
   - MD5: `bdeb4c47da613946d422d97d98b21cda`
@@ -15103,7 +15108,7 @@ These are large asset packs required by specific cores. They are included in the
   - MD5: `af5828fdff51384f99b3c4926be27762`
   - CRC32: `2aba43c2`
   - Also known as: `saturn_bios.bin`
-  - Platform names: Batocera: `saturn_bios.bin`, Lakka: `saturn_bios.bin`, Recalbox: `saturn_bios.bin`, RetroArch: `saturn_bios.bin`, RetroPie: `saturn_bios.bin`
+  - Platform names: Batocera: `saturn_bios.bin`, Lakka: `saturn_bios.bin`, Recalbox: `saturn_bios.bin`, RetroArch: `saturn_bios.bin`, RetroBat: `saturn_bios.bin`, RetroPie: `saturn_bios.bin`
 - **[sega_100a.bin](bios/Sega/Saturn/sega_100a.bin)** (524,288 bytes)
   - SHA1: `3bb41feb82838ab9a35601ac666de5aacfd17a58`
   - MD5: `f273555d7d91e8a5a6bfd9bcf066331c`
@@ -15171,12 +15176,12 @@ These are large asset packs required by specific cores. They are included in the
   - SHA1: `44620f57a25f0bcac2b57ca2b0f1ebad3bf305d3`
   - MD5: `56c28adcf1f3a2f87cf3d57c378013f5`
   - CRC32: `2e8b767c`
-  - Platform names: Batocera: `iplrom.x1t`
+  - Platform names: Batocera: `iplrom.x1t`, RetroBat: `iplrom.x1t`
 - **[iplrom.x1](bios/Sharp/X1/iplrom.x1)** (4,096 bytes)
   - SHA1: `d3395e9aeb5b8bbba7654dd471bcd8af228ee69a`
   - MD5: `eeeea1cd29c6e0e8b094790ae969bfa7`
   - CRC32: `e70011d3`
-  - Platform names: Batocera: `IPLROM.X1`, Recalbox: `IPLROM.X1`
+  - Platform names: Batocera: `IPLROM.X1`, Recalbox: `IPLROM.X1`, RetroBat: `IPLROM.X1`
 - **[iplrom.x1t](bios/Sharp/X1/iplrom.x1t)** (2,048 bytes)
   - SHA1: `1c1a0d8c9f4c446ccd7470516b215ddca5052fb2`
   - MD5: `851e4a5936f17d13f8c39a980cf00d77`
@@ -16150,4 +16155,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting BIOS files.
 
 This repository provides BIOS files for personal backup and archival purposes.
 
-*Auto-generated on 2026-03-17T08:46:20Z*
+*Auto-generated on 2026-03-17T10:36:15Z*
