@@ -265,6 +265,38 @@ class Scraper(BaseScraper):
             if sys_id not in systems:
                 systems[sys_id] = sys_data
 
+        # Arcade BIOS present in the repo but absent from System.dat.
+        # FBNeo expects them in system/ or system/fbneo/.
+        # ref: fbneo/src/burner/libretro/libretro.cpp
+        EXTRA_ARCADE_FILES = [
+            {"name": "namcoc69.zip", "destination": "namcoc69.zip", "required": True},
+            {"name": "namcoc70.zip", "destination": "namcoc70.zip", "required": True},
+            {"name": "namcoc75.zip", "destination": "namcoc75.zip", "required": True},
+            {"name": "msx.zip", "destination": "msx.zip", "required": True},
+            {"name": "qsound.zip", "destination": "qsound.zip", "required": True},
+        ]
+        if "arcade" in systems:
+            existing = {f["name"] for f in systems["arcade"].get("files", [])}
+            for ef in EXTRA_ARCADE_FILES:
+                if ef["name"] not in existing:
+                    systems["arcade"]["files"].append(ef)
+
+        # segasp.zip for Sega System SP (Flycast)
+        if "sega-dreamcast-arcade" in systems:
+            existing = {f["name"] for f in systems["sega-dreamcast-arcade"].get("files", [])}
+            if "segasp.zip" not in existing:
+                systems["sega-dreamcast-arcade"]["files"].append({
+                    "name": "segasp.zip",
+                    "destination": "dc/segasp.zip",
+                    "required": True,
+                })
+
+        # ep128emu shared group for Enterprise
+        if "enterprise-64-128" in systems:
+            systems["enterprise-64-128"].setdefault("includes", [])
+            if "ep128emu" not in systems["enterprise-64-128"]["includes"]:
+                systems["enterprise-64-128"]["includes"].append("ep128emu")
+
         # Inject shared group references for systems that have core-specific
         # subdirectory requirements already defined in _shared.yml.
         SYSTEM_SHARED_GROUPS = {

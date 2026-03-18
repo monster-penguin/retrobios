@@ -1,0 +1,14 @@
+# Beetle GBA (Mednafen) — Game Boy Advance (libretro)
+# ref: beetle-gba-libretro/mednafen/gba, docs.libretro.com/library/beetle_gba
+# Same BIOS as mGBA/VBA-M. Optional, no HLE fallback documented.
+emulator: Beetle GBA (Mednafen)
+type: libretro
+cores: [mednafen_gba]
+source: "https://github.com/libretro/beetle-gba-libretro"
+systems:
+  - nintendo-gba
+files:
+  - name: gba_bios.bin
+    system: nintendo-gba
+    required: false
+    md5: a860e8c0b6d573d191e4ec7db1b1e4f6
