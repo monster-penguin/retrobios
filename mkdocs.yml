@@ -1,0 +1,318 @@
+site_name: RetroBIOS
+site_url: https://abdess.github.io/retrobios/
+repo_url: https://github.com/Abdess/retrobios
+repo_name: Abdess/retrobios
+theme:
+  name: material
+  palette:
+  - media: (prefers-color-scheme)
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to auto
+  font: false
+  features:
+  - navigation.tabs
+  - navigation.sections
+  - navigation.top
+  - search.suggest
+  - search.highlight
+  - content.tabs.link
+  - toc.follow
+markdown_extensions:
+- tables
+- admonition
+- attr_list
+- toc:
+    permalink: true
+plugins:
+- search
+nav:
+- Home: index.md
+- Platforms:
+  - Overview: platforms/index.md
+  - Batocera: platforms/batocera.md
+  - EmuDeck: platforms/emudeck.md
+  - Lakka: platforms/lakka.md
+  - Recalbox: platforms/recalbox.md
+  - RetroArch: platforms/retroarch.md
+  - RetroBat: platforms/retrobat.md
+  - RetroPie: platforms/retropie.md
+- Systems:
+  - Overview: systems/index.md
+  - 3DO Company: systems/3do-company.md
+  - APF: systems/apf.md
+  - Acorn: systems/acorn.md
+  - Amstrad: systems/amstrad.md
+  - Apple: systems/apple.md
+  - Arcade: systems/arcade.md
+  - Atari: systems/atari.md
+  - Bally: systems/bally.md
+  - Bandai: systems/bandai.md
+  - Bit Corporation: systems/bit-corporation.md
+  - Camputers: systems/camputers.md
+  - Casio: systems/casio.md
+  - Coleco: systems/coleco.md
+  - Commodore: systems/commodore.md
+  - DOS: systems/dos.md
+  - Dinothawr: systems/dinothawr.md
+  - Dragon: systems/dragon.md
+  - EACA: systems/eaca.md
+  - Elektronika: systems/elektronika.md
+  - Enterprise: systems/enterprise.md
+  - Entex: systems/entex.md
+  - Epoch: systems/epoch.md
+  - Fairchild: systems/fairchild.md
+  - Fujitsu: systems/fujitsu.md
+  - Funtech: systems/funtech.md
+  - GCE: systems/gce.md
+  - Galaksija: systems/galaksija.md
+  - GamePark: systems/gamepark.md
+  - Grundy: systems/grundy.md
+  - Hartung: systems/hartung.md
+  - Id Software: systems/id-software.md
+  - Infocom: systems/infocom.md
+  - Java: systems/java.md
+  - Magnavox: systems/magnavox.md
+  - Mattel: systems/mattel.md
+  - Microsoft: systems/microsoft.md
+  - NEC: systems/nec.md
+  - Nintendo: systems/nintendo.md
+  - Nokia: systems/nokia.md
+  - Oric: systems/oric.md
+  - Palm: systems/palm.md
+  - Philips: systems/philips.md
+  - Pioneer: systems/pioneer.md
+  - RPG Maker: systems/rpg-maker.md
+  - SNK: systems/snk.md
+  - ScummVM: systems/scummvm.md
+  - Sega: systems/sega.md
+  - Sharp: systems/sharp.md
+  - Sinclair: systems/sinclair.md
+  - Sony: systems/sony.md
+  - Synertek: systems/synertek.md
+  - Tandy: systems/tandy.md
+  - Texas Instruments: systems/texas-instruments.md
+  - Tiger: systems/tiger.md
+  - Tomy: systems/tomy.md
+  - VTech: systems/vtech.md
+  - Videoton: systems/videoton.md
+  - Vircon: systems/vircon.md
+  - ZC: systems/zc.md
+  - xrick: systems/xrick.md
+- Emulators:
+  - Overview: emulators/index.md
+  - 00_example: emulators/00_example.md
+  - '2048': emulators/2048.md
+  - 3DEngine: emulators/3dengine.md
+  - EightyOne: emulators/81.md
+  - a5200: emulators/a5200.md
+  - advanced_tests: emulators/advanced_tests.md
+  - amiarcadia: emulators/amiarcadia.md
+  - Anarch: emulators/anarch.md
+  - AppleWin: emulators/applewin.md
+  - Ardens: emulators/ardens.md
+  - Arduous: emulators/arduous.md
+  - Atari800: emulators/atari800.md
+  - b2: emulators/b2.md
+  - Beetle Lynx (Mednafen Lynx): emulators/beetle_lynx.md
+  - Beetle NGP (Mednafen Neo Geo Pocket): emulators/beetle_ngp.md
+  - Beetle PCE (Mednafen PCE): emulators/beetle_pce.md
+  - Beetle PC-FX (Mednafen): emulators/beetle_pcfx.md
+  - Beetle PSX (Mednafen PSX): emulators/beetle_psx.md
+  - Beetle Saturn (Mednafen): emulators/beetle_saturn.md
+  - Beetle VB (Mednafen Virtual Boy): emulators/beetle_vb.md
+  - Beetle WonderSwan (Mednafen WonderSwan): emulators/beetle_wswan.md
+  - BennuGD: emulators/bennugd.md
+  - bk-emulator: emulators/bk.md
+  - BlastEm: emulators/blastem.md
+  - blueMSX: emulators/bluemsx.md
+  - bnes: emulators/bnes.md
+  - boom3: emulators/boom3.md
+  - Boytacean: emulators/boytacean.md
+  - bsnes: emulators/bsnes.md
+  - Cannonball: emulators/cannonball.md
+  - Caprice32: emulators/cap32.md
+  - Cemu: emulators/cemu.md
+  - ChaiLove: emulators/chailove.md
+  - Citra / Lime3DS / Azahar: emulators/citra.md
+  - ClownMDEmu: emulators/clownmdemu.md
+  - Craft: emulators/craft.md
+  - CrocoDS: emulators/crocods.md
+  - Cruzes: emulators/cruzes.md
+  - Daphne: emulators/daphne.md
+  - DeSmuME: emulators/desmume.md
+  - DICE: emulators/dice.md
+  - Dinothawr: emulators/dinothawr.md
+  - DirectXBox: emulators/directxbox.md
+  - Dolphin: emulators/dolphin.md
+  - Dolphin Launcher: emulators/dolphin_launcher.md
+  - DOSBox-core: emulators/dosbox_core.md
+  - DOSBox Pure: emulators/dosbox_pure.md
+  - DoubleCherryGB: emulators/doublecherrygb.md
+  - doukutsu-rs: emulators/doukutsu_rs.md
+  - DuckStation: emulators/duckstation.md
+  - EasyRPG Player: emulators/easyrpg.md
+  - ECWolf: emulators/ecwolf.md
+  - EmuSCV: emulators/emuscv.md
+  - emux (CHIP-8): emulators/emux_chip8.md
+  - ep128emu-core: emulators/ep128emu.md
+  - FAKE-08: emulators/fake08.md
+  - FinalBurn Neo: emulators/fbneo.md
+  - FCEUmm: emulators/fceumm.md
+  - FFmpeg: emulators/ffmpeg.md
+  - fixGB: emulators/fixgb.md
+  - Flycast: emulators/flycast.md
+  - fMSX: emulators/fmsx.md
+  - FreeChaF: emulators/freechaf.md
+  - FreeIntv: emulators/freeintv.md
+  - FreeIntv (Touchscreen Overlay): emulators/freeintv_ts_overlay.md
+  - FreeJ2ME: emulators/freej2me.md
+  - Frodo: emulators/frodo.md
+  - Fuse: emulators/fuse.md
+  - galaksija: emulators/galaksija.md
+  - GAM4980: emulators/gam4980.md
+  - Gambatte: emulators/gambatte.md
+  - Gearcoleco: emulators/gearcoleco.md
+  - Geargrafx: emulators/geargrafx.md
+  - Gearlynx: emulators/gearlynx.md
+  - Gearsystem: emulators/gearsystem.md
+  - Genesis Plus GX: emulators/genesis_plus_gx.md
+  - Geolith: emulators/geolith.md
+  - Game Music Emu: emulators/gme.md
+  - Gong: emulators/gong.md
+  - gpSP: emulators/gpsp.md
+  - Game & Watch: emulators/gw.md
+  - Handy: emulators/handy.md
+  - Hatari: emulators/hatari.md
+  - HBMAME (Homebrew MAME): emulators/hbmame.md
+  - Holani: emulators/holani.md
+  - Image Viewer: emulators/imageviewer.md
+  - Ishiiruka: emulators/ishiiruka.md
+  - JAXE: emulators/jaxe.md
+  - JollyCV: emulators/jollycv.md
+  - Jump 'n Bump: emulators/jumpnbump.md
+  - Kronos: emulators/kronos.md
+  - LowRes NX: emulators/lowresnx.md
+  - Lutro: emulators/lutro.md
+  - M2000: emulators/m2000.md
+  - MAME 2003-Plus: emulators/mame2003_plus.md
+  - MAME 2010: emulators/mame2010.md
+  - MAME 2016: emulators/mame2016.md
+  - MCSoftserve: emulators/mcsoftserve.md
+  - MelonDS: emulators/melonds.md
+  - Mesen: emulators/mesen.md
+  - Meteor GBA: emulators/meteor.md
+  - mGBA: emulators/mgba.md
+  - Mini vMac: emulators/minivmac.md
+  - mkxp-z: emulators/mkxp_z.md
+  - MojoZork: emulators/mojozork.md
+  - Moonlight: emulators/moonlight.md
+  - mpv: emulators/mpv.md
+  - Mr.Boom: emulators/mrboom.md
+  - Mu: emulators/mu.md
+  - Mupen64Plus-Next: emulators/mupen64plus.md
+  - NeoCD: emulators/neocd.md
+  - Nestopia UE: emulators/nestopia.md
+  - NooDS: emulators/noods.md
+  - NP2kai: emulators/np2kai.md
+  - Numero: emulators/numero.md
+  - NXEngine: emulators/nxengine.md
+  - O2EM: emulators/o2em.md
+  - Oberon: emulators/oberon.md
+  - ONScripter: emulators/onscripter.md
+  - ONScripter Yuri: emulators/onsyuri.md
+  - OpenLara: emulators/openlara.md
+  - OpenTyrian: emulators/opentyrian.md
+  - Opera (4DO): emulators/opera.md
+  - Panda3DS: emulators/panda3ds.md
+  - Pascal Pong: emulators/pascal_pong.md
+  - PCem: emulators/pcem.md
+  - PCSX2: emulators/pcsx2.md
+  - PCSX-ReARMed: emulators/pcsx_rearmed.md
+  - PD777: emulators/pd777.md
+  - PicoDrive: emulators/picodrive.md
+  - Play!: emulators/play.md
+  - PocketCDG: emulators/pocketcdg.md
+  - PokeMini: emulators/pokemini.md
+  - PPSSPP: emulators/ppsspp.md
+  - PrBoom: emulators/prboom.md
+  - ProSystem: emulators/prosystem.md
+  - PUAE (P-UAE): emulators/puae.md
+  - PuzzleScript: emulators/puzzlescript.md
+  - px68k: emulators/px68k.md
+  - QEMU: emulators/qemu.md
+  - QUASI88: emulators/quasi88.md
+  - RACE (Neo Geo Pocket): emulators/race.md
+  - Redbook: emulators/redbook.md
+  - REminiscence: emulators/reminiscence.md
+  - RemoteJoy: emulators/remotejoy.md
+  - Retro8: emulators/retro8.md
+  - RetroDream: emulators/retrodream.md
+  - ROM Cleaner: emulators/romcleaner.md
+  - RPCS3: emulators/rpcs3.md
+  - Rustation: emulators/rustation.md
+  - RVVM: emulators/rvvm.md
+  - SAME CDi: emulators/same_cdi.md
+  - SameBoy: emulators/sameboy.md
+  - ScummVM: emulators/scummvm.md
+  - SDLPAL: emulators/sdlpal.md
+  - SimCoupe: emulators/simcp.md
+  - SMS Plus GX: emulators/smsplus.md
+  - snes9x: emulators/snes9x.md
+  - SquirrelJME: emulators/squirreljme.md
+  - Stella: emulators/stella.md
+  - Stone Soup: emulators/stonesoup.md
+  - Super Bros War: emulators/superbroswar.md
+  - Syobon Action: emulators/syobonaction.md
+  - TamaLIBretro: emulators/tamalibretro.md
+  - TempGBA: emulators/tempgba.md
+  - test: emulators/test.md
+  - test_netplay: emulators/test_netplay.md
+  - testaudio_callback: emulators/testaudio_callback.md
+  - testaudio_no_callback: emulators/testaudio_no_callback.md
+  - testaudio_playback_wav: emulators/testaudio_playback_wav.md
+  - testgl: emulators/testgl.md
+  - testgl_compute_shaders: emulators/testgl_compute_shaders.md
+  - testgl_ff: emulators/testgl_ff.md
+  - testinput_buttontest: emulators/testinput_buttontest.md
+  - testretroluxury: emulators/testretroluxury.md
+  - testsw: emulators/testsw.md
+  - testsw_vram: emulators/testsw_vram.md
+  - testvulkan: emulators/testvulkan.md
+  - testvulkan_async_compute: emulators/testvulkan_async_compute.md
+  - TGB Dual: emulators/tgbdual.md
+  - Theodore: emulators/theodore.md
+  - The Powder Toy: emulators/thepowdertoy.md
+  - TIC-80: emulators/tic80.md
+  - TyrQuake: emulators/tyrquake.md
+  - MicroW8: emulators/uw8.md
+  - UXN: emulators/uxn.md
+  - uzem: emulators/uzem.md
+  - VaporSpec: emulators/vaporspec.md
+  - VBA-Next: emulators/vba_next.md
+  - vecx: emulators/vecx.md
+  - VeMUlator: emulators/vemulator.md
+  - VICE: emulators/vice.md
+  - vidtest: emulators/vidtest.md
+  - Vircon32: emulators/vircon32.md
+  - Virtual Jaguar: emulators/virtualjaguar.md
+  - VirtualXT: emulators/virtualxt.md
+  - Vita3K: emulators/vita3k.md
+  - vitaQuakeII: emulators/vitaquake2.md
+  - vitaQuakeIII: emulators/vitaquake3.md
+  - WASM-4: emulators/wasm4.md
+  - X Millennium: emulators/x1.md
+  - x64sdl: emulators/x64sdl.md
+  - Xemu: emulators/xemu.md
+  - XRick: emulators/xrick.md
+- Contributing: contributing.md
