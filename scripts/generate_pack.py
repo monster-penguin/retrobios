@@ -124,7 +124,7 @@ def resolve_file(file_entry: dict, db: dict, bios_dir: str,
     # Skip MD5 direct lookup for zipped_file entries: the md5 is for the inner ROM,
     # not the container ZIP. Matching it would resolve to the standalone ROM file.
     if md5 and not zipped_file:
-        sha1_from_md5 = db.get("indexes", {}).get("by_md5", {}).get(md5)
+        sha1_from_md5 = db.get("indexes", {}).get("by_md5", {}).get(md5.lower())
         if sha1_from_md5 and sha1_from_md5 in db["files"]:
             local_path = db["files"][sha1_from_md5]["path"]
             if os.path.exists(local_path):
@@ -132,8 +132,9 @@ def resolve_file(file_entry: dict, db: dict, bios_dir: str,
 
         # Truncated MD5 match (batocera-systems bug: 29 chars instead of 32)
         if len(md5) < 32:
+            md5_lower = md5.lower()
             for db_md5, db_sha1 in db.get("indexes", {}).get("by_md5", {}).items():
-                if db_md5.startswith(md5) and db_sha1 in db["files"]:
+                if db_md5.startswith(md5_lower) and db_sha1 in db["files"]:
                     local_path = db["files"][db_sha1]["path"]
                     if os.path.exists(local_path):
                         return local_path, "exact"
