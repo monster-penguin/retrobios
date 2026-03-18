@@ -28,6 +28,24 @@ For RetroArch specifically, `libretro_scraper.py` injects `includes:`
 references and applies subdirectory prefixes via `CORE_SUBDIR_MAP` during
 generation. Manual edits to `retroarch.yml` will be overwritten on next scrape.
 
+## Data directories (`_data_dirs.yml`)
+
+Some cores need entire directory trees, not just individual BIOS files.
+Dolphin needs `dolphin-emu/Sys/` (GameSettings, DSP firmware, fonts),
+PPSSPP needs `PPSSPP/` (font assets, shaders), blueMSX needs `Databases/`
+and `Machines/` (machine configs).
+
+These are defined in `_data_dirs.yml` as a central registry with upstream
+source URLs. The pack generator auto-refreshes from upstream before building
+(use `--offline` to skip). Data directories live in `data/` (not `bios/`)
+and are NOT indexed in `database.json`.
+
+Adding a data directory:
+1. Add entry to `_data_dirs.yml` with source URL, extraction path, cache location
+2. Reference via `data_directories: [{ref: key, destination: path}]` in platform systems
+3. For scraper-generated platforms, add to `SYSTEM_DATA_DIRS` in the scraper
+4. Run `python scripts/refresh_data_dirs.py --key <name>` to populate the cache
+
 ## Subdirectory reference
 
 Each entry documents where the requirement comes from. Check these source
