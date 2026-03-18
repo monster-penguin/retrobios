@@ -33,6 +33,7 @@ SITE_NAME = "RetroBIOS"
 REPO_URL = "https://github.com/Abdess/retrobios"
 RELEASE_URL = f"{REPO_URL}/releases/latest"
 GENERATED_DIRS = ["platforms", "systems", "emulators"]
+SYSTEM_ICON_BASE = "https://raw.githubusercontent.com/libretro/retroarch-assets/master/xmb/systematic/png"
 
 
 def _timestamp() -> str:
@@ -285,7 +286,9 @@ def generate_system_page(
 
     for console_name in sorted(consoles.keys()):
         files = consoles[console_name]
-        lines.append(f"## {console_name}")
+        icon_name = f"{manufacturer} - {console_name}".replace("/", " ")
+        icon_url = f"{SYSTEM_ICON_BASE}/{icon_name.replace(' ', '%20')}.png"
+        lines.append(f"## ![{console_name}]({icon_url}){{ width=24 }} {console_name}")
         lines.append("")
         # Separate main files from variants
         main_files = [f for f in files if "/.variants/" not in f["path"]]
