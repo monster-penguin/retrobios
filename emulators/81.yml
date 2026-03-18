@@ -2,6 +2,8 @@ emulator: EightyOne
 type: libretro
 source: "https://github.com/libretro/81-libretro"
 profiled_date: "2026-03-18"
+core_version: "1.0a"
+display_name: "Sinclair - ZX 81 (EightyOne)"
 cores:
   - 81
 systems:

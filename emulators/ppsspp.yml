@@ -6,6 +6,8 @@ emulator: PPSSPP
 type: standalone
 source: "https://github.com/hrydgard/ppsspp"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Sony - PlayStation Portable (PPSSPP)"
 systems: [sony-psp]
 
 firmware_required: false

@@ -7,6 +7,8 @@ type: libretro
 core_name: play_libretro
 source: "https://github.com/jpd002/Play-"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Sony - PlayStation 2 (Play!)"
 systems: [sony-playstation-2]
 
 bios_directory: null

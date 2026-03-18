@@ -2,6 +2,8 @@ emulator: Beetle Lynx (Mednafen Lynx)
 type: libretro
 source: "https://github.com/libretro/beetle-lynx-libretro"
 profiled_date: "2026-03-18"
+core_version: "v1.24.0"
+display_name: "Atari - Lynx (Beetle Lynx)"
 cores: [mednafen_lynx]
 systems: [atari-lynx]
 verification: existence

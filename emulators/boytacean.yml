@@ -2,6 +2,8 @@ emulator: Boytacean
 type: libretro
 source: "https://github.com/joamag/boytacean"
 profiled_date: "2026-03-18"
+core_version: "0.10.13"
+display_name: "Nintendo - Game Boy / Color (Boytacean)"
 cores:
   - boytacean
 systems:

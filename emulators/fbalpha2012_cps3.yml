@@ -2,5 +2,7 @@ emulator: "fbalpha2012_cps3"
 type: alias
 alias_of: "fbneo"
 profiled_date: "2026-03-18"
+core_version: "v0.2.97.29"
+display_name: "Arcade (FB Alpha 2012 CPS-3)"
 note: "This core uses the same BIOS/firmware as fbneo. See emulators/fbneo.yml for details."
 files: []

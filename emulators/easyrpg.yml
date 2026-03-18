@@ -2,6 +2,8 @@ emulator: EasyRPG Player
 type: libretro
 source: "https://github.com/libretro/easyrpg-libretro"
 profiled_date: "2026-03-18"
+core_version: "0.8.1.0"
+display_name: "RPG Maker 2000/2003 (EasyRPG)"
 cores:
   - easyrpg
 systems:

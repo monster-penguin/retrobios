@@ -2,6 +2,8 @@ emulator: VBA-Next
 type: libretro
 source: "https://github.com/libretro/vba-next"
 profiled_date: "2026-03-18"
+core_version: "SVN"
+display_name: "Nintendo - Game Boy Advance (VBA Next)"
 cores:
   - vba_next
 systems:

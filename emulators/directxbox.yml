@@ -2,6 +2,8 @@ emulator: DirectXBox
 type: libretro
 source: "https://github.com/libretro/libretro-directxbox"
 profiled_date: "2026-03-18"
+core_version: "alpha"
+display_name: "Microsoft - Xbox (DirectXbox)"
 cores:
   - directxbox
 systems:

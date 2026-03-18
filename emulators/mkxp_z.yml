@@ -2,6 +2,8 @@ emulator: mkxp-z
 type: libretro
 source: "https://github.com/mkxp-z/mkxp-z"
 profiled_date: "2026-03-18"
+core_version: ""
+display_name: "RPG Maker XP/VX/VX Ace (mkxp-z)"
 cores:
   - mkxp-z
 systems:

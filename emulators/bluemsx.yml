@@ -2,6 +2,8 @@ emulator: blueMSX
 type: libretro
 source: "https://github.com/libretro/blueMSX-libretro"
 profiled_date: "2026-03-18"
+core_version: "SVN"
+display_name: "MSX/SVI/ColecoVision/SG-1000 (blueMSX)"
 cores:
   - bluemsx
 systems:

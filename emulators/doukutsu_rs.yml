@@ -2,6 +2,8 @@ emulator: "doukutsu-rs"
 type: libretro
 source: "https://github.com/DrGlaucous/doukutsu-rs-libretro"
 profiled_date: "2026-03-18"
+core_version: "1.2.0 - 0.101.0"
+display_name: "Cave Story (drs)"
 cores:
   - doukutsu_rs
 systems:

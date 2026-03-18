@@ -2,6 +2,8 @@ emulator: bk-emulator
 type: libretro
 source: "https://github.com/libretro/bk-emulator"
 profiled_date: "2026-03-18"
+core_version: "1.00"
+display_name: "Elektronika - BK-0010/BK-0011(M)"
 cores:
   - bk
 systems:

@@ -2,6 +2,8 @@ emulator: testretroluxury
 type: test
 source: "https://github.com/libretro/libretro-samples"
 profiled_date: "2026-03-18"
+core_version: "v1"
+display_name: "Test RetroLuxury"
 cores:
   - testretroluxury
 systems: []

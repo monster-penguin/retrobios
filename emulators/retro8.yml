@@ -2,6 +2,8 @@ emulator: Retro8
 type: game
 source: "https://github.com/libretro/retro8"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "PICO-8 (Retro8)"
 cores:
   - retro8
 systems: []

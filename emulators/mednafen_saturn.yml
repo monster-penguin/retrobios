@@ -2,5 +2,7 @@ emulator: "mednafen_saturn"
 type: alias
 alias_of: "beetle_saturn"
 profiled_date: "2026-03-18"
+core_version: "v0.9.45.1"
+display_name: "Sega - Saturn (Beetle Saturn)"
 note: "This core uses the same BIOS/firmware as beetle_saturn. See emulators/beetle_saturn.yml for details."
 files: []

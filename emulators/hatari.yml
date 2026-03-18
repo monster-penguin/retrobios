@@ -2,6 +2,8 @@ emulator: Hatari
 type: libretro
 source: "https://github.com/libretro/hatari"
 profiled_date: "2026-03-18"
+core_version: "1.8"
+display_name: "Atari - ST/STE/TT/Falcon (Hatari)"
 systems: [atari-st, atari-ste, atari-tt, atari-falcon]
 
 # Hatari requires a TOS ROM image to boot. The default filename is tos.img,

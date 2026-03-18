@@ -2,6 +2,8 @@ emulator: Stone Soup
 type: game
 source: "https://github.com/libretro/crawl-ref"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Dungeon Crawl Stone Soup"
 cores: [stonesoup]
 systems: []
 

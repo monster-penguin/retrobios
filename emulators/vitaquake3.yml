@@ -2,6 +2,8 @@ emulator: vitaQuakeIII
 type: game
 source: "https://github.com/libretro/vitaquake3"
 profiled_date: "2026-03-18"
+core_version: "git"
+display_name: "Quake III: Arena (vitaQuake 3)"
 cores: [vitaquake3, vitavoyager]
 systems: [quake3]
 

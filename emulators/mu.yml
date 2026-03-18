@@ -2,6 +2,8 @@ emulator: Mu
 type: libretro
 source: "https://github.com/libretro/Mu"
 profiled_date: "2026-03-18"
+core_version: "v1.3.3"
+display_name: "Palm OS (Mu)"
 systems: [palm-os]
 
 notes: |

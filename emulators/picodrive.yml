@@ -2,6 +2,8 @@ emulator: PicoDrive
 type: libretro
 source: "https://github.com/libretro/picodrive"
 profiled_date: "2026-03-18"
+core_version: "1.99"
+display_name: "Sega - MS/GG/MD/CD/32X (PicoDrive)"
 systems:
   - sega-megadrive
   - sega-genesis

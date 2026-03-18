@@ -2,5 +2,7 @@ emulator: "mednafen_gba"
 type: alias
 alias_of: "mgba"
 profiled_date: "2026-03-18"
+core_version: "v0.9.36"
+display_name: "Nintendo - Game Boy Advance (Beetle GBA)"
 note: "This core uses the same BIOS/firmware as mgba. See emulators/mgba.yml for details."
 files: []

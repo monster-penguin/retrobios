@@ -2,6 +2,8 @@ emulator: OpenTyrian
 type: libretro
 source: "https://github.com/trapexit/libretro-opentyrian"
 profiled_date: "2026-03-18"
+core_version: "1.0.0.6"
+display_name: "Tyrian (OpenTyrian)"
 cores: [opentyrian]
 systems: [tyrian]
 verification: existence

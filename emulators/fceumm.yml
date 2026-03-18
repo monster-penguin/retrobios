@@ -2,6 +2,8 @@ emulator: FCEUmm
 type: libretro
 source: "https://github.com/libretro/libretro-fceumm"
 profiled_date: "2026-03-18"
+core_version: "SVN"
+display_name: "Nintendo - NES / Famicom (FCEUmm)"
 systems: [nintendo-nes, nintendo-fds]
 
 notes: |

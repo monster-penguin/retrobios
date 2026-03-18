@@ -2,5 +2,7 @@ emulator: "mame2000"
 type: alias
 alias_of: "mame2003_plus"
 profiled_date: "2026-03-18"
+core_version: "0.37b5"
+display_name: "Arcade (MAME 2000)"
 note: "This core uses the same BIOS/firmware as mame2003_plus. See emulators/mame2003_plus.yml for details."
 files: []

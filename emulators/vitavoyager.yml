@@ -2,5 +2,7 @@ emulator: "vitavoyager"
 type: alias
 alias_of: "vitaquake3"
 profiled_date: "2026-03-18"
+core_version: "git"
+display_name: "Star Trek: Voyager - Elite Force (vitaVoyager)"
 note: "This core uses the same BIOS/firmware as vitaquake3. See emulators/vitaquake3.yml for details."
 files: []

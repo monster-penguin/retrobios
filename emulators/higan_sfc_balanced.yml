@@ -2,5 +2,7 @@ emulator: "higan_sfc_balanced"
 type: alias
 alias_of: "bsnes"
 profiled_date: "2026-03-18"
+core_version: "v105 (Super Famicom Balanced)"
+display_name: "Nintendo - SNES / Famicom (nSide Balanced)"
 note: "This core uses the same BIOS/firmware as bsnes. See emulators/bsnes.yml for details."
 files: []

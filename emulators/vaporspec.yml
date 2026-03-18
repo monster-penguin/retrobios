@@ -2,6 +2,8 @@ emulator: VaporSpec
 type: game
 source: "https://github.com/libretro/libretro-vaporspec"
 profiled_date: "2026-03-18"
+core_version: "GIT"
+display_name: "VaporSpec"
 cores: [vaporspec]
 systems: []
 files: []

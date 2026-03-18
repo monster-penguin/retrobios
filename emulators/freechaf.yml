@@ -2,6 +2,8 @@ emulator: FreeChaF
 type: libretro
 source: "https://github.com/libretro/FreeChaF"
 profiled_date: "2026-03-18"
+core_version: "GIT"
+display_name: "Fairchild - ChannelF (FreeChaF)"
 cores:
   - freechaf
 systems:

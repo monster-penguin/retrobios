@@ -2,6 +2,8 @@ emulator: AppleWin
 type: libretro
 source: "https://github.com/audetto/AppleWin"
 profiled_date: "2026-03-18"
+core_version: "1.30.21.0"
+display_name: "Apple II (AppleWin)"
 cores:
   - applewin
 systems:

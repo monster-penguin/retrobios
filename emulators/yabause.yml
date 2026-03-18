@@ -2,5 +2,7 @@ emulator: "yabause"
 type: alias
 alias_of: "kronos"
 profiled_date: "2026-03-18"
+core_version: "v0.9.15"
+display_name: "Sega - Saturn (Yabause)"
 note: "This core uses the same BIOS/firmware as kronos. See emulators/kronos.yml for details."
 files: []

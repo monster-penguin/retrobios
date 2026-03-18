@@ -1,5 +1,7 @@
 emulator: MicroW8
 profiled_date: "2026-03-18"
+core_version: "0.2.2"
+display_name: "MicroW8"
 type: game
 cores: [uw8]
 systems: []

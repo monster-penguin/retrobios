@@ -2,6 +2,8 @@ emulator: Daphne
 type: libretro
 source: "https://github.com/libretro/daphne"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Arcade (Daphne)"
 systems:
   - arcade-laserdisc
 

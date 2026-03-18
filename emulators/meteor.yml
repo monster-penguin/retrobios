@@ -2,6 +2,8 @@ emulator: Meteor GBA
 type: libretro
 source: "https://github.com/libretro/meteor-libretro"
 profiled_date: "2026-03-18"
+core_version: "v1.4"
+display_name: "Nintendo - Game Boy Advance (Meteor)"
 cores:
   - meteor
 systems:

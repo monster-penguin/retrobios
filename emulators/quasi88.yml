@@ -2,6 +2,8 @@ emulator: QUASI88
 type: libretro
 source: "https://github.com/libretro/quasi88-libretro"
 profiled_date: "2026-03-18"
+core_version: "0.6.4"
+display_name: "NEC - PC-8000 / PC-8800 series (QUASI88)"
 cores:
   - quasi88
 systems:

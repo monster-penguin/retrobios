@@ -2,6 +2,8 @@ emulator: Beetle PCE (Mednafen PCE)
 type: libretro
 source: "https://github.com/libretro/beetle-pce-libretro"
 profiled_date: "2026-03-18"
+core_version: "v0.9.38.7"
+display_name: "NEC - PC Engine / SuperGrafx / CD (Beetle PCE)"
 cores: [mednafen_pce, mednafen_pce_fast, mednafen_supergrafx]
 systems: [nec-pc-engine]
 verification: existence

@@ -2,6 +2,8 @@ emulator: SDLPAL
 type: libretro
 source: "https://github.com/sdlpal/sdlpal"
 profiled_date: "2026-03-18"
+core_version: "v2.0.1"
+display_name: "SDLPAL"
 cores:
   - sdlpal
 systems:

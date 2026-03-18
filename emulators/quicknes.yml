@@ -2,5 +2,7 @@ emulator: "quicknes"
 type: alias
 alias_of: "fceumm"
 profiled_date: "2026-03-18"
+core_version: "1.0-WIP"
+display_name: "Nintendo - NES / Famicom (QuickNES)"
 note: "This core uses the same BIOS/firmware as fceumm. See emulators/fceumm.yml for details."
 files: []

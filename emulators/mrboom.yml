@@ -2,6 +2,8 @@ emulator: Mr.Boom
 type: game
 source: "https://github.com/libretro/mrboom-libretro"
 profiled_date: "2026-03-18"
+core_version: "3.1"
+display_name: "Mr.Boom (Bomberman)"
 cores: [mrboom]
 systems: []
 files: []

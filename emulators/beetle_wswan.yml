@@ -2,6 +2,8 @@ emulator: Beetle WonderSwan (Mednafen WonderSwan)
 type: libretro
 source: "https://github.com/libretro/beetle-wswan-libretro"
 profiled_date: "2026-03-18"
+core_version: "v0.9.35.1"
+display_name: "Bandai - WonderSwan/Color (Beetle Wonderswan)"
 systems: [bandai-wswan, bandai-wswanc]
 
 notes: |

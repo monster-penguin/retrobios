@@ -2,6 +2,8 @@ emulator: mpv
 type: utility
 source: "https://github.com/libretro/libretro-mpv"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "MPV"
 cores:
   - mpv
 systems: []

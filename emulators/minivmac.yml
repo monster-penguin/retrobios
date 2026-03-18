@@ -2,6 +2,8 @@ emulator: Mini vMac
 type: libretro
 source: "https://github.com/libretro/libretro-minivmac"
 profiled_date: "2026-03-18"
+core_version: "GIT"
+display_name: "Mac II (minivmac)"
 systems: [macintosh-ii]
 
 # Mini vMac is a Macintosh II emulator. The libretro port is hardcoded for

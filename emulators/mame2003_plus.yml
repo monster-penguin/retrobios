@@ -2,6 +2,8 @@ emulator: MAME 2003-Plus
 type: libretro
 source: "https://github.com/libretro/mame2003-plus-libretro"
 profiled_date: "2026-03-18"
+core_version: "2003-Plus"
+display_name: "Arcade (MAME 2003-Plus)"
 mame_version: "0.78 (plus backports)"
 systems:
   - snk-neogeo-mvs

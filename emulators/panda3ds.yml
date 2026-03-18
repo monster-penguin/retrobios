@@ -3,6 +3,8 @@ type: libretro
 core_name: panda3ds_libretro
 source: "https://github.com/panda3ds-emu/panda3ds"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Nintendo - 3DS (Panda3DS)"
 systems: [nintendo-3ds]
 
 notes: |

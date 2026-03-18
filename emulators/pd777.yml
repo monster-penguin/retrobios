@@ -2,6 +2,8 @@ emulator: PD777
 type: libretro
 source: "https://github.com/W88DodPECuThLOl/PD777"
 profiled_date: "2026-03-18"
+core_version: "v1.0.0"
+display_name: "Epoch - Cassette Vision (PD777)"
 cores:
   - pd777
 systems:

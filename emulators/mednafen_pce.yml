@@ -2,5 +2,7 @@ emulator: "mednafen_pce"
 type: alias
 alias_of: "beetle_pce"
 profiled_date: "2026-03-18"
+core_version: "v0.9.38.7"
+display_name: "NEC - PC Engine / SuperGrafx / CD (Beetle PCE)"
 note: "This core uses the same BIOS/firmware as beetle_pce. See emulators/beetle_pce.yml for details."
 files: []

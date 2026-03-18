@@ -2,6 +2,8 @@ emulator: SquirrelJME
 type: libretro
 source: "https://github.com/SquirrelJME/SquirrelJME"
 profiled_date: "2026-03-18"
+core_version: "0.3.0"
+display_name: "Java ME (SquirrelJME)"
 cores: [squirreljme]
 systems: [j2me]
 verification: existence

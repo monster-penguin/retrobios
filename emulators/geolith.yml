@@ -2,6 +2,8 @@ emulator: Geolith
 type: libretro
 source: "https://github.com/libretro/geolith-libretro"
 profiled_date: "2026-03-18"
+core_version: "0.3.0"
+display_name: "SNK - Neo Geo AES/MVS (Geolith)"
 systems:
   - snk-neogeo-mvs
   - snk-neogeo-aes

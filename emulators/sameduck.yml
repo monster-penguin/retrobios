@@ -2,5 +2,7 @@ emulator: "sameduck"
 type: alias
 alias_of: "sameboy"
 profiled_date: "2026-03-18"
+core_version: "git"
+display_name: "Mega Duck / Cougar Boy (SameDuck)"
 note: "This core uses the same BIOS/firmware as sameboy. See emulators/sameboy.yml for details."
 files: []

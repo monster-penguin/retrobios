@@ -2,6 +2,8 @@ emulator: TGB Dual
 type: libretro
 source: "https://github.com/libretro/tgbdual-libretro"
 profiled_date: "2026-03-18"
+core_version: "v0.8.3"
+display_name: "Nintendo - Game Boy / Color (TGB Dual)"
 cores:
   - TGB Dual
 systems:

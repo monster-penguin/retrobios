@@ -2,6 +2,8 @@ emulator: ProSystem
 type: libretro
 source: "https://github.com/libretro/prosystem-libretro"
 profiled_date: "2026-03-18"
+core_version: "1.3e"
+display_name: "Atari - 7800 (ProSystem)"
 cores:
   - prosystem
 systems:

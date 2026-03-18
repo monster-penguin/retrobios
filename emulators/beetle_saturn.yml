@@ -3,6 +3,8 @@ type: libretro
 core: mednafen_saturn_libretro
 source: "https://github.com/libretro/beetle-saturn-libretro"
 profiled_date: "2026-03-18"
+core_version: "v0.9.45.1"
+display_name: "Sega - Saturn (Beetle Saturn)"
 systems:
   - sega-saturn
 

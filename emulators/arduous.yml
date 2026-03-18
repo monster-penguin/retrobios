@@ -2,6 +2,8 @@ emulator: Arduous
 type: libretro
 source: "https://github.com/libretro/arduous"
 profiled_date: "2026-03-18"
+core_version: "0.1.0"
+display_name: "Arduboy (Arduous)"
 cores:
   - arduous
 systems:

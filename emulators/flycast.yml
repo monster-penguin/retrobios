@@ -2,6 +2,8 @@ emulator: Flycast
 type: standalone + libretro
 source: "https://github.com/flyinghead/flycast"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Sega - Dreamcast/Naomi (Flycast)"
 systems:
   - sega-dreamcast
   - sega-naomi

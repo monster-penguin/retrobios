@@ -2,6 +2,8 @@ emulator: VirtualXT
 type: libretro
 source: "https://github.com/libretro/virtualxt"
 profiled_date: "2026-03-18"
+core_version: "0.9.0"
+display_name: "VirtualXT"
 systems: [ibm-pc]
 
 # VirtualXT is a Turbo PC/XT emulator (Intel 8088/186). Written in Odin.

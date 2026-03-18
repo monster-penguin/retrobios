@@ -2,5 +2,7 @@ emulator: "mednafen_psx"
 type: alias
 alias_of: "beetle_psx"
 profiled_date: "2026-03-18"
+core_version: "v0.9.44.1"
+display_name: "Sony - PlayStation (Beetle PSX)"
 note: "This core uses the same BIOS/firmware as beetle_psx. See emulators/beetle_psx.yml for details."
 files: []

@@ -2,6 +2,8 @@ emulator: MelonDS
 type: standalone + libretro
 source: "https://github.com/melonDS-emu/melonDS"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Nintendo - DS (melonDS)"
 systems: [nintendo-ds, nintendo-dsi]
 
 notes: |

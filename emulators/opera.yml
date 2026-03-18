@@ -3,6 +3,8 @@ type: libretro
 core: opera_libretro
 source: "https://github.com/libretro/opera-libretro"
 profiled_date: "2026-03-18"
+core_version: "1.0.0"
+display_name: "The 3DO Company - 3DO (Opera)"
 systems:
   - 3do
 

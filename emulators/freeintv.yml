@@ -2,6 +2,8 @@ emulator: FreeIntv
 type: libretro
 source: "https://github.com/libretro/FreeIntv"
 profiled_date: "2026-03-18"
+core_version: "2018.1.5"
+display_name: "Mattel - Intellivision (FreeIntv)"
 cores:
   - freeintv
 systems:

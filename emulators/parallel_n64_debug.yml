@@ -2,5 +2,7 @@ emulator: "parallel_n64_debug"
 type: alias
 alias_of: "mupen64plus"
 profiled_date: "2026-03-18"
+core_version: "2.0-rc2"
+display_name: "Nintendo - Nintendo 64 (ParaLLEl) (Debug)"
 note: "This core uses the same BIOS/firmware as mupen64plus. See emulators/mupen64plus.yml for details."
 files: []

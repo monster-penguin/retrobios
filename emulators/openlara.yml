@@ -2,6 +2,8 @@ emulator: OpenLara
 type: libretro
 source: "https://github.com/libretro/OpenLara"
 profiled_date: "2026-03-18"
+core_version: "v1"
+display_name: "Tomb Raider (OpenLara)"
 cores: [openlara]
 systems: [tomb-raider]
 verification: existence

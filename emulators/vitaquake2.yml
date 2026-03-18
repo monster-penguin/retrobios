@@ -2,6 +2,8 @@ emulator: vitaQuakeII
 type: libretro
 source: "https://github.com/libretro/vitaquake2"
 profiled_date: "2026-03-18"
+core_version: "git"
+display_name: "Quake II (vitaQuake 2)"
 cores: [vitaquake2, vitaquake2-rogue, vitaquake2-xatrix, vitaquake2-zaero]
 systems: [quake2]
 verification: existence

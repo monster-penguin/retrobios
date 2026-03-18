@@ -2,6 +2,8 @@ emulator: Beetle PSX (Mednafen PSX)
 type: libretro
 source: "https://github.com/libretro/beetle-psx-libretro"
 profiled_date: "2026-03-18"
+core_version: "v0.9.44.1"
+display_name: "Sony - PlayStation (Beetle PSX)"
 cores: [mednafen_psx, mednafen_psx_hw]
 systems: [sony-playstation]
 bios_size: 524288  # 512 KB for all accepted BIOS images

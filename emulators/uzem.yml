@@ -2,6 +2,9 @@ emulator: uzem
 type: libretro
 source: "https://github.com/libretro/libretro-uzem"
 profiled_date: "2026-03-18"
+core_version: "3.1"
+display_name: "Uzem (Uzebox)"
+display_name: "Uzebox (Uzem)"
 cores:
   - uzem
 systems:

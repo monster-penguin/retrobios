@@ -6,6 +6,8 @@ emulator: Vita3K
 type: standalone
 source: "https://github.com/Vita3K/Vita3K"
 profiled_date: "2026-03-18"
+core_version: "0.2.1"
+display_name: "Vita3K (PS Vita)"
 systems: [sony-playstation-vita]
 
 firmware_file: "PSVUPDAT.PUP"

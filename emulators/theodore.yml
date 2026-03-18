@@ -1,30 +1,12 @@
-# Theodore - Thomson MO/TO computer emulator
-# https://github.com/Zlika/theodore
-# Emulates: TO7, TO7/70, TO8, TO8D, TO9, TO9+, MO5, MO6, PC128 (Olivetti Prodest)
-# Based on Daniel Coulom's DCTO8D, DCTO9P, and DCMO5 emulators
-
-core_name: theodore
-systems:
-  - Thomson MO5
-  - Thomson MO6
-  - Thomson TO7
-  - Thomson TO7/70
-  - Thomson TO8
-  - Thomson TO8D
-  - Thomson TO9
-  - Thomson TO9+
-  - Olivetti Prodest PC128
-
-bios_files: []
-# All system ROMs are embedded directly in the source code as C arrays:
-#   rom_to7.inc, rom_to770.inc, rom_to8.inc, rom_to8d.inc,
-#   rom_to9.inc, rom_to9p.inc, rom_mo5.inc, rom_mo6.inc,
-#   rom_pc128.inc, basic-1_memo7.inc, basic-128_memo7.inc
-# No external BIOS or firmware files are required.
-
-notes: |
-  Theodore embeds all Thomson monitor ROMs and BASIC ROMs at compile time.
-  The core option "theodore_rom" selects the emulated model (Auto by default).
-  TO7 and TO7/70 auto-load the BASIC 1 cartridge when no cartridge is provided.
-  Supported file formats: fd, sap, k7, m7, m5, rom.
-  The core can run without any game loaded (SET_SUPPORT_NO_GAME = true).
+emulator: Theodore
+type: libretro
+source: "https://github.com/Zlika/theodore"
+profiled_date: "2026-03-18"
+core_version: "v4.1"
+display_name: "Thomson - MO/TO (Theodore)"
+cores: [theodore]
+systems: [thomson-to7, thomson-to770, thomson-to8, thomson-to8d, thomson-to9, thomson-to9plus, thomson-mo5, thomson-mo6, olivetti-pc128]
+notes: >
+  All system ROMs (monitor + BASIC) are compiled into the binary.
+  No external BIOS files needed.
+files: []

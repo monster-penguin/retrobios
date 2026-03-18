@@ -2,5 +2,7 @@ emulator: "nekop2"
 type: alias
 alias_of: "np2kai"
 profiled_date: "2026-03-18"
+core_version: "0.86"
+display_name: "NEC - PC-98 (Neko Project II)"
 note: "This core uses the same BIOS/firmware as np2kai. See emulators/np2kai.yml for details."
 files: []

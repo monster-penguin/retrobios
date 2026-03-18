@@ -2,6 +2,8 @@ emulator: Holani
 type: libretro
 source: "https://github.com/LLeny/holani-retro"
 profiled_date: "2026-03-18"
+core_version: "0.6.0"
+display_name: "Atari - Lynx (Holani)"
 cores: [holani]
 systems: [atari-lynx]
 verification: existence

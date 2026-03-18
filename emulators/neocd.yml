@@ -2,6 +2,8 @@ emulator: NeoCD
 type: libretro
 source: "https://github.com/libretro/neocd_libretro"
 profiled_date: "2026-03-18"
+core_version: "2019"
+display_name: "SNK - Neo Geo CD (NeoCD)"
 systems:
   - snk-neogeo-cd
 

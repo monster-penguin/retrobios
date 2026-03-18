@@ -2,6 +2,8 @@ emulator: MojoZork
 type: game
 source: "https://github.com/libretro/libretro-mojozork"
 profiled_date: "2026-03-18"
+core_version: "0.1"
+display_name: "Infocom Z-Machine (MojoZork)"
 cores:
   - mojozork
 systems: []

@@ -2,6 +2,8 @@ emulator: Dolphin
 type: standalone + libretro
 source: "https://github.com/dolphin-emu/dolphin"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Nintendo - GameCube / Wii (Dolphin)"
 systems: [nintendo-gamecube, nintendo-wii]
 
 # Dolphin has HLE for most system functions, so real BIOS/firmware files

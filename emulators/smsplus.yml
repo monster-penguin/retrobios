@@ -2,6 +2,8 @@ emulator: SMS Plus GX
 type: libretro
 source: "https://github.com/libretro/smsplus-gx"
 profiled_date: "2026-03-18"
+core_version: "1.8"
+display_name: "Sega - MS/GG (SMS Plus GX)"
 cores:
   - smsplus
 systems:

@@ -2,6 +2,8 @@ emulator: Ardens
 type: libretro
 source: "https://github.com/tiberiusbrown/ardens"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Arduboy (Ardens)"
 cores:
   - ardens
 systems:

@@ -2,6 +2,8 @@ emulator: "X Millennium"
 type: libretro
 source: "https://github.com/libretro/xmil-libretro"
 profiled_date: "2026-03-18"
+core_version: "0.60"
+display_name: "Sharp X1 (X Millennium)"
 cores:
   - x1
 systems:

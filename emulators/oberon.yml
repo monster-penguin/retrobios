@@ -2,6 +2,9 @@ emulator: Oberon
 type: libretro
 source: "https://github.com/libretro/oberon-risc-emu"
 profiled_date: "2026-03-18"
+core_version: "2020-07-01"
+display_name: "Project Oberon RISC"
+display_name: "Oberon RISC Emulator"
 cores:
   - oberon
 systems: [oberon]

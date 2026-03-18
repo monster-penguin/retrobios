@@ -1,6 +1,9 @@
 emulator: "mkxp-z"
 type: alias
 alias_of: "mkxp_z"
+core_version: ""
+display_name: "RPG Maker XP/VX/VX Ace (mkxp-z)"
 profiled_date: "2026-03-18"
+display_name: "RPG Maker XP/VX/VX Ace (mkxp-z)"
 note: "This core uses the same BIOS/firmware as mkxp_z. See emulators/mkxp_z.yml for details."
 files: []

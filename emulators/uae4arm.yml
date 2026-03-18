@@ -2,5 +2,7 @@ emulator: "uae4arm"
 type: alias
 alias_of: "puae"
 profiled_date: "2026-03-18"
+core_version: "v0.5"
+display_name: "Commodore - Amiga (UAE4ARM)"
 note: "This core uses the same BIOS/firmware as puae. See emulators/puae.yml for details."
 files: []

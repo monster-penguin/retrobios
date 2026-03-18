@@ -1,6 +1,9 @@
 emulator: "chimerasnes"
 type: alias
 alias_of: "snes9x"
+core_version: ""
+display_name: "Nintendo - SNES / SFC (ChimeraSNES)"
 profiled_date: "2026-03-18"
+display_name: "Nintendo - SNES / SFC (ChimeraSNES)"
 note: "This core uses the same BIOS/firmware as snes9x. See emulators/snes9x.yml for details."
 files: []

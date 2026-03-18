@@ -2,6 +2,8 @@ emulator: RVVM
 type: libretro
 source: "https://github.com/LekKit/RVVM"
 profiled_date: "2026-03-18"
+core_version: "0.6-git"
+display_name: "RVVM"
 systems: [riscv]
 
 # RVVM is a RISC-V virtual machine / emulator. The libretro core loads a

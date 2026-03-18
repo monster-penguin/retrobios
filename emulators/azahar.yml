@@ -2,5 +2,7 @@ emulator: "azahar"
 type: alias
 alias_of: "citra"
 profiled_date: "2026-03-18"
+core_version: "Git"
+display_name: "Nintendo - 3DS (Azahar)"
 note: "This core uses the same BIOS/firmware as citra. See emulators/citra.yml for details."
 files: []

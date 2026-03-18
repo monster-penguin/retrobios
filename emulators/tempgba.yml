@@ -2,6 +2,8 @@ emulator: TempGBA
 type: libretro
 source: "https://github.com/libretro/TempGBA-libretro"
 profiled_date: "2026-03-18"
+core_version: "26731013"
+display_name: "Nintendo - Game Boy Advance (TempGBA)"
 cores:
   - tempgba
 systems:

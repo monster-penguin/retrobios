@@ -2,6 +2,9 @@ emulator: PuzzleScript
 type: game
 source: "https://github.com/libretro/puzzlescript-libretro"
 profiled_date: "2026-03-18"
+core_version: ""
+display_name: "PuzzleScript (pzretro)"
+display_name: "PuzzleScript (pzretro)"
 cores:
   - puzzlescript
 systems: []

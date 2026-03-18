@@ -2,6 +2,8 @@ emulator: WASM-4
 type: game
 source: "https://github.com/aduros/wasm4"
 profiled_date: "2026-03-18"
+core_version: "2.1.0"
+display_name: "WASM-4"
 cores: [wasm4]
 systems: []
 files: []

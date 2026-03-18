@@ -2,5 +2,7 @@ emulator: "dirksimple"
 type: alias
 alias_of: "daphne"
 profiled_date: "2026-03-18"
+core_version: "0.2"
+display_name: "Laserdisc arcade game (DirkSimple)"
 note: "This core uses the same BIOS/firmware as daphne. See emulators/daphne.yml for details."
 files: []
