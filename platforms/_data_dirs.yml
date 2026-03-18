@@ -1,0 +1,38 @@
+# Data directory sources for libretro cores.
+# Platforms reference entries by key via data_directories: [{ref: key, destination: path}].
+# Pack generator auto-refreshes from source. Use --offline to skip.
+# Each entry cites the original emulator source code that requires the directory.
+
+data_directories:
+  # ref: DolphinLibretro/Boot.cpp:72-73 — system/dolphin-emu/Sys/
+  dolphin-sys:
+    source_url: "https://github.com/libretro/dolphin/archive/{version}.tar.gz"
+    source_path: "dolphin-{version}/Data/Sys"
+    version: master
+    local_cache: data/dolphin-sys
+    exclude: [Themes]
+    description: "Dolphin system data (GameSettings, DSP, fonts, shaders)"
+
+  # ref: ppsspp/ext/native/ui/ui_screen.cpp — system/PPSSPP/
+  ppsspp-assets:
+    source_url: "https://github.com/hrydgard/ppsspp/archive/{version}.tar.gz"
+    source_path: "ppsspp-{version}/assets"
+    version: master
+    local_cache: data/ppsspp-assets
+    description: "PPSSPP fonts, backgrounds, shaders, lang files"
+
+  # ref: bluemsx-libretro/system/ — system/Databases/
+  bluemsx-databases:
+    source_url: "https://github.com/libretro/blueMSX-libretro/archive/{version}.tar.gz"
+    source_path: "blueMSX-libretro-{version}/system/Databases"
+    version: master
+    local_cache: data/bluemsx-databases
+    description: "blueMSX machine database"
+
+  # ref: bluemsx-libretro/system/ — system/Machines/
+  bluemsx-machines:
+    source_url: "https://github.com/libretro/blueMSX-libretro/archive/{version}.tar.gz"
+    source_path: "blueMSX-libretro-{version}/system/Machines"
+    version: master
+    local_cache: data/bluemsx-machines
+    description: "blueMSX machine ROM configs"
