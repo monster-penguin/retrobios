@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-18T06:47:11Z",
-  "total_files": 5358,
-  "total_size": 4888015630,
+  "generated_at": "2026-03-18T07:24:56Z",
+  "total_files": 5357,
+  "total_size": 4887546948,
   "files": {
     "520d3d1b5897800af47f92efd2444a26b7a7dead": {
       "path": "bios/3DO Company/3DO/3do_arcade_saot.bin",
@@ -19190,15 +19190,6 @@
       "md5": "56683e58930b2b554e6594fe04eda238",
       "sha256": "c68f56d7cbcd4b621dd39804aa6bd50950df2946b970f81fd8bd87dae21c0813",
       "crc32": "7bad9043"
-    },
-    "55068f5253956601a2eddd9c68efb6659ea27ac7": {
-      "path": "bios/Philips/CD-i/bios/cdibios.zip",
-      "name": "cdibios.zip",
-      "size": 468682,
-      "sha1": "55068f5253956601a2eddd9c68efb6659ea27ac7",
-      "md5": "80efc8294a76783c92e9f7b5a6b6c11b",
-      "sha256": "038fecfcca4fbb6ec17b59dded2322f2dd8d4564b88d2ccdc8d2400eb32164dd",
-      "crc32": "58926027"
     },
     "5d0b1b55b0d0958a5c9069c3219d4da5a87a6b93": {
       "path": "bios/Philips/CD-i/cdimono1.zip",
@@ -50360,7 +50351,6 @@
       "c2fae3ff41cc4f94be0fdaed1523ea99": "858c62e21d3a42d2e70641d001a46ad44e923614",
       "4d8f5238df9a374ce3640262773ba885": "e6714b3d5fdc7023348435a77a016b763e0992b1",
       "56683e58930b2b554e6594fe04eda238": "e1d30b1d6a23aaaa765102590dc3ffff19c0b09f",
-      "80efc8294a76783c92e9f7b5a6b6c11b": "55068f5253956601a2eddd9c68efb6659ea27ac7",
       "c59f92647701428bc453976740eb75cf": "5d0b1b55b0d0958a5c9069c3219d4da5a87a6b93",
       "97aa5f47030cd9fdb679d4fafbb0e332": "9492247203b71c12d88fad0a5437376941c7870a",
       "f1071cdb0b6b10dde94d3bc8a6146387": "a6120aed50831c9c0d95dbdf707820f601d9452e",
@@ -53863,8 +53853,7 @@
       ],
       "cdibios.zip": [
         "e7d2a0dad62d6f75bc10f48a376da0a99b764571",
-        "16072afaa65d1b059346616ac5b5a600c63ff1d1",
-        "55068f5253956601a2eddd9c68efb6659ea27ac7"
+        "16072afaa65d1b059346616ac5b5a600c63ff1d1"
       ],
       "coh1000a.zip": [
         "f8526dcec63402d2533d8180e217fa03a6322c34",
@@ -71351,7 +71340,6 @@
       "25314c62": "858c62e21d3a42d2e70641d001a46ad44e923614",
       "59205298": "e6714b3d5fdc7023348435a77a016b763e0992b1",
       "7bad9043": "e1d30b1d6a23aaaa765102590dc3ffff19c0b09f",
-      "58926027": "55068f5253956601a2eddd9c68efb6659ea27ac7",
       "0a67ff2c": "5d0b1b55b0d0958a5c9069c3219d4da5a87a6b93",
       "4eab5eda": "9492247203b71c12d88fad0a5437376941c7870a",
       "a318e8d6": "a6120aed50831c9c0d95dbdf707820f601d9452e",
