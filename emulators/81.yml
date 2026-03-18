@@ -5,40 +5,273 @@ upstream: "https://github.com/charlierobson/EightyOne"
 profiled_date: "2026-03-18"
 core_version: "1.0a"
 display_name: "Sinclair - ZX 81 (EightyOne)"
-cores:
-  - 81
+cores: [81]
 systems:
   - sinclair-zx81
+  - sinclair-zx80
+  - jupiter-ace
+  - timex-ts1500
+  - timex-ts2068
+  - lambda-8300
+  - ringo-r470
+  - microdigital-tk85
 
 notes: |
-  Libretro core embeds zx81.rom and dkchr.rom as C arrays (xxd -i at build).
-  Core never calls RETRO_ENVIRONMENT_GET_SYSTEM_DIRECTORY.
-  Standalone EightyOne loads ROMs from filesystem (cwd/ROM/<filename>).
+  Libretro port embeds zx81.rom and dkchr.rom as C arrays (xxd -i).
+  Core never accesses filesystem for ROMs. Hardcodes MACHINEZX81.
+  ref: 81-libretro/81/zx81/snap.c:37-38, 487-508
 
-  Original emulator supports ~15 machines (ZX80, ZX81, Jupiter ACE, TS1500,
-  Lambda, R470, TK85, ZX97LE, Spectrum variants). Libretro port hardcodes
-  MACHINEZX81 — only zx81.rom and dkchr.rom are embedded.
+  Original EightyOne supports 15+ machines, loads ROMs from ROM/ directory.
+  ref: EightyOne/Source/zx81/snap.cpp:1219-1279 — open(cwd/ROM/filename)
+  ref: EightyOne/Source/HW_.cpp:2734 — LoadRomBox() per-machine ROM list
+
+  No platform currently requires these files (libretro core embeds them).
+  Archived for museum preservation and future standalone platform use.
 
 files:
-  # mode: standalone = only needed when running as standalone emulator
-  # mode: libretro = only needed when running as libretro core
-  # mode: both (default if absent) = needed in both modes
+  # --- libretro core: embedded, no external files needed ---
+  # mode: standalone = needed only for standalone emulator
+  # mode: libretro = needed only for libretro core
+  # mode: both = needed in both modes (default if absent)
 
-  # ref: 81-libretro/81/zx81/snap.c:37,489-496 — embedded as bin_ROM_zx81_rom
-  # ref: EightyOne/Source/zx81/snap.cpp:1219-1279 — open(cwd/ROM/zx81.rom)
+  # ZX81 (default machine for libretro port)
   - name: zx81.rom
     system: sinclair-zx81
     required: true
     mode: standalone
     size: 8192
-    note: "ZX81 8K BASIC ROM. Embedded in libretro core, external for standalone."
-    source_ref: "EightyOne/Source/zx81/snap.cpp:1264, 81-libretro/81/zx81/snap.c:489"
-
-  # ref: 81-libretro/81/zx81/snap.c:38,499-508 — embedded as bin_ROM_dkchr_rom
+    md5: db398d4e4e93a6d4dee3bfe146918219
+    note: "ZX81 8K BASIC ROM (edition 3). Embedded in libretro core."
+    source_ref: "81-libretro/81/zx81/snap.c:489, EightyOne/Source/HW_.cpp:2744"
+  - name: zx81.edition1.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 8192
+    md5: 56efa70bbaf311915c56cfdc70584e96
+    note: "ZX81 ROM edition 1"
+    source_ref: "EightyOne/Source/HW_.cpp:2742"
+  - name: zx81.edition2.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 8192
+    md5: b9fd58d324b6297f2a696d40722f95dc
+    note: "ZX81 ROM edition 2"
+    source_ref: "EightyOne/Source/HW_.cpp:2743"
   - name: dkchr.rom
     system: sinclair-zx81
     required: false
     mode: standalone
     size: 4096
+    md5: ""
     note: "dK'tronics character ROM. Embedded in libretro core."
     source_ref: "81-libretro/81/zx81/snap.c:499"
+
+  # ZX80
+  - name: zx80.rom
+    system: sinclair-zx80
+    required: true
+    mode: standalone
+    size: 4096
+    md5: e03bd725f98be45aac39c85f7fd41ce4
+    note: "ZX80 4K ROM"
+    source_ref: "EightyOne/Source/HW_.cpp:2737"
+
+  # ZX97LE
+  - name: zx97.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 32768
+    md5: cc69fdd6195acdfd1e533b2eb4c2a632
+    note: "ZX97LE 32K ROM"
+    source_ref: "EightyOne/Source/HW_.cpp:2789"
+
+  # Jupiter ACE
+  - name: jupiterace.rom
+    system: jupiter-ace
+    required: true
+    mode: standalone
+    size: 8192
+    md5: db6efdfd82cebdfbb493d85b1a5efc3c
+    note: "Jupiter ACE Forth ROM"
+    source_ref: "EightyOne/Source/HW_.cpp:2753"
+
+  # Timex TS1500
+  - name: ts1500.rom
+    system: timex-ts1500
+    required: true
+    mode: standalone
+    size: 8192
+    md5: dea07eb23c5768ddf3ed90740eab85cb
+    source_ref: "EightyOne/Source/HW_.cpp:2757"
+
+  # Timex TS2068
+  - name: ts2068.rom
+    system: timex-ts2068
+    required: true
+    mode: standalone
+    size: 24576
+    md5: 9194283503a105f3f3dfba13e61e993f
+    source_ref: "EightyOne/Source/ROMs/ts2068.rom"
+
+  # Lambda 8300
+  - name: lambda8300.rom
+    system: lambda-8300
+    required: true
+    mode: standalone
+    size: 8192
+    md5: e232dfce1dcae65953583f66af146232
+    source_ref: "EightyOne/Source/HW_.cpp:2773"
+  - name: lambda8300colour.rom
+    system: lambda-8300
+    required: false
+    mode: standalone
+    size: 8192
+    md5: 03aeea3abc7b1ca5f241935477ce71be
+    source_ref: "EightyOne/Source/ROMs/lambda8300colour.rom"
+
+  # Ringo R470
+  - name: ringo470.rom
+    system: ringo-r470
+    required: true
+    mode: standalone
+    size: 8192
+    md5: a70bbb0dfe4bb8556e74258062766f5d
+    source_ref: "EightyOne/Source/HW_.cpp:2769"
+
+  # Microdigital TK85
+  - name: tk85.rom
+    system: microdigital-tk85
+    required: true
+    mode: standalone
+    size: 10240
+    md5: b301cdad72448d92598197b45bead8fe
+    source_ref: "EightyOne/Source/HW_.cpp:2777"
+
+  # Timex TC2048
+  - name: tc2048.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: 9dd7ecf784a6c04265c073c236f5fadb
+    source_ref: "EightyOne/Source/ROMs/tc2048.rom"
+
+  # ZX Spectrum variants (standalone mode, multiple localizations)
+  - name: spectrum48.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: 4c42a2f075212361c3117015b107ff68
+    note: "Spectrum 48K"
+    source_ref: "EightyOne/Source/HW_.cpp:2802"
+  - name: spectrum48.spanish.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: 60e1bd8b4d59b55e5b2175126239517f
+  - name: spectrum48.arabic.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: 9f6f56003307b9d55be96f406fdbf2b1
+  - name: spectrum48.arabic.version1.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: a6a1e3a68bb5523997103c3925a46fe4
+  - name: spectrum48.arabic.version2.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: fac3d08455328c34f0d06344d89cec0e
+  - name: spectrum48.nordic.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: f058f27ae61af225fe5baacc1d89adfc
+  - name: spectrum128.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 32768
+    md5: 85fede415f4294cc777517d7eada482e
+    note: "Spectrum 128K"
+  - name: spectrum128.spanish.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 32768
+    md5: 84aef735da122d55e41a33455c7c3506
+  - name: spectrum+2.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 32768
+    md5: 238f77692156a5c49d20c0aa2862e8bb
+    note: "Spectrum +2"
+  - name: spectrum+2.french.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 32768
+    md5: 1fff14aeca8e1dd3670142982cc6bb36
+  - name: spectrum+2.spanish.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 32768
+    md5: 43cf648e27efc9be8186bb7049505d79
+  - name: spectrum+3.version4-0.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 65536
+    md5: 05de80a055b5e7866f55769db0584d6e
+    note: "Spectrum +3"
+  - name: spectrum+3.version4-0.spanish.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 65536
+    md5: 990dfe9d37b48595f5befe0e4ff4b7c6
+  - name: spectrum+3.version4-1.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 65536
+    md5: 7e00ed3562abfd188d0d4da03e80bc0a
+  - name: spectrum+3.version4-1.spanish.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 65536
+    md5: 52d130178c1106fef765b5f119fb43bc
+  - name: spectrum+3.arabic3-a.english4-0.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 131072
+    md5: 30316fa0ed7ee6682933960e11b48d60
+  - name: tk90.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: b7893ad25728fbf6410f08eddd4a1cad
+    note: "Microdigital TK90X"
+  - name: tk95.rom
+    system: sinclair-zx81
+    required: false
+    mode: standalone
+    size: 16384
+    md5: b7893ad25728fbf6410f08eddd4a1cad
+    note: "Microdigital TK95"

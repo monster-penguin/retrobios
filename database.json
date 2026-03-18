@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-18T16:37:01Z",
-  "total_files": 5567,
-  "total_size": 4908292673,
+  "generated_at": "2026-03-18T16:46:00Z",
+  "total_files": 5593,
+  "total_size": 4909044289,
   "files": {
     "520d3d1b5897800af47f92efd2444a26b7a7dead": {
       "path": "bios/3DO Company/3DO/3do_arcade_saot.bin",
@@ -15159,6 +15159,33 @@
       "sha256": "5349560b6f2526a49aa3a2751f3287897fbfd53fb14f685ed661bd1242a3a1ee",
       "crc32": "1690ba5c"
     },
+    "597ba8a15a292688333c84dc9fd35172abe5e7e6": {
+      "path": "bios/Jupiter/ACE/jupiterace.rom",
+      "name": "jupiterace.rom",
+      "size": 8192,
+      "sha1": "597ba8a15a292688333c84dc9fd35172abe5e7e6",
+      "md5": "db6efdfd82cebdfbb493d85b1a5efc3c",
+      "sha256": "6c898799cd9782f24e98dfb4302d01984daabb9cffe353a2d491212bea0b6d2d",
+      "crc32": "e5b1f5f6"
+    },
+    "c875db1bb5d338c814cad868b3282c767d59c4f5": {
+      "path": "bios/Lambda/8300/lambda8300.rom",
+      "name": "lambda8300.rom",
+      "size": 8192,
+      "sha1": "c875db1bb5d338c814cad868b3282c767d59c4f5",
+      "md5": "e232dfce1dcae65953583f66af146232",
+      "sha256": "9291e86e5a89086d8278621528853c6169797264d2c5bd0dc5fc95c27e32014f",
+      "crc32": "8fe1a1b7"
+    },
+    "9b22daf2f3a991aa6a358ef95b091654c3ca1bdf": {
+      "path": "bios/Lambda/8300/lambda8300colour.rom",
+      "name": "lambda8300colour.rom",
+      "size": 8192,
+      "sha1": "9b22daf2f3a991aa6a358ef95b091654c3ca1bdf",
+      "md5": "03aeea3abc7b1ca5f241935477ce71be",
+      "sha256": "abc908e96b3c4a43b69c400424b027bf07b0b79eb8d6b89f39adfe7bd6326b02",
+      "crc32": "8a49b2c3"
+    },
     "b2e1955d957a475de2411770452eff4ea19f4cee": {
       "path": "bios/Magnavox/Odyssey2/o2rom.bin",
       "name": "o2rom.bin",
@@ -15275,6 +15302,15 @@
       "md5": "9bc4cc42958a2a120670e5bc0bfc1d5e",
       "sha256": "67dfa3f5a8a683ef0c972a4329ba6fea283586b0e52247b4e64dc183c3e7d92c",
       "crc32": "7ff336f4"
+    },
+    "7b961a1733fc047eb682150a32e17bca10a018d2": {
+      "path": "bios/Microdigital/TK85/tk85.rom",
+      "name": "tk85.rom",
+      "size": 10240,
+      "sha1": "7b961a1733fc047eb682150a32e17bca10a018d2",
+      "md5": "b301cdad72448d92598197b45bead8fe",
+      "sha256": "3f32a40c0a309bb511a749ac93f93d73f64096cbfade162c06c2ec8dd1a317e8",
+      "crc32": "8972d756"
     },
     "5996972d3e033f6c525c1988c563b4ffe4c58f22": {
       "path": "bios/Microsoft/Chihiro/cerbios.bin",
@@ -43608,6 +43644,15 @@
       "sha256": "0cc333aa339e76f6c5673b1da3334de582443caf3388b457baf785c2ae3040d2",
       "crc32": "1184b3e8"
     },
+    "191c4994adfffe4f83b98dc3959dde2724b1dbac": {
+      "path": "bios/Ringo/R470/ringo470.rom",
+      "name": "ringo470.rom",
+      "size": 8192,
+      "sha1": "191c4994adfffe4f83b98dc3959dde2724b1dbac",
+      "md5": "a70bbb0dfe4bb8556e74258062766f5d",
+      "sha256": "1b7b0a05f72134f93346d2e83307a4e3a8ff67909c12b5f9b68a5bd42db8e7e2",
+      "crc32": "b9c5abec"
+    },
     "12b54bf6bf277791445c2618065ec88e0302957c": {
       "path": "bios/SNK/Neo Geo/.variants/aes.zip",
       "name": "aes.zip",
@@ -47127,6 +47172,15 @@
       "sha256": "8a39aae2b2eb3c9fff09dc0d80bca9ffcb981f1665d9067ea1131129f3353b2b",
       "crc32": "37f87fac"
     },
+    "b6769a3197c77009e0933e038c15b43cf4c98c7a": {
+      "path": "bios/Sinclair/ZX 80/zx80.rom",
+      "name": "zx80.rom",
+      "size": 4096,
+      "sha1": "b6769a3197c77009e0933e038c15b43cf4c98c7a",
+      "md5": "e03bd725f98be45aac39c85f7fd41ce4",
+      "sha256": "9374711cb6a5fd53c1c98d1d20ecb444d01d621a322f3d066ef216d515ac5161",
+      "crc32": "4c7fc597"
+    },
     "04e352ab6d6ca7f50109f67c850d9dc0f467de77": {
       "path": "bios/Sinclair/ZX 81/dkchr.rom",
       "name": "dkchr.rom",
@@ -47136,6 +47190,24 @@
       "sha256": "079ad784af12e6bf0b5c52a7b4d92da5ae4acddd0b13d73ec4221b49636a6c51",
       "crc32": "761137d7"
     },
+    "a0ade36540561cc1691bb6f0c42ceae12484a102": {
+      "path": "bios/Sinclair/ZX 81/zx81.edition1.rom",
+      "name": "zx81.edition1.rom",
+      "size": 8192,
+      "sha1": "a0ade36540561cc1691bb6f0c42ceae12484a102",
+      "md5": "56efa70bbaf311915c56cfdc70584e96",
+      "sha256": "dae1906d2ef01acb3fffd0994b0cd5d551b5b354ae6bede0f16c6fb4ee2a2177",
+      "crc32": "fcbbd617"
+    },
+    "c6d8e06cb936989f6e1cc7a56d1f092da854a515": {
+      "path": "bios/Sinclair/ZX 81/zx81.edition2.rom",
+      "name": "zx81.edition2.rom",
+      "size": 8192,
+      "sha1": "c6d8e06cb936989f6e1cc7a56d1f092da854a515",
+      "md5": "b9fd58d324b6297f2a696d40722f95dc",
+      "sha256": "eadcbff4479cd88013286ef3111312333112fcd8895c23138bc2d1ca495269f8",
+      "crc32": "522c37b8"
+    },
     "7b143ee964e9ada89d1f9e88f0bd48d919184cfc": {
       "path": "bios/Sinclair/ZX 81/zx81.rom",
       "name": "zx81.rom",
@@ -47144,6 +47216,15 @@
       "md5": "db398d4e4e93a6d4dee3bfe146918219",
       "sha256": "14ad84f4243efcd41587ff46ab932d11087043e8d455a1ed2a227b9657828dfa",
       "crc32": "4b1dd6eb"
+    },
+    "b2a486efdc7b2bc3dc8e5a441ea5532bfa3207bd": {
+      "path": "bios/Sinclair/ZX 81/zx97.rom",
+      "name": "zx97.rom",
+      "size": 32768,
+      "sha1": "b2a486efdc7b2bc3dc8e5a441ea5532bfa3207bd",
+      "md5": "cc69fdd6195acdfd1e533b2eb4c2a632",
+      "sha256": "4b6cbacd196b76bed097b00ca1d07e2a428d8afec22649eaab5dde7086d32722",
+      "crc32": "5cf49744"
     },
     "4f4b11ec22326280bdb96e3baf9db4b4cb1d02c5": {
       "path": "bios/Sinclair/ZX Spectrum/128-0.rom",
@@ -47397,6 +47478,132 @@
       "sha256": "d6156f2a392b3259514f107814349f23dc0c5d56780008fa438dbeae8b8f0b66",
       "crc32": "37c591b2"
     },
+    "8a5be00921afd4e2c74059c217b31b9fb51c3d41": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+2.french.rom",
+      "name": "spectrum+2.french.rom",
+      "size": 32768,
+      "sha1": "8a5be00921afd4e2c74059c217b31b9fb51c3d41",
+      "md5": "1fff14aeca8e1dd3670142982cc6bb36",
+      "sha256": "6842c2f29d81af85a87b75c77c01330473ae7d903944222d0f910afb8a36e983",
+      "crc32": "8f769de7"
+    },
+    "8cafb292af58617907b9e6b9093d3588a75849b8": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+2.rom",
+      "name": "spectrum+2.rom",
+      "size": 32768,
+      "sha1": "8cafb292af58617907b9e6b9093d3588a75849b8",
+      "md5": "238f77692156a5c49d20c0aa2862e8bb",
+      "sha256": "dae0690d8b433ea22b76b62520341f784071dbde0d02f50af0e3fd20fc6bca4a",
+      "crc32": "e7a517dc"
+    },
+    "baca5d798b3e786078feded19486d9fc29dbd4b7": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+2.spanish.rom",
+      "name": "spectrum+2.spanish.rom",
+      "size": 32768,
+      "sha1": "baca5d798b3e786078feded19486d9fc29dbd4b7",
+      "md5": "43cf648e27efc9be8186bb7049505d79",
+      "sha256": "02f9cd74a3f768e60709287999d9c251288afffd796a3985f1cf840045d31f68",
+      "crc32": "5660f4b4"
+    },
+    "89695fd69dfcaf1969913c4a9d5d6f95defadd33": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+3.arabic3-a.english4-0.rom",
+      "name": "spectrum+3.arabic3-a.english4-0.rom",
+      "size": 131072,
+      "sha1": "89695fd69dfcaf1969913c4a9d5d6f95defadd33",
+      "md5": "30316fa0ed7ee6682933960e11b48d60",
+      "sha256": "ae8b9f7fa8014e71d701d9eff5ccf1f75ca9f5272102b919e0445aaef7a89c44",
+      "crc32": "55c960eb"
+    },
+    "929bf1a5e5687ebd8d7245f9b513a596c0ec21a4": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+3.version4-0.rom",
+      "name": "spectrum+3.version4-0.rom",
+      "size": 65536,
+      "sha1": "929bf1a5e5687ebd8d7245f9b513a596c0ec21a4",
+      "md5": "05de80a055b5e7866f55769db0584d6e",
+      "sha256": "ee8218fa43ecb672ed45370114294228213a82318c6d1b007ec86bee3293d1f2",
+      "crc32": "96e3c17a"
+    },
+    "0606d615cfadcbf32e0a894e9733534bc7b66982": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+3.version4-0.spanish.rom",
+      "name": "spectrum+3.version4-0.spanish.rom",
+      "size": 65536,
+      "sha1": "0606d615cfadcbf32e0a894e9733534bc7b66982",
+      "md5": "990dfe9d37b48595f5befe0e4ff4b7c6",
+      "sha256": "c266b543f8170d2402f40ae8ab7015e2cccb428132f88459df3d29c902225de3",
+      "crc32": "bcd3924e"
+    },
+    "500c0945760abeefcbd08bc22c0d07b14b336cf0": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+3.version4-1.rom",
+      "name": "spectrum+3.version4-1.rom",
+      "size": 65536,
+      "sha1": "500c0945760abeefcbd08bc22c0d07b14b336cf0",
+      "md5": "7e00ed3562abfd188d0d4da03e80bc0a",
+      "sha256": "5e7d9b3355ca76f4a99cbcc0bc1c90118ecda6a1549c2cb0f02e98af17694f3e",
+      "crc32": "be0d9ec4"
+    },
+    "a4b311135ccbe010318dcb872dae2c8f078c7447": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum+3.version4-1.spanish.rom",
+      "name": "spectrum+3.version4-1.spanish.rom",
+      "size": 65536,
+      "sha1": "a4b311135ccbe010318dcb872dae2c8f078c7447",
+      "md5": "52d130178c1106fef765b5f119fb43bc",
+      "sha256": "3bf9a1741c64a1cff3f1a1c144a34f30345114b01fb2fbccdb9eefa2c884328a",
+      "crc32": "0ade13f8"
+    },
+    "57c0b6681224378ce1d279fde13d644478423783": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum128.spanish.rom",
+      "name": "spectrum128.spanish.rom",
+      "size": 32768,
+      "sha1": "57c0b6681224378ce1d279fde13d644478423783",
+      "md5": "84aef735da122d55e41a33455c7c3506",
+      "sha256": "51d291fb08a0d4461b714114ef991e996784ec7ee6be8789382dc0781121e08e",
+      "crc32": "0437b160"
+    },
+    "72c428b0768f92b3621f4e21847ceb712023b356": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum48.arabic.rom",
+      "name": "spectrum48.arabic.rom",
+      "size": 16384,
+      "sha1": "72c428b0768f92b3621f4e21847ceb712023b356",
+      "md5": "9f6f56003307b9d55be96f406fdbf2b1",
+      "sha256": "34c24c37f78aaceb3a52f17556a1f445e9b145f3c1651c6bafec1410abc2cb2e",
+      "crc32": "15b166ba"
+    },
+    "2a3a549b4fc9f8c296502e5184d61f26675e2395": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum48.arabic.version1.rom",
+      "name": "spectrum48.arabic.version1.rom",
+      "size": 16384,
+      "sha1": "2a3a549b4fc9f8c296502e5184d61f26675e2395",
+      "md5": "a6a1e3a68bb5523997103c3925a46fe4",
+      "sha256": "dc5a994fb193eaf1e1b5770c56bfbda4720fc06ff7ac3361a49695da35ce874a",
+      "crc32": "5a0bdc95"
+    },
+    "c2de5a9fd9c429fd3b9a2074af831100505a4fec": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum48.arabic.version2.rom",
+      "name": "spectrum48.arabic.version2.rom",
+      "size": 16384,
+      "sha1": "c2de5a9fd9c429fd3b9a2074af831100505a4fec",
+      "md5": "fac3d08455328c34f0d06344d89cec0e",
+      "sha256": "fdb50ff25af8a211943dd4ce3d287009c0253f9ef0d18d3fd2788f7d6781febd",
+      "crc32": "de97b571"
+    },
+    "b1abc2ef2101aeef628d978dae682aaaa7b5a896": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum48.nordic.rom",
+      "name": "spectrum48.nordic.rom",
+      "size": 16384,
+      "sha1": "b1abc2ef2101aeef628d978dae682aaaa7b5a896",
+      "md5": "f058f27ae61af225fe5baacc1d89adfc",
+      "sha256": "a0bba33d21b60509e507a9bd5db5ed0673af45cfd3886234d6349d5f446a10a9",
+      "crc32": "a8a41da5"
+    },
+    "9e535e2e24231ccb65e33d107f6d0ceb23e99477": {
+      "path": "bios/Sinclair/ZX Spectrum/spectrum48.spanish.rom",
+      "name": "spectrum48.spanish.rom",
+      "size": 16384,
+      "sha1": "9e535e2e24231ccb65e33d107f6d0ceb23e99477",
+      "md5": "60e1bd8b4d59b55e5b2175126239517f",
+      "sha256": "e56896c14377d17a736f7a6e6fef7180e67847ec253d9ecb5c73e4f3ffc4890c",
+      "crc32": "f051746e"
+    },
     "3b1287bfc6fec9c7dd838f6ea1706698cb96fd16": {
       "path": "bios/Sinclair/ZX Spectrum/tape_128.szx",
       "name": "tape_128.szx",
@@ -47540,6 +47747,15 @@
       "md5": "575d203c6e15e679fba0b73f854ec7a2",
       "sha256": "e52e861bd30c144f174a596233c6f3e5804cff170fdc50d44ba61a1683b8174c",
       "crc32": "ae16233a"
+    },
+    "94edc401d43b0e9a9cdc1d35de4b6462dc414ab3": {
+      "path": "bios/Sinclair/ZX Spectrum/tk90.rom",
+      "name": "tk90.rom",
+      "size": 16384,
+      "sha1": "94edc401d43b0e9a9cdc1d35de4b6462dc414ab3",
+      "md5": "b7893ad25728fbf6410f08eddd4a1cad",
+      "sha256": "c0f7c0a7b2dd838488189cda052e414cd3474f3a718c1fde0a6cef3e8e0f4776",
+      "crc32": "17368e07"
     },
     "21695e3f2a8f796386ce66eea8a246b0ac44810c": {
       "path": "bios/Sinclair/ZX Spectrum/trdos.rom",
@@ -49890,6 +50106,24 @@
       "sha256": "e646d6e7ca7345e5058836db8a4f4db08dc5c9911bee34d061372a2883c39536",
       "crc32": "9ed23a12"
     },
+    "3eb437359221b4406d236085ec66fa02278e7495": {
+      "path": "bios/Timex/TS1500/ts1500.rom",
+      "name": "ts1500.rom",
+      "size": 8192,
+      "sha1": "3eb437359221b4406d236085ec66fa02278e7495",
+      "md5": "dea07eb23c5768ddf3ed90740eab85cb",
+      "sha256": "427a70cd996262af5aabc24afe0de75b89237bf561364387ca8fe2d7f4828156",
+      "crc32": "7dd19c48"
+    },
+    "34cd8113bf75b65a4da6eea355f9d46ad635f7e4": {
+      "path": "bios/Timex/TS2068/ts2068.rom",
+      "name": "ts2068.rom",
+      "size": 24576,
+      "sha1": "34cd8113bf75b65a4da6eea355f9d46ad635f7e4",
+      "md5": "9194283503a105f3f3dfba13e61e993f",
+      "sha256": "278e515f8816ea048fa0f167e664a4a09660d8fa17bfce8cfa99f70ebbe208e0",
+      "crc32": "48004230"
+    },
     "8bbe175a406e2e38227d8bdca1a820c727f80c03": {
       "path": "bios/Tomy/Tutor/.variants/tutor.zip",
       "name": "tutor.zip",
@@ -51793,6 +52027,9 @@
       "d36f149116250913fd1554ab9a5ebae3": "d49e71637d0356ec1f3d1407b6b2ff32ab998fa9",
       "cf849d4b36cd8b7782de7887d318182a": "6933bbe1fc29f58581a7f64f859f756db9ef78a7",
       "8e98b0c8e5c96c191a8b2a9d29d0454b": "8a2ddc37df2366d4e205e9904cd8bac22db2afd5",
+      "db6efdfd82cebdfbb493d85b1a5efc3c": "597ba8a15a292688333c84dc9fd35172abe5e7e6",
+      "e232dfce1dcae65953583f66af146232": "c875db1bb5d338c814cad868b3282c767d59c4f5",
+      "03aeea3abc7b1ca5f241935477ce71be": "9b22daf2f3a991aa6a358ef95b091654c3ca1bdf",
       "562d5ebf9e030a40d6fabfc2f33139fd": "b2e1955d957a475de2411770452eff4ea19f4cee",
       "924ee89b84fd73e6547f38c1188b1a54": "e549c95af34bae7652ce270ca065e81cbef1ecc7",
       "7a5f90f6af3939305b77b4f365eda7f5": "27aa76a6b4a1c9b659689c7d9c9a43874150507b",
@@ -51806,6 +52043,7 @@
       "ecd0a5a83fca19ea860fe565fad4b061": "04a1f062cf73c3931c038434e3f299482b6bf613",
       "0e4c4b1638a23fd26796816cf2f83961": "752555fdd0ff23abc9f35c6e03d9d9b4c0e9677b",
       "9bc4cc42958a2a120670e5bc0bfc1d5e": "41184f5240b4b54f3804f5a22b4d78bbba52ed1d",
+      "b301cdad72448d92598197b45bead8fe": "7b961a1733fc047eb682150a32e17bca10a018d2",
       "f23d7e00ae8fbf88908ed1f9165f35eb": "5996972d3e033f6c525c1988c563b4ffe4c58f22",
       "74b0f217fa0e2b8bb5a2f8e2ecc69da3": "bf5fb954db868e523febccc68549ed9187961076",
       "364a1a579fe5cb8dba54519bcfcdac0d": "e998f0c441f4f1800ef44e42cd1659150206cf79",
@@ -54954,6 +55192,7 @@
       "92f6e9a57545d15cd4b03dcb1d9c367d": "86eb7336a49f22201ef10c71ccf6650d2db453eb",
       "94dd9f75005cdc7236a0b400b71920fd": "2ecc186ac26d73dc3e184febcc64c1735d0b237c",
       "927ed8f4d8394a4eca03cf7791ff3d6b": "b77432504698d3b01ab2034b5fa1d613a77f2fe2",
+      "a70bbb0dfe4bb8556e74258062766f5d": "191c4994adfffe4f83b98dc3959dde2724b1dbac",
       "b95fde264333c05a8e2e2754cdc8accc": "12b54bf6bf277791445c2618065ec88e0302957c",
       "67682655fa5fb32831e28429643e26c7": "cdbde4e73d49ed3a682b99f66c231eb3dfd90dc7",
       "dffb72f116d36d025068b23970a4f6df": "fc398ab4e13ca6bfef3366ed3391b1050e0eb5e8",
@@ -55345,8 +55584,12 @@
       "cc78d4f4900f622bd6de1aed7f52592f": "77511fc58798404701f66b6bbc9cbde06596eba7",
       "0617321daa182c3f3d6f41fd02fb3275": "e33cdcdb69cd257b0b211ef46e7a8b144637db57",
       "27fbde30ffc81dbf909d4287be7c0f28": "cede52455ac2a92607b4a16b59a9296f9be3b78e",
+      "e03bd725f98be45aac39c85f7fd41ce4": "b6769a3197c77009e0933e038c15b43cf4c98c7a",
       "5cba3a306fbb94454811ba262b27c958": "04e352ab6d6ca7f50109f67c850d9dc0f467de77",
+      "56efa70bbaf311915c56cfdc70584e96": "a0ade36540561cc1691bb6f0c42ceae12484a102",
+      "b9fd58d324b6297f2a696d40722f95dc": "c6d8e06cb936989f6e1cc7a56d1f092da854a515",
       "db398d4e4e93a6d4dee3bfe146918219": "7b143ee964e9ada89d1f9e88f0bd48d919184cfc",
+      "cc69fdd6195acdfd1e533b2eb4c2a632": "b2a486efdc7b2bc3dc8e5a441ea5532bfa3207bd",
       "b4d2692115a9f2924df92a3cbfb358fb": "4f4b11ec22326280bdb96e3baf9db4b4cb1d02c5",
       "6e09e5d3c4aef166601669feaaadc01c": "80080644289ed93d71a1103992a154cc9802b2fa",
       "c1231a70b8129311216acb7479b031d5": "968937b1c750f0ef6205f01c6db4148da4cca4e3",
@@ -55375,6 +55618,20 @@
       "fb3f86eb1e5a695d9c50c124e7cfb875": "8608328d7dd66602a4846f046b24fed500f7d828",
       "88de4a3129086f34bb9ca559acc51e6c": "3be5de57dd3bd0a9d15c57cabe9179afe2906a52",
       "c54aa8f374b0971f51546c29d5d1eba1": "16af6f052b38a027dd49ba6e96e3a59d16b62672",
+      "1fff14aeca8e1dd3670142982cc6bb36": "8a5be00921afd4e2c74059c217b31b9fb51c3d41",
+      "238f77692156a5c49d20c0aa2862e8bb": "8cafb292af58617907b9e6b9093d3588a75849b8",
+      "43cf648e27efc9be8186bb7049505d79": "baca5d798b3e786078feded19486d9fc29dbd4b7",
+      "30316fa0ed7ee6682933960e11b48d60": "89695fd69dfcaf1969913c4a9d5d6f95defadd33",
+      "05de80a055b5e7866f55769db0584d6e": "929bf1a5e5687ebd8d7245f9b513a596c0ec21a4",
+      "990dfe9d37b48595f5befe0e4ff4b7c6": "0606d615cfadcbf32e0a894e9733534bc7b66982",
+      "7e00ed3562abfd188d0d4da03e80bc0a": "500c0945760abeefcbd08bc22c0d07b14b336cf0",
+      "52d130178c1106fef765b5f119fb43bc": "a4b311135ccbe010318dcb872dae2c8f078c7447",
+      "84aef735da122d55e41a33455c7c3506": "57c0b6681224378ce1d279fde13d644478423783",
+      "9f6f56003307b9d55be96f406fdbf2b1": "72c428b0768f92b3621f4e21847ceb712023b356",
+      "a6a1e3a68bb5523997103c3925a46fe4": "2a3a549b4fc9f8c296502e5184d61f26675e2395",
+      "fac3d08455328c34f0d06344d89cec0e": "c2de5a9fd9c429fd3b9a2074af831100505a4fec",
+      "f058f27ae61af225fe5baacc1d89adfc": "b1abc2ef2101aeef628d978dae682aaaa7b5a896",
+      "60e1bd8b4d59b55e5b2175126239517f": "9e535e2e24231ccb65e33d107f6d0ceb23e99477",
       "8942b43b73ed4eb7f32bd1741709a4dc": "3b1287bfc6fec9c7dd838f6ea1706698cb96fd16",
       "fec97eb9ea1b017cae84de78508feb4a": "ec9e5607ce7faf2d6a5d71e5e21188ca86e963a1",
       "116f732bbae4e49d625aaf2f311474d0": "f2d2227dce697df8aac78883eaf966e71435caa3",
@@ -55391,6 +55648,7 @@
       "9dd7ecf784a6c04265c073c236f5fadb": "febb2d495b6eda7cdcb4074935d6e9d9f328972d",
       "55d462fccc6c536037404ef4ced08bec": "1446cb2780a9dedf640404a639fa3ae518b2d8aa",
       "575d203c6e15e679fba0b73f854ec7a2": "7e265a2c1f621ed365ea23bdcafdedbc79c1299c",
+      "b7893ad25728fbf6410f08eddd4a1cad": "94edc401d43b0e9a9cdc1d35de4b6462dc414ab3",
       "0da70a5d2a0e733398e005b96b7e4ba6": "21695e3f2a8f796386ce66eea8a246b0ac44810c",
       "85fede415f4294cc777517d7eada482e": "16375d42ea109b47edded7a16028de7fdb3013a1",
       "fbb5f59ec332451debccf1e377017237": "48f6a9e001e2cb002217107c46fb0459069d1a42",
@@ -55652,6 +55910,8 @@
       "3df4d280ad76edc0662c2e89ad4f2f74": "e05575b630bea7ff98b9ca1f083d745abb3110b6",
       "01770fde15c34ff88bb49526d38cb1f6": "a11d1801594fa3d1f95d37bbcc2e0faa1ad013c6",
       "f2087ed09f7fa8d8856cfafb20dd00dc": "e0f5e2eced447abf9948342b2facc40179f0f527",
+      "dea07eb23c5768ddf3ed90740eab85cb": "3eb437359221b4406d236085ec66fa02278e7495",
+      "9194283503a105f3f3dfba13e61e993f": "34cd8113bf75b65a4da6eea355f9d46ad635f7e4",
       "37c052c1388be33bac2fac88a439322c": "8bbe175a406e2e38227d8bdca1a820c727f80c03",
       "4f0e9736c6ff1671459b1f3c80f74f98": "273dbb7a93eb0ab83c2e13e9db51b897cc18f838",
       "3b1ef759d8e3fb4071582efd33dd05f9": "5ac620c529e4965efb5560fe824854a44c983757",
@@ -60437,6 +60697,15 @@
       "squirreljme.sqc": [
         "8a2ddc37df2366d4e205e9904cd8bac22db2afd5"
       ],
+      "jupiterace.rom": [
+        "597ba8a15a292688333c84dc9fd35172abe5e7e6"
+      ],
+      "lambda8300.rom": [
+        "c875db1bb5d338c814cad868b3282c767d59c4f5"
+      ],
+      "lambda8300colour.rom": [
+        "9b22daf2f3a991aa6a358ef95b091654c3ca1bdf"
+      ],
       "o2rom.bin": [
         "b2e1955d957a475de2411770452eff4ea19f4cee"
       ],
@@ -60475,6 +60744,9 @@
       ],
       "level4P.rom": [
         "41184f5240b4b54f3804f5a22b4d78bbba52ed1d"
+      ],
+      "tk85.rom": [
+        "7b961a1733fc047eb682150a32e17bca10a018d2"
       ],
       "cerbios.bin": [
         "5996972d3e033f6c525c1988c563b4ffe4c58f22"
@@ -68765,6 +69037,9 @@
       "001-Blue01.png": [
         "b77432504698d3b01ab2034b5fa1d613a77f2fe2"
       ],
+      "ringo470.rom": [
+        "191c4994adfffe4f83b98dc3959dde2724b1dbac"
+      ],
       "aes.zip": [
         "12b54bf6bf277791445c2618065ec88e0302957c",
         "23c66caa80b93199914fae246a5ea6e84db1be29"
@@ -69809,11 +70084,23 @@
       "sram.dat": [
         "cede52455ac2a92607b4a16b59a9296f9be3b78e"
       ],
+      "zx80.rom": [
+        "b6769a3197c77009e0933e038c15b43cf4c98c7a"
+      ],
       "dkchr.rom": [
         "04e352ab6d6ca7f50109f67c850d9dc0f467de77"
       ],
+      "zx81.edition1.rom": [
+        "a0ade36540561cc1691bb6f0c42ceae12484a102"
+      ],
+      "zx81.edition2.rom": [
+        "c6d8e06cb936989f6e1cc7a56d1f092da854a515"
+      ],
       "zx81.rom": [
         "7b143ee964e9ada89d1f9e88f0bd48d919184cfc"
+      ],
+      "zx97.rom": [
+        "b2a486efdc7b2bc3dc8e5a441ea5532bfa3207bd"
       ],
       "128-0.rom": [
         "4f4b11ec22326280bdb96e3baf9db4b4cb1d02c5"
@@ -69899,6 +70186,48 @@
       "speccyboot-1.4.rom": [
         "16af6f052b38a027dd49ba6e96e3a59d16b62672"
       ],
+      "spectrum+2.french.rom": [
+        "8a5be00921afd4e2c74059c217b31b9fb51c3d41"
+      ],
+      "spectrum+2.rom": [
+        "8cafb292af58617907b9e6b9093d3588a75849b8"
+      ],
+      "spectrum+2.spanish.rom": [
+        "baca5d798b3e786078feded19486d9fc29dbd4b7"
+      ],
+      "spectrum+3.arabic3-a.english4-0.rom": [
+        "89695fd69dfcaf1969913c4a9d5d6f95defadd33"
+      ],
+      "spectrum+3.version4-0.rom": [
+        "929bf1a5e5687ebd8d7245f9b513a596c0ec21a4"
+      ],
+      "spectrum+3.version4-0.spanish.rom": [
+        "0606d615cfadcbf32e0a894e9733534bc7b66982"
+      ],
+      "spectrum+3.version4-1.rom": [
+        "500c0945760abeefcbd08bc22c0d07b14b336cf0"
+      ],
+      "spectrum+3.version4-1.spanish.rom": [
+        "a4b311135ccbe010318dcb872dae2c8f078c7447"
+      ],
+      "spectrum128.spanish.rom": [
+        "57c0b6681224378ce1d279fde13d644478423783"
+      ],
+      "spectrum48.arabic.rom": [
+        "72c428b0768f92b3621f4e21847ceb712023b356"
+      ],
+      "spectrum48.arabic.version1.rom": [
+        "2a3a549b4fc9f8c296502e5184d61f26675e2395"
+      ],
+      "spectrum48.arabic.version2.rom": [
+        "c2de5a9fd9c429fd3b9a2074af831100505a4fec"
+      ],
+      "spectrum48.nordic.rom": [
+        "b1abc2ef2101aeef628d978dae682aaaa7b5a896"
+      ],
+      "spectrum48.spanish.rom": [
+        "9e535e2e24231ccb65e33d107f6d0ceb23e99477"
+      ],
       "tape_128.szx": [
         "3b1287bfc6fec9c7dd838f6ea1706698cb96fd16"
       ],
@@ -69946,6 +70275,9 @@
       ],
       "tc2068-1.rom": [
         "7e265a2c1f621ed365ea23bdcafdedbc79c1299c"
+      ],
+      "tk90.rom": [
+        "94edc401d43b0e9a9cdc1d35de4b6462dc414ab3"
       ],
       "trdos.rom": [
         "21695e3f2a8f796386ce66eea8a246b0ac44810c"
@@ -70699,6 +71031,12 @@
       "gamecom.zip": [
         "e0f5e2eced447abf9948342b2facc40179f0f527"
       ],
+      "ts1500.rom": [
+        "3eb437359221b4406d236085ec66fa02278e7495"
+      ],
+      "ts2068.rom": [
+        "34cd8113bf75b65a4da6eea355f9d46ad635f7e4"
+      ],
       "tutor.zip": [
         "8bbe175a406e2e38227d8bdca1a820c727f80c03",
         "273dbb7a93eb0ab83c2e13e9db51b897cc18f838"
@@ -71289,6 +71627,9 @@
       ],
       "128p-1.rom": [
         "80080644289ed93d71a1103992a154cc9802b2fa"
+      ],
+      "tk95.rom": [
+        "94edc401d43b0e9a9cdc1d35de4b6462dc414ab3"
       ],
       "SCPH-70004_BIOS_V12_EUR_200.BIN": [
         "434bc0b4eb4827da0773ec0795aadc5162569a07"
@@ -73635,6 +73976,9 @@
       "1bd22497": "d49e71637d0356ec1f3d1407b6b2ff32ab998fa9",
       "c3e532d3": "6933bbe1fc29f58581a7f64f859f756db9ef78a7",
       "1690ba5c": "8a2ddc37df2366d4e205e9904cd8bac22db2afd5",
+      "e5b1f5f6": "597ba8a15a292688333c84dc9fd35172abe5e7e6",
+      "8fe1a1b7": "c875db1bb5d338c814cad868b3282c767d59c4f5",
+      "8a49b2c3": "9b22daf2f3a991aa6a358ef95b091654c3ca1bdf",
       "8016a315": "b2e1955d957a475de2411770452eff4ea19f4cee",
       "efdb45a1": "e549c95af34bae7652ce270ca065e81cbef1ecc7",
       "0605a050": "27aa76a6b4a1c9b659689c7d9c9a43874150507b",
@@ -73648,6 +73992,7 @@
       "bddbf843": "04a1f062cf73c3931c038434e3f299482b6bf613",
       "1a92d54d": "752555fdd0ff23abc9f35c6e03d9d9b4c0e9677b",
       "7ff336f4": "41184f5240b4b54f3804f5a22b4d78bbba52ed1d",
+      "8972d756": "7b961a1733fc047eb682150a32e17bca10a018d2",
       "a73a4d20": "5996972d3e033f6c525c1988c563b4ffe4c58f22",
       "d42f4444": "bf5fb954db868e523febccc68549ed9187961076",
       "a317e6b4": "e998f0c441f4f1800ef44e42cd1659150206cf79",
@@ -76796,6 +77141,7 @@
       "fe7eff14": "86eb7336a49f22201ef10c71ccf6650d2db453eb",
       "888ee3a3": "2ecc186ac26d73dc3e184febcc64c1735d0b237c",
       "1184b3e8": "b77432504698d3b01ab2034b5fa1d613a77f2fe2",
+      "b9c5abec": "191c4994adfffe4f83b98dc3959dde2724b1dbac",
       "9e5ee4a2": "12b54bf6bf277791445c2618065ec88e0302957c",
       "3a1b0586": "cdbde4e73d49ed3a682b99f66c231eb3dfd90dc7",
       "362e948d": "fc398ab4e13ca6bfef3366ed3391b1050e0eb5e8",
@@ -77187,8 +77533,12 @@
       "6c7ef608": "77511fc58798404701f66b6bbc9cbde06596eba7",
       "00eeb408": "e33cdcdb69cd257b0b211ef46e7a8b144637db57",
       "37f87fac": "cede52455ac2a92607b4a16b59a9296f9be3b78e",
+      "4c7fc597": "b6769a3197c77009e0933e038c15b43cf4c98c7a",
       "761137d7": "04e352ab6d6ca7f50109f67c850d9dc0f467de77",
+      "fcbbd617": "a0ade36540561cc1691bb6f0c42ceae12484a102",
+      "522c37b8": "c6d8e06cb936989f6e1cc7a56d1f092da854a515",
       "4b1dd6eb": "7b143ee964e9ada89d1f9e88f0bd48d919184cfc",
+      "5cf49744": "b2a486efdc7b2bc3dc8e5a441ea5532bfa3207bd",
       "e76799d2": "4f4b11ec22326280bdb96e3baf9db4b4cb1d02c5",
       "b96a36be": "80080644289ed93d71a1103992a154cc9802b2fa",
       "453d86b2": "968937b1c750f0ef6205f01c6db4148da4cca4e3",
@@ -77217,6 +77567,20 @@
       "8f1047d2": "8608328d7dd66602a4846f046b24fed500f7d828",
       "16ed3a9b": "3be5de57dd3bd0a9d15c57cabe9179afe2906a52",
       "37c591b2": "16af6f052b38a027dd49ba6e96e3a59d16b62672",
+      "8f769de7": "8a5be00921afd4e2c74059c217b31b9fb51c3d41",
+      "e7a517dc": "8cafb292af58617907b9e6b9093d3588a75849b8",
+      "5660f4b4": "baca5d798b3e786078feded19486d9fc29dbd4b7",
+      "55c960eb": "89695fd69dfcaf1969913c4a9d5d6f95defadd33",
+      "96e3c17a": "929bf1a5e5687ebd8d7245f9b513a596c0ec21a4",
+      "bcd3924e": "0606d615cfadcbf32e0a894e9733534bc7b66982",
+      "be0d9ec4": "500c0945760abeefcbd08bc22c0d07b14b336cf0",
+      "0ade13f8": "a4b311135ccbe010318dcb872dae2c8f078c7447",
+      "0437b160": "57c0b6681224378ce1d279fde13d644478423783",
+      "15b166ba": "72c428b0768f92b3621f4e21847ceb712023b356",
+      "5a0bdc95": "2a3a549b4fc9f8c296502e5184d61f26675e2395",
+      "de97b571": "c2de5a9fd9c429fd3b9a2074af831100505a4fec",
+      "a8a41da5": "b1abc2ef2101aeef628d978dae682aaaa7b5a896",
+      "f051746e": "9e535e2e24231ccb65e33d107f6d0ceb23e99477",
       "8d1c41f4": "3b1287bfc6fec9c7dd838f6ea1706698cb96fd16",
       "ccda9cc2": "ec9e5607ce7faf2d6a5d71e5e21188ca86e963a1",
       "dbc1a386": "f2d2227dce697df8aac78883eaf966e71435caa3",
@@ -77233,6 +77597,7 @@
       "f1b5fa67": "febb2d495b6eda7cdcb4074935d6e9d9f328972d",
       "bf44ec3f": "1446cb2780a9dedf640404a639fa3ae518b2d8aa",
       "ae16233a": "7e265a2c1f621ed365ea23bdcafdedbc79c1299c",
+      "17368e07": "94edc401d43b0e9a9cdc1d35de4b6462dc414ab3",
       "10751aba": "21695e3f2a8f796386ce66eea8a246b0ac44810c",
       "2cbe8995": "16375d42ea109b47edded7a16028de7fdb3013a1",
       "d5ff6273": "48f6a9e001e2cb002217107c46fb0459069d1a42",
@@ -77494,6 +77859,8 @@
       "f93bd9f7": "e05575b630bea7ff98b9ca1f083d745abb3110b6",
       "71879a28": "a11d1801594fa3d1f95d37bbcc2e0faa1ad013c6",
       "9ed23a12": "e0f5e2eced447abf9948342b2facc40179f0f527",
+      "7dd19c48": "3eb437359221b4406d236085ec66fa02278e7495",
+      "48004230": "34cd8113bf75b65a4da6eea355f9d46ad635f7e4",
       "dc569ae7": "8bbe175a406e2e38227d8bdca1a820c727f80c03",
       "0d9fbdbb": "273dbb7a93eb0ab83c2e13e9db51b897cc18f838",
       "c3c590c6": "5ac620c529e4965efb5560fe824854a44c983757",
