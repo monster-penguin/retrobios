@@ -153,11 +153,6 @@ def resolve_file(file_entry: dict, db: dict, bios_dir: str,
                     if os.path.exists(local_path):
                         return local_path, "zip_exact"
 
-    # Release assets override local files (authoritative large files)
-    cached = fetch_large_file(name, expected_sha1=sha1 or "", expected_md5=md5_raw or "")
-    if cached:
-        return cached, "release_asset"
-
     # No MD5 specified = any local file with that name is acceptable
     if not md5_list:
         name_matches = db.get("indexes", {}).get("by_name", {}).get(name, [])
@@ -198,6 +193,12 @@ def resolve_file(file_entry: dict, db: dict, bios_dir: str,
     if candidates:
         primary = [p for p, _ in candidates if "/.variants/" not in p]
         return (primary[0] if primary else candidates[0][0]), "hash_mismatch"
+
+    # Last resort: large files from GitHub release assets
+    first_md5 = md5_list[0] if md5_list else ""
+    cached = fetch_large_file(name, expected_sha1=sha1 or "", expected_md5=first_md5)
+    if cached:
+        return cached, "release_asset"
 
     return None, "not_found"
 
@@ -375,7 +376,7 @@ def generate_pack(
     missing_files = []
     untested_files = []
     user_provided = []
-    seen_destinations = {}
+    seen_destinations = set()
 
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         for sys_id, system in sorted(config.get("systems", {}).items()):
@@ -391,7 +392,7 @@ def generate_pack(
                 dedup_key = full_dest
                 if dedup_key in seen_destinations:
                     continue
-                seen_destinations[dedup_key] = file_entry.get("sha1") or file_entry.get("md5") or ""
+                seen_destinations.add(dedup_key)
 
                 storage = file_entry.get("storage", "embedded")
 
@@ -407,8 +408,8 @@ def generate_pack(
                 local_path, status = resolve_file(file_entry, db, bios_dir, zip_contents)
 
                 if status == "external":
-                    suffix = os.path.splitext(file_entry["name"])[1] or ""
-                    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+                    file_ext = os.path.splitext(file_entry["name"])[1] or ""
+                    with tempfile.NamedTemporaryFile(delete=False, suffix=file_ext) as tmp:
                         tmp_path = tmp.name
 
                     try:
@@ -461,7 +462,7 @@ def generate_pack(
                     continue
 
                 zf.write(local_path, full_dest)
-                seen_destinations[full_dest] = fe.get("sha1") or fe.get("md5") or ""
+                seen_destinations.add(full_dest)
                 extra_count += 1
                 total_files += 1
 

@@ -92,23 +92,27 @@ def resolve_to_local_path(file_entry: dict, db: dict) -> str | None:
         if os.path.exists(path):
             return path
 
+    # Split comma-separated MD5 lists (Recalbox uses multi-hash)
+    md5_candidates = [m.strip().lower() for m in md5.split(",") if m.strip()] if md5 else []
+
     # Skip MD5 lookup for zipped_file entries: the md5 is for the inner ROM,
     # not the container ZIP, so matching it would resolve to the wrong file.
     if not has_zipped_file:
-        if md5 and md5 in by_md5:
-            sha1_match = by_md5[md5]
-            if sha1_match in files_db:
-                path = files_db[sha1_match]["path"]
-                if os.path.exists(path):
-                    return path
-
-        # Truncated MD5 (batocera-systems bug: 29 chars instead of 32)
-        if md5 and len(md5) < 32:
-            for db_md5, db_sha1 in by_md5.items():
-                if db_md5.startswith(md5) and db_sha1 in files_db:
-                    path = files_db[db_sha1]["path"]
+        for md5_candidate in md5_candidates:
+            if md5_candidate in by_md5:
+                sha1_match = by_md5[md5_candidate]
+                if sha1_match in files_db:
+                    path = files_db[sha1_match]["path"]
                     if os.path.exists(path):
                         return path
+
+            # Truncated MD5 (batocera-systems bug: 29 chars instead of 32)
+            if len(md5_candidate) < 32:
+                for db_md5, db_sha1 in by_md5.items():
+                    if db_md5.startswith(md5_candidate) and db_sha1 in files_db:
+                        path = files_db[db_sha1]["path"]
+                        if os.path.exists(path):
+                            return path
 
     if name in by_name:
         # Prefer the candidate whose MD5 matches the expected hash
