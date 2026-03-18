@@ -362,11 +362,13 @@ class Scraper(BaseScraper):
 
         # Inject shared group references for systems that have core-specific
         # subdirectory requirements already defined in _shared.yml.
+        # Note: fuse/ prefix NOT injected for sinclair-zx-spectrum.
+        # Verified in fuse-libretro/src/compat/paths.c — core searches
+        # system/ flat, not fuse/ subfolder. Docs are wrong on this.
         SYSTEM_SHARED_GROUPS = {
             "nec-pc-98": ["np2kai"],
             "sharp-x68000": ["keropi"],
             "sega-saturn": ["kronos"],
-            "sinclair-zx-spectrum": ["fuse"],
         }
         for sys_id, groups in SYSTEM_SHARED_GROUPS.items():
             if sys_id in systems:

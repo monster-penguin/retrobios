@@ -2231,8 +2231,6 @@ systems:
     core: fuse
     manufacturer: Sinclair|Amstrad
     docs: https://docs.libretro.com/library/fuse/
-    includes:
-    - fuse
   snk-neogeo-cd:
     files:
     - name: 000-lo.lo

@@ -39,7 +39,7 @@ shared_groups:
 
   # NEC PC-9801/9821 — NP2kai core
   # np2kai hardcodes "np2kai/" subfolder for firmware lookups
-  # ref: libretro-np2kai/sdl/libretro.c, docs.libretro.com/library/np2kai
+  # ref: NP2kai/sdl/libretro/libretro.c:1804,1806 — milstr_ncat(np2path, "/np2kai")
   np2kai:
     - name: bios.rom
       destination: np2kai/bios.rom
@@ -121,7 +121,7 @@ shared_groups:
 
   # Sharp X68000 — PX68k core
   # PX68k hardcodes "keropi/" subfolder for ROM lookups
-  # ref: px68k/libretro/libretro.c, docs.libretro.com/library/px68k
+  # ref: px68k-libretro/libretro.c:1834 — sprintf(retro_system_conf, "%s%ckeropi", ...)
   keropi:
     - name: cgrom.dat
       destination: keropi/cgrom.dat
@@ -161,7 +161,7 @@ shared_groups:
 
   # NEC PC-8801 — QUASI88 core
   # QUASI88 searches "quasi88/" subfolder first
-  # ref: quasi88/src/libretro.c, docs.libretro.com/library/quasi88
+  # ref: quasi88-libretro/src/LIBRETRO/libretro.c:463 — snprintf(..., "%s%cquasi88%c%s", ...)
   quasi88:
     - name: N88.ROM
       destination: quasi88/N88.ROM
@@ -214,10 +214,12 @@ shared_groups:
       required: false
       md5: "e1791f8154f1cdf22b576a1a365b6e1f"
 
-  # Sinclair ZX Spectrum — Fuse core
-  # Fuse expects Pentagon/Scorpion ROMs in "fuse/" subfolder
-  # ref: fuse-libretro/fuse/settings.c, docs.libretro.com/library/fuse
-  # These files also exist flat for other ZX Spectrum cores.
+  # Sinclair ZX Spectrum — Fuse core (Pentagon/Scorpion ROMs)
+  # VERIFIED: fuse-libretro/src/compat/paths.c compat_get_next_path()
+  # returns empty path — core searches system/ FLAT, not fuse/ subfolder.
+  # The libretro docs incorrectly show "fuse/" prefix. Tested against
+  # fuse/settings.c:221-229 which defines names without prefix.
+  # Shared group kept for platforms that DO use the fuse/ prefix (Recalbox).
   fuse:
     - name: 128p-0.rom
       destination: fuse/128p-0.rom
@@ -266,36 +268,36 @@ shared_groups:
       size: 16384
 
   # Enterprise 128 / Videoton TVC — ep128emu core
-  # ep128emu loads ROMs from "ep128emu/rom/" subfolder
-  # ref: ep128emu-core/src/ep128emu_libretro.cpp, docs.libretro.com/library/ep128emu
+  # ep128emu loads ROMs from "ep128emu/roms/" subfolder
+  # ref: ep128emu-core/core/core.cpp:56,59 — romBasePath.append("/ep128emu/roms/")
   # since v1.1.0 external BIOS is optional (built-in fallback)
   ep128emu:
     - name: hun.rom
-      destination: ep128emu/rom/hun.rom
+      destination: ep128emu/roms/hun.rom
       required: false
       md5: "22167938f142c222f40992839aa21a06"
     - name: exos21.rom
-      destination: ep128emu/rom/exos21.rom
+      destination: ep128emu/roms/exos21.rom
       required: false
       md5: "f36f24cbb87745fbd2714e4df881db09"
     - name: basic21.rom
-      destination: ep128emu/rom/basic21.rom
+      destination: ep128emu/roms/basic21.rom
       required: false
       md5: "e972fe42b398c9ff1d93ff014786aec6"
     - name: exdos13.rom
-      destination: ep128emu/rom/exdos13.rom
+      destination: ep128emu/roms/exdos13.rom
       required: false
       md5: "ddff70c014d1958dc75378b6c9aab6f8"
     - name: basic20.rom
-      destination: ep128emu/rom/basic20.rom
+      destination: ep128emu/roms/basic20.rom
       required: false
       md5: "8e18edce4a7acb2c33cc0ab18f988482"
     - name: exos20.rom
-      destination: ep128emu/rom/exos20.rom
+      destination: ep128emu/roms/exos20.rom
       required: false
       md5: "5ad3baaad3b5156d6b60b34229a676fb"
     - name: brd.rom
-      destination: ep128emu/rom/brd.rom
+      destination: ep128emu/roms/brd.rom
       required: false
       md5: "6af0402906944fd134004b85097c8524"
 
