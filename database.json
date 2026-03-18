@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-18T14:58:17Z",
-  "total_files": 5561,
-  "total_size": 4908001993,
+  "generated_at": "2026-03-18T15:11:54Z",
+  "total_files": 5565,
+  "total_size": 4908280385,
   "files": {
     "520d3d1b5897800af47f92efd2444a26b7a7dead": {
       "path": "bios/3DO Company/3DO/3do_arcade_saot.bin",
@@ -19595,6 +19595,42 @@
       "md5": "59f19ca228e8c8cc7d227f620ac28326",
       "sha256": "31f2c580b271f7c8bb98f4ed1deac3a89fd1c95089c7c4a7061466e2286cd964",
       "crc32": "38dfa295"
+    },
+    "c3f1ee843f08cd7d58ea6f9166d25ee8e12280a2": {
+      "path": "bios/Nintendo/GameCube/dsp_coef.bin",
+      "name": "dsp_coef.bin",
+      "size": 4096,
+      "sha1": "c3f1ee843f08cd7d58ea6f9166d25ee8e12280a2",
+      "md5": "246b4a629edeb193341fade6b965985f",
+      "sha256": "d7741279c2e8ec5c5fb318f8fbdd6de6bf583520d288e836a5383233a4238179",
+      "crc32": "8209b868"
+    },
+    "58fb66e165d8a21875db27e5a4284a386bd172ed": {
+      "path": "bios/Nintendo/GameCube/dsp_rom.bin",
+      "name": "dsp_rom.bin",
+      "size": 8192,
+      "sha1": "58fb66e165d8a21875db27e5a4284a386bd172ed",
+      "md5": "9f55235fd6d1d19dc80a4f9140d43983",
+      "sha256": "4ea1fea6c649bcf9f627007bc9403d5437896c681d3e089b083263a7646cd3ae",
+      "crc32": "06fdf061"
+    },
+    "7fbbedcc7a1ae00414a4e9e967109cc78be1fe3b": {
+      "path": "bios/Nintendo/GameCube/font_japanese.bin",
+      "name": "font_japanese.bin",
+      "size": 259626,
+      "sha1": "7fbbedcc7a1ae00414a4e9e967109cc78be1fe3b",
+      "md5": "a1d3c0e5a40f163f4fb00a5e0774c63c",
+      "sha256": "38f9f59d505bc4e2d86b0196706195f33ad72b7fe9d029cf263072cde19d044f",
+      "crc32": "9ac7f0c7"
+    },
+    "483a17ff25b68a8f18cae691da99f16beefbe370": {
+      "path": "bios/Nintendo/GameCube/font_western.bin",
+      "name": "font_western.bin",
+      "size": 6478,
+      "sha1": "483a17ff25b68a8f18cae691da99f16beefbe370",
+      "md5": "9bef639b7426ef6948602a12b33522a8",
+      "sha256": "4ad991be2b0aa305f09b90a79fc50f57833b30b008890b5ef1336cc3d9d0bae0",
+      "crc32": "6fe1f772"
     },
     "27872c201e87b06a19bf85d36c796ef383f8d52d": {
       "path": "bios/Nintendo/GameCube/gc-dvd-20010608.bin",
@@ -52232,6 +52268,10 @@
       "352330dec2014511dc8a37d7ad1e7388": "350d25662d422d862a9241ee315e77d038ae9e64",
       "f940710cea29e8a74620954076a8427e": "324d143ab76f0b208c3e867d30c17574fd676ee6",
       "59f19ca228e8c8cc7d227f620ac28326": "18cc21df587d9cd9302f38a00ed9a23d619f5673",
+      "246b4a629edeb193341fade6b965985f": "c3f1ee843f08cd7d58ea6f9166d25ee8e12280a2",
+      "9f55235fd6d1d19dc80a4f9140d43983": "58fb66e165d8a21875db27e5a4284a386bd172ed",
+      "a1d3c0e5a40f163f4fb00a5e0774c63c": "7fbbedcc7a1ae00414a4e9e967109cc78be1fe3b",
+      "9bef639b7426ef6948602a12b33522a8": "483a17ff25b68a8f18cae691da99f16beefbe370",
       "561532ad496f644897952d2cef5bb431": "27872c201e87b06a19bf85d36c796ef383f8d52d",
       "b953eb1a8fc9922b3f7051c1cdc451f1": "ae7233cae8f94749796e0b740d6021e3b00a8926",
       "413154dd0e2c824c9b18b807fd03ec4e": "691e46213d8428befdf568157e670b971ab94e1d",
@@ -61252,7 +61292,8 @@
         "1293d68bf9643bc4f36954c1e80e38f39864528d"
       ],
       "dsp_rom.bin": [
-        "f4f683a49d7eb4155566f793f2c1c27e90159992"
+        "f4f683a49d7eb4155566f793f2c1c27e90159992",
+        "58fb66e165d8a21875db27e5a4284a386bd172ed"
       ],
       "GFZE01.map": [
         "994571cfd4e76edb7abd51622b3e6cc817681d2c"
@@ -61402,6 +61443,15 @@
       ],
       "wc24recv.ctl": [
         "18cc21df587d9cd9302f38a00ed9a23d619f5673"
+      ],
+      "dsp_coef.bin": [
+        "c3f1ee843f08cd7d58ea6f9166d25ee8e12280a2"
+      ],
+      "font_japanese.bin": [
+        "7fbbedcc7a1ae00414a4e9e967109cc78be1fe3b"
+      ],
+      "font_western.bin": [
+        "483a17ff25b68a8f18cae691da99f16beefbe370"
       ],
       "gc-dvd-20010608.bin": [
         "27872c201e87b06a19bf85d36c796ef383f8d52d"
@@ -74052,6 +74102,10 @@
       "351f4ad3": "350d25662d422d862a9241ee315e77d038ae9e64",
       "4b177fa3": "324d143ab76f0b208c3e867d30c17574fd676ee6",
       "38dfa295": "18cc21df587d9cd9302f38a00ed9a23d619f5673",
+      "8209b868": "c3f1ee843f08cd7d58ea6f9166d25ee8e12280a2",
+      "06fdf061": "58fb66e165d8a21875db27e5a4284a386bd172ed",
+      "9ac7f0c7": "7fbbedcc7a1ae00414a4e9e967109cc78be1fe3b",
+      "6fe1f772": "483a17ff25b68a8f18cae691da99f16beefbe370",
       "c047465a": "27872c201e87b06a19bf85d36c796ef383f8d52d",
       "54c7d10e": "ae7233cae8f94749796e0b740d6021e3b00a8926",
       "8bbef508": "691e46213d8428befdf568157e670b971ab94e1d",
