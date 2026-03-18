@@ -88,21 +88,8 @@ class Scraper(BaseScraper):
     """Scraper for libretro System.dat."""
 
     def __init__(self, url: str = SOURCE_URL):
-        self.url = url
-        self._raw_data: str | None = None
+        super().__init__(url=url)
 
-    def _fetch_raw(self) -> str:
-        """Fetch raw DAT content from source URL."""
-        if self._raw_data is not None:
-            return self._raw_data
-
-        try:
-            req = urllib.request.Request(self.url, headers={"User-Agent": "retrobios-scraper/1.0"})
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                self._raw_data = resp.read().decode("utf-8")
-                return self._raw_data
-        except urllib.error.URLError as e:
-            raise ConnectionError(f"Failed to fetch {self.url}: {e}") from e
 
     def fetch_requirements(self) -> list[BiosRequirement]:
         """Parse System.dat and return BIOS requirements."""

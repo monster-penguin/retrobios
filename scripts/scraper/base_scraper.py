@@ -48,6 +48,24 @@ class ChangeSet:
 class BaseScraper(ABC):
     """Abstract base class for platform BIOS requirement scrapers."""
 
+    def __init__(self, url: str = ""):
+        self.url = url
+        self._raw_data: str | None = None
+
+    def _fetch_raw(self) -> str:
+        """Fetch raw content from source URL. Cached after first call."""
+        if self._raw_data is not None:
+            return self._raw_data
+        if not self.url:
+            raise ValueError("No source URL configured")
+        try:
+            req = urllib.request.Request(self.url, headers={"User-Agent": "retrobios-scraper/1.0"})
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                self._raw_data = resp.read().decode("utf-8")
+                return self._raw_data
+        except urllib.error.URLError as e:
+            raise ConnectionError(f"Failed to fetch {self.url}: {e}") from e
+
     @abstractmethod
     def fetch_requirements(self) -> list[BiosRequirement]:
         """Fetch current BIOS requirements from the platform source."""
