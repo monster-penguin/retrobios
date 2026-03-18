@@ -1,0 +1,15 @@
+emulator: "00_example"
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - 00_example
+systems: []
+
+notes: |
+  Test/example core from libretro-samples. Minimal "hello world" libretro
+  implementation demonstrating the core API contract (retro_init, retro_run,
+  retro_load_game, etc.). Renders a simple color pattern to the framebuffer.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

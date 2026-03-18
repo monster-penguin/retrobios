@@ -1,0 +1,16 @@
+emulator: testinput_buttontest
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testinput_buttontest
+systems: []
+
+notes: |
+  Input button test core from libretro-samples. Displays a visual
+  representation of all libretro input bindings (joypad buttons, analog
+  sticks, triggers) and highlights them in real time as they are pressed.
+  Used to debug controller mapping and input driver issues.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

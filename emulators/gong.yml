@@ -1,0 +1,10 @@
+emulator: Gong
+type: game
+source: "https://github.com/libretro/gong"
+cores: [gong]
+systems: []
+files: []
+notes: >
+  Simple Pong clone written as a minimal libretro core example.
+  Self-contained with all rendering done programmatically.
+  No content file, BIOS, or system directory files required.

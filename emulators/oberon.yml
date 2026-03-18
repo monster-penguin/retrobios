@@ -1,0 +1,39 @@
+emulator: Oberon
+type: libretro
+source: "https://github.com/libretro/oberon-risc-emu"
+cores:
+  - oberon
+systems: [oberon]
+
+# Project Oberon RISC emulator by Peter De Wachter.
+# Emulates the Oberon RISC processor designed by Niklaus Wirth.
+# The bootloader (512 words) is compiled into the binary from risc-boot.inc,
+# loaded into ROM at 0xFFFFF800 on startup (risc.c:75-77, risc_new).
+#
+# Content: .dsk disk images containing the full Oberon operating system.
+# The disk image is loaded via retro_load_game(game->path) and attached
+# as SPI disk (Libretro/libretro.c:209-214). No files are read from
+# the RetroArch system directory.
+#
+# Reference disk images ship in the repo under DiskImage/:
+#   Oberon-2020-08-18.dsk (990208 bytes, latest)
+#   Oberon-2019-01-21.dsk (988160 bytes)
+#   Oberon-2016-08-02.dsk (989184 bytes)
+#   Oberon-2016-04-18.dsk (989184 bytes)
+# These are game content, not system files.
+
+files: []
+
+notes:
+  architecture: >
+    Custom 32-bit RISC CPU (25 MHz emulated) with 1 MB RAM (expandable to 32 MB).
+    Monochrome 1-bit framebuffer. Keyboard input via PS/2 scancodes.
+    SPI bus for SD card (disk image) access. Serial port for PCLink file transfer.
+  boot_process: >
+    CPU starts execution at ROM address 0xFFFFF800. The embedded bootloader
+    reads the boot sector from the SPI disk and loads the Oberon inner core
+    (modules Kernel, FileDir, Files, Modules) into RAM, then jumps to it.
+  content_format: >
+    Disk images (.dsk) are raw sector images read via 512-byte SPI commands.
+    The core detects filesystem-only images (magic 0x9B1EA38D at sector 0)
+    and adjusts the sector offset accordingly (disk.c:57-58).

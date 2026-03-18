@@ -1,0 +1,15 @@
+emulator: test
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - test
+systems: []
+
+notes: |
+  Basic test core from libretro-samples. Minimal software-rendered core
+  used for sanity-checking the libretro frontend loop (frame timing, input
+  polling, audio sample generation).
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

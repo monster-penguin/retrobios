@@ -1,0 +1,15 @@
+emulator: testsw_vram
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testsw_vram
+systems: []
+
+notes: |
+  Software VRAM test core from libretro-samples. Tests the software rendering
+  path with VRAM access patterns, validating how the frontend handles direct
+  video memory writes and buffer management.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

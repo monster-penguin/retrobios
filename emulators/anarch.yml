@@ -1,0 +1,11 @@
+emulator: Anarch
+type: game
+source: "https://github.com/libretro/anern"
+cores: [anarch]
+systems: []
+files: []
+notes: >
+  Libretro port of Anarch, a public domain suckless FPS game by Miloslav Ciz.
+  Entirely self-contained with all levels, textures, and sounds compiled
+  into the binary using procedural generation and hardcoded data tables.
+  No content file, BIOS, or system directory files required.

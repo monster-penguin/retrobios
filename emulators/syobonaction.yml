@@ -1,0 +1,11 @@
+emulator: Syobon Action
+type: game
+source: "https://github.com/libretro/syobonaction-libretro"
+cores: [syobonaction]
+systems: []
+files: []
+notes: >
+  Libretro port of Syobon Action (Cat Mario), a parody platformer known
+  for deceptive traps and unfair level design by z_gundam_tanosii.
+  Game data (maps, sprites, sounds) ships with the core repository.
+  No BIOS, firmware, or system directory files required.

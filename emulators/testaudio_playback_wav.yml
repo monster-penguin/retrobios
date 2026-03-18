@@ -1,0 +1,16 @@
+emulator: testaudio_playback_wav
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testaudio_playback_wav
+systems: []
+
+notes: |
+  Audio WAV playback test core from libretro-samples. Loads a .wav file
+  as content and plays it back through the libretro audio interface. Tests
+  audio sample rate conversion, buffer management, and content loading for
+  non-ROM file types.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

@@ -1,0 +1,16 @@
+emulator: testvulkan
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testvulkan
+systems: []
+
+notes: |
+  Vulkan test core from libretro-samples. Validates the Vulkan hardware
+  rendering path in the frontend via the libretro hw_render_interface_vulkan
+  API. Renders a basic scene using Vulkan command buffers and swapchain
+  integration.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

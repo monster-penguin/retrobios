@@ -1,0 +1,16 @@
+emulator: testgl_ff
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testgl_ff
+systems: []
+
+notes: |
+  OpenGL fixed-function test core from libretro-samples. Similar to testgl
+  but uses the legacy OpenGL fixed-function pipeline (glBegin/glEnd, matrix
+  stack) instead of shaders. Tests frontend compatibility with older GL code
+  paths.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

@@ -1,0 +1,16 @@
+emulator: testaudio_no_callback
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testaudio_no_callback
+systems: []
+
+notes: |
+  Audio no-callback test core from libretro-samples. Tests the standard
+  synchronous audio path using retro_audio_sample/retro_audio_sample_batch
+  (no threaded callback). Generates a simple tone to validate the default
+  audio output mode.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

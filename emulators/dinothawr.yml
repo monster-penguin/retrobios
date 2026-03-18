@@ -1,0 +1,11 @@
+emulator: Dinothawr
+type: game
+source: "https://github.com/libretro/Dinothawr"
+cores: [dinothawr]
+systems: []
+files: []
+notes: >
+  Puzzle game developed by the libretro team as a reference libretro core.
+  Push blocks on ice to solve puzzles. Game data (maps, sprites, music)
+  ships in the libretro repo and is loaded as content.
+  No BIOS, firmware, or system directory files required.

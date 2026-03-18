@@ -1,0 +1,15 @@
+emulator: testsw
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testsw
+systems: []
+
+notes: |
+  Software rendering test core from libretro-samples. Validates the basic
+  software framebuffer path (RETRO_HW_FRAME_BUFFER_VALID). Writes pixel
+  data directly to the framebuffer without any hardware acceleration.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

@@ -1,0 +1,20 @@
+emulator: "Dolphin Launcher"
+type: launcher
+source: "https://github.com/RobLoach/libretro-dolphin-launcher"
+cores:
+  - dolphin_launcher
+systems: [nintendo-gamecube, nintendo-wii]
+
+notes: |
+  Launcher stub that passes games to standalone Dolphin (dolphin-emu-nogui,
+  dolphin-emu, or Flatpak org.DolphinEmu.dolphin-emu). The core itself does
+  no emulation - it calls system() with the game path, waits for Dolphin to
+  exit, then signals RETRO_ENVIRONMENT_SHUTDOWN.
+
+  Requires Dolphin installed separately on the host. All BIOS/firmware files
+  (IPL.bin, DSP ROMs, fonts, Wii NAND) are managed by the standalone Dolphin
+  install, not by RetroArch system/. See dolphin.yml for those files.
+
+  No system files, BIOS, or firmware required by this core.
+
+files: []

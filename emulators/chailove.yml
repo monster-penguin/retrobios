@@ -1,0 +1,11 @@
+emulator: ChaiLove
+type: game
+source: "https://github.com/libretro/libretro-chailove"
+cores: [chailove]
+systems: []
+files: []
+notes: >
+  2D game framework for libretro inspired by LOVE2D, using ChaiScript.
+  Loads .chai or .chailove game files as content. The core itself is a
+  game engine runtime with no system directory dependencies.
+  No BIOS, firmware, or system directory files required.

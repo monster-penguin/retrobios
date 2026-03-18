@@ -1,0 +1,11 @@
+emulator: The Powder Toy
+type: game
+source: "https://github.com/libretro/ThePowderToy"
+cores: [thepowdertoy]
+systems: []
+files: []
+notes: >
+  Libretro port of The Powder Toy, a falling-sand physics simulation game.
+  Simulate various materials (powder, liquid, gas, explosive, electronic)
+  interacting with each other. Can load .cps save files as content.
+  No BIOS, firmware, or system directory files required.

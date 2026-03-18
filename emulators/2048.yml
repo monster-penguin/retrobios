@@ -1,0 +1,10 @@
+emulator: "2048"
+type: game
+source: "https://github.com/libretro/libretro-2048"
+cores: [2048]
+systems: []
+files: []
+notes: >
+  Libretro port of the 2048 sliding puzzle game by Gabriele Cirulli.
+  Self-contained core with all assets compiled into the binary.
+  No content file, BIOS, or system directory files required.

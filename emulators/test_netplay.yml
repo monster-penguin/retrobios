@@ -1,0 +1,16 @@
+emulator: test_netplay
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - test_netplay
+systems: []
+
+notes: |
+  Netplay test core from libretro-samples. Designed to validate the libretro
+  netplay subsystem: deterministic frame stepping, input synchronization,
+  savestate serialization for rollback. Renders a simple interactive scene
+  where two players can verify sync.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

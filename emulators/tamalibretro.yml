@@ -1,0 +1,11 @@
+emulator: TamaLIBretro
+type: game
+source: "https://github.com/libretro/tamern-libretro"
+cores: [tamalibretro]
+systems: []
+files: []
+notes: >
+  Tamagotchi P1 virtual pet simulator for libretro based on TamaLIB.
+  Emulates the Bandai Tamagotchi P1 hardware (E0C6S46 CPU).
+  The original Tamagotchi ROM is compiled into the binary.
+  No content file, BIOS, or system directory files required.

@@ -1,0 +1,15 @@
+emulator: testgl
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testgl
+systems: []
+
+notes: |
+  OpenGL test core from libretro-samples. Validates the hardware-accelerated
+  OpenGL rendering path in the frontend. Renders a spinning triangle or cube
+  using GL calls through the libretro hw_render interface.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

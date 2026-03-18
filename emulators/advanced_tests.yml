@@ -1,0 +1,16 @@
+emulator: advanced_tests
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - advanced_tests
+systems: []
+
+notes: |
+  Advanced test core from libretro-samples. Exercises extended libretro API
+  features: subsystems, memory descriptors, serialization, multi-disk control,
+  and other optional environment callbacks. Used by frontend developers to
+  validate their implementations.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

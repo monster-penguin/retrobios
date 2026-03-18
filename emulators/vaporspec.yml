@@ -1,0 +1,11 @@
+emulator: VaporSpec
+type: game
+source: "https://github.com/libretro/libretro-vaporspec"
+cores: [vaporspec]
+systems: []
+files: []
+notes: >
+  Fantasy console for libretro inspired by retro hardware aesthetics.
+  Provides a virtual machine with fixed specs (256x192 display, 4-channel
+  audio) for running homebrew .vaporbin cartridge files.
+  No BIOS, firmware, or system directory files required.

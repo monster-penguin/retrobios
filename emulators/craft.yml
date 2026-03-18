@@ -1,0 +1,11 @@
+emulator: Craft
+type: game
+source: "https://github.com/libretro/Craft"
+cores: [craft]
+systems: []
+files: []
+notes: >
+  Libretro port of Craft, a simple Minecraft clone by Michael Fogleman.
+  Procedurally generates a voxel world with basic block placement and removal.
+  All textures and shaders are compiled into the binary.
+  No content file, BIOS, or system directory files required.

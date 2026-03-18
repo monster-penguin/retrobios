@@ -1,0 +1,16 @@
+emulator: testvulkan_async_compute
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testvulkan_async_compute
+systems: []
+
+notes: |
+  Vulkan async compute test core from libretro-samples. Extends testvulkan
+  to exercise async compute queue support in the Vulkan rendering path.
+  Tests concurrent graphics and compute workloads through the libretro
+  hw_render_interface_vulkan API.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

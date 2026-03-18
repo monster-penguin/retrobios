@@ -1,0 +1,11 @@
+emulator: Super Bros War
+type: game
+source: "https://github.com/libretro/superbroswar-libretro"
+cores: [superbroswar]
+systems: []
+files: []
+notes: >
+  Libretro port of Super Mario War, a fan-made multiplayer battle game
+  where players stomp each other in Mario-style arenas.
+  Game data (maps, sprites, sounds) ships with the core repository.
+  No BIOS, firmware, or system directory files required.

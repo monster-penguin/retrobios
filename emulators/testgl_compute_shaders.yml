@@ -1,0 +1,16 @@
+emulator: testgl_compute_shaders
+type: test
+source: "https://github.com/libretro/libretro-samples"
+cores:
+  - testgl_compute_shaders
+systems: []
+
+notes: |
+  OpenGL compute shader test core from libretro-samples. Validates compute
+  shader support through the libretro hw_render interface. Runs a compute
+  shader kernel and renders the output, testing GL 4.3+ / GLES 3.1+
+  capability in the frontend.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []

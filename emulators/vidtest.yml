@@ -1,0 +1,16 @@
+emulator: vidtest
+type: test
+source: "https://github.com/libretro/RetroArch"
+cores:
+  - vidtest
+systems: []
+
+notes: |
+  Video test core built into RetroArch (not from libretro-samples). Tests
+  video driver capabilities: pixel format negotiation, resolution switching,
+  aspect ratio handling, and frame pacing. Renders test patterns for visual
+  validation of the video output chain.
+
+  No system files, BIOS, or firmware required. Not an emulator.
+
+files: []
