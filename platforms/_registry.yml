@@ -76,6 +76,6 @@ platforms:
   retropie:
     config: retropie.yml
     status: archived  # Last release: v4.8 (March 2022) - no update in 4 years
-    logo: "https://cdn.simpleicons.org/raspberrypi"
+    logo: "https://avatars.githubusercontent.com/u/11378204"
     scraper: null
     schedule: null
