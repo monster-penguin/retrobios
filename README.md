@@ -2,7 +2,7 @@
 
 Complete, verified collection of BIOS, firmware, and system files for retrogaming emulators.
 
-> **5357** files | **4661.1 MB** | **7** platforms | **260** emulator profiles
+> **8085** files | **4686.1 MB** | **7** platforms | **265** emulator profiles
 
 ## Download
 
@@ -10,11 +10,11 @@ Complete, verified collection of BIOS, firmware, and system files for retrogamin
 |----------|-------|-------------|------|
 | Batocera | 680 | md5 | [Download](../../releases/latest) |
 | EmuDeck | 164 | md5 | [Download](../../releases/latest) |
-| Lakka | 398 | existence | [Download](../../releases/latest) |
+| Lakka | 452 | existence | [Download](../../releases/latest) |
 | Recalbox | 346 | md5 | [Download](../../releases/latest) |
-| RetroArch | 398 | existence | [Download](../../releases/latest) |
+| RetroArch | 452 | existence | [Download](../../releases/latest) |
 | RetroBat | 343 | md5 | [Download](../../releases/latest) |
-| RetroPie | 398 | existence | [Download](../../releases/latest) |
+| RetroPie | 452 | existence | [Download](../../releases/latest) |
 
 ## Coverage
 
@@ -22,11 +22,11 @@ Complete, verified collection of BIOS, firmware, and system files for retrogamin
 |----------|----------|----------|----------|---------|
 | Batocera | 680/680 (100.0%) | 679 | 1 | 0 |
 | EmuDeck | 164/164 (100.0%) | 164 | 0 | 0 |
-| Lakka | 398/398 (100.0%) | 398 | 0 | 0 |
+| Lakka | 452/452 (100.0%) | 452 | 0 | 0 |
 | Recalbox | 346/346 (100.0%) | 346 | 0 | 0 |
-| RetroArch | 398/398 (100.0%) | 398 | 0 | 0 |
+| RetroArch | 452/452 (100.0%) | 452 | 0 | 0 |
 | RetroBat | 343/343 (100.0%) | 343 | 0 | 0 |
-| RetroPie | 398/398 (100.0%) | 398 | 0 | 0 |
+| RetroPie | 452/452 (100.0%) | 452 | 0 | 0 |
 
 ## Documentation
 
@@ -40,4 +40,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 This repository provides BIOS files for personal backup and archival purposes.
 
-*Auto-generated on 2026-03-18T10:28:48Z*
+*Auto-generated on 2026-03-18T14:18:36Z*
