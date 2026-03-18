@@ -73,6 +73,20 @@ platforms:
     cores: all_libretro
     schedule: weekly
 
+  retrodeck:
+    config: retrodeck.yml
+    status: active
+    logo: "https://raw.githubusercontent.com/RetroDECK/RetroDECK/main/res/icon.svg"
+    scraper: retrodeck
+    source_url: "https://github.com/RetroDECK/components"
+    source_format: github_component_manifests
+    hash_type: md5
+    schedule: monthly
+    emulators: [duckstation, pcsx2, dolphin, rpcs3, ppsspp, cemu, xemu, vita3k, melonds, xroar]
+    # RetroDECK/components = separate repo containing per-component build recipes
+    # Each component/<name>/component_manifest.json declares BIOS requirements
+    # Scraper enumerates top-level dirs via GitHub API, fetches each manifest directly
+
   retropie:
     config: retropie.yml
     status: archived  # Last release: v4.8 (March 2022) - no update in 4 years
