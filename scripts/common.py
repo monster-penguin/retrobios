@@ -217,6 +217,27 @@ def resolve_local_file(
     return None, "not_found"
 
 
+def compute_coverage(platform_name: str, platforms_dir: str, db: dict) -> dict:
+    """Compute BIOS coverage for a platform using verify logic."""
+    from verify import verify_platform
+    config = load_platform_config(platform_name, platforms_dir)
+    result = verify_platform(config, db)
+    present = result["ok"] + result["untested"]
+    pct = (present / result["total"] * 100) if result["total"] > 0 else 0
+    return {
+        "platform": config.get("platform", platform_name),
+        "total": result["total"],
+        "verified": result["ok"],
+        "untested": result["untested"],
+        "missing": result["missing"],
+        "present": present,
+        "percentage": pct,
+        "mode": config.get("verification_mode", "existence"),
+        "details": result["details"],
+        "config": config,
+    }
+
+
 def safe_extract_zip(zip_path: str, dest_dir: str) -> None:
     """Extract a ZIP file safely, preventing zip-slip path traversal."""
     dest = os.path.realpath(dest_dir)

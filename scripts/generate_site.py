@@ -26,7 +26,7 @@ except ImportError:
     sys.exit(1)
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import load_database, load_platform_config
+from common import load_database, load_platform_config, compute_coverage
 
 DOCS_DIR = "docs"
 SITE_NAME = "RetroBIOS"
@@ -66,25 +66,6 @@ def _status_icon(pct: float) -> str:
 # ---------------------------------------------------------------------------
 # Coverage computation (reuses verify.py logic)
 # ---------------------------------------------------------------------------
-
-def _compute_coverage(platform_name: str, platforms_dir: str, db: dict) -> dict:
-    from verify import verify_platform
-    config = load_platform_config(platform_name, platforms_dir)
-    result = verify_platform(config, db)
-    present = result["ok"] + result["untested"]
-    pct = (present / result["total"] * 100) if result["total"] > 0 else 0
-    return {
-        "platform": config.get("platform", platform_name),
-        "total": result["total"],
-        "verified": result["ok"],
-        "untested": result["untested"],
-        "missing": result["missing"],
-        "present": present,
-        "percentage": pct,
-        "mode": config.get("verification_mode", "existence"),
-        "details": result["details"],
-        "config": config,
-    }
 
 
 # ---------------------------------------------------------------------------
@@ -169,7 +150,7 @@ def generate_home(db: dict, coverages: dict, emulator_count: int,
 
 def generate_platform_index(coverages: dict) -> str:
     lines = [
-        "# Platforms",
+        f"# Platforms - {SITE_NAME}",
         "",
         "| Platform | Coverage | Verification | Status |",
         "|----------|----------|-------------|--------|",
@@ -276,7 +257,7 @@ def _group_by_manufacturer(db: dict) -> dict[str, dict[str, list]]:
 
 def generate_systems_index(manufacturers: dict) -> str:
     lines = [
-        "# Systems",
+        f"# Systems - {SITE_NAME}",
         "",
         "| Manufacturer | Consoles | Files |",
         "|-------------|----------|-------|",
@@ -355,13 +336,14 @@ def generate_system_page(
 
 def generate_emulators_index(profiles: dict) -> str:
     lines = [
-        "# Emulators",
+        f"# Emulators - {SITE_NAME}",
         "",
         "| Engine | Type | Systems | Files |",
         "|--------|------|---------|-------|",
     ]
 
-    unique = {k: v for k, v in profiles.items() if v.get("type") != "alias"}
+    unique = {k: v for k, v in profiles.items() if v.get("type") not in ("alias", "test")}
+    test_cores = {k: v for k, v in profiles.items() if v.get("type") == "test"}
     aliases = {k: v for k, v in profiles.items() if v.get("type") == "alias"}
 
     for name in sorted(unique.keys()):
@@ -494,6 +476,11 @@ def generate_gap_analysis(
     total_in_repo = 0
     total_missing = 0
 
+    # Build global set of all platform-declared filenames (once)
+    all_platform_names = set()
+    for pfiles in platform_files.values():
+        all_platform_names.update(pfiles)
+
     emulator_gaps = []
     for emu_name, profile in sorted(profiles.items()):
         if profile.get("type") == "alias":
@@ -501,11 +488,6 @@ def generate_gap_analysis(
         files = profile.get("files", [])
         if not files:
             continue
-
-        # Collect all files declared by any platform (global check)
-        all_platform_names = set()
-        for pfiles in platform_files.values():
-            all_platform_names.update(pfiles)
 
         undeclared = []
         for f in files:
@@ -676,7 +658,7 @@ def generate_mkdocs_nav(
         slug = mfr.lower().replace(" ", "-")
         system_nav.append({mfr: f"systems/{slug}.md"})
 
-    unique_profiles = {k: v for k, v in profiles.items() if v.get("type") != "alias"}
+    unique_profiles = {k: v for k, v in profiles.items() if v.get("type") not in ("alias", "test")}
     emu_nav = [{"Overview": "emulators/index.md"}]
     for name in sorted(unique_profiles.keys()):
         display = unique_profiles[name].get("emulator", name)
@@ -734,7 +716,7 @@ def main():
     coverages = {}
     for name in sorted(platform_names):
         try:
-            cov = _compute_coverage(name, args.platforms_dir, db)
+            cov = compute_coverage(name, args.platforms_dir, db)
             coverages[name] = cov
             print(f"  {cov['platform']}: {cov['present']}/{cov['total']} ({_pct(cov['present'], cov['total'])})")
         except FileNotFoundError as e:
@@ -793,9 +775,10 @@ def main():
 
     with open("mkdocs.yml") as f:
         content = f.read()
-    # Replace or append nav section
+    # Replace nav section (everything from \nnav: to the next top-level key or EOF)
+    import re
     if "\nnav:" in content:
-        content = content[:content.index("\nnav:") + 1] + nav_yaml
+        content = re.sub(r'\nnav:.*', '\n' + nav_yaml.rstrip(), content, count=1, flags=re.DOTALL)
     else:
         content += "\n" + nav_yaml
     with open("mkdocs.yml", "w") as f:

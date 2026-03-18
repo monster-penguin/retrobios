@@ -18,33 +18,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import load_database, load_platform_config
-
-try:
-    import yaml
-except ImportError:
-    yaml = None
+from common import load_database, compute_coverage
 
 SITE_URL = "https://abdess.github.io/retrobios/"
-RELEASE_URL = "../../releases/latest"
-
-
-def _compute_coverage(platform_name: str, platforms_dir: str, db: dict) -> dict:
-    from verify import verify_platform
-    config = load_platform_config(platform_name, platforms_dir)
-    result = verify_platform(config, db)
-    present = result["ok"] + result["untested"]
-    pct = (present / result["total"] * 100) if result["total"] > 0 else 0
-    return {
-        "platform": config.get("platform", platform_name),
-        "total": result["total"],
-        "verified": result["ok"],
-        "untested": result["untested"],
-        "missing": result["missing"],
-        "present": present,
-        "percentage": pct,
-        "mode": config.get("verification_mode", "existence"),
-    }
+RELEASE_URL = "https://github.com/Abdess/retrobios/releases/latest"
 
 
 def generate_readme(db: dict, platforms_dir: str) -> str:
@@ -61,7 +38,7 @@ def generate_readme(db: dict, platforms_dir: str) -> str:
     coverages = {}
     for name in platform_names:
         try:
-            coverages[name] = _compute_coverage(name, platforms_dir, db)
+            coverages[name] = compute_coverage(name, platforms_dir, db)
         except FileNotFoundError:
             pass
 
