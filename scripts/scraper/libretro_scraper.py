@@ -407,6 +407,24 @@ class Scraper(BaseScraper):
                     g for g in groups if g not in systems[sys_id].get("includes", [])
                 )
 
+        # Data directories: full core data folders included in packs.
+        # ref: each entry cites the core source code requiring the directory.
+        SYSTEM_DATA_DIRS = {
+            "nintendo-gamecube": [
+                {"ref": "dolphin-sys", "destination": "dolphin-emu/Sys"},
+            ],
+            "sony-psp": [
+                {"ref": "ppsspp-assets", "destination": "PPSSPP"},
+            ],
+            "microsoft-msx": [
+                {"ref": "bluemsx-databases", "destination": "Databases"},
+                {"ref": "bluemsx-machines", "destination": "Machines"},
+            ],
+        }
+        for sys_id, data_dirs in SYSTEM_DATA_DIRS.items():
+            if sys_id in systems:
+                systems[sys_id]["data_directories"] = data_dirs
+
         return {
             "platform": "RetroArch",
             "version": metadata["retroarch_version"] or "",

@@ -925,6 +925,11 @@ systems:
     manufacturer: Spectravideo|Philips|Al Alamiah|Sony|Sanyo|Mitsubishi|Toshiba|Hitachi|Panasonic|Canon|Casio|Pioneer|Fujitsu|Yamaha|JVC|Kyocera|GoldStar|Samsung|Daewoo|Gradiente|Sharp|Talent|NTT|ACVS/CIEL|DDX|AGE
       Labs
     docs: https://docs.libretro.com/library/bluemsx/
+    data_directories:
+    - ref: bluemsx-databases
+      destination: Databases
+    - ref: bluemsx-machines
+      destination: Machines
   nec-pc-engine:
     files:
     - name: gecard.pce
@@ -1262,6 +1267,9 @@ systems:
     core: dolphin
     manufacturer: Nintendo
     docs: https://docs.libretro.com/library/dolphin/
+    data_directories:
+    - ref: dolphin-sys
+      destination: dolphin-emu/Sys
   nintendo-64dd:
     files:
     - name: 64DD_IPL.bin
@@ -3021,6 +3029,9 @@ systems:
     core: ppsspp
     manufacturer: Sony
     docs: https://docs.libretro.com/library/ppsspp/
+    data_directories:
+    - ref: ppsspp-assets
+      destination: PPSSPP
   ti-83:
     files:
     - name: ti83se.rom
