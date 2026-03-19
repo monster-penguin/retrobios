@@ -286,19 +286,18 @@ def find_exclusion_notes(
         if profile.get("type") == "launcher":
             notes.append({
                 "emulator": emu_display, "reason": "launcher",
-                "detail": "BIOS managed by standalone emulator, not system_dir",
+                "detail": profile.get("exclusion_note", "BIOS managed by standalone emulator"),
             })
             continue
 
-        # Frozen snapshot with empty files
-        if not profile.get("files") and profile.get("notes"):
-            note_text = profile.get("notes", "")
-            if "frozen" in note_text.lower() or "snapshot" in note_text.lower() or "never loads" in note_text.lower():
-                notes.append({
-                    "emulator": emu_display, "reason": "frozen_snapshot",
-                    "detail": "code does not load external firmware despite .info declaration",
-                })
-                continue
+        # Profile-level exclusion note (frozen snapshots, etc.)
+        exclusion_note = profile.get("exclusion_note")
+        if exclusion_note:
+            notes.append({
+                "emulator": emu_display, "reason": "exclusion_note",
+                "detail": exclusion_note,
+            })
+            continue
 
         # Count standalone-only files
         standalone_files = [f for f in profile.get("files", []) if f.get("mode") == "standalone"]
