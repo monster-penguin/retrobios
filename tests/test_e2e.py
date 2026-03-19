@@ -31,9 +31,9 @@ import yaml
 from common import (
     build_zip_contents_index, check_inside_zip, group_identical_platforms,
     load_emulator_profiles, load_platform_config, md5_composite, md5sum,
-    resolve_local_file,
+    resolve_local_file, resolve_platform_cores,
 )
-from verify import Severity, Status, verify_platform, find_undeclared_files
+from verify import Severity, Status, verify_platform, find_undeclared_files, find_exclusion_notes
 
 
 def _h(data: bytes) -> dict:
@@ -553,6 +553,92 @@ class TestE2E(unittest.TestCase):
         path, status = resolve_file(entry, self.db, self.bios_dir)
         self.assertIsNone(path)
         self.assertEqual(status, "user_provided")
+
+
+    def test_resolve_cores_all_libretro(self):
+        """all_libretro resolves to all libretro-type profiles, excludes alias/standalone."""
+        config = {"cores": "all_libretro", "systems": {"nes": {"files": []}}}
+        profiles = {
+            "fceumm": {"type": "libretro", "systems": ["nes"], "files": []},
+            "dolphin_standalone": {"type": "standalone", "systems": ["gc"], "files": []},
+            "gambatte": {"type": "pure_libretro", "systems": ["gb"], "files": []},
+            "mednafen_psx_hw": {"type": "alias", "alias_of": "beetle_psx", "files": []},
+        }
+        result = resolve_platform_cores(config, profiles)
+        self.assertEqual(result, {"fceumm", "gambatte"})
+
+    def test_resolve_cores_explicit_list(self):
+        """Explicit cores list matches against profile dict keys."""
+        config = {"cores": ["fbneo", "opera"], "systems": {"arcade": {"files": []}}}
+        profiles = {
+            "fbneo": {"type": "pure_libretro", "systems": ["arcade"], "files": []},
+            "opera": {"type": "libretro", "systems": ["3do"], "files": []},
+            "mame": {"type": "libretro", "systems": ["arcade"], "files": []},
+        }
+        result = resolve_platform_cores(config, profiles)
+        self.assertEqual(result, {"fbneo", "opera"})
+
+    def test_resolve_cores_fallback_systems(self):
+        """Missing cores: field falls back to system ID intersection."""
+        config = {"systems": {"nes": {"files": []}}}
+        profiles = {
+            "fceumm": {"type": "libretro", "systems": ["nes"], "files": []},
+            "dolphin": {"type": "libretro", "systems": ["gc"], "files": []},
+        }
+        result = resolve_platform_cores(config, profiles)
+        self.assertEqual(result, {"fceumm"})
+
+    def test_resolve_cores_excludes_alias(self):
+        """Alias profiles never included even if name matches cores list."""
+        config = {"cores": ["mednafen_psx_hw"], "systems": {}}
+        profiles = {
+            "mednafen_psx_hw": {"type": "alias", "alias_of": "beetle_psx", "files": []},
+        }
+        result = resolve_platform_cores(config, profiles)
+        self.assertEqual(result, set())
+
+
+    def test_cross_reference_uses_core_resolution(self):
+        """Cross-reference matches by cores: field, not system intersection."""
+        config = {
+            "cores": ["fbneo"],
+            "systems": {
+                "arcade": {"files": [{"name": "neogeo.zip", "md5": "abc"}]}
+            }
+        }
+        profiles = {
+            "fbneo": {
+                "emulator": "FBNeo", "systems": ["snk-neogeo-mvs"],
+                "type": "pure_libretro",
+                "files": [
+                    {"name": "neogeo.zip", "required": True},
+                    {"name": "neocdz.zip", "required": True},
+                ],
+            },
+        }
+        db = {"indexes": {"by_name": {"neocdz.zip": {"sha1": "x"}}}}
+        undeclared = find_undeclared_files(config, self.emulators_dir, db, profiles)
+        names = [u["name"] for u in undeclared]
+        self.assertIn("neocdz.zip", names)
+        self.assertNotIn("neogeo.zip", names)
+
+    def test_exclusion_notes_uses_core_resolution(self):
+        """Exclusion notes match by cores: field, not system intersection."""
+        config = {
+            "cores": ["desmume2015"],
+            "systems": {"nds": {"files": []}}
+        }
+        profiles = {
+            "desmume2015": {
+                "emulator": "DeSmuME 2015", "type": "frozen_snapshot",
+                "systems": ["nintendo-ds"],
+                "files": [],
+                "exclusion_note": "Frozen snapshot, code never loads BIOS",
+            },
+        }
+        notes = find_exclusion_notes(config, self.emulators_dir, profiles)
+        emu_names = [n["emulator"] for n in notes]
+        self.assertIn("DeSmuME 2015", emu_names)
 
 
 if __name__ == "__main__":

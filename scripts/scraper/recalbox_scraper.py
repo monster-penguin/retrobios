@@ -88,6 +88,20 @@ class Scraper(BaseScraper):
     def __init__(self, url: str = SOURCE_URL):
         super().__init__(url=url)
 
+    def _fetch_cores(self) -> list[str]:
+        """Extract unique core names from es_bios.xml bios elements."""
+        raw = self._fetch_raw()
+        root = ET.fromstring(raw)
+        cores: set[str] = set()
+        for bios_elem in root.findall(".//system/bios"):
+            raw_core = bios_elem.get("core", "").strip()
+            if not raw_core:
+                continue
+            for part in raw_core.split(","):
+                name = part.strip()
+                if name:
+                    cores.add(name)
+        return sorted(cores)
 
     def fetch_requirements(self) -> list[BiosRequirement]:
         """Parse es_bios.xml and return BIOS requirements."""
@@ -214,6 +228,7 @@ class Scraper(BaseScraper):
             "base_destination": "bios",
             "hash_type": "md5",
             "verification_mode": "md5",
+            "cores": self._fetch_cores(),
             "systems": systems,
         }
 

@@ -182,7 +182,7 @@ def _collect_emulator_extras(
     base_dest: str,
     emu_profiles: dict | None = None,
 ) -> list[dict]:
-    """Collect extra files from emulator profiles not in the platform pack.
+    """Collect core requirement files from emulator profiles not in the platform pack.
 
     Uses the same system-overlap matching as verify.py cross-reference:
     - Matches emulators by shared system IDs with the platform
@@ -237,15 +237,15 @@ def generate_pack(
     platform_display = config.get("platform", platform_name)
     base_dest = config.get("base_destination", "")
 
-    suffix = "Complete_Pack" if include_extras else "BIOS_Pack"
-    zip_name = f"{platform_display.replace(' ', '_')}_{suffix}.zip"
+    zip_name = f"{platform_display.replace(' ', '_')}_BIOS_Pack.zip"
     zip_path = os.path.join(output_dir, zip_name)
     os.makedirs(output_dir, exist_ok=True)
 
     total_files = 0
     missing_files = []
     user_provided = []
-    seen_destinations = set()
+    seen_destinations: set[str] = set()
+    seen_lower: set[str] = set()  # case-insensitive dedup for Windows/macOS
     # Per-file status: worst status wins (missing > untested > ok)
     file_status: dict[str, str] = {}
     file_reasons: dict[str, str] = {}
@@ -277,6 +277,7 @@ def generate_pack(
                     if already_packed:
                         continue
                     seen_destinations.add(dedup_key)
+                    seen_lower.add(dedup_key.lower())
                     file_status.setdefault(dedup_key, "ok")
                     instructions = file_entry.get("instructions", "Please provide this file manually.")
                     instr_name = f"INSTRUCTIONS_{file_entry['name']}.txt"
@@ -301,6 +302,7 @@ def generate_pack(
                             else:
                                 zf.write(tmp_path, full_dest)
                             seen_destinations.add(dedup_key)
+                            seen_lower.add(dedup_key.lower())
                             file_status.setdefault(dedup_key, "ok")
                             total_files += 1
                         else:
@@ -352,6 +354,7 @@ def generate_pack(
                 if already_packed:
                     continue
                 seen_destinations.add(dedup_key)
+                seen_lower.add(dedup_key.lower())
 
                 extract = file_entry.get("extract", False)
                 if extract and local_path.endswith(".zip"):
@@ -360,30 +363,33 @@ def generate_pack(
                     zf.write(local_path, full_dest)
                 total_files += 1
 
-        # Tier 2: emulator extras (files cores need but platform doesn't declare)
-        extra_count = 0
-        if include_extras:
-            emu_profiles = load_emulator_profiles(emulators_dir)
-            extras = _collect_emulator_extras(
-                config, emulators_dir, db,
-                seen_destinations, base_dest, emu_profiles,
-            )
-            for fe in extras:
-                dest = _sanitize_path(fe.get("destination", fe["name"]))
-                if not dest:
-                    continue
-                full_dest = f"{base_dest}/{dest}" if base_dest else dest
-                if full_dest in seen_destinations:
-                    continue
+        # Core requirements: files platform's cores need but YAML doesn't declare
+        emu_profiles = load_emulator_profiles(emulators_dir)
+        core_files = _collect_emulator_extras(
+            config, emulators_dir, db,
+            seen_destinations, base_dest, emu_profiles,
+        )
+        core_count = 0
+        for fe in core_files:
+            dest = _sanitize_path(fe.get("destination", fe["name"]))
+            if not dest:
+                continue
+            full_dest = f"{base_dest}/{dest}" if base_dest else dest
+            if full_dest in seen_destinations:
+                continue
+            # Skip case-insensitive duplicates (Windows/macOS FS safety)
+            if full_dest.lower() in seen_lower:
+                continue
 
-                local_path, status = resolve_file(fe, db, bios_dir, zip_contents)
-                if status in ("not_found", "external", "user_provided"):
-                    continue
+            local_path, status = resolve_file(fe, db, bios_dir, zip_contents)
+            if status in ("not_found", "external", "user_provided"):
+                continue
 
-                zf.write(local_path, full_dest)
-                seen_destinations.add(full_dest)
-                extra_count += 1
-                total_files += 1
+            zf.write(local_path, full_dest)
+            seen_destinations.add(full_dest)
+            seen_lower.add(full_dest.lower())
+            core_count += 1
+            total_files += 1
 
         # Data directories from _data_dirs.yml
         for sys_id, system in sorted(config.get("systems", {}).items()):
@@ -406,9 +412,10 @@ def generate_pack(
                         src = os.path.join(root, fname)
                         rel = os.path.relpath(src, local_path)
                         full = f"{dd_prefix}/{rel}"
-                        if full in seen_destinations:
+                        if full in seen_destinations or full.lower() in seen_lower:
                             continue
                         seen_destinations.add(full)
+                        seen_lower.add(full.lower())
                         zf.write(src, full)
                         total_files += 1
 
@@ -422,8 +429,8 @@ def generate_pack(
         parts.append(f"{files_untested} untested")
     if files_miss:
         parts.append(f"{files_miss} missing")
-    extras_msg = f", {extra_count} extras" if extra_count else ""
-    print(f"  {zip_path}: {total_files} files packed{extras_msg}, {', '.join(parts)} [{verification_mode}]")
+    baseline = total_files - core_count
+    print(f"  {zip_path}: {total_files} files packed ({baseline} baseline + {core_count} from cores), {', '.join(parts)} [{verification_mode}]")
 
     for key, reason in sorted(file_reasons.items()):
         status = file_status.get(key, "")
@@ -467,8 +474,9 @@ def main():
     parser.add_argument("--db", default=DEFAULT_DB_FILE, help="Path to database.json")
     parser.add_argument("--bios-dir", default=DEFAULT_BIOS_DIR)
     parser.add_argument("--output-dir", "-o", default=DEFAULT_OUTPUT_DIR)
+    # --include-extras is now a no-op: core requirements are always included
     parser.add_argument("--include-extras", action="store_true",
-                        help="Include emulator-recommended files not declared by platform")
+                        help="(no-op) Core requirements are always included")
     parser.add_argument("--emulators-dir", default="emulators")
     parser.add_argument("--offline", action="store_true",
                         help="Skip data directory freshness check, use cache only")

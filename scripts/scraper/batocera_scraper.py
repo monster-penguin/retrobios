@@ -14,6 +14,8 @@ import sys
 import urllib.request
 import urllib.error
 
+import yaml
+
 from .base_scraper import BaseScraper, BiosRequirement, fetch_github_latest_tag
 
 PLATFORM_NAME = "batocera"
@@ -21,6 +23,12 @@ PLATFORM_NAME = "batocera"
 SOURCE_URL = (
     "https://raw.githubusercontent.com/batocera-linux/batocera.linux/"
     "master/package/batocera/core/batocera-scripts/scripts/batocera-systems"
+)
+
+CONFIGGEN_DEFAULTS_URL = (
+    "https://raw.githubusercontent.com/batocera-linux/batocera.linux/"
+    "master/package/batocera/core/batocera-configgen/configs/"
+    "configgen-defaults.yml"
 )
 
 SYSTEM_SLUG_MAP = {
@@ -91,6 +99,28 @@ class Scraper(BaseScraper):
     def __init__(self, url: str = SOURCE_URL):
         super().__init__(url=url)
 
+    def _fetch_cores(self) -> list[str]:
+        """Extract core names from Batocera configgen-defaults.yml."""
+        try:
+            req = urllib.request.Request(
+                CONFIGGEN_DEFAULTS_URL,
+                headers={"User-Agent": "retrobios-scraper/1.0"},
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                raw = resp.read().decode("utf-8")
+        except urllib.error.URLError as e:
+            raise ConnectionError(
+                f"Failed to fetch {CONFIGGEN_DEFAULTS_URL}: {e}"
+            ) from e
+        data = yaml.safe_load(raw)
+        cores: set[str] = set()
+        for system, cfg in data.items():
+            if system == "default" or not isinstance(cfg, dict):
+                continue
+            core = cfg.get("core")
+            if core:
+                cores.add(core)
+        return sorted(cores)
 
     def _extract_systems_dict(self, raw: str) -> dict:
         """Extract and parse the 'systems' dict from the Python source via ast.literal_eval."""
@@ -244,6 +274,7 @@ class Scraper(BaseScraper):
             "base_destination": "bios",
             "hash_type": "md5",
             "verification_mode": "md5",
+            "cores": self._fetch_cores(),
             "systems": systems,
         }
 

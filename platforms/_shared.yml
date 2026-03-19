@@ -76,11 +76,6 @@ shared_groups:
       md5: "7da1e5b7c482d4108d22a5b09631d967"
       crc32: "d271798b"
       size: 524350
-    # NP2kai also accepts FONT.ROM (uppercase) — ref: libretro.c:1813
-    - name: FONT.ROM
-      destination: np2kai/FONT.ROM
-      required: true
-      md5: "2af6179d7de4893ea0b705c00e9a98d6"
     - name: 2608_bd.wav
       destination: np2kai/2608_bd.wav
       required: true

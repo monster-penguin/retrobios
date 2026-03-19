@@ -24,6 +24,7 @@ data_directories:
     source_type: zip
     for_platforms: [retroarch, lakka, retropie]
     local_cache: data/dolphin-sys
+    strip_components: 2
     exclude: [Themes]
     description: "Dolphin system data (GameSettings, DSP, fonts, shaders)"
 
@@ -33,6 +34,7 @@ data_directories:
     source_type: zip
     for_platforms: [retroarch, lakka, retropie]
     local_cache: data/ppsspp-assets
+    strip_components: 1
     description: "PPSSPP fonts, backgrounds, shaders, lang files"
 
   # ref: bluemsx-libretro/system/ — system/Databases/ + system/Machines/

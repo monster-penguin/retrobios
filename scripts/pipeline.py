@@ -73,9 +73,18 @@ def parse_pack_counts(output: str) -> dict[str, tuple[int, int]]:
         if m:
             current_label = m.group(1)
             continue
-        frac_m = re.search(r"(\d+)/(\d+) files OK", line)
-        if frac_m and "files packed" in line:
-            ok, total = int(frac_m.group(1)), int(frac_m.group(2))
+        if "files packed" not in line:
+            continue
+        # New format: "622 files packed (359 baseline + 263 from cores), 358/359 files OK"
+        base_m = re.search(r"\((\d+) baseline", line)
+        ok_m = re.search(r"(\d+)/(\d+) files OK", line)
+        if base_m and ok_m:
+            baseline = int(base_m.group(1))
+            ok, total = int(ok_m.group(1)), int(ok_m.group(2))
+            counts[current_label] = (ok, total)
+        elif ok_m:
+            # Fallback: old format without baseline
+            ok, total = int(ok_m.group(1)), int(ok_m.group(2))
             counts[current_label] = (ok, total)
     return counts
 
@@ -123,8 +132,9 @@ def main():
                         help="Skip data directory refresh")
     parser.add_argument("--output-dir", default="dist",
                         help="Pack output directory (default: dist/)")
+    # --include-extras is now a no-op: core requirements are always included
     parser.add_argument("--include-extras", action="store_true",
-                        help="Include Tier 2 emulator extras in packs")
+                        help="(no-op) Core requirements are always included")
     args = parser.parse_args()
 
     results = {}

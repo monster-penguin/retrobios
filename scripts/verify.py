@@ -37,7 +37,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import (
     build_zip_contents_index, check_inside_zip, group_identical_platforms,
     load_emulator_profiles, load_platform_config, md5sum, md5_composite,
-    resolve_local_file,
+    resolve_local_file, resolve_platform_cores,
 )
 
 DEFAULT_DB = "database.json"
@@ -198,9 +198,7 @@ def find_undeclared_files(
     """Find files needed by cores but not declared in platform config."""
     # Collect all filenames declared by this platform
     declared_names: set[str] = set()
-    platform_systems: set[str] = set()
     for sys_id, system in config.get("systems", {}).items():
-        platform_systems.add(sys_id)
         for fe in system.get("files", []):
             name = fe.get("name", "")
             if name:
@@ -217,15 +215,13 @@ def find_undeclared_files(
     by_name = db.get("indexes", {}).get("by_name", {})
     profiles = emu_profiles if emu_profiles is not None else load_emulator_profiles(emulators_dir)
 
+    relevant = resolve_platform_cores(config, profiles)
     undeclared = []
     seen = set()
     for emu_name, profile in sorted(profiles.items()):
-        # Skip launchers — they don't use system_dir for BIOS
-        if profile.get("type") == "launcher":
+        if profile.get("type") in ("launcher", "alias"):
             continue
-        emu_systems = set(profile.get("systems", []))
-        # Only check emulators whose systems overlap with this platform
-        if not emu_systems & platform_systems:
+        if emu_name not in relevant:
             continue
 
         for f in profile.get("files", []):
@@ -268,10 +264,12 @@ def find_exclusion_notes(
     for sys_id in config.get("systems", {}):
         platform_systems.add(sys_id)
 
+    relevant = resolve_platform_cores(config, profiles)
     notes = []
     for emu_name, profile in sorted(profiles.items()):
         emu_systems = set(profile.get("systems", []))
-        if not emu_systems & platform_systems:
+        # Match by core resolution OR system intersection (documents all potential emulators)
+        if emu_name not in relevant and not (emu_systems & platform_systems):
             continue
 
         emu_display = profile.get("emulator", emu_name)

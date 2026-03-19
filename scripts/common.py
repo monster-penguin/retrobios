@@ -125,9 +125,14 @@ def load_platform_config(platform_name: str, platforms_dir: str = "platforms") -
                         (f.get("name"), f.get("destination", f.get("name")))
                         for f in system.get("files", [])
                     }
+                    existing_lower = {
+                        f.get("destination", f.get("name", "")).lower()
+                        for f in system.get("files", [])
+                    }
                     for gf in shared_groups[group_name]:
                         key = (gf.get("name"), gf.get("destination", gf.get("name")))
-                        if key not in existing:
+                        dest_lower = gf.get("destination", gf.get("name", "")).lower()
+                        if key not in existing and dest_lower not in existing_lower:
                             system.setdefault("files", []).append(gf)
                             existing.add(key)
 
@@ -346,6 +351,44 @@ def group_identical_platforms(
         representatives.setdefault(fp, platform)
 
     return [(group, representatives[fp]) for fp, group in fingerprints.items()]
+
+
+def resolve_platform_cores(
+    config: dict, profiles: dict[str, dict],
+) -> set[str]:
+    """Resolve which emulator profiles are relevant for a platform.
+
+    Resolution strategies (by priority):
+    1. cores: "all_libretro" — all profiles with libretro in type
+    2. cores: [list] — profiles whose dict key matches a core name
+    3. cores: absent — fallback to systems intersection
+
+    Alias profiles are always excluded (they point to another profile).
+    """
+    cores_config = config.get("cores")
+
+    if cores_config == "all_libretro":
+        return {
+            name for name, p in profiles.items()
+            if "libretro" in p.get("type", "")
+            and p.get("type") != "alias"
+        }
+
+    if isinstance(cores_config, list):
+        core_set = set(cores_config)
+        return {
+            name for name in profiles
+            if name in core_set
+            and profiles[name].get("type") != "alias"
+        }
+
+    # Fallback: system ID intersection
+    platform_systems = set(config.get("systems", {}).keys())
+    return {
+        name for name, p in profiles.items()
+        if set(p.get("systems", [])) & platform_systems
+        and p.get("type") != "alias"
+    }
 
 
 def safe_extract_zip(zip_path: str, dest_dir: str) -> None:
