@@ -27,7 +27,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import (
     build_zip_contents_index, check_inside_zip, compute_hashes,
     group_identical_platforms, load_database, load_data_dir_registry,
-    load_platform_config, md5_composite, resolve_local_file,
+    load_emulator_profiles, load_platform_config, md5_composite,
+    resolve_local_file,
 )
 
 try:
@@ -172,73 +173,43 @@ def download_external(file_entry: dict, dest_path: str) -> bool:
     return True
 
 
-def _load_emulator_extras(
-    platform_name: str,
-    platforms_dir: str,
+def _collect_emulator_extras(
+    config: dict,
     emulators_dir: str,
-    seen: dict,
+    db: dict,
+    seen: set,
     base_dest: str,
-    config: dict | None = None,
+    emu_profiles: dict | None = None,
 ) -> list[dict]:
-    """Load extra files from emulator profiles not already in the platform pack.
+    """Collect extra files from emulator profiles not in the platform pack.
 
-    Collects emulators from two sources:
-    1. Auto-detected from platform config "core:" fields per system
-    2. Manual "emulators:" list in _registry.yml
+    Uses the same system-overlap matching as verify.py cross-reference:
+    - Matches emulators by shared system IDs with the platform
+    - Filters mode: standalone, type: launcher, type: alias
+    - Respects data_directories coverage
+    - Only returns files that exist in the repo (packable)
+
+    Works for ANY platform (RetroArch, Batocera, Recalbox, etc.)
     """
-    emu_names = set()
+    from verify import find_undeclared_files
 
-    # Source 1: auto-detect from platform config core: fields
-    if config:
-        for system in config.get("systems", {}).values():
-            core = system.get("core", "")
-            if core:
-                emu_names.add(core)
-
-    # Source 2: manual list from _registry.yml
-    registry_path = os.path.join(platforms_dir, "_registry.yml")
-    if os.path.exists(registry_path):
-        with open(registry_path) as f:
-            registry = yaml.safe_load(f) or {}
-        platform_cfg = registry.get("platforms", {}).get(platform_name, {})
-        for name in platform_cfg.get("emulators", []):
-            emu_names.add(name)
-
-    if not emu_names:
-        return []
-
+    undeclared = find_undeclared_files(config, emulators_dir, db, emu_profiles)
     extras = []
-    emu_dir = Path(emulators_dir)
-    for emu_name in emu_names:
-        emu_path = emu_dir / f"{emu_name}.yml"
-        if not emu_path.exists():
+    for u in undeclared:
+        if not u["in_repo"]:
             continue
-        with open(emu_path) as f:
-            profile = yaml.safe_load(f) or {}
-
-        # Follow alias
-        if profile.get("alias_of"):
-            parent = emu_dir / f"{profile['alias_of']}.yml"
-            if parent.exists():
-                with open(parent) as f:
-                    profile = yaml.safe_load(f) or {}
-
-        for fe in profile.get("files", []):
-            name = fe.get("name", "")
-            if not name or name.startswith("<"):
-                continue
-            dest = fe.get("destination", name)
-            full_dest = f"{base_dest}/{dest}" if base_dest else dest
-            if full_dest in seen:
-                continue
-            extras.append({
-                "name": name,
-                "sha1": fe.get("sha1"),
-                "md5": fe.get("md5"),
-                "destination": dest,
-                "required": fe.get("required", False),
-                "source_emulator": emu_name,
-            })
+        name = u["name"]
+        dest = name
+        full_dest = f"{base_dest}/{dest}" if base_dest else dest
+        if full_dest in seen:
+            continue
+        extras.append({
+            "name": name,
+            "destination": dest,
+            "required": u.get("required", False),
+            "hle_fallback": u.get("hle_fallback", False),
+            "source_emulator": u.get("emulator", ""),
+        })
     return extras
 
 
@@ -375,12 +346,13 @@ def generate_pack(
                     zf.write(local_path, full_dest)
                 total_files += 1
 
-        # Tier 2: emulator extras
+        # Tier 2: emulator extras (files cores need but platform doesn't declare)
         extra_count = 0
         if include_extras:
-            extras = _load_emulator_extras(
-                platform_name, platforms_dir, emulators_dir,
-                seen_destinations, base_dest, config=config,
+            emu_profiles = load_emulator_profiles(emulators_dir)
+            extras = _collect_emulator_extras(
+                config, emulators_dir, db,
+                seen_destinations, base_dest, emu_profiles,
             )
             for fe in extras:
                 dest = _sanitize_path(fe.get("destination", fe["name"]))
