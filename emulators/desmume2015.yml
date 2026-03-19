@@ -1,0 +1,17 @@
+emulator: DeSmuME 2015
+type: libretro
+source: "https://github.com/libretro/desmume2015"
+profiled_date: "2026-03-19"
+core_version: "SVN (2015 snapshot)"
+display_name: "Nintendo - DS (DeSmuME 2015)"
+cores: [desmume2015]
+systems: [nintendo-ds]
+
+notes: |
+  Frozen 2015 snapshot of DeSmuME. The external BIOS loading feature
+  (desmume_use_external_bios) does NOT exist in this version.
+  The .info declares firmware_count=3 but the code never loads them.
+  Verified: libretro.cpp has no bios7/bios9/firmware path construction.
+  ref: desmume2015/desmume/src/frontend/libretro/libretro.cpp
+
+files: []
