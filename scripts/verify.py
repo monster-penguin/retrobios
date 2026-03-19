@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
-"""Platform-aware BIOS verification engine.
+"""Platform-native BIOS verification engine.
 
 Replicates the exact verification logic of each platform:
-- RetroArch/Lakka/RetroPie: file existence only (path_is_valid)
-- Batocera: MD5 hash verification + zippedFile content check (checkBios/checkInsideZip)
+- RetroArch/Lakka/RetroPie: file existence only (core_info.c path_is_valid)
+- Batocera: MD5 + checkInsideZip, no required distinction (batocera-systems:1062-1091)
+- Recalbox: MD5 + mandatory/hashMatchMandatory, 3-color severity (Bios.cpp:109-130)
+- RetroBat: same as Batocera
+- EmuDeck: MD5 whitelist per system
+
+Cross-references emulator profiles to detect undeclared files used by available cores.
 
 Usage:
-    python scripts/verify.py --platform batocera
     python scripts/verify.py --all
-    python scripts/verify.py --platform retroarch --json
+    python scripts/verify.py --platform batocera
+    python scripts/verify.py --all --include-archived
+    python scripts/verify.py --all --json
 """
 
 from __future__ import annotations
@@ -32,55 +38,57 @@ from common import load_platform_config, md5sum, md5_composite, resolve_local_fi
 
 DEFAULT_DB = "database.json"
 DEFAULT_PLATFORMS_DIR = "platforms"
+DEFAULT_EMULATORS_DIR = "emulators"
 
+
+# ---------------------------------------------------------------------------
+# Status model — aligned with Batocera BiosStatus (batocera-systems:967-969)
+# ---------------------------------------------------------------------------
 
 class Status:
-    OK = "ok"               # hash matches (or exists for existence-only)
-    UNTESTED = "untested"   # file present, hash not confirmed (Batocera terminology)
-    MISSING = "missing"     # file not found at all
+    OK = "ok"
+    UNTESTED = "untested"   # file present, hash not confirmed
+    MISSING = "missing"
 
+
+# Severity for per-file required/optional distinction
+class Severity:
+    CRITICAL = "critical"   # required file missing or bad hash (Recalbox RED)
+    WARNING = "warning"     # optional missing or hash mismatch (Recalbox YELLOW)
+    INFO = "info"           # optional missing on existence-only platform
+    OK = "ok"               # file verified
+
+
+# ---------------------------------------------------------------------------
+# Verification functions
+# ---------------------------------------------------------------------------
 
 def check_inside_zip(container: str, file_name: str, expected_md5: str) -> str:
-    """Check a ROM inside a ZIP - replicates Batocera's checkInsideZip().
-
-    Returns Status.OK, Status.UNTESTED, or "not_in_zip".
-    """
+    """Replicate Batocera checkInsideZip() — batocera-systems:978-1009."""
     try:
         with zipfile.ZipFile(container) as archive:
-            # casefold() for case-insensitive ZIP lookup, matching Batocera's checkInsideZip()
             for fname in archive.namelist():
                 if fname.casefold() == file_name.casefold():
                     if expected_md5 == "":
                         return Status.OK
-
                     with archive.open(fname) as entry:
                         actual = md5sum(entry)
-
                     if actual == expected_md5:
                         return Status.OK
                     else:
                         return Status.UNTESTED
-
             return "not_in_zip"
     except (zipfile.BadZipFile, OSError, KeyError):
         return "error"
 
 
-def resolve_to_local_path(
-    file_entry: dict,
-    db: dict,
-    zip_contents: dict | None = None,
-) -> tuple[str | None, str]:
-    """Find the local file path for a BIOS entry. Delegates to common.resolve_local_file."""
-    return resolve_local_file(file_entry, db, zip_contents)
-
-
 def verify_entry_existence(file_entry: dict, local_path: str | None) -> dict:
-    """RetroArch verification: file exists = OK."""
+    """RetroArch verification: path_is_valid() — file exists = OK."""
     name = file_entry.get("name", "")
+    required = file_entry.get("required", True)
     if local_path:
-        return {"name": name, "status": Status.OK, "path": local_path}
-    return {"name": name, "status": Status.MISSING}
+        return {"name": name, "status": Status.OK, "required": required}
+    return {"name": name, "status": Status.MISSING, "required": required}
 
 
 def verify_entry_md5(
@@ -88,19 +96,20 @@ def verify_entry_md5(
     local_path: str | None,
     resolve_status: str = "",
 ) -> dict:
-    """MD5 verification - supports single MD5 (Batocera) and multi-MD5 (Recalbox)."""
+    """MD5 verification — Batocera md5sum + Recalbox multi-hash + Md5Composite."""
     name = file_entry.get("name", "")
     expected_md5 = file_entry.get("md5", "")
     zipped_file = file_entry.get("zipped_file")
+    required = file_entry.get("required", True)
+    base = {"name": name, "required": required}
 
-    # Recalbox uses comma-separated MD5 lists
     if expected_md5 and "," in expected_md5:
         md5_list = [m.strip() for m in expected_md5.split(",") if m.strip()]
     else:
         md5_list = [expected_md5] if expected_md5 else []
 
     if not local_path:
-        return {"name": name, "status": Status.MISSING, "expected_md5": expected_md5}
+        return {**base, "status": Status.MISSING}
 
     if zipped_file:
         found_in_zip = False
@@ -108,59 +117,80 @@ def verify_entry_md5(
         for md5_candidate in md5_list or [""]:
             result = check_inside_zip(local_path, zipped_file, md5_candidate)
             if result == Status.OK:
-                return {"name": name, "status": Status.OK, "path": local_path}
+                return {**base, "status": Status.OK, "path": local_path}
             if result == "error":
                 had_error = True
             elif result != "not_in_zip":
                 found_in_zip = True
         if had_error and not found_in_zip:
-            # Can't read the ZIP at all
-            return {"name": name, "status": Status.UNTESTED, "path": local_path,
-                    "reason": f"{local_path} is not a valid ZIP or read error"}
+            return {**base, "status": Status.UNTESTED, "path": local_path,
+                    "reason": f"{local_path} read error"}
         if not found_in_zip:
-            # Inner file not in the ZIP — can't verify
-            return {"name": name, "status": Status.UNTESTED, "path": local_path,
+            return {**base, "status": Status.UNTESTED, "path": local_path,
                     "reason": f"{zipped_file} not found inside ZIP"}
-        # Inner file found but MD5 doesn't match — wrong version
-        return {"name": name, "status": Status.UNTESTED, "path": local_path,
+        return {**base, "status": Status.UNTESTED, "path": local_path,
                 "reason": f"{zipped_file} MD5 mismatch inside ZIP"}
 
     if not md5_list:
-        return {"name": name, "status": Status.OK, "path": local_path}
+        return {**base, "status": Status.OK, "path": local_path}
 
     if resolve_status == "md5_exact":
-        return {"name": name, "status": Status.OK, "path": local_path}
+        return {**base, "status": Status.OK, "path": local_path}
 
     actual_md5 = md5sum(local_path)
-
-    # Case-insensitive - Recalbox uses uppercase MD5s
     actual_lower = actual_md5.lower()
     for expected in md5_list:
         if actual_lower == expected.lower():
-            return {"name": name, "status": Status.OK, "path": local_path}
+            return {**base, "status": Status.OK, "path": local_path}
         if len(expected) < 32 and actual_lower.startswith(expected.lower()):
-            return {"name": name, "status": Status.OK, "path": local_path}
+            return {**base, "status": Status.OK, "path": local_path}
 
-    # Recalbox uses Zip::Md5Composite() for ZIP files: sorts filenames,
-    # hashes all contents sequentially. Independent of compression level.
     if ".zip" in os.path.basename(local_path):
         try:
             composite = md5_composite(local_path)
-            composite_lower = composite.lower()
             for expected in md5_list:
-                if composite_lower == expected.lower():
-                    return {"name": name, "status": Status.OK, "path": local_path}
+                if composite.lower() == expected.lower():
+                    return {**base, "status": Status.OK, "path": local_path}
         except (zipfile.BadZipFile, OSError):
             pass
 
-    return {
-        "name": name, "status": Status.UNTESTED, "path": local_path,
-        "reason": f"expected {md5_list[0][:12]}… got {actual_md5[:12]}…",
-    }
+    return {**base, "status": Status.UNTESTED, "path": local_path,
+            "reason": f"expected {md5_list[0][:12]}… got {actual_md5[:12]}…"}
 
+
+# ---------------------------------------------------------------------------
+# Severity mapping per platform
+# ---------------------------------------------------------------------------
+
+def compute_severity(status: str, required: bool, mode: str) -> str:
+    """Map (status, required, verification_mode) → severity.
+
+    Based on native platform behavior:
+    - RetroArch (existence): required+missing = warning, optional+missing = info
+    - Batocera (md5): no required distinction — all equal (batocera-systems has no mandatory field)
+    - Recalbox (md5): mandatory+missing = critical, optional+missing = warning (Bios.cpp:109-130)
+    """
+    if status == Status.OK:
+        return Severity.OK
+
+    if mode == "existence":
+        if status == Status.MISSING:
+            return Severity.WARNING if required else Severity.INFO
+        return Severity.OK
+
+    # md5 mode (Batocera, Recalbox, RetroBat, EmuDeck)
+    if status == Status.MISSING:
+        return Severity.CRITICAL if required else Severity.WARNING
+    if status == Status.UNTESTED:
+        return Severity.WARNING if required else Severity.WARNING
+    return Severity.OK
+
+
+# ---------------------------------------------------------------------------
+# ZIP content index
+# ---------------------------------------------------------------------------
 
 def _build_zip_contents_index(db: dict) -> dict:
-    """Build index of {inner_rom_md5: zip_file_sha1} for ROMs inside ZIP files."""
     index: dict[str, str] = {}
     for sha1, entry in db.get("files", {}).items():
         path = entry["path"]
@@ -172,27 +202,99 @@ def _build_zip_contents_index(db: dict) -> dict:
                     if info.is_dir() or info.file_size > 512 * 1024 * 1024:
                         continue
                     data = zf.read(info.filename)
-                    inner_md5 = hashlib.md5(data).hexdigest()
-                    index[inner_md5] = sha1
+                    index[hashlib.md5(data).hexdigest()] = sha1
         except (zipfile.BadZipFile, OSError):
             continue
     return index
 
 
-def verify_platform(config: dict, db: dict) -> dict:
-    """Verify all BIOS files for a platform using its verification_mode.
+# ---------------------------------------------------------------------------
+# Cross-reference: undeclared files used by cores
+# ---------------------------------------------------------------------------
 
-    Returns:
-        {
-            "platform": str,
-            "verification_mode": str,
-            "total": int,
-            "ok": int,
-            "untested": int,
-            "missing": int,
-            "details": [{"name", "status", ...}, ...]
-        }
-    """
+def _load_emulator_profiles(emulators_dir: str) -> dict[str, dict]:
+    profiles = {}
+    emu_path = Path(emulators_dir)
+    if not emu_path.exists():
+        return profiles
+    for f in sorted(emu_path.glob("*.yml")):
+        with open(f) as fh:
+            profile = yaml.safe_load(fh) or {}
+        if "emulator" in profile and profile.get("type") != "alias":
+            profiles[f.stem] = profile
+    return profiles
+
+
+def find_undeclared_files(
+    config: dict,
+    emulators_dir: str,
+    db: dict,
+) -> list[dict]:
+    """Find files needed by cores but not declared in platform config."""
+    # Collect all filenames declared by this platform
+    declared_names: set[str] = set()
+    platform_systems: set[str] = set()
+    for sys_id, system in config.get("systems", {}).items():
+        platform_systems.add(sys_id)
+        for fe in system.get("files", []):
+            name = fe.get("name", "")
+            if name:
+                declared_names.add(name)
+
+    # Collect data_directory refs
+    declared_dd: set[str] = set()
+    for sys_id, system in config.get("systems", {}).items():
+        for dd in system.get("data_directories", []):
+            ref = dd.get("ref", "")
+            if ref:
+                declared_dd.add(ref)
+
+    by_name = db.get("indexes", {}).get("by_name", {})
+    profiles = _load_emulator_profiles(emulators_dir)
+
+    undeclared = []
+    seen = set()
+    for emu_name, profile in sorted(profiles.items()):
+        emu_systems = set(profile.get("systems", []))
+        # Only check emulators whose systems overlap with this platform
+        if not emu_systems & platform_systems:
+            continue
+
+        # Skip if emulator's data_directories cover the files
+        emu_dd = {dd.get("ref", "") for dd in profile.get("data_directories", [])}
+        covered_by_dd = bool(emu_dd & declared_dd)
+
+        for f in profile.get("files", []):
+            fname = f.get("name", "")
+            if not fname or fname in seen:
+                continue
+            # Skip standalone-only files for libretro platforms
+            if f.get("mode") == "standalone":
+                continue
+            if fname in declared_names:
+                continue
+            if covered_by_dd:
+                continue
+
+            in_repo = fname in by_name or fname.rsplit("/", 1)[-1] in by_name
+            seen.add(fname)
+            undeclared.append({
+                "emulator": profile.get("emulator", emu_name),
+                "name": fname,
+                "required": f.get("required", False),
+                "in_repo": in_repo,
+                "note": f.get("note", ""),
+            })
+
+    return undeclared
+
+
+# ---------------------------------------------------------------------------
+# Platform verification
+# ---------------------------------------------------------------------------
+
+def verify_platform(config: dict, db: dict, emulators_dir: str = DEFAULT_EMULATORS_DIR) -> dict:
+    """Verify all BIOS files for a platform, including cross-reference gaps."""
     mode = config.get("verification_mode", "existence")
     platform = config.get("platform", "unknown")
 
@@ -203,11 +305,16 @@ def verify_platform(config: dict, db: dict) -> dict:
     )
     zip_contents = _build_zip_contents_index(db) if has_zipped else {}
 
-    results = []
+    # Per-entry results
+    details = []
+    # Per-destination aggregation
     file_status: dict[str, str] = {}
+    file_required: dict[str, bool] = {}
+    file_severity: dict[str, str] = {}
+
     for sys_id, system in config.get("systems", {}).items():
         for file_entry in system.get("files", []):
-            local_path, resolve_status = resolve_to_local_path(
+            local_path, resolve_status = resolve_local_file(
                 file_entry, db, zip_contents,
             )
             if mode == "existence":
@@ -215,42 +322,93 @@ def verify_platform(config: dict, db: dict) -> dict:
             else:
                 result = verify_entry_md5(file_entry, local_path, resolve_status)
             result["system"] = sys_id
-            results.append(result)
+            details.append(result)
 
-            # Aggregate by destination (what the user sees on disk)
+            # Aggregate by destination
             dest = file_entry.get("destination", file_entry.get("name", ""))
             if not dest:
                 dest = f"{sys_id}/{file_entry.get('name', '')}"
-            # Worst status wins: missing > untested > ok
+            required = file_entry.get("required", True)
             cur = result["status"]
             prev = file_status.get(dest)
-            severity = {Status.OK: 0, Status.UNTESTED: 1, Status.MISSING: 2}
-            if prev is None or severity.get(cur, 0) > severity.get(prev, 0):
+            sev_order = {Status.OK: 0, Status.UNTESTED: 1, Status.MISSING: 2}
+            if prev is None or sev_order.get(cur, 0) > sev_order.get(prev, 0):
                 file_status[dest] = cur
+                file_required[dest] = required
+            sev = compute_severity(cur, required, mode)
+            prev_sev = file_severity.get(dest)
+            sev_prio = {Severity.OK: 0, Severity.INFO: 1, Severity.WARNING: 2, Severity.CRITICAL: 3}
+            if prev_sev is None or sev_prio.get(sev, 0) > sev_prio.get(prev_sev, 0):
+                file_severity[dest] = sev
 
-    files_ok = sum(1 for s in file_status.values() if s == Status.OK)
-    files_untested = sum(1 for s in file_status.values() if s == Status.UNTESTED)
-    files_missing = sum(1 for s in file_status.values() if s == Status.MISSING)
+    # Count by severity
+    counts = {Severity.OK: 0, Severity.INFO: 0, Severity.WARNING: 0, Severity.CRITICAL: 0}
+    for s in file_severity.values():
+        counts[s] = counts.get(s, 0) + 1
+
+    # Cross-reference undeclared files
+    undeclared = find_undeclared_files(config, emulators_dir, db)
 
     return {
         "platform": platform,
         "verification_mode": mode,
         "total_files": len(file_status),
-        "files_ok": files_ok,
-        "files_untested": files_untested,
-        "files_missing": files_missing,
-        "details": results,
+        "severity_counts": counts,
+        "undeclared_files": undeclared,
+        "details": details,
     }
 
 
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+
+def print_platform_result(result: dict, group: list[str]) -> None:
+    mode = result["verification_mode"]
+    total = result["total_files"]
+    c = result["severity_counts"]
+    label = " / ".join(group)
+
+    parts = [f"{c[Severity.OK]}/{total} OK"]
+    if c[Severity.CRITICAL]:
+        parts.append(f"{c[Severity.CRITICAL]} CRITICAL")
+    if c[Severity.WARNING]:
+        parts.append(f"{c[Severity.WARNING]} warning")
+    if c[Severity.INFO]:
+        parts.append(f"{c[Severity.INFO]} info")
+    print(f"{label}: {', '.join(parts)} [{mode}]")
+
+    # Detail non-OK entries
+    for d in result["details"]:
+        if d["status"] == Status.UNTESTED:
+            req = "required" if d.get("required", True) else "optional"
+            reason = d.get("reason", "")
+            print(f"  UNTESTED ({req}): {d['system']}/{d['name']} — {reason}")
+    for d in result["details"]:
+        if d["status"] == Status.MISSING:
+            req = "required" if d.get("required", True) else "optional"
+            print(f"  MISSING ({req}): {d['system']}/{d['name']}")
+
+    # Cross-reference gaps
+    undeclared = result.get("undeclared_files", [])
+    if undeclared:
+        print(f"  Undeclared files used by cores ({len(undeclared)}):")
+        for u in undeclared[:20]:
+            req = "required" if u["required"] else "optional"
+            loc = "in repo" if u["in_repo"] else "NOT in repo"
+            print(f"    {u['emulator']} → {u['name']} ({req}, {loc})")
+        if len(undeclared) > 20:
+            print(f"    ... and {len(undeclared) - 20} more")
+
 
 def main():
-    parser = argparse.ArgumentParser(description="Verify BIOS coverage per platform")
+    parser = argparse.ArgumentParser(description="Platform-native BIOS verification")
     parser.add_argument("--platform", "-p", help="Platform name")
     parser.add_argument("--all", action="store_true", help="Verify all active platforms")
-    parser.add_argument("--include-archived", action="store_true", help="Include archived platforms")
+    parser.add_argument("--include-archived", action="store_true")
     parser.add_argument("--db", default=DEFAULT_DB)
     parser.add_argument("--platforms-dir", default=DEFAULT_PLATFORMS_DIR)
+    parser.add_argument("--emulators-dir", default=DEFAULT_EMULATORS_DIR)
     parser.add_argument("--json", action="store_true", help="JSON output")
     args = parser.parse_args()
 
@@ -266,61 +424,34 @@ def main():
         parser.error("Specify --platform or --all")
         return
 
-    # Group platforms with identical verification (same files = same result).
-    # Verify each group once, display as "Lakka / RetroArch / RetroPie: ..."
-    verified_fingerprints: dict[str, tuple[dict, list[str]]] = {}
+    # Group identical platforms
+    verified_fps: dict[str, tuple[dict, list[str]]] = {}
     all_results = {}
     for platform in sorted(platforms):
         config = load_platform_config(platform, args.platforms_dir)
-
-        # Fingerprint includes base_destination so platforms with different
-        # pack layouts (RetroArch system/ vs RetroPie BIOS/) stay separate,
-        # matching generate_pack grouping.
         base_dest = config.get("base_destination", "")
         entries = []
         for sys_id, system in sorted(config.get("systems", {}).items()):
             for fe in system.get("files", []):
                 dest = fe.get("destination", fe.get("name", ""))
                 full_dest = f"{base_dest}/{dest}" if base_dest else dest
-                sha1 = fe.get("sha1", "")
-                md5 = fe.get("md5", "")
-                entries.append(f"{full_dest}|{sha1}|{md5}")
+                entries.append(f"{full_dest}|{fe.get('sha1', '')}|{fe.get('md5', '')}")
         fp = hashlib.sha1("|".join(sorted(entries)).encode()).hexdigest()
 
-        if fp in verified_fingerprints:
-            result, group = verified_fingerprints[fp]
+        if fp in verified_fps:
+            _, group = verified_fps[fp]
             group.append(config.get("platform", platform))
-            all_results[platform] = result
+            all_results[platform] = verified_fps[fp][0]
             continue
 
-        result = verify_platform(config, db)
+        result = verify_platform(config, db, args.emulators_dir)
         all_results[platform] = result
-        verified_fingerprints[fp] = (result, [config.get("platform", platform)])
+        verified_fps[fp] = (result, [config.get("platform", platform)])
 
     if not args.json:
-        for result, group in verified_fingerprints.values():
-            mode = result["verification_mode"]
-            total = result["total_files"]
-            ok = result["files_ok"]
-            untested = result["files_untested"]
-            miss = result["files_missing"]
-            label = " / ".join(group)
-
-            parts = [f"{ok}/{total} files OK"]
-            if untested:
-                parts.append(f"{untested} untested")
-            if miss:
-                parts.append(f"{miss} missing")
-            print(f"{label}: {', '.join(parts)} [{mode}]")
-
-            for d in result["details"]:
-                if d["status"] == Status.UNTESTED:
-                    reason = d.get("reason", "")
-                    print(f"  UNTESTED: {d['system']}/{d['name']} — {reason}")
-
-            for d in result["details"]:
-                if d["status"] == Status.MISSING:
-                    print(f"  MISSING: {d['system']}/{d['name']}")
+        for result, group in verified_fps.values():
+            print_platform_result(result, group)
+            print()
 
     if args.json:
         for r in all_results.values():
