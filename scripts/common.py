@@ -198,7 +198,7 @@ def resolve_local_file(
             if primary or candidates:
                 return (primary[0] if primary else candidates[0]), "exact"
 
-    # 5. Name + alias fallback with md5_composite + direct MD5 per candidate
+    # 4. Name + alias fallback with md5_composite + direct MD5 per candidate
     md5_set = set(md5_list)
     candidates = []
     seen_paths = set()
@@ -228,7 +228,7 @@ def resolve_local_file(
         primary = [p for p, _ in candidates if "/.variants/" not in p]
         return (primary[0] if primary else candidates[0][0]), "hash_mismatch"
 
-    # 6. zipped_file content match via pre-built index (last resort:
+    # 5. zipped_file content match via pre-built index (last resort:
     # matches inner ROM MD5 across ALL ZIPs in the repo, so only use
     # when name-based resolution failed entirely)
     if zipped_file and md5_list and zip_contents:

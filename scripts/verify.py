@@ -62,6 +62,9 @@ class Severity:
     INFO = "info"           # optional missing on existence-only platform
     OK = "ok"               # file verified
 
+_STATUS_ORDER = {Status.OK: 0, Status.UNTESTED: 1, Status.MISSING: 2}
+_SEVERITY_ORDER = {Severity.OK: 0, Severity.INFO: 1, Severity.WARNING: 2, Severity.CRITICAL: 3}
+
 
 # ---------------------------------------------------------------------------
 # Verification functions
@@ -183,6 +186,7 @@ def find_undeclared_files(
     config: dict,
     emulators_dir: str,
     db: dict,
+    emu_profiles: dict | None = None,
 ) -> list[dict]:
     """Find files needed by cores but not declared in platform config."""
     # Collect all filenames declared by this platform
@@ -204,7 +208,7 @@ def find_undeclared_files(
                 declared_dd.add(ref)
 
     by_name = db.get("indexes", {}).get("by_name", {})
-    profiles = load_emulator_profiles(emulators_dir)
+    profiles = emu_profiles if emu_profiles is not None else load_emulator_profiles(emulators_dir)
 
     undeclared = []
     seen = set()
@@ -247,7 +251,11 @@ def find_undeclared_files(
 # Platform verification
 # ---------------------------------------------------------------------------
 
-def verify_platform(config: dict, db: dict, emulators_dir: str = DEFAULT_EMULATORS_DIR) -> dict:
+def verify_platform(
+    config: dict, db: dict,
+    emulators_dir: str = DEFAULT_EMULATORS_DIR,
+    emu_profiles: dict | None = None,
+) -> dict:
     """Verify all BIOS files for a platform, including cross-reference gaps."""
     mode = config.get("verification_mode", "existence")
     platform = config.get("platform", "unknown")
@@ -285,14 +293,12 @@ def verify_platform(config: dict, db: dict, emulators_dir: str = DEFAULT_EMULATO
             required = file_entry.get("required", True)
             cur = result["status"]
             prev = file_status.get(dest)
-            sev_order = {Status.OK: 0, Status.UNTESTED: 1, Status.MISSING: 2}
-            if prev is None or sev_order.get(cur, 0) > sev_order.get(prev, 0):
+            if prev is None or _STATUS_ORDER.get(cur, 0) > _STATUS_ORDER.get(prev, 0):
                 file_status[dest] = cur
                 file_required[dest] = required
             sev = compute_severity(cur, required, mode)
             prev_sev = file_severity.get(dest)
-            sev_prio = {Severity.OK: 0, Severity.INFO: 1, Severity.WARNING: 2, Severity.CRITICAL: 3}
-            if prev_sev is None or sev_prio.get(sev, 0) > sev_prio.get(prev_sev, 0):
+            if prev_sev is None or _SEVERITY_ORDER.get(sev, 0) > _SEVERITY_ORDER.get(prev_sev, 0):
                 file_severity[dest] = sev
 
     # Count by severity
@@ -301,7 +307,7 @@ def verify_platform(config: dict, db: dict, emulators_dir: str = DEFAULT_EMULATO
         counts[s] = counts.get(s, 0) + 1
 
     # Cross-reference undeclared files
-    undeclared = find_undeclared_files(config, emulators_dir, db)
+    undeclared = find_undeclared_files(config, emulators_dir, db, emu_profiles)
 
     return {
         "platform": platform,
@@ -415,13 +421,16 @@ def main():
         parser.error("Specify --platform or --all")
         return
 
+    # Load emulator profiles once for cross-reference (not per-platform)
+    emu_profiles = load_emulator_profiles(args.emulators_dir)
+
     # Group identical platforms (same function as generate_pack)
     groups = group_identical_platforms(platforms, args.platforms_dir)
     all_results = {}
     group_results: list[tuple[dict, list[str]]] = []
     for group_platforms, representative in groups:
         config = load_platform_config(representative, args.platforms_dir)
-        result = verify_platform(config, db, args.emulators_dir)
+        result = verify_platform(config, db, args.emulators_dir, emu_profiles)
         names = [load_platform_config(p, args.platforms_dir).get("platform", p) for p in group_platforms]
         group_results.append((result, names))
         for p in group_platforms:
