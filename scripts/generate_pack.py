@@ -291,7 +291,7 @@ def generate_pack(
     missing_files = []
     user_provided = []
     seen_destinations = set()
-    # Per-file status: worst status wins (missing > wrong_hash > ok)
+    # Per-file status: worst status wins (missing > untested > ok)
     file_status: dict[str, str] = {}
     file_reasons: dict[str, str] = {}
 
@@ -365,15 +365,20 @@ def generate_pack(
                         from verify import check_inside_zip
                         inner_md5 = file_entry.get("md5", "")
                         inner_result = check_inside_zip(local_path, zf_name, inner_md5)
-                        if inner_result != "ok":
-                            file_status[dedup_key] = "wrong_hash"
-                            reason = f"{zf_name} hash mismatch inside ZIP"
-                            file_reasons[dedup_key] = reason
-                        else:
+                        if inner_result == "ok":
                             file_status.setdefault(dedup_key, "ok")
+                        elif inner_result == "not_in_zip":
+                            file_status[dedup_key] = "untested"
+                            file_reasons[dedup_key] = f"{zf_name} not found inside ZIP"
+                        elif inner_result == "error":
+                            file_status[dedup_key] = "untested"
+                            file_reasons[dedup_key] = f"cannot read ZIP"
+                        else:
+                            file_status[dedup_key] = "untested"
+                            file_reasons[dedup_key] = f"{zf_name} MD5 mismatch inside ZIP"
                     else:
-                        file_status[dedup_key] = "wrong_hash"
-                        file_reasons[dedup_key] = "container hash mismatch"
+                        file_status[dedup_key] = "untested"
+                        file_reasons[dedup_key] = "hash mismatch"
                 else:
                     file_status.setdefault(dedup_key, "ok")
 
@@ -440,22 +445,24 @@ def generate_pack(
                         total_files += 1
 
     files_ok = sum(1 for s in file_status.values() if s == "ok")
-    files_wrong = sum(1 for s in file_status.values() if s == "wrong_hash")
+    files_untested = sum(1 for s in file_status.values() if s == "untested")
     files_miss = sum(1 for s in file_status.values() if s == "missing")
     total_checked = len(file_status)
 
     parts = [f"{files_ok}/{total_checked} files OK"]
-    if files_wrong:
-        parts.append(f"{files_wrong} wrong hash")
+    if files_untested:
+        parts.append(f"{files_untested} untested")
     if files_miss:
         parts.append(f"{files_miss} missing")
     extras_msg = f", {extra_count} extras" if extra_count else ""
     print(f"  {zip_path}: {total_files} files packed{extras_msg}, {', '.join(parts)} [{verification_mode}]")
 
-    for key, reason in file_reasons.items():
-        print(f"    WRONG HASH: {key} — {reason}")
+    for key, reason in sorted(file_reasons.items()):
+        status = file_status.get(key, "")
+        label = "UNTESTED"
+        print(f"  {label}: {key} — {reason}")
     for name in missing_files:
-        print(f"    MISSING: {name}")
+        print(f"  MISSING: {name}")
     return zip_path
 
 

@@ -35,9 +35,9 @@ DEFAULT_PLATFORMS_DIR = "platforms"
 
 
 class Status:
-    OK = "ok"            # Verified - hash matches (or existence for existence-only platforms)
-    UNTESTED = "untested" # File present but hash mismatch (Batocera term)
-    MISSING = "missing"   # File not found at all
+    OK = "ok"               # hash matches (or exists for existence-only)
+    UNTESTED = "untested"   # file present, hash not confirmed (Batocera terminology)
+    MISSING = "missing"     # file not found at all
 
 
 def check_inside_zip(container: str, file_name: str, expected_md5: str) -> str:
@@ -114,15 +114,16 @@ def verify_entry_md5(
             elif result != "not_in_zip":
                 found_in_zip = True
         if had_error and not found_in_zip:
-            reason = f"{local_path} is not a valid ZIP or read error"
-        elif not found_in_zip:
-            reason = f"{zipped_file} not found inside ZIP"
-        else:
-            reason = f"{zipped_file} MD5 mismatch inside ZIP"
-        return {
-            "name": name, "status": Status.UNTESTED, "path": local_path,
-            "reason": reason,
-        }
+            # Can't read the ZIP at all
+            return {"name": name, "status": Status.UNTESTED, "path": local_path,
+                    "reason": f"{local_path} is not a valid ZIP or read error"}
+        if not found_in_zip:
+            # Inner file not in the ZIP — can't verify
+            return {"name": name, "status": Status.UNTESTED, "path": local_path,
+                    "reason": f"{zipped_file} not found inside ZIP"}
+        # Inner file found but MD5 doesn't match — wrong version
+        return {"name": name, "status": Status.UNTESTED, "path": local_path,
+                "reason": f"{zipped_file} MD5 mismatch inside ZIP"}
 
     if not md5_list:
         return {"name": name, "status": Status.OK, "path": local_path}
@@ -154,7 +155,7 @@ def verify_entry_md5(
 
     return {
         "name": name, "status": Status.UNTESTED, "path": local_path,
-        "expected_md5": md5_list[0] if md5_list else "", "actual_md5": actual_md5,
+        "reason": f"expected {md5_list[0][:12]}… got {actual_md5[:12]}…",
     }
 
 
@@ -220,17 +221,15 @@ def verify_platform(config: dict, db: dict) -> dict:
             dest = file_entry.get("destination", file_entry.get("name", ""))
             if not dest:
                 dest = f"{sys_id}/{file_entry.get('name', '')}"
+            # Worst status wins: missing > untested > ok
             cur = result["status"]
             prev = file_status.get(dest)
-            if prev is None:
+            severity = {Status.OK: 0, Status.UNTESTED: 1, Status.MISSING: 2}
+            if prev is None or severity.get(cur, 0) > severity.get(prev, 0):
                 file_status[dest] = cur
-            elif cur == Status.MISSING:
-                file_status[dest] = Status.MISSING
-            elif cur == Status.UNTESTED and prev != Status.MISSING:
-                file_status[dest] = Status.UNTESTED
 
     files_ok = sum(1 for s in file_status.values() if s == Status.OK)
-    files_mismatch = sum(1 for s in file_status.values() if s == Status.UNTESTED)
+    files_untested = sum(1 for s in file_status.values() if s == Status.UNTESTED)
     files_missing = sum(1 for s in file_status.values() if s == Status.MISSING)
 
     return {
@@ -238,7 +237,7 @@ def verify_platform(config: dict, db: dict) -> dict:
         "verification_mode": mode,
         "total_files": len(file_status),
         "files_ok": files_ok,
-        "files_mismatch": files_mismatch,
+        "files_untested": files_untested,
         "files_missing": files_missing,
         "details": results,
     }
@@ -303,13 +302,13 @@ def main():
             mode = result["verification_mode"]
             total = result["total_files"]
             ok = result["files_ok"]
-            mismatch = result["files_mismatch"]
+            untested = result["files_untested"]
             miss = result["files_missing"]
             label = " / ".join(group)
 
             parts = [f"{ok}/{total} files OK"]
-            if mismatch:
-                parts.append(f"{mismatch} wrong hash")
+            if untested:
+                parts.append(f"{untested} untested")
             if miss:
                 parts.append(f"{miss} missing")
             print(f"{label}: {', '.join(parts)} [{mode}]")
@@ -317,9 +316,7 @@ def main():
             for d in result["details"]:
                 if d["status"] == Status.UNTESTED:
                     reason = d.get("reason", "")
-                    if not reason and "expected_md5" in d:
-                        reason = f"expected {d['expected_md5'][:12]}… got {d['actual_md5'][:12]}…"
-                    print(f"  WRONG HASH: {d['system']}/{d['name']} — {reason}")
+                    print(f"  UNTESTED: {d['system']}/{d['name']} — {reason}")
 
             for d in result["details"]:
                 if d["status"] == Status.MISSING:
