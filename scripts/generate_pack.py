@@ -288,6 +288,8 @@ def generate_pack(
     os.makedirs(output_dir, exist_ok=True)
 
     total_files = 0
+    total_checks = 0
+    verified_checks = 0
     missing_files = []
     untested_files = []
     user_provided = []
@@ -296,8 +298,14 @@ def generate_pack(
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         for sys_id, system in sorted(config.get("systems", {}).items()):
             for file_entry in system.get("files", []):
+                total_checks += 1
                 dest = _sanitize_path(file_entry.get("destination", file_entry["name"]))
                 if not dest:
+                    # EmuDeck-style entries (system:md5 whitelist, no filename).
+                    # Count as verified if file exists in DB by MD5.
+                    md5 = file_entry.get("md5", "")
+                    if md5 and md5 in db.get("indexes", {}).get("by_md5", {}):
+                        verified_checks += 1
                     continue
                 if base_dest:
                     full_dest = f"{base_dest}/{dest}"
@@ -313,6 +321,7 @@ def generate_pack(
                     if already_packed:
                         continue
                     seen_destinations.add(dedup_key)
+                    verified_checks += 1
                     instructions = file_entry.get("instructions", "Please provide this file manually.")
                     instr_name = f"INSTRUCTIONS_{file_entry['name']}.txt"
                     instr_path = f"{base_dest}/{instr_name}" if base_dest else instr_name
@@ -348,6 +357,7 @@ def generate_pack(
                         missing_files.append(file_entry["name"])
                     continue
 
+                check_passed = True
                 if status == "hash_mismatch":
                     if verification_mode != "existence":
                         zf_name = file_entry.get("zipped_file")
@@ -357,8 +367,12 @@ def generate_pack(
                             result = check_inside_zip(local_path, zf_name, inner_md5)
                             if result != "ok":
                                 untested_files.append(file_entry["name"])
+                                check_passed = False
                         else:
                             untested_files.append(file_entry["name"])
+                            check_passed = False
+                if check_passed:
+                    verified_checks += 1
 
                 if already_packed:
                     continue
@@ -439,8 +453,7 @@ def generate_pack(
     if verification_mode == "existence":
         print(f"  Generated {zip_path}: {total_files} files ({total_files - extra_count} platform{extras_msg}, {len(missing_files)} missing) [verification: existence]")
     else:
-        verified = total_files - len(untested_files)
-        print(f"  Generated {zip_path}: {total_files} files ({verified} verified{extras_msg}, {len(untested_files)} untested, {len(missing_files)} missing) [verification: {verification_mode}]")
+        print(f"  Generated {zip_path}: {total_files} files, {verified_checks}/{total_checks} checks verified, {len(untested_files)} untested, {len(missing_files)} missing [verification: {verification_mode}]")
     return zip_path
 
 
