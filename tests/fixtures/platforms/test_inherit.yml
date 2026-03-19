@@ -1,3 +1,0 @@
-inherits: test_md5
-platform: TestInherited
-base_destination: BIOS
