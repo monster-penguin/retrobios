@@ -265,25 +265,52 @@ def main():
         parser.error("Specify --platform or --all")
         return
 
+    # Group platforms with identical verification (same files = same result).
+    # Verify each group once, display as "Lakka / RetroArch / RetroPie: ..."
+    verified_fingerprints: dict[str, tuple[dict, list[str]]] = {}
     all_results = {}
     for platform in sorted(platforms):
         config = load_platform_config(platform, args.platforms_dir)
+
+        # Fingerprint includes base_destination so platforms with different
+        # pack layouts (RetroArch system/ vs RetroPie BIOS/) stay separate,
+        # matching generate_pack grouping.
+        base_dest = config.get("base_destination", "")
+        entries = []
+        for sys_id, system in sorted(config.get("systems", {}).items()):
+            for fe in system.get("files", []):
+                dest = fe.get("destination", fe.get("name", ""))
+                full_dest = f"{base_dest}/{dest}" if base_dest else dest
+                sha1 = fe.get("sha1", "")
+                md5 = fe.get("md5", "")
+                entries.append(f"{full_dest}|{sha1}|{md5}")
+        fp = hashlib.sha1("|".join(sorted(entries)).encode()).hexdigest()
+
+        if fp in verified_fingerprints:
+            result, group = verified_fingerprints[fp]
+            group.append(config.get("platform", platform))
+            all_results[platform] = result
+            continue
+
         result = verify_platform(config, db)
         all_results[platform] = result
+        verified_fingerprints[fp] = (result, [config.get("platform", platform)])
 
-        if not args.json:
+    if not args.json:
+        for result, group in verified_fingerprints.values():
             mode = result["verification_mode"]
             total = result["total_files"]
             ok = result["files_ok"]
             mismatch = result["files_mismatch"]
             miss = result["files_missing"]
+            label = " / ".join(group)
 
             parts = [f"{ok}/{total} files OK"]
             if mismatch:
                 parts.append(f"{mismatch} wrong hash")
             if miss:
                 parts.append(f"{miss} missing")
-            print(f"{result['platform']}: {', '.join(parts)} [{mode}]")
+            print(f"{label}: {', '.join(parts)} [{mode}]")
 
             for d in result["details"]:
                 if d["status"] == Status.UNTESTED:
